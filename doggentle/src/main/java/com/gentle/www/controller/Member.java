@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/member")
 public class Member {
 	
+	// 로그인 페이지
 	@RequestMapping("/login.dog")
 	public ModelAndView loginForm(ModelAndView mv) {
 		mv.setViewName("member/login");	
@@ -15,8 +16,11 @@ public class Member {
 		return mv;
 	}
 	
-	//@RequestMapping("loginProc.dog")
-	//public ModelAndView loginProc(ModelAndView mv) {
+	// 로그인 처리
+	@RequestMapping("loginProc.dog")
+	public ModelAndView loginProc(ModelAndView mv) {
+		mv.setViewName("member/login");
 		
-	//}
+		return mv;
+	}
 }

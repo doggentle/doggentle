@@ -14,4 +14,13 @@ public class MemberDao {
 	public int getLogin(MemberVO mVO) {
 		return sqlSession.selectOne("mSQL.login", mVO);
 	}
+	
+	// 회원, 관리자 확인
+	public String ckLogin(String id) {
+		return sqlSession.selectOne("mSQL.loginck", id);
+	}
+	
+	public int addMember(MemberVO mVO) {
+		return sqlSession.insert("mSQL.addMember", mVO);
+	}
 }

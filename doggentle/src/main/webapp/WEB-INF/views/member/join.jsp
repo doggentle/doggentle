@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>Join Page</title>
 <link rel="stylesheet" type="text/css" href="/www/css/w3.css"/>
 <link rel="stylesheet" type="text/css" href="/www/css/login.css"/>
 <link rel="stylesheet" type="text/css" href="/www/css/base.css"/>
@@ -13,6 +13,12 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	
+	});
+
+</script>
 </head>
 <body>
 	<div class="w3-content w3-center">
@@ -20,22 +26,32 @@
 		<div class="container w3-center w3-padding">
 	 <div class="box w600 w3-margin-top w3-border w3-padding">
     <h2>로그인</h2>
-	<form method="POST" action="/www/member/loginProc.dog" id="frm" name="frm">
+	<form method="POST" action="/www/member/joinProc.dog" id="frm" name="frm">
   <div class="container">
     <label for="id"><b>ID</b></label>
     <input type="text" placeholder="아이디를 입력해주세요" id="id" name="id" required>
 
     <label for="pw"><b>PW</b></label>
     <input type="password" placeholder="비밀번호를 입력해주세요" id="pw" name="pw" required>
+    
+    <label for="pwck"><b>PWCK</b></label>
+    <input type="password" placeholder="비밀번호를 입력해주세요" id="pwck" required>
 
-    <button type="submit" id="lbtn">Login</button>
- 
+    <label for="mail"><b>MAIL</b></label>
+    <input type="text" placeholder="비밀번호를 입력해주세요" id="mail" name="mail" required>
+
+    <label for="birth"><b>BIRTH</b></label>
+    <input type="date" id="birth" required>
+
+    <label for="gen"><b>GEN</b></label>
+    <input type="radio" id="mgen" name="gen" value="M" required><label for="mgen">남자</label>
+    <input type="radio" id="fgen" name="gen" value="F" required><label for="fgen">여자</label>
+	<div>
+    <div class="w3-button w3-half" id="bbtn">뒤로가기</div>
+    <button class="w3-half" type="submit" id="lbtn">JOIN</button>
+	</div>
   </div>
-    <a href="/www/member/join.dog">회원가입</a>
-    <a href="/www/member/findid.fes">아이디 찾기</a>
-    <a href="/www/member/findpw.fes">비밀번호 찾기</a>
-  <div>
-  </div>
+  <input type="hidden" id="bdate" name="bdate" value="">
 </form>
 </div>
 </div>

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>DogGentle</title>
+	<title>관리자 페이지</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -54,25 +54,20 @@
 	<!-- Start Navigation -->
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	<ul class="nav navbar-nav">
-<c:if test="${empty SID}">
+<c:if test="${not empty MID}">
 		<li>
-		<a href="/www/member/login.dog">로그인</a>
-		</li>
-		<li>
-		<a href="/www/member/join.dog">회원가입</a>
-		</li>
-</c:if>
-<c:if test="${not empty SID}">
-		<li>
-		<a href="/www/">마이페이지</a>
-		</li>
-		<li>
-		<a href="/www/">출석</a>
+		<a href="/www/member/main.dog">관리자</a>
 		</li>
 		<li>
 		<a href="/www/member/logout.dog">로그아웃</a>
 		</li>
 </c:if>
+		<li>
+		<a href="/www/">카테고리</a>
+		</li>
+		<li>
+		<a href="/www/">마켓정보</a>
+		</li>
 		<li>
 		<a href="/www/">문의하기</a>
 		</li>
@@ -83,7 +78,6 @@
 
 <!-- Intro
 	================================================== -->
-
 <section id="hero" class="section">
 <div class="container">
 	<div class="row">
@@ -91,7 +85,7 @@
 			<div class="herotext">
 				<h1 class="wow bounceInDown" data-wow-duration="1s" data-wow-delay="0.1s">RUN <span class="lighter">CHARITY</span></h1>
 				<p class="lead wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
-					<a href="">카테고리 ~~~~</a>
+					When we give cheerfully and accept gratefully, everyone is blessed.
 				</p>
 				<p>
 					<a href="#" class="btn btn-default btn-lg wow fadeInLeft" role="button"> View Gallery </a> &nbsp; <a href="#" class="btn btn-default btn-lg wow fadeInRight" role="button">Find a Cause</a>

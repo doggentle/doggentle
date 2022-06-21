@@ -11,6 +11,23 @@
 		WHERE
 			id = #{id}
 			AND pw = #{pw}
-			AND isshow = 'cst'
 	</select>
+	<select id="loginck" resultType="string" parameterType="string">
+		SELECT
+			isshow
+		FROM
+			member
+		WHERE
+			id = #{id}
+	</select>
+	<insert id="addMember" parameterType="mVO">
+		<selectKey keyProperty = "mno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(mno) + 1, 1001) FROM member
+		</selectKey>
+		INSERT INTO
+			member(mno, mail, id, pw, bdate, gen)
+		VALUES (
+			#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}
+		)
+	</insert>
 </mapper>

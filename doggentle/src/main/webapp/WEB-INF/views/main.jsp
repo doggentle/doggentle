@@ -73,10 +73,10 @@
 		<a href="/www/member/logout.dog">로그아웃</a>
 		</li>
 		<li>
-		<a href="/www/">마이페이지</a>
+		<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 		</li>
 		<li>
-		<a href="/www/">출석</a>
+		<a href="/www/myPage/myattend.dog">출석</a>
 		</li>
 		<li>
 		<a href="/www/">장바구니</a>
@@ -287,7 +287,7 @@
                <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
                <img class="img-fluid" src="/www/img/test.png" width="200px" height="auto" alt="">
                <p>제목</p>
-               <p>얼마얼마</p>
+               <p>얼마얼마</p> 
                </a>
             </div>
     <div class="item selfie col-lg-3 col-md-4 col-6 col-sm w3-center">

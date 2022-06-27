@@ -29,6 +29,8 @@
     <input type="password" placeholder="비밀번호를 입력해주세요" id="pw" name="pw" required>
 
     <button type="submit" id="lbtn">Login</button>
+    <button class="w3-half" type="submit" id="nabtn">네이버아이디로 로그인</button>
+    <button class="w3-half" type="submit" id="kabtn">카카오아이디로 로그인</button>
  
   </div>
     <a href="/www/member/join.dog">회원가입</a>

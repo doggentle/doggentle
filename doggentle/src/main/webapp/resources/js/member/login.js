@@ -10,4 +10,8 @@ $(document).ready(function() {
 		
 		$('#bdate').val(tmp2);
 	});
+	
+	$('#jbtn').click(function(){
+		$(location).attr(href, '/www/member/join.dog')
+	});
 });

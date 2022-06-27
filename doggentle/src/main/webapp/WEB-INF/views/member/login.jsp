@@ -35,8 +35,8 @@
 					</div>
 					<div class="cpntainer w3-margin-top">
 						<a class="box ml10" href="/www/member/join.dog">회원가입</a>
-					    <a class="box ml10" href="/www/member/findid.fes">아이디 찾기</a>
-					    <a class="box ml10" href="/www/member/findpw.fes">비밀번호 찾기</a>
+					    <a class="box ml10" href="/www/member/findid.dog">아이디 찾기</a>
+					    <a class="box ml10" href="/www/member/findpw.dog">비밀번호 찾기</a>
 					</div>	
 				</form>
 			</div>

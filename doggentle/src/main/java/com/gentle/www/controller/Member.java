@@ -89,4 +89,15 @@ public class Member {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/findid.dog")
+	public ModelAndView findid(ModelAndView mv) {
+		mv.setViewName("/member/findid");
+		return mv;
+	}
+	@RequestMapping("/findpw.dog")
+	public ModelAndView findpw(ModelAndView mv) {
+		mv.setViewName("/member/findpw");
+		return mv;
+	}
 }

@@ -100,4 +100,9 @@ public class Member {
 		mv.setViewName("/member/findpw");
 		return mv;
 	}
+	@RequestMapping("/kakaologin.dog")
+	public ModelAndView kakaologin(ModelAndView mv) {
+		mv.setViewName("member/kakaologin");
+		return mv;
+	}
 }

@@ -35,6 +35,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Naver 양동수 -->
+	<beans:bean id="naverLoginBO" class="test.domain.NaverLoginBO" />
+	
 	<!-- bean 설정파일 읽어오기 -->
 	<beans:import resource="bean-context.xml" />
 	

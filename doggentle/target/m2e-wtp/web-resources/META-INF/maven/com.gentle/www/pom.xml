@@ -18,7 +18,7 @@
 	</properties>
 	<dependencies>
 	
-		<!-- eMail Sending 양동수 추가함-->
+		<!-- eMail Sending 양동수-->
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
@@ -28,6 +28,12 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
 		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- naver Login 양동수 -->
+		<dependency>
+			<groupId>com.github.scribejava</groupId>
+			<artifactId>scribejava-core</artifactId>
+			<version>2.8.1</version>
 		</dependency>
 		
 		<!-- Spring -->

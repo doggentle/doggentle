@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.gentle.www.bo.NaverLoginBO;
 import com.gentle.www.dao.MemberDao;
 import com.gentle.www.vo.MemberVO;
 

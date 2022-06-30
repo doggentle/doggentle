@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>관리자 페이지</title>
+	<title>관리자 문의관리</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -20,7 +20,6 @@
 	
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/www/js/manager/manager.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -83,16 +82,6 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-	<p>관리자 페이지</p>
-	<div class="w3-button col-2" id="mkbtn">마켓 관리</div>
-	<div class="w3-button col-2" id="mbbtn">회원 관리</div>
-	<div class="w3-button col-2" id="slbtn">매출 관리</div>
-	<div class="w3-button col-2" id="stbtn">재고 관리</div>
-	<div class="w3-button col-2" id="iqbtn">문의 관리</div>
+		<h1>문의 관리</h1>
+	</div>
 </div>
-</div>
-<!-- Bootstrap core JavaScript
-	================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-</body>
-</html>

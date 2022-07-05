@@ -78,7 +78,7 @@ function unlinkApp() {
 <script>
 var naverLogin = new naver.LoginWithNaverId({
 	 clientId: 'J5d8Kl_bk22FQjyptPRT', //클라이언트ID
-	 callbackUrl: 'localhost/www',
+	 callbackUrl: 'http://localhost/www/',
 	 isPopup: true,
 	 loginButton: {color: "green", type: 3, height: 50}
 	 
@@ -86,7 +86,7 @@ var naverLogin = new naver.LoginWithNaverId({
 
 naverLogin.init(); //initialize Naver Login Button
 
-$(document).on("click", "#nabtn", function(){ 
+$(document).on("click", "#nabtn", function(){ //네이버로그인버튼 커스텀작업
 	var btnNaverLogin = document.getElementById("naverIdLogin").firstChild;
 	btnNaverLogin.click();
 });

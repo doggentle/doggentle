@@ -13,6 +13,7 @@
 	
 	<bean id="mDao" class="com.gentle.www.dao.MemberDao" />
 	
-	
 	<!-- 서비스 클래스 빈 처리 -->
+	<bean id="mSrvc" class="com.gentle.www.service.MailService" />
+	
 </beans>

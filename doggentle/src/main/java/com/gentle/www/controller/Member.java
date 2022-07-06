@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.gentle.www.dao.MemberDao;
+import com.gentle.www.service.*;
 import com.gentle.www.vo.MemberVO;
 
 @Controller
@@ -17,6 +18,8 @@ public class Member {
 	
 	@Autowired
 	MemberDao mDao;
+	@Autowired
+	MailService mSrvc;
 	
 	// 로그인 페이지
 	@RequestMapping("/login.dog")
@@ -103,6 +106,16 @@ public class Member {
 	@RequestMapping("/kakaologin.dog")
 	public ModelAndView kakaologin(ModelAndView mv) {
 		mv.setViewName("member/kakaologin");
+		return mv;
+	}
+	@RequestMapping("/mailTest.dog")
+	public ModelAndView mailTest(ModelAndView mv) {
+		try {
+			mSrvc.gmailSend();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		mv.setViewName("/main");
 		return mv;
 	}
 }

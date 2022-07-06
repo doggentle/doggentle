@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.gentle.www.dao.MemberDao;
 import com.gentle.www.service.*;
-import com.gentle.www.vo.MemberVO;
+import com.gentle.www.vo.*;
 
 @Controller
 @RequestMapping("/member")
@@ -77,13 +77,21 @@ public class Member {
 	}
 	
 	@RequestMapping("/joinProc.dog")
-	public ModelAndView joinProc(MemberVO mVO, ModelAndView mv, RedirectView rv, HttpSession session) {
+	public ModelAndView joinProc(MemberVO mVO, CertVO cVO, ModelAndView mv, RedirectView rv, HttpSession session) {
 		int cnt = mDao.addMember(mVO);
 		
-		if(cnt == 1) {
+		CodeGenerate cge = new CodeGenerate();
+		int cd = cge.codeTwo();
+		cVO.setCcode(cd);
+		cVO.setCmail(mVO.getMail());
+		int cecnt = mDao.addCert(cVO);
+		
+		if(cnt == 1 && cecnt ==1) {
 			// 회원가입 성공한 경우
 			session.setAttribute("SID", mVO.getId());
 			rv.setUrl("/www/");
+			
+			mSrvc.gmailSend(cd);
 		} else {
 			// 실패
 			rv.setUrl("/www/member/join.blp");
@@ -108,14 +116,16 @@ public class Member {
 		mv.setViewName("member/kakaologin");
 		return mv;
 	}
-	@RequestMapping("/mailTest.dog")
+	@RequestMapping("/mailTest.dog") // joinProc 테스트 후 지울 것
 	public ModelAndView mailTest(ModelAndView mv) {
+		CodeGenerate cge = new CodeGenerate();
+		int cd = cge.codeTwo();
 		try {
-			mSrvc.gmailSend();
+			mSrvc.gmailSend(cd);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		mv.setViewName("/main");
+		mv.setViewName("/member/join");
 		return mv;
 	}
 }

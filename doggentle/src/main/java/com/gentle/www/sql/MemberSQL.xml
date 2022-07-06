@@ -30,4 +30,14 @@
 			#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}
 		)
 	</insert>
+	<insert id="addCert" parameterType="cVO">
+		<selectKey keyProperty = "cno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(cno)+1, 100001) FROM cert
+		</selectKey>
+		INSERT INTO
+			cert(cno, ccode, cmail)
+		VALUES (
+			#{cno}, #{ccode}, #{cmail}
+		)
+	</insert>
 </mapper>

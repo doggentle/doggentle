@@ -11,6 +11,7 @@
 	
 	<typeAliases>
 		<typeAlias alias="mVO" type="com.gentle.www.vo.MemberVO"/>
+		<typeAlias alias="cVO" type="com.gentle.www.vo.CertVO"/>
 	</typeAliases>
 	
 	<mappers>

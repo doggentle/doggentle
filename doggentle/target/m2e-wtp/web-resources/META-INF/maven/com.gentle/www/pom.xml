@@ -18,8 +18,7 @@
 	</properties>
 	<dependencies>
 	
-		<!-- eMail Sending 양동수-->
-		
+		<!-- eMail 관련라이브러리-->
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
@@ -30,7 +29,6 @@
 		    <artifactId>spring-context-support</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
       <dependency>
           <groupId>com.sun.mail</groupId>
@@ -49,9 +47,8 @@
           <artifactId>javax.mail-api</artifactId>
           <version>1.6.2</version>
       </dependency>
+		<!-- eMail 관련라이브러리-->
 		 
-		
-		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -3,7 +3,7 @@ package com.gentle.www.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gentle.www.vo.MemberVO;
+import com.gentle.www.vo.*;
 
 public class MemberDao {
 	
@@ -22,5 +22,9 @@ public class MemberDao {
 	
 	public int addMember(MemberVO mVO) {
 		return sqlSession.insert("mSQL.addMember", mVO);
+	}
+	
+	public int addCert(CertVO cVO) {
+		return sqlSession.insert("mSQL.addCert", cVO);
 	}
 }

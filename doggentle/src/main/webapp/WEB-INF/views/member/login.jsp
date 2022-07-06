@@ -42,6 +42,7 @@
 					</div>	
 					<div class="cpntainer w3-margin-top">
 						<a class="box ml10" id="test">test</a>
+						<a class="custpage1" href="${pageContext.request.contextPath}/logout">로그아웃<a href="${deleteTokenUrl}"></a></a>
 					</div>	
 				</form>
 			</div>
@@ -79,7 +80,7 @@ function unlinkApp() {
 var naverLogin = new naver.LoginWithNaverId({
 	 clientId: 'J5d8Kl_bk22FQjyptPRT', //클라이언트ID
 	 callbackUrl: 'http://localhost/www/',
-	 isPopup: true,
+	 isPopup: false,
 	 loginButton: {color: "green", type: 3, height: 50}
 	 
 });

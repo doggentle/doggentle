@@ -18,7 +18,7 @@ public class Mail {
 	@RequestMapping(value = "mailSending.dog")  // mailSending 코드
 	public String mailSending(HttpServletRequest request) {
 
-		String setfrom = ""; //보내는 사람 주소
+		String setfrom = "dog.gentletest@gmail.com"; //보내는 사람 주소
 		String tomail = request.getParameter("tomail"); // 받는 사람 이메일
 		String title = request.getParameter("title"); // 제목
 		String content = request.getParameter("content"); // 내용

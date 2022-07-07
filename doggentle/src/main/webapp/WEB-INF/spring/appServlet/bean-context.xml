@@ -12,6 +12,7 @@
 	<context:annotation-config /> 
 	
 	<bean id="mDao" class="com.gentle.www.dao.MemberDao" />
+	<bean id="mgDao" class="com.gentle.www.dao.ManagerDao" />
 	
 	<!-- 서비스 클래스 빈 처리 -->
 	<bean id="mSrvc" class="com.gentle.www.service.MailService" />

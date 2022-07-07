@@ -4,12 +4,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MemberVO {
-	private int mno;
+	private int mno, tcnt, rcnt, spoint;
 	private String mail, id, pw, bdate, gen, jdate;
 	//private Date birth, join;
 	
 	public int getMno() {
 		return mno;
+	}
+	public int getTcnt() {
+		return tcnt;
+	}
+	public void setTcnt(int tcnt) {
+		this.tcnt = tcnt;
+	}
+	public int getRcnt() {
+		return rcnt;
+	}
+	public void setRcnt(int rcnt) {
+		this.rcnt = rcnt;
+	}
+	public int getSpoint() {
+		return spoint;
+	}
+	public void setSpoint(int spoint) {
+		this.spoint = spoint;
 	}
 	public void setMno(int mno) {
 		this.mno = mno;

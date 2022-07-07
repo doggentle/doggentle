@@ -17,6 +17,8 @@
 	<link rel='stylesheet' href="/www/css/style.css"/>
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
+	<link rel='stylesheet' href="/www/css/manager.css"/>
+	
 	
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
@@ -30,9 +32,39 @@
 		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 			
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/www/img/favicon.ico">
+	
+	<script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+</script>
 </head>
+
 <body>
 <!-- Begin Hero Bg -->
 <div id="parallax">
@@ -83,5 +115,17 @@
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
 		<h1>마켓 관리</h1>
+	</div>
+<div>
+  <canvas id="myChart"></canvas>
 </div>
 </div>
+
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+</body>
+</html>

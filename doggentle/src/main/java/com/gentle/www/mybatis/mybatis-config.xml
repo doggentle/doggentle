@@ -11,11 +11,14 @@
 	
 	<typeAliases>
 		<typeAlias alias="mVO" type="com.gentle.www.vo.MemberVO"/>
+        <typeAlias alias="mgVO" type="com.gentle.www.vo.ManagerVO"/>	
 		<typeAlias alias="cVO" type="com.gentle.www.vo.CertVO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/gentle/www/sql/MemberSQL.xml" />
+	    <mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
+		
 	</mappers>
 	
 	

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="mgSQL">
+	<select id="memberInfo" resultType="mVO">
+		SELECT mno, id, mail, jdate, tcnt, rcnt, NVL(sumpoint, 0) spoint
+		FROM member m,
+		    (
+		        SELECT count(t.mno) tcnt, m.mno no1
+		        FROM transaction t, member m
+		        WHERE m.mno = t.mno(+)
+		        GROUP BY m.mno
+		    ),
+		    (
+		        SELECT count(r.rno) rcnt, m.mno no2
+		        FROM review r, transaction t, member m
+		        WHERE r.tno(+) = t.tno
+		        AND m.mno = t.mno(+)
+		        GROUP BY m.mno
+		    ), 
+		    (
+		        SELECT mb.mno no3, m1.sumpoint sumpoint
+		        FROM
+		        (
+		            SELECT m.mno, p.sumpoint, p.pno
+		            FROM point p, member m
+		            WHERE m.mno = p.mno(+)
+		            AND p.pno IN (SELECT max(pno) mpno FROM point GROUP BY mno)
+		        ) m1,
+		        member mb
+		        WHERE m1.mno(+) = mb.mno
+		    )
+		WHERE no1 = m.mno
+		    AND no2 = m.mno
+		    AND no3 = m.mno
+		    AND isshow = 'cst'
+		ORDER BY m.mno ASC
+	</select>
+	
+	<select id="orderInfo" parameterType="int" resultType="mgVO">
+		SELECT
+		    tno, ino, gname, price, quantity
+		FROM
+		    goods, transaction
+		WHERE
+			mno = #{mno}
+		ORDER BY
+			tno DESC
+	</select>
+</mapper>

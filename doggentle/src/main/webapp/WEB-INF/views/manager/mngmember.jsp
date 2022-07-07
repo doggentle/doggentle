@@ -83,8 +83,7 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-		<h1>회원 관리</h1>
-		<hr>
+		<a href="/www/manager/main.dog"><h1>회원 관리</h1></a>
 		<div class="w3-col w3-light-grey w3-center w3-border">
 			<div class="w3-col m3">
 				<div class="w3-col m5 w3-border-right">회원번호</div>
@@ -98,29 +97,27 @@
 		</div>
 
 <!-- 데이터 -->	
+<c:forEach var="data" items="${LIST}">
 <hr class="w3-col">
-		<div class="w3-col w3-center w3-hover-blue" id="sorder">
+		<div class="w3-col w3-center w3-hover-blue minfo" id="${data.mno}">
 			<div class="w3-col m3">
-				<div class="w3-col m5">1001</div>
-				<div class="w3-col m7">tmddus</div>
+				<label for="${data.mno}" class="w3-col m5 w3-border-right">${data.mno}</label>
+				<label for="${data.mno}" class="w3-col m7 w3-border-right">${data.id}</label>
 			</div>
-			<div class="w3-col m3">tmddus2123@gmail.com</div>
-			<div class="w3-col m3">22/06/30</div>
-			<div class="w3-col m1">2</div>
-			<div class="w3-col m1">1</div>
-			<div class="w3-col m1">500</div>
+			<!-- 라디오버튼으로 처리해보기 -->
+			<label for="${data.mno}" class="w3-col m3 w3-border-right">${data.mail}</label>
+			<label for="${data.mno}" class="w3-col m3 w3-border-right">${data.jdate}</label>
+			<label for="${data.mno}" class="w3-col m1 w3-border-right">${data.tcnt}</label>
+			<label for="${data.mno}" class="w3-col m1 w3-border-right">${data.rcnt}</label>
+			<label for="${data.mno}" class="w3-col m1">${data.spoint}</label>
 		</div>
+				
+		<div class="o${data.mno}" id="o${data.mno}" style="margin: 50px;">
+		</div>
+</c:forEach>
 		
-		<div id="orderlist" style="display: none">
-			<h3 class="w3-left">주문내역</h3>
-			<div class="w3-col w3-light-grey w3-center w3-border">
-				<div class="w3-col m2 w3-border-right">주문번호</div>
-				<div class="w3-col m3 w3-border-right">img</div>
-				<div class="w3-col m4 w3-border-right">상품이름</div>
-				<div class="w3-col m2 w3-border-right">가격</div>
-				<div class="w3-col m1">갯수</div>
-			</div>
-		</div>
+
+
 <!-- 리뷰 추가할지 말지 -->
 	</div>
 </div>

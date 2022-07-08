@@ -103,7 +103,40 @@
 	</div>
 </div>
 </section>
+<div class="container">
+	<div class="w3-content">
+		<div class="w3-col w3-center w3-padding w3-margin-bottom">
+			<h1>물품 카테고리 선택</h1>
+		</div>
+		<div class="w3-col w3-center w3-margin-bottom">
+			<div class="w3-col">
+				<div class="w3-third">
+					<select class="w3-col w3-select w3-border w3-center" id="op1">
+						<option disabled selected>카테고리1</option>
+						<option value="옵션1-1">옵션1-1</option>
+						<option value="옵션1-2">옵션1-2</option>
+					</select>
+				</div>
+				<div class="w3-third" style="padding-left: 5px;">
+					<select class="w3-col w3-select w3-border w3-center" id="op2">
+						<option disabled selected>카테고리2</option>
+						<option value="옵션2-1" class="w3-text-blue">옵션2-1</option>
+						<option value="옵션2-1" class="w3-text-pink">옵션2-1</option>
+					</select>
+				</div>
+				<div class="w3-third" style="padding-left: 5px;">
+					<select class="w3-col w3-select w3-border w3-center" id="op3">
+						<option disabled selected>카테고리3</option>
+						<option value="옵션3-1"><i class="fa fa-user"></i> 옵션3-1</option>
+						<option value="옵션3-1"><i class="fa fa-users"></i> 옵션3-2</option>
+					</select>
+				</div>
+			</div>
 
+		</div>
+
+	</div>
+    <br/>
 <div class="container">
 	<div class="box65 w3-center">
     <br/>

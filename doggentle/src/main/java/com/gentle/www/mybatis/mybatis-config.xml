@@ -18,7 +18,6 @@
 	<mappers>
 		<mapper resource="com/gentle/www/sql/MemberSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
-		
 	</mappers>
 	
 	

@@ -24,20 +24,53 @@
 		<selectKey keyProperty = "mno" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(mno) + 1, 1001) FROM member
 		</selectKey>
-		INSERT INTO
-			member(mno, mail, id, pw, bdate, gen)
-		VALUES (
-			#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}
-		)
+			INSERT INTO
+				member(mno, mail, id, pw, bdate, gen, isshow)
+			VALUES (
+				#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}, 'ext'
+			)
 	</insert>
 	<insert id="addCert" parameterType="cVO">
 		<selectKey keyProperty = "cno" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(cno)+1, 100001) FROM cert
 		</selectKey>
-		INSERT INTO
-			cert(cno, ccode, cmail)
-		VALUES (
-			#{cno}, #{ccode}, #{cmail}
-		)
+			INSERT INTO
+				cert(cno, ccode, cmail)
+			VALUES (
+				#{cno}, #{ccode}, #{cmail}
+			)
 	</insert>
+	<select id="getJoinCert" resultType="cVO" parameterType="string">
+		SELECT
+			mno, id, cno, ccode, cmail
+		FROM
+			member, cert
+		WHERE
+			mail = cmail
+			AND mail = #{mail}
+			AND isverify = 'N'
+	</select>
+	<update id="certMno" parameterType="int">
+		UPDATE
+			member
+		SET
+			isshow = 'cst'
+		WHERE
+			mno = #{mno}
+	</update>
+	<update id="certCno" parameterType="int">
+		UPDATE
+			cert
+		SET
+			isverify = 'Y'
+		WHERE
+			cno = #{cno}
+	</update>
 </mapper>
+
+
+
+
+
+
+

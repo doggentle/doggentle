@@ -97,7 +97,22 @@ public class Member {
 			rv.setUrl("/www/member/join.blp");
 		}
 		mv.setView(rv);
+		return mv;
+	}
+	
+	@RequestMapping(path="/joinCert.dog", method=RequestMethod.GET, params={"cmail", "ccode"})
+	public ModelAndView joinCert(ModelAndView mv, CertVO cVO, HttpSession session) {
+		mv.setViewName("/member/login");// 테스트용 임시
 		
+		String mail = cVO.getCmail();
+		int code = cVO.getCcode();
+		cVO = mDao.getJoinCert(mail);
+		if( mail.equals(cVO.getCmail()) && code==cVO.getCcode() ) {
+			mDao.certMno(cVO.getMno());
+			mDao.certCno(cVO.getCno());
+			session.setAttribute("SID", cVO.getId());
+			mv.setViewName("/main");
+		}
 		return mv;
 	}
 	
@@ -116,7 +131,10 @@ public class Member {
 		mv.setViewName("member/kakaologin");
 		return mv;
 	}
-	@RequestMapping("/mailTest.dog") // joinProc 테스트 후 지울 것
+	
+	@RequestMapping("/mailTest.dog")
+	// 테스트 후 지울 것
+	// 0708 joinProc 테스트 완료, 
 	public ModelAndView mailTest(ModelAndView mv) {
 		CodeGenerate cge = new CodeGenerate();
 		int cd = cge.codeTwo();

@@ -18,4 +18,10 @@ public class MainController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
+	@RequestMapping("/error.dog")
+	public String errorPage() {
+		return "error";
+	}
+	
 }

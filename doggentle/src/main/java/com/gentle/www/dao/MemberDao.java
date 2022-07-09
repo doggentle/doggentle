@@ -42,4 +42,13 @@ public class MemberDao {
 	public int certCno(int cno) {
 		return sqlSession.update("mSQL.certCno", cno);
 	}
+	
+	//findidProc
+	public MemberVO findidProc(String mail) {
+		return sqlSession.selectOne("mSQL.getFindid", mail);
+	}
+	//findpwProc
+	public String findpwProc(MemberVO mVO) {
+		return sqlSession.selectOne("mSQL.getFindpw", mVO);
+	}
 }

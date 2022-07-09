@@ -22,5 +22,7 @@ $(document).ready(function() {
 	$('#test').click(function(){
 		unlinkApp();
 	});
+	
+	
 });
 	

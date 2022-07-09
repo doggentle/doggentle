@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -91,7 +92,8 @@ public class Member {
 			session.setAttribute("SID", mVO.getId());
 			rv.setUrl("/www/");
 			
-			mSrvc.gmailSend(cd);
+			mSrvc.gmailReady();
+			mSrvc.certSend(mVO, cd);
 		} else {
 			// 실패
 			rv.setUrl("/www/member/join.blp");
@@ -100,18 +102,27 @@ public class Member {
 		return mv;
 	}
 	
+	@Transactional
 	@RequestMapping(path="/joinCert.dog", method=RequestMethod.GET, params={"cmail", "ccode"})
-	public ModelAndView joinCert(ModelAndView mv, CertVO cVO, HttpSession session) {
+	public ModelAndView joinCert(ModelAndView mv, CertVO cVO, HttpSession session, RedirectView rv) {
 		mv.setViewName("/member/login");// 테스트용 임시
 		
 		String mail = cVO.getCmail();
 		int code = cVO.getCcode();
 		cVO = mDao.getJoinCert(mail);
 		if( mail.equals(cVO.getCmail()) && code==cVO.getCcode() ) {
-			mDao.certMno(cVO.getMno());
-			mDao.certCno(cVO.getCno());
-			session.setAttribute("SID", cVO.getId());
-			mv.setViewName("/main");
+			try {   //트랜잭션 처리 완료 할 것, mno처리되고cno처리안되고 예외발생 안됨->서비스클래스로 넘기기가 해법???
+				mDao.certMno(cVO.getMno());
+				mDao.certCno(cVO.getCno());
+				session.setAttribute("SID", cVO.getId());
+				mv.setViewName("/main");
+			}catch(Exception e) {
+				e.printStackTrace();
+				rv.setUrl("/www/error.dog");
+				mv.setView(rv);
+			}
+		}else {
+			//잘못된 접근, 이때 보여줄 뷰를 어떻게 ?
 		}
 		return mv;
 	}
@@ -121,29 +132,33 @@ public class Member {
 		mv.setViewName("/member/findid");
 		return mv;
 	}
+	@RequestMapping("fnidProc.dog")
+	public ModelAndView fnidProc(ModelAndView mv, MemberVO mVO, RedirectView rv) {
+		String mail = mVO.getMail();
+		mVO = mDao.findidProc(mail);
+		mSrvc.gmailReady();
+		mSrvc.fnidSend(mVO);
+		rv.setUrl("/www/member/login.dog");
+		mv.setView(rv);
+		return mv;
+	}
 	@RequestMapping("/findpw.dog")
 	public ModelAndView findpw(ModelAndView mv) {
 		mv.setViewName("/member/findpw");
 		return mv;
 	}
-	@RequestMapping("/kakaologin.dog")
-	public ModelAndView kakaologin(ModelAndView mv) {
-		mv.setViewName("member/kakaologin");
+	@RequestMapping("/fnpwProc.dog")
+	public ModelAndView fnpwProc(ModelAndView mv, MemberVO mVO, RedirectView rv) {
+		String id = mVO.getId();
+		String mail = mVO.getMail();
+		
+		String pw = mDao.findpwProc(mVO);
+		mVO.setPw(pw);
+		mSrvc.gmailReady();
+		mSrvc.fnpwSend(mVO);
+		rv.setUrl("/www/member/login.dog");
+		mv.setView(rv);
 		return mv;
 	}
 	
-	@RequestMapping("/mailTest.dog")
-	// 테스트 후 지울 것
-	// 0708 joinProc 테스트 완료, 
-	public ModelAndView mailTest(ModelAndView mv) {
-		CodeGenerate cge = new CodeGenerate();
-		int cd = cge.codeTwo();
-		try {
-			mSrvc.gmailSend(cd);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		mv.setViewName("/member/join");
-		return mv;
-	}
 }

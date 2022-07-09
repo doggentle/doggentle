@@ -24,7 +24,7 @@
 	<div class="w3-content w3-center">
 		<a href="/www/" ><img src="/www/img/logo.png" class="blogo"></a>
 		<div class="container w3-center w3-padding">
-	 <div class="box w600 w3-margin-top w3-border w3-padding">
+	 <div class="w600 w3-margin-top w3-border w3-padding">
     <h2>로그인</h2>
 	<form method="POST" action="/www/member/joinProc.dog" id="frm" name="frm">
   <div class="container">
@@ -47,7 +47,7 @@
     <input type="radio" id="mgen" name="gen" value="M" required><label for="mgen">남자</label>
     <input type="radio" id="fgen" name="gen" value="F" required><label for="fgen">여자</label>
 	<div>
-    <div class="w3-button w3-half" id="bbtn">뒤로가기</div>
+    <button class="w3-half w3-light-gray" id="bbtn">뒤로가기</button>
     <button class="w3-half" type="submit" id="lbtn">JOIN</button>
 	</div>
   </div>

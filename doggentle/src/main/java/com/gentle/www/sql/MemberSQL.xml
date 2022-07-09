@@ -42,13 +42,20 @@
 	</insert>
 	<select id="getJoinCert" resultType="cVO" parameterType="string">
 		SELECT
-			mno, id, cno, ccode, cmail
+		    mno, id, cno, ccode, cmail
 		FROM
-			member, cert
+		    member, cert
 		WHERE
-			mail = cmail
-			AND mail = #{mail}
-			AND isverify = 'N'
+		    cno = (
+		        SELECT
+		            MAX(cno) cno
+		        FROM
+		            cert
+		        WHERE
+		            cmail = #{cmail}
+		            AND isverify = 'N'
+		    )
+		    AND mail = cmail
 	</select>
 	<update id="certMno" parameterType="int">
 		UPDATE
@@ -66,6 +73,23 @@
 		WHERE
 			cno = #{cno}
 	</update>
+	<select id="getFindid" resultType="mVO" parameterType="string">
+		SELECT
+			id, mail
+		FROM
+			member
+		WHERE
+			mail = #{mail}
+	</select>
+	<select id="getFindpw" resultType="string" parameterType="mVO">
+		SELECT
+			pw
+		FROM
+			member
+		WHERE
+			mail = #{mail}
+			AND id = #{id}
+	</select>
 </mapper>
 
 

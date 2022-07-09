@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/www/css/login.css"/>
 <link rel="stylesheet" type="text/css" href="/www/css/base.css"/>
 <script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/www/js/member/login.js"></script>	
+<script type="text/javascript" src="/www/js/member/find.js"></script>	
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,20 +24,18 @@
 	<div class="w3-content w3-center">
 		<a href="/www/" ><img src="/www/img/logo.png" class="blogo"></a>
 		<div class="container w3-center w3-padding">
-	 <div class="box w600 w3-margin-top w3-border w3-padding">
+	 <div class=" w600 w3-margin-top w3-border w3-padding">
     <h2>아이디찾기</h2>
 	<form method="POST" action="/www/member/.dog" id="frm" name="frm">
   <div class="container">
 
-    <label for="mail"><b>MAIL</b></label>
-    <input type="text" placeholder="이메일 주소와 생년월일을 입력해주세요" id="mail" name="mail" required>
-
-    <label for="birth"><b>BIRTH</b></label>
-    <input type="date" id="birth" required>
     
+    <label for="mail"><b>MAIL</b></label>
+    <input type="text" placeholder="이메일 주소 입력해주세요" id="mail" name="mail" required>
+
 	<div>
-    <div class="w3-button w3-half" id="bbtn">뒤로가기</div>
-    <button class="w3-half" type="submit" id="lbtn">찾기</button>
+	    <button class="w3-half w3-light-gray" id="bbtn">뒤로가기</button>
+	    <button class="w3-half" type="submit" id="fnidbtn">찾기</button>
 	</div>
   </div>
   <input type="hidden" id="bdate" name="bdate" value="">

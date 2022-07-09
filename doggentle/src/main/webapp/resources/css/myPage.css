@@ -1,0 +1,5 @@
+dt {font-size: 25pt; margin-top: 10px;} 
+dd, dd:hover {font-size: 20pt; margin-top: 5px; margin-left: 20px; cursor: pointer;} 
+.more {margin-right: 10px; cursor: pointer;}
+dd:hover, .more:hover{color:#3498db;}
+ 

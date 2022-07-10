@@ -22,6 +22,9 @@
 	
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
+	<script type="module" src="/www/js/utils.js"></script>
+	<script type="module" src="/www/js/components.js"></script>
+	<script type="text/javascript" src="/www/js/manager/graph.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -33,36 +36,12 @@
 	<![endif]-->
 			
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 			
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="/www/img/favicon.ico">
-	
-	<script>
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
+<!-- Favicon -->
+<link rel="shortcut icon" href="/www/img/favicon.ico">
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
 
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-</script>
 </head>
 
 <body>
@@ -116,16 +95,50 @@
 	<div class="box65 w3-center" style="margin-top: 100px;">
 		<h1>마켓 관리</h1>
 	</div>
-<div>
-  <canvas id="myChart"></canvas>
-</div>
+	<div class="">
+		<canvas id="myChart"></canvas>
+	</div>
 </div>
 
-<script>
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-</script>
+
 </body>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [${LABELS[0].label},${LABELS[1].label},${LABELS[2].label},${LABELS[3].label},${LABELS[4].label},${LABELS[5].label}],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 </html>

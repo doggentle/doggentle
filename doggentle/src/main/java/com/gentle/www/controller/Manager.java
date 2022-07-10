@@ -1,6 +1,11 @@
 package com.gentle.www.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +33,11 @@ public class Manager {
 	
 	@RequestMapping("/market.dog")
 	public ModelAndView managerMarket(ModelAndView mv) {
-		mv.setViewName("manager/mngmarket");
+		List<ManagerVO> list = mgDao.getLabels();
 		
+		mv.addObject("LABELS", list);
+		
+		mv.setViewName("manager/mngmarket");
 		return mv;
 	}
 	// 매니저 회원 관리 @@@
@@ -56,7 +64,9 @@ public class Manager {
 	@RequestMapping("/sales.dog")
 	public ModelAndView managerSales(ModelAndView mv) {
 		mv.setViewName("manager/mngsales");
+		List<ManagerVO> list = mgDao.getLabels();
 		
+		mv.addObject("LABELS", list);
 		return mv;
 	}
 	@RequestMapping("/stock.dog")
@@ -68,6 +78,9 @@ public class Manager {
 	@RequestMapping("/inquiry.dog")
 	public ModelAndView managerInquiry(ModelAndView mv) {
 		mv.setViewName("manager/mnginquiry");
+		
+		List<ManagerVO> list = mgDao.getQNAList();
+		mv.addObject("LIST", list);
 		
 		return mv;
 	}

@@ -57,5 +57,6 @@ public class MyPage {
 	public ModelAndView memberInfo(ModelAndView mv) {
 		mv.setViewName("myPage/memberinfopwck");
 		return mv;
+		// 나는 낭만 고양이~~~ 
 	}
 }

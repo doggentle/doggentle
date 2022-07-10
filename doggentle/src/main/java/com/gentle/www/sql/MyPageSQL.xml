@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="mpSQL"> 
+	<select id="getMyInfo" resultType="mVO" parameterType="string">
+		SELECT
+		    id, mail, isshow, sumpoint spoint
+		FROM
+		    member, point
+		WHERE
+		    id = #{id}
+	</select>
+	
+	<select id="getCartList" resultType="gdVO" parameterType="string">
+		SELECT
+		   gname, price, savename, dir
+		FROM(
+		    SELECT
+		        g.gno, g.gname gname, g.price price, savename, dir
+		    FROM
+		        cart c, member m, goods g, img i
+		    WHERE
+		        m.id = #{id}
+		        AND m.mno = c.mno
+		        AND c.gno = g.gno
+		        AND g.ino = i.ino
+		    ORDER BY cno desc
+		)
+		WHERE rownum between 1 and 3 
+	</select>
+	
+	<select id="getTransacList" resultType="gdVO" parameterType="string">
+		SELECT 
+   			 gname, price, quantity, salesdate, adrs, savename, dir
+		FROM
+		    (
+		    SELECT 
+		        g.gname gname, g.price price, t.quantity quantity, t.tdate salesdate, a.adrs adrs, i.savename savename, i.dir dir
+		    FROM
+		        transaction t, goods g, img i, member m, address a
+		    WHERE
+		        m.id = 'eafadfadf'
+		        AND m.mno = t.mno
+		        AND t.gno = g.gno
+		        AND t.adno = a.adno
+		        AND g.ino = i.ino
+		    ORDER BY t.tno desc
+		    )
+		WHERE
+		    rownum between 1 and 3
+	</select>
+</mapper> 

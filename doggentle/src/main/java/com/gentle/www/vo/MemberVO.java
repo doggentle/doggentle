@@ -1,12 +1,16 @@
 package com.gentle.www.vo;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MemberVO {
 	private int mno, tcnt, rcnt, spoint;
-	private String mail, id, pw, bdate, gen, jdate;
+	private String mail, id, pw, bdate, gen, jdate, isshow, money;
 	//private Date birth, join;
+	
+	DecimalFormat df = new DecimalFormat("###,###");
+
 	
 	public int getMno() {
 		return mno;
@@ -28,6 +32,7 @@ public class MemberVO {
 	}
 	public void setSpoint(int spoint) {
 		this.spoint = spoint;
+		setMoney(df.format(spoint));
 	}
 	public void setMno(int mno) {
 		this.mno = mno;
@@ -68,11 +73,27 @@ public class MemberVO {
 	public void setJdate(String jdate) {
 		this.jdate = jdate;
 	}
-	
+	public String getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(String isshow) {
+		this.isshow = isshow;
+	}
+	public String getMoney() {
+		return money;
+	}
+	public void setMoney(String money) {
+		this.money = money;
+	}
 	@Override
 	public String toString() {
-		return "MemberVO [mno=" + mno + ", mail=" + mail + ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen="
-				+ gen + ", jdate=" + jdate + "]";
+		return "MemberVO [mno=" + mno + ", tcnt=" + tcnt + ", rcnt=" + rcnt + ", spoint=" + spoint + ", mail=" + mail
+				+ ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen=" + gen + ", jdate=" + jdate + ", isshow="
+				+ isshow + ", money=" + money + "]";
 	}
+	
+	
+
+	
 
 }

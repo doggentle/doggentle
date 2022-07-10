@@ -50,7 +50,7 @@
 				<span class="icon-bar"></span>
 				</button>
 				<!-- Your Logo -->
-				<a href="#hero" class="navbar-brand"><img src="/www/img/logo.png" width="250px" height="auto"><span></span></a>
+				<a href="/www/" class="navbar-brand"><img src="/www/img/logo.png" width="250px" height="auto"><span></span></a>
 			</div>
 			<!-- Start Navigation -->
 			<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -68,7 +68,7 @@
 				<a href="/www/member/logout.dog">로그아웃</a>
 				</li>
 				<li>
-				<a href="/www/">마이페이지</a>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 				</li>
 				<li>
 				<a href="/www/">출석</a>
@@ -112,17 +112,17 @@
 	         			<div class="w3-container w3-left-align" style="margin-top: 20px">
 	         				<dl>
 	         					<dt class="w3-block">쇼핑정보</dt>
-	         					<dd>주문내역</dd>
-	         					<dd>장바구니</dd>
+	         					<dd><a href="">주문내역</a></dd>
+	         					<dd><a href="">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
-	         					<dd>문의 내역</dd>
-	         					<dd>리뷰관리</dd>
-	         					<dd>출    석</dd>
+	         					<dd><a href="">문의 내역</a></dd>
+	         					<dd><a href="">리뷰관리</a></dd>
+	         					<dd><a href="">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
-	         					<dd>프로필 정보</dd>
-	         					<dd>회원정보 수정</dd>
-	         					<dd>주소록 관리</dd>
-	         					<dd>포인트</dd>
+	         					<dd><a href="">프로필 정보</a></dd>
+	         					<dd><a href="/www/myPage/memberinfo#.dog">회원정보 수정</a></dd>
+	         					<dd><a href="">주소록 관리</a></dd>
+	         					<dd><a href="">포인트</a></dd> 
 	         				</dl>
 	         			</div>
 	        		</div>
@@ -137,18 +137,18 @@
 	            	<div class="w3-col m9 w3-padding">
 	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
 	            		<div>
-	            			<h3>닉네임</h3>
-	            			<h3>이메일@이메일.이메일</h3>
+	            			<h3>아이디 : ${SID}</h3>
+	            			<h3>${MyInfo.mail}</h3>
 							<button class="btn w3-padding-large w3-large">회원정보 수정</button>	            		
 						</div>
 	            	</div>
 	            		<div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
 	            			<div class="w3-col m6">
-		            			<h3>일반회원</h3>
+		            			<h3>${MyInfo.isshow}</h3>
 		            			<h5>회원등급</h5>
 	            			</div>
 	            			<div class="w3-col m6 w3-border-left">
-		            			<h3>0P</h3>
+		            			<h3>${MyInfo.money}P</h3>
 		            			<h5>포인트</h5>
 	            			</div>
 	            		</div>
@@ -159,92 +159,49 @@
 	      <div class="w3-row-padding"><br>
 		      <h1 style="margin-left:5px;">주문 내역</h1>
 <!-- 반복으로 주문내역 -->
+<c:forEach var="data" items="${OLIST}">
 	       	<div class="w3-col m12">
 	          	<div class="w3-container w3-card w3-round w3-white">
 	            	<div class="w3-padding">
 	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
 	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
+	            			<p style="font-size:20pt">${data.gname}</p>
+	            			<h4>주문일 : ${data.sdate}</h4>
+	            			<h4>가격 : ${data.money}원  ·  ${data.quantity}개</h4>
+	            			<h4>주소 : ${data.adrs}</h4>          		
 						</div>
 	            	</div>
 	          	</div>
 	        </div>
-	        <div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
-						</div>
-	            	</div>
-	          	</div>
-	        </div>
-	        <div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
-						</div>
-	            	</div>
-	          	</div>
-	        </div>
-	        	<h5 class="w3-right more">더보기</h5>
+</c:forEach>
+<!-- 반복으로 주문내역  끝 -->
+	        	<h5 class="w3-right"><a href="" class="more">더보기</a></h5>
 	      </div>
-<!-- 관심 물품 영역 끝 -->		
+<!-- 주문내역 영역 끝 -->
+
+<!-- 관심내역 영역 -->		
 	      <div class="w3-row-padding"><br>
 		      <h1 style="margin-left:5px;">관심 물품</h1>
-<!-- 반복으로 관심내역 -->
+<!-- 반복으로 관심내역 리스트 -->
+<c:forEach var="data" items="${ALIST}">
 	       	<div class="w3-col m12">
 	          	<div class="w3-container w3-card w3-round w3-white">
 	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
+	            		<img src="/www/img/test.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
 	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
-						</div>
+	            			<p style="font-size:20pt">${data.gname}</p>
+	            			<h3>가격 : ${data.money}원  ·  <span>1</span>개</h3>
+						</div> 
 	            	</div>
 	          	</div>
 	        </div>
-	        <div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
-						</div>
-	            	</div>
-	          	</div>
-	        </div>
-	        <div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<p style="font-size:20pt">상품명상품명상품명상품명품명상품명</p>
-	            			<h3>가격 : <span>120000</span>원  ·  <span>1</span>개</h3>
-	            			<h3>주소 : <span>서울특별시</span></h3>          		
-						</div>
-	            	</div>
-	          	</div>
-	        </div>
-	        	<h5 class="w3-right more">더보기</h5>
-	      </div>
-	      
-	    <!-- End Middle Column -->
+</c:forEach>
+<!-- 반복 관심내역 영역 끝 -->
+				<h5 class="w3-right"><a href="" class="more">더보기</a></h5>
+			</div>	      
 	    </div>
-	  <!-- End Grid -->
+<!-- 관심내역 영역 -->	
 	  </div>
-	<!-- End Page Container -->
 	</div>
 	
 	

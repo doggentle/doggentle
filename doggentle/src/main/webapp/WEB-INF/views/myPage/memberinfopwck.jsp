@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>회원정보 수정</title>
+	<title>회원정보 수정 본인확인</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -120,7 +120,7 @@
 	         					<dd><a href="">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
-	         					<dd><a href="">회원정보 수정</a></dd>
+	         					<dd><a href="/myInfo">회원정보 수정</a></dd>
 	         					<dd><a href="">주소록 관리</a></dd>
 	         					<dd><a href="">포인트</a></dd> 
 	         				</dl>
@@ -132,25 +132,11 @@
 	  <div class="w3-col m9">
 	  	<div class="w3-row-padding">
 	       	<div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-col m9 w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<h3>아이디 : ${SID}</h3>
-	            			<h3>${MyInfo.mail}</h3>
-							<button class="btn w3-padding-large w3-large">회원정보 수정</button>	            		
-						</div>
-	            	</div>
-	            		<div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
-	            			<div class="w3-col m6">
-		            			<h3>${MyInfo.isshow}</h3>
-		            			<h5>회원등급</h5>
-	            			</div>
-	            			<div class="w3-col m6 w3-border-left">
-		            			<h3>${MyInfo.money}P</h3>
-		            			<h5>포인트</h5>
-	            			</div>
-	            		</div>
+	          	<div class="w3-container w3-card w3-round w3-white w3-center-align">
+	       		<h2 class="w3-center">회원정보 확인을 위해 비밀번호를 입력해주세요.</h2> 
+	            		<div class="w3-col m3 w3-margin"><h2>비밀번호 입력 : </h2></div>
+	            		<input type="password" class="w3-col m6 w3-margin w3-padding-large">
+						<button class="btn w3-margin w3-padding-large w3-large">확인</button>	            		
 	          	</div>
 	        </div>
 	      </div>

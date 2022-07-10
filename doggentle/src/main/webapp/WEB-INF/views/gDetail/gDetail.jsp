@@ -91,6 +91,9 @@
 	</nav>
 </div>
 </header>
+	 <form method="POST" action="" id="frm" name="frm">
+	 	<input type="hidden" name="gno" id="sgno" value="${sgno}">
+	 </form>
 <div class="container">
 		<div class="gcard">
 			<div class="container-fliud">
@@ -114,7 +117,7 @@
 						
 					</div>
 					<div class="gdetails col-md-6">
-						<h3 class="product-title">men's shoes fashion</h3>
+						<h3 class="product-title" id="gname" value="${data.gname}">${data.gname}</h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -125,15 +128,10 @@
 							</div>
 							<span class="review-no">41 reviews</span>
 						</div>
+						<h4 class="price">제품코드 : <span id="gno" name="gno" value="100001">100001</span></h4>						
 						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">current price: <span>$180</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-						<h5 class="gsizes">sizes:
-							<span class="gsize" data-toggle="tooltip" title="small">s</span>
-							<span class="gsize" data-toggle="tooltip" title="medium">m</span>
-							<span class="gsize" data-toggle="tooltip" title="large">l</span>
-							<span class="gsize" data-toggle="tooltip" title="xtra large">xl</span>
-						</h5>
+						<h4 class="price">가격 : <span id="price" name="price" value="${data.price}">${data.price}</span></h4>
+						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" value="${data.stock}">${data.stock}</span></h5>
                     <div class="qsection" style="padding-bottom:20px;">
                         <h6 class="title-attr"><small>수량</small></h6>                    
                         <div>
@@ -159,11 +157,7 @@
                     </ul>
                     <div style="width:100%;border-top:1px solid silver">
                         <p style="padding:15px;">
-                            <small>
-                            Stay connected either on the phone or the Web with the Galaxy S4 I337 from Samsung. With 16 GB of memory and a 4G connection, this phone stores precious photos and video and lets you upload them to a cloud or social network at blinding-fast speed. With a 17-hour operating life from one charge, this phone allows you keep in touch even on the go. 
-        
-                            With its built-in photo editor, the Galaxy S4 allows you to edit photos with the touch of a finger, eliminating extraneous background items. Usable with most carriers, this smartphone is the perfect companion for work or entertainment.
-                            </small>
+								<span id="gDetail">${data.gDetail}</span>
                         </p>
                         <small>
                             <ul>

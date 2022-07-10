@@ -23,6 +23,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/category/category.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -111,24 +112,22 @@
 		<div class="w3-col w3-center w3-margin-bottom">
 			<div class="w3-col">
 				<div class="w3-third">
-					<select class="w3-col w3-select w3-border w3-center" id="op1">
+					<select class="w3-col w3-select w3-border w3-center" id="cate1">
 						<option disabled selected>카테고리1</option>
-						<option value="옵션1-1">옵션1-1</option>
-						<option value="옵션1-2">옵션1-2</option>
+		<c:forEach var="data" items="${LIST}">
+					<option value="${data.cano}">${data.caname}</option>
+		</c:forEach>
 					</select>
 				</div>
 				<div class="w3-third" style="padding-left: 5px;">
-					<select class="w3-col w3-select w3-border w3-center" id="op2">
+					<select class="w3-col w3-select w3-border w3-center" id="cate2">
 						<option disabled selected>카테고리2</option>
-						<option value="옵션2-1" class="w3-text-blue">옵션2-1</option>
-						<option value="옵션2-1" class="w3-text-pink">옵션2-1</option>
+
 					</select>
 				</div>
 				<div class="w3-third" style="padding-left: 5px;">
-					<select class="w3-col w3-select w3-border w3-center" id="op3">
+					<select class="w3-col w3-select w3-border w3-center" id="cate3">
 						<option disabled selected>카테고리3</option>
-						<option value="옵션3-1"><i class="fa fa-user"></i> 옵션3-1</option>
-						<option value="옵션3-1"><i class="fa fa-users"></i> 옵션3-2</option>
 					</select>
 				</div>
 			</div>
@@ -136,18 +135,26 @@
 		</div>
 
 	</div>
+	</div>
+			<!-- 제품 리스트 페이지... -->
+		<form method="POST" action="/www/cate/productDetail.dog" name="frm" id="frm">
+			<input type="hidden" name="gno" >
+		</form>
+		<div class="w3-col w3-margin-top" id="gPanel">
+		</div>
     <br/>
 <div class="container">
 	<div class="box65 w3-center">
     <br/>
                      <form class="">
-                        
+                        <div class="w3-container">
                                  <i class="fas fa-search h4 text-body"></i>
                              <!--end of col-->
                                  <input class="search" type="search" placeholder="찾으시는 상품을 입력해주세요">
                              <!--end of col-->
                                  <button class="schbtn btn btn-lg btn-success w3-hover-green" type="submit">Search</button>
                              <!--end of col-->
+                        </div>
                      </form>
 	</div>
 </div>

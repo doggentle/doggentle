@@ -39,28 +39,29 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#cate3').change(function(){
+	 $('#cate3').change(function(){
 		// 할일...
 		// 기존 내용 지우고
-		$('#pPanel').css('display', 'none');
-		$('#pPanel').html('');
+		$('#gPanel').css('display', 'none');
+		$('#gPanel').html('');
 		
 		// 분류 번호 가져오고...
 		var sno = $(this).val();
 		
 		$.ajax({
-			url: '/productList.dog',
+			url: '/www/productList.dog',
 			type: 'post',
 			dataType: 'json',
 			data: {
 				cano: sno
 			},
 			success: function(arr){
+			
 				if(arr.length > 0){
 					for(var i = 0 ; i < arr.length ; i++ ){
 						var stag = '<div class="w3-half w3-center pdAll5 product" id="' + arr[i].gno + '">' +
 									'<div class="w3-col w3-card-4 pdAll10">' +
-									'<img src="' + (arr[i].dir + arr[i].sname ) + '" alt="Product" style="width:100%">' +
+									'<img src="/www' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:100%">' +
 									'<div class="w3-col" style="height: 92px;"><h3>' + arr[i].gname + '</h3></div>' + 
 									'<p>가 격 : ' + arr[i].price + '</p>' + 
 									'</div>' +
@@ -72,19 +73,19 @@ $(document).ready(function(){
 				}
 			},
 			error: function(){
-			
 				alert('### 통신 오류 ###');
 			}
 		});
 	});
 	
-	$('#gPanel').on('click', '.Product', function(){
+	$('#gPanel').on('click', '.product', function(){
 		// 할일
 		// 상품번호 알아내고
 		var sno = $(this).attr('id');
+	//$(location).attr('href', '/www/productDetail.blp?gno=' + sno);
 	
 		// post 방식 전송
-		$(document.frm.gno).val(sno);
+	$(document.frm.gno).val(sno);
 		$('#frm').submit();
-	});
+	}); 
 });

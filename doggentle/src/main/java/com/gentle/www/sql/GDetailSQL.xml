@@ -46,12 +46,11 @@
 		<!-- 제품 리스트 조회 질의명령 -->
 	<select id="gList" resultType="gVO" parameterType="gVO">
 		SELECT
-		    gno, gname, savename sname, dir, price
+		    gno, gname, savename, dir, price, cano
 		FROM
 		    goods g, img i
 		WHERE
 		    g.ino = i.ino
-		    AND dir = '/www/img/goods/'
 		    AND cano = #{cano}
 	</select>
 </mapper>

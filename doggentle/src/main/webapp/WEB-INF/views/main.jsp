@@ -136,8 +136,8 @@
 
 	</div>
 	</div>
-			<!-- 제품 리스트 페이지... -->
-		<form method="POST" action="/www/cate/productDetail.dog" name="frm" id="frm">
+  			<!-- 제품 리스트 페이지... -->
+		<form method="POST" action="/www/productDetail.dog" name="frm" id="frm">
 			<input type="hidden" name="gno" >
 		</form>
 		<div class="w3-col w3-margin-top" id="gPanel">
@@ -169,7 +169,7 @@
 	</div>
 		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
-  
+
                 <div class="item">
                     <div class="pad15">
                 <a href="">

@@ -49,7 +49,7 @@ public class MailService {
 	public void fnidSend(MemberVO mVO) {
 		String content = "<img src=\"https://github.com/doggentle/doggentle/blob/branch/doggentle/src/main/webapp/resources/img/logo.png?raw=true\" alt=\"Some image\" width=\"622\" height=\"115\">" +
 				"<p class=\"inB\" >안녕하세요 (주)독신사 입니다.</p>" +
-				"<p>회원님의 아이디는 ["+ mVO.getId() +"] 입니다.</p>";
+				"<p>회원님의 아이디는 [ "+ mVO.getId() +" ] 입니다.</p>";
 		Message message = new MimeMessage(session);
 		try {
 			message.setFrom(new InternetAddress("dog.gentletest@gmail.com", "독신사인증", "utf-8"));
@@ -66,7 +66,7 @@ public class MailService {
 		String content = "<img src=\"https://github.com/doggentle/doggentle/blob/branch/doggentle/src/main/webapp/resources/img/logo.png?raw=true\" alt=\"Some image\" width=\"622\" height=\"115\">" +
 				"<p class=\"inB\" >안녕하세요 (주)독신사 입니다.</p>" +
 				"<p>회원메일 :"+mVO.getMail()+" 회원 아이디 :"+mVO.getId()+"</p>" +
-				"<p>회원님의 비밀번호는 ["+ mVO.getPw() +"] 입니다.</p>";
+				"<p>회원님의 비밀번호는 [ "+ mVO.getPw() +" ] 입니다.</p>";
 		Message message = new MimeMessage(session);
 		try {
 			message.setFrom(new InternetAddress("dog.gentletest@gmail.com", "독신사인증", "utf-8"));

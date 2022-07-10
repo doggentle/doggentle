@@ -79,7 +79,7 @@
 		<a href="/www/myPage/myattend.dog">출석</a>
 		</li>
 		<li>
-		<a href="/www/">장바구니</a>
+		<a href="/www/order/cart.dog">장바구니</a>
 		</li>
 </c:if>
 		<li>

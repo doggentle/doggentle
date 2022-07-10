@@ -12,7 +12,7 @@
 		    id = #{id}
 	</select>
 	
-	<select id="getCartList" resultType="gdVO" parameterType="string">
+	<select id="getCartList" resultType="gVO" parameterType="string">
 		SELECT
 		   gname, price, savename, dir
 		FROM(
@@ -30,7 +30,7 @@
 		WHERE rownum between 1 and 3 
 	</select>
 	
-	<select id="getTransacList" resultType="gdVO" parameterType="string">
+	<select id="getTransacList" resultType="gVO" parameterType="string">
 		SELECT 
    			 gname, price, quantity, salesdate, adrs, savename, dir
 		FROM

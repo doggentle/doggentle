@@ -20,6 +20,7 @@
 		<mapper resource="com/gentle/www/sql/MemberSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/GDetailSQL.xml" />
+	    <mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
 	</mappers>
 	
 	

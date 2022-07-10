@@ -14,7 +14,6 @@
 	<bean id="mDao" class="com.gentle.www.dao.MemberDao" />
 	<bean id="mgDao" class="com.gentle.www.dao.ManagerDao" />
 	<bean id="mpDao" class="com.gentle.www.dao.MyPageDao" />
-	<bean id="gDao" class="com.gentle.www.dao.GDetailDao" />
 	
 	<!-- 서비스 클래스 빈 처리 -->
 	<bean id="mSrvc" class="com.gentle.www.service.MailService" />

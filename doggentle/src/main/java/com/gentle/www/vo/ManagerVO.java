@@ -2,8 +2,47 @@ package com.gentle.www.vo;
 
 public class ManagerVO {
 	private int mno, tno, ino, price, quantity;
-	private String gname;
+	private String gname, label;
+	
+	private int qno, upqno;
+	private String title, body, qdate;
 
+	public int getQno() {
+		return qno;
+	}
+	public void setQno(int qno) {
+		this.qno = qno;
+	}
+	public int getUpqno() {
+		return upqno;
+	}
+	public void setUpqno(int upqno) {
+		this.upqno = upqno;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getBody() {
+		return body;
+	}
+	public void setBody(String body) {
+		this.body = body;
+	}
+	public String getQdate() {
+		return qdate;
+	}
+	public void setQdate(String qdate) {
+		this.qdate = qdate;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
 	public int getMno() {
 		return mno;
 	}
@@ -40,5 +79,12 @@ public class ManagerVO {
 	public void setGname(String gname) {
 		this.gname = gname;
 	}
+	@Override
+	public String toString() {
+		return "ManagerVO [mno=" + mno + ", tno=" + tno + ", ino=" + ino + ", price=" + price + ", quantity=" + quantity
+				+ ", gname=" + gname + ", label=" + label + "]";
+	}
+	
+	
 	
 }

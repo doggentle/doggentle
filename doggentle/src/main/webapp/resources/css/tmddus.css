@@ -7,6 +7,10 @@
 	background-repeat:no-repeat;
 }
 
+.qna {
+	padding: 10px 0px 10px 0px;
+}
+
 .box50 {
 	display: inline-block;
 	width: 500px;

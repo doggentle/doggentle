@@ -84,4 +84,25 @@
 	<div class="box65 w3-center" style="margin-top: 100px;">
 		<h1>문의 관리</h1>
 	</div>
-</div>
+	
+		<div class="w3-col w3-light-grey w3-center w3-border">
+			<div class="w3-col m2 w3-border-right qna">답변상태</div>
+			<div class="w3-col m6 w3-border-right qna">제목</div>
+			<div class="w3-col m2 w3-border-right qna">작성자</div>
+			<div class="w3-col m2 qna">작성일</div>
+		</div>
+		<div class="w3-col w3-center">
+			<div class="w3-col m2 w3-border-right qna">미답변</div>
+			<div class="w3-col m6 w3-border-right qna">테이블 재입고 언제되나요???</div>
+			<div class="w3-col m2 w3-border-right qna">tmddus</div>
+			<div class="w3-col m2 qna">2022.07.10</div>
+		</div>
+		<div class="w3-col w3-light-gray">
+			<div class="qna">제곧내 어쩌구 저쩌구</div>
+			<hr>
+			<div class="qna w3-margin">
+				<textarea class="w3-input w3-border w3-padding" rows="3" style="resize: none"></textarea>
+				<div class="w3-button">등록</div>
+			</div>
+		</div>
+	</div>

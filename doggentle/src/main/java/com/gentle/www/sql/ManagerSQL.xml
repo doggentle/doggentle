@@ -48,4 +48,18 @@
 		ORDER BY
 			tno DESC
 	</select>
+	
+	<select id="getLabels" resultType="mgVO">
+		SELECT substr(mon, 4, 2) label
+		FROM (
+		        SELECT ADD_MONTHS (sysdate, LEVEL - 6) mon
+		        FROM DUAL
+		        CONNECT BY rownum &lt; 7
+		    )
+	</select>
+	
+	<select id="getQNA" resultType="mgVO">
+		SELECT qno, title, body, upqno, mno, qdate
+		FROM QNA
+	</select>
 </mapper>

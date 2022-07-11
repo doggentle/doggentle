@@ -84,4 +84,23 @@
 	<div class="box65 w3-center" style="margin-top: 100px;">
 		<h1>문의 관리</h1>
 	</div>
-</div>
+	
+		<div class="w3-round-large w3-card-4 w3-margin-bottom w3-padding" style="margin: 10px 70px 0px 70px">
+				<div class="w3-border-bottom">
+					<span class="mgb10 ft10"><b>테이블 언제 재입고 되나요?</b></span>
+					<span class="w3-right mgb10 ft10"><small>tmddus 2022.07.09</small></span>
+				</div>
+				<div class="w3-margin-top">
+					<span class="w3-padding ft12">제곧내</span>
+				</div>
+		</div>
+		<div class="w3-round-large w3-card-4 w3-margin-bottom w3-padding" style="margin: 10px 70px 0px 100px">
+				<div class="w3-border-bottom">
+					<span class="mgb10 ft10"><b>테이블 언제 재입고 되나요?</b></span>
+					<span class="w3-right mgb10 ft10"><small>tmddus 2022.07.09</small></span>
+				</div>
+				<div class="w3-margin-top">
+					<span class="w3-padding ft12">제곧내</span>
+				</div>
+		</div>
+	</div>

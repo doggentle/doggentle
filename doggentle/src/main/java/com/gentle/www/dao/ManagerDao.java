@@ -21,5 +21,15 @@ public class ManagerDao {
 	public List<ManagerVO> getOrderInfo(int mno) {
 		return sqlSession.selectList("mgSQL.orderInfo", mno);
 	}
+	
+	// 관리자 차트 라벨
+	public List<ManagerVO> getLabels() {
+		return sqlSession.selectList("mgSQL.getLabels");
+	}
+	
+	// 관리자 QNA
+	public List<ManagerVO> getQNAList() {
+		return sqlSession.selectList("mgSQL.getQNA");
+	}
 
 }

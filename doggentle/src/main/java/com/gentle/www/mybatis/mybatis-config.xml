@@ -14,6 +14,7 @@
         <typeAlias alias="mgVO" type="com.gentle.www.vo.ManagerVO"/>	
 		<typeAlias alias="cVO" type="com.gentle.www.vo.CertVO"/>
 		<typeAlias alias="gVO" type="com.gentle.www.vo.GDetailVO"/>
+		<typeAlias alias="adVO" type="com.gentle.www.vo.AddressVO"/>
 	</typeAliases>
 	
 	<mappers>

@@ -22,4 +22,9 @@ public class MyPageDao {
 	public List<GDetailVO> getTransacList(String id){
 		return sqlSession.selectList("mpSQL.getTransacList", id);
 	}
+	
+	// 내 주소록 리스트 가져오기
+	public List<AddressVO> getMyAddrList(String id){
+		return sqlSession.selectList("mpSQL.myAddressList", id);
+	}
 }

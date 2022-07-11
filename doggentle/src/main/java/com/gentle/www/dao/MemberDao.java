@@ -1,5 +1,7 @@
 package com.gentle.www.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,6 +45,11 @@ public class MemberDao {
 		return sqlSession.update("mSQL.certCno", cno);
 	}
 	
+	// member, cert 업데이트 후 가입기념 포인트 100
+	public int addPoint(int mno) {
+		return sqlSession.insert("mSQL.addPoint", mno);
+	}
+	
 	//findidProc
 	public MemberVO findidProc(String mail) {
 		return sqlSession.selectOne("mSQL.getFindid", mail);
@@ -51,4 +58,6 @@ public class MemberDao {
 	public String findpwProc(MemberVO mVO) {
 		return sqlSession.selectOne("mSQL.getFindpw", mVO);
 	}
+	
+	
 }

@@ -13,7 +13,7 @@ import com.gentle.www.vo.GDetailVO;
 
 	@Controller
 	@RequestMapping("/gDetail")
-	public class gDetail {
+	public class GDetail {
 		
 		@Autowired
 		GDetailDao gDao;

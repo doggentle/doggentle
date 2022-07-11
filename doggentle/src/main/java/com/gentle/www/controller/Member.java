@@ -1,5 +1,7 @@
 package com.gentle.www.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,6 +118,8 @@ public class Member {
 				mDao.certCno(cVO.getCno());
 				session.setAttribute("SID", cVO.getId());
 				mv.setViewName("/main");
+				
+				mDao.addPoint(cVO.getMno());//신규가입 기녕 100포인트
 			}catch(Exception e) {
 				e.printStackTrace();
 				rv.setUrl("/www/error.dog");

@@ -1,1 +1,6 @@
-INSERT INTO 
+--code table--
+INSERT INTO code(cno, body) VALUES(100, '적립');
+INSERT INTO code(cno, body) VALUES(200, '사용');
+
+INSERT INTO code(cno, body, upcno) VALUES(101, '가입 축하포인트', 100);
+INSERT INTO code(cno, body, upcno) VALUES(201, '상품구입시 사용', 200);

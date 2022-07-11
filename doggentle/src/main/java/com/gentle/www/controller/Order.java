@@ -28,4 +28,5 @@ public class Order {
 		mv.setViewName("/order/payment");
 		return mv;
 	}
+	
 }

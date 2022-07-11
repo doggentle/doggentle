@@ -19,6 +19,7 @@ public class MyPage {
 	
 	@Autowired
 	MyPageDao myDao;
+	MemberDao mDao;
 	
 	@RequestMapping("/mypagemain")
 	public ModelAndView myPageMain(ModelAndView mv, HttpSession session) {
@@ -58,5 +59,14 @@ public class MyPage {
 		mv.setViewName("myPage/memberinfopwck");
 		return mv;
 		// 나는 낭만 고양이~~~ 
+	}
+	
+	//주소록 목록보기요청
+	@RequestMapping("/addressList.dog")
+	public ModelAndView addrList(ModelAndView mv, HttpSession session) {
+		List<AddressVO> adlist = myDao.getMyAddrList((String)session.getAttribute("SID"));
+		mv.setViewName("/address/myAddrList");
+		mv.addObject("ADLIST", adlist);
+		return mv;
 	}
 }

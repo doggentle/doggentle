@@ -1,6 +1,281 @@
---code table--
+--code table--																																																													--
 INSERT INTO code(cno, body) VALUES(100, '적립');
 INSERT INTO code(cno, body) VALUES(200, '사용');
-
 INSERT INTO code(cno, body, upcno) VALUES(101, '가입 축하포인트', 100);
+INSERT INTO code(cno, body, upcno) VALUES(102, '상품구입시 적립', 100);
+INSERT INTO code(cno, body, upcno) VALUES(103, '리뷰작성 적립', 100);
+INSERT INTO code(cno, body, upcno) VALUES(104, '출석체크 적립', 100);
 INSERT INTO code(cno, body, upcno) VALUES(201, '상품구입시 사용', 200);
+
+--member table --
+INSERT INTO member(mno, mail, id, pw, bdate, gen, isshow) VALUES(1000, 'admin0@gmail.com', 'admin0', '123', '2000-01-01', 'F', 'mng');
+INSERT INTO member(mno, mail, id, pw, bdate, gen, isshow) VALUES(1100, 'admin1@gmail.com', 'admin1', '123', '2000-01-01', 'M', 'mng');
+INSERT INTO member(mno, mail, id, pw, bdate, gen, isshow) VALUES(1200, 'admin2@gmail.com', 'admin2', '123', '2000-01-01', 'F', 'mng');
+INSERT INTO member(mno, mail, id, pw, bdate, gen, isshow) VALUES(1300, 'admin3@gmail.com', 'admin3', '123', '2000-01-01', 'M', 'mng');
+INSERT INTO member(mno, mail, id, pw, bdate, gen) VALUES(1001, 'dor@kakao.com', 'dor', '123', '2000-01-01', 'M');
+INSERT INTO member(mno, mail, id, pw, bdate, gen) VALUES(1002, 'sgk0648@gmail.com', 'sgk', '123', '2000-01-01', 'M');
+INSERT INTO member(mno, mail, id, pw, bdate, gen) VALUES(1003, 'jjy@gmail.com', 'jjy', '123', '2000-01-01', 'M');
+INSERT INTO member(mno, mail, id, pw, bdate, gen) VALUES(1004, 'yee@gmail.com', 'yee', '123', '2000-01-01', 'F');
+
+--point table 1001번 dor--
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100001, 1001, 101, 100, 100);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100002, 1001, 102, 100, 200);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100003, 1001, 103, 100, 300);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100004, 1001, 104, 100, 400);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100005, 1001, 201, 200, 200);
+--point table 1002번 sgk--
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100006, 1002, 101, 100, 100);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100007, 1002, 102, 200, 300);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100008, 1002, 103, 50, 350);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100009, 1002, 104, 50, 400);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100010, 1002, 201, 100, 300);
+--point table 1003번 jjy--
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100011, 1003, 101, 200, 200);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100012, 1003, 102, 200, 400);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100013, 1003, 201, 100, 300);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100014, 1003, 103, 50, 350);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100015, 1003, 201, 150, 200);
+--point table 1004번 yee--
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100016, 1004, 101, 1000, 1000);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100017, 1004, 102, 200, 1200);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100018, 1004, 104, 100, 1300);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100019, 1004, 103, 50, 1350);
+INSERT INTO point(pno, mno, cno, pvalue, sumpoint) VALUES(100020, 1004, 201, 550, 800);
+
+--address table 1001 dor--
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1001, '양동수', 1001, 88765, '강원도 바닷가 모래사장', '010-8877-0909');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1002, '친구보노보노', 1001, 35918, '한강공원 나무토막', '0123-0909-8768');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1003, '살고싶은곳', 1001, 05501, '서울송파잠실else??', '02-002-0002');
+--address table 1002 sgk--
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1004, '수경킴', 1002, 08608, '금천구독산동', '000-111-2222');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1005, '사촌형', 1002, 99888, '어디지???', '009-009-0009');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1006, '학원', 1002, 08787, '관악구봉천동', '02-0050-1234');
+--address table 1003 jjy--
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1007, '고기싸롱', 1003, 00009, '금천구가산로143', '02-200-2000');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1008, '코노', 1003, 00900, '샤로수길 지하코노', '03-003-0003');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1009, '신떡관악점', 1003, 90000, '관악구청룡길38', '04-004-0004');
+--address table 1004 yee--
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1010, '모르겟', 1004, 00559, '무슨무슨주소', '02-222-2444');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1011, '귀찮', 1004, 04444, '헛둘셋넷', '03-443-4003');
+INSERT INTO address(adno, who, mno, pno, adrs, contact) VALUES(1012, '으억', 1004, 91232, '머리가터지겠다', '04-334-1114');
+
+--cert table--
+INSERT INTO cert(cno, ccode, cdate, cmail, isverify) VALUES(100001, 928732, '2022-02-01', 'dor@kakao.com', 'Y');
+INSERT INTO cert(cno, ccode, cdate, cmail, isverify) VALUES(100002, 452732, '2021-12-02', 'sgk0648@gmail.com', 'Y');
+INSERT INTO cert(cno, ccode, cdate, cmail, isverify) VALUES(100003, 978832, '2022-03-06', 'jjy@gmail.com', 'Y');
+INSERT INTO cert(cno, ccode, cdate, cmail, isverify) VALUES(100004, 009002, '2022-01-19', 'yee@gmail.com', 'Y');
+
+--category--
+INSERT INTO category(cano, upno, caname) VALUES(1001, null, '대카테고리1');
+INSERT INTO category(cano, upno, caname) VALUES(1002, null, '대카테고리2');
+INSERT INTO category(cano, upno, caname) VALUES(1003, null, '대카테고리3');
+INSERT INTO category(cano, upno, caname) VALUES(1004, null, '대카테고리4');
+INSERT INTO category(cano, upno, caname) VALUES(1005, 1001, '중카테고리1-1');
+INSERT INTO category(cano, upno, caname) VALUES(1006, 1001, '중카테고리1-2');
+INSERT INTO category(cano, upno, caname) VALUES(1007, 1001, '중카테고리1-3');
+INSERT INTO category(cano, upno, caname) VALUES(1008, 1002, '중카테고리2-1');
+INSERT INTO category(cano, upno, caname) VALUES(1009, 1002, '중카테고리2-2');
+INSERT INTO category(cano, upno, caname) VALUES(1010, 1002, '중카테고리2-3');
+INSERT INTO category(cano, upno, caname) VALUES(1011, 1003, '중카테고리3-1');
+INSERT INTO category(cano, upno, caname) VALUES(1012, 1003, '중카테고리3-2');
+INSERT INTO category(cano, upno, caname) VALUES(1013, 1003, '중카테고리3-3');
+INSERT INTO category(cano, upno, caname) VALUES(1014, 1004, '중카테고리4-1');
+INSERT INTO category(cano, upno, caname) VALUES(1015, 1004, '중카테고리4-2');
+INSERT INTO category(cano, upno, caname) VALUES(1016, 1004, '중카테고리4-3');
+INSERT INTO category(cano, upno, caname) VALUES(1017, 1004, '중카테고리4-3');
+INSERT INTO category(cano, upno, caname) VALUES(1018, 1005, '소카테고리5-1');
+INSERT INTO category(cano, upno, caname) VALUES(1019, 1005, '소카테고리5-2');
+INSERT INTO category(cano, upno, caname) VALUES(1020, 1006, '소카테고리6-1');
+INSERT INTO category(cano, upno, caname) VALUES(1021, 1006, '소카테고리6-2');
+INSERT INTO category(cano, upno, caname) VALUES(1022, 1007, '소카테고리7-1');
+INSERT INTO category(cano, upno, caname) VALUES(1023, 1007, '소카테고리7-2');
+INSERT INTO category(cano, upno, caname) VALUES(1024, 1008, '소카테고리8-1');
+INSERT INTO category(cano, upno, caname) VALUES(1025, 1008, '소카테고리8-2');
+INSERT INTO category(cano, upno, caname) VALUES(1026, 1009, '소카테고리9-1');
+INSERT INTO category(cano, upno, caname) VALUES(1027, 1009, '소카테고리9-2');
+INSERT INTO category(cano, upno, caname) VALUES(1028, 1010, '소카테고리10-1');
+INSERT INTO category(cano, upno, caname) VALUES(1029, 1010, '소카테고리10-2');
+INSERT INTO category(cano, upno, caname) VALUES(1030, 1011, '소카테고리11-1');
+INSERT INTO category(cano, upno, caname) VALUES(1031, 1011, '소카테고리11-2');
+INSERT INTO category(cano, upno, caname) VALUES(1032, 1012, '소카테고리12-1');
+INSERT INTO category(cano, upno, caname) VALUES(1033, 1012, '소카테고리12-2');
+INSERT INTO category(cano, upno, caname) VALUES(1034, 1013, '소카테고리13-1');
+INSERT INTO category(cano, upno, caname) VALUES(1035, 1013, '소카테고리13-2');
+INSERT INTO category(cano, upno, caname) VALUES(1036, 1014, '소카테고리14-1');
+INSERT INTO category(cano, upno, caname) VALUES(1037, 1014, '소카테고리14-2');
+INSERT INTO category(cano, upno, caname) VALUES(1038, 1015, '소카테고리15-1');
+INSERT INTO category(cano, upno, caname) VALUES(1039, 1015, '소카테고리15-2');
+INSERT INTO category(cano, upno, caname) VALUES(1040, 1016, '소카테고리16-1');
+INSERT INTO category(cano, upno, caname) VALUES(1041, 1016, '소카테고리16-2');
+
+--img table--
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100001, 'dog01.jpg', 'dog01.jpg', '/img/goods/', 18414, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100002, 'dog02.jpg', 'dog02.jpg', '/img/goods/', 17757, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100003, 'dog03.jpg', 'dog03.jpg', '/img/goods/', 393138, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100004, 'dog04.jpg', 'dog04.jpg', '/img/goods/', 14732, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100005, 'dog05.jpg', 'dog05.jpg', '/img/goods/', 20914, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100006, 'dog06.jpg', 'dog06.jpg', '/img/goods/', 24662, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100007, 'dog07.jpg', 'dog07.jpg', '/img/goods/', 27780, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100008, 'dog08.jpg', 'dog08.jpg', '/img/goods/', 17690, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100009, 'dog09.jpg', 'dog09.jpg', '/img/goods/', 18670, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100010, 'dog10.jpg', 'dog10.jpg', '/img/goods/', 23020, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100011, 'dog11.jpg', 'dog11.jpg', '/img/goods/', 23020, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100012, 'dog12.jpg', 'dog12.jpg', '/img/goods/', 18414, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100013, 'dog13.jpg', 'dog13.jpg', '/img/goods/', 17757, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100014, 'dog14.jpg', 'dog14.jpg', '/img/goods/', 393138, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100015, 'dog15.jpg', 'dog15.jpg', '/img/goods/', 14732, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100016, 'dog16.jpg', 'dog16.jpg', '/img/goods/', 20914, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100017, 'dog17.jpg', 'dog17.jpg', '/img/goods/', 24662, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100018, 'dog18.jpg', 'dog18.jpg', '/img/goods/', 27780, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100019, 'dog19.jpg', 'dog19.jpg', '/img/goods/', 17690, 'gds');
+INSERT INTO img(ino, upname, savename, dir, volume, purpose) VALUES(100020, 'dog20.jpg', 'dog20.jpg', '/img/goods/', 18670, 'gds');
+
+--goods table--
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100001, '상품01', '상품 01 입니다', 10, 10000, 1001, 0, '2022/01/01', 100001, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100002, '상품02', '상품 02 입니다', 10, 10000, 1001, 0, '2022/01/01', 100002, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100003, '상품03', '상품 03 입니다', 10, 10000, 1001, 0, '2022/01/01', 100003, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100004, '상품04', '상품 04 입니다', 10, 10000, 1001, 0, '2022/01/01', 100004, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100005, '상품05', '상품 05 입니다', 10, 10000, 1001, 0, '2022/01/01', 100005, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100006, '상품06', '상품 06 입니다', 10, 10000, 1002, 0, '2022/01/01', 100006, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100007, '상품07', '상품 07 입니다', 10, 10000, 1002, 0, '2022/01/01', 100007, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100008, '상품08', '상품 08 입니다', 10, 10000, 1002, 0, '2022/01/01', 100008, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100009, '상품09', '상품 09 입니다', 10, 10000, 1002, 0, '2022/01/01', 100009, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100010, '상품10', '상품 10 입니다', 10, 10000, 1002, 0, '2022/01/01', 100010, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100011, '상품11', '상품 11 입니다', 10, 10000, 1003, 0, '2022/01/01', 100011, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100012, '상품12', '상품 12 입니다', 10, 10000, 1003, 0, '2022/01/01', 100012, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100013, '상품13', '상품 13 입니다', 10, 10000, 1003, 0, '2022/01/01', 100013, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100014, '상품14', '상품 14 입니다', 10, 10000, 1003, 0, '2022/01/01', 100014, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100015, '상품15', '상품 15 입니다', 10, 10000, 1003, 0, '2022/01/01', 100015, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100016, '상품16', '상품 16 입니다', 10, 10000, 1004, 0, '2022/01/01', 100016, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100017, '상품17', '상품 17 입니다', 10, 10000, 1004, 0, '2022/01/01', 100017, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100018, '상품18', '상품 18 입니다', 10, 10000, 1004, 0, '2022/01/01', 100018, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100019, '상품19', '상품 19 입니다', 10, 10000, 1004, 0, '2022/01/01', 100019, 'Y');
+INSERT INTO goods(gno, gname, gdetail, stock, price, cano, hits, salesdate, ino, issell) VALUES(100020, '상품20', '상품 20 입니다', 10, 10000, 1004, 0, '2022/01/01', 100020, 'Y');
+
+--cart table quantity 없는케이스는 디폴트1 입력됨--
+INSERT INTO cart(cno, mno, gno) 			VALUES(100001, 1001, 100001);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100002, 1002, 100002);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100003, 1003, 100003);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100004, 1004, 100004);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100005, 1001, 100005);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100006, 1002, 100006);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100007, 1003, 100007);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100008, 1004, 100008);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100009, 1001, 100009);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100010, 1002, 100010);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100011, 1003, 100011);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100012, 1004, 100012);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100013, 1001, 100013);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100014, 1002, 100014);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100015, 1003, 100015);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100016, 1004, 100016);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100017, 1001, 100017);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100018, 1002, 100018);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100019, 1003, 100019);
+INSERT INTO cart(cno, mno, gno) 			VALUES(100020, 1004, 100020);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100021, 1001, 100020, 1);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100022, 1001, 100019, 2);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100023, 1001, 100018, 3);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100024, 1001, 100017, 4);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100025, 1001, 100016, 5);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100026, 1001, 100015, 6);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100027, 1001, 100014, 7);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100028, 1001, 100013, 8);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100029, 1001, 100012, 9);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100030, 1001, 100011, 10);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100031, 1001, 100010, 101);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100032, 1001, 100009, 102);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100033, 1001, 100008, 103);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100034, 1001, 100007, 104);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100035, 1001, 100006, 105);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100036, 1001, 100005, 106);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100037, 1001, 100004, 107);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100038, 1001, 100003, 108);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100039, 1001, 100002, 109);
+INSERT INTO cart(cno, mno, gno, quantity) 	VALUES(100040, 1001, 100001, 110);
+
+--qna table 이번주 내로 내용 수정하겠음--
+INSERT INTO qna(qno, title, body, mno)				VALUES(100001, 'as되나요?', 'as가 안될 것 같은데 as되나요??', 1001);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100002, 'as를 문의 주셨군요.', '사료는 소모품이라서 as가 안됩니다.', 100001, 1000, 1000);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100003, '냉장보관해야하나요?', '아니면 냉동인가요??', 1002);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100004, '보관을 문의 주셨군요.', '상온에서 보관하시면 됩니다.', 100003, 1100, 1100);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100005, '오늘 결제하면 언제?', '베송받을 수 있나요??', 1003);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100006, '배송을 문의주셨군요.', '배송은 물류업체 상황에 따라 다르지만 도서, 산간지역을 제외하고 2~3일에 받아보실 수 있습니다.', 100005, 1200, 1200);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100007, '지금 몇시인데 작업중이세요?', '안졸리세요??', 1004);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100008, '현재시각을 문의주셨군요.', '현재시각 02:00 입니다 매우 졸립니다.', 100007, 1300, 1300);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100009, '내일 날씨는 어떨까요?', '요즘 너무덥지 않나요??', 1001);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100010, '현재기온을 문의 주셨군요.', '현재기온은 섭씨 26도입니다. 열대야네요', 100009, 1000, 1000);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100011, '무슨게임 하시나요?', '전 쿠키런 하는데??', 1002);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100012, '게임문의를 주셨군요.', '쿠키런은 노잼이구 카트라이더 합니다.', 100011, 1100, 1100);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100013, '566x998은?', '뭘까요??', 1003);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100014, '산수문제를 문의주셨군요.', '정답은564868입니다.', 100013, 1200, 1200);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100015, '윈도우vs맥북?', '당신의 선택은??', 1004);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100016, 'OS문의를 주셨군요.', '맥OS는 너무 어렵습니다.', 100015, 1300, 1300);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100017, '짜장vs짬뽕?', '그리고 물냉vs비냉??', 1001);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100018, '식사를 문의 주셨군요.', '볶음밥이요.', 100017, 1000, 1000);
+INSERT INTO qna(qno, title, body, mno)				VALUES(100019, '?', '??', 1002);
+INSERT INTO qna(qno, title, body, upqno, mno, mng)	VALUES(100020, '.', '...', 100019, 1100, 1100);
+
+--attend table 1001--
+INSERT INTO attend(ano, mno, adate) VALUES(100001, 1001, '2022-07-01');
+INSERT INTO attend(ano, mno, adate) VALUES(100002, 1001, '2022-07-02');
+INSERT INTO attend(ano, mno, adate) VALUES(100003, 1001, '2022-07-03');
+INSERT INTO attend(ano, mno, adate) VALUES(100004, 1001, '2022-07-04');
+INSERT INTO attend(ano, mno, adate) VALUES(100005, 1001, '2022-07-05');
+INSERT INTO attend(ano, mno, adate) VALUES(100006, 1001, '2022-07-06');
+INSERT INTO attend(ano, mno, adate) VALUES(100007, 1001, '2022-07-07');
+INSERT INTO attend(ano, mno, adate) VALUES(100008, 1001, '2022-07-08');
+INSERT INTO attend(ano, mno, adate) VALUES(100009, 1001, '2022-07-09');
+INSERT INTO attend(ano, mno, adate) VALUES(100010, 1001, '2022-07-10');
+--attend table 1002--
+INSERT INTO attend(ano, mno, adate) VALUES(100011, 1002, '2022-07-11');
+INSERT INTO attend(ano, mno, adate) VALUES(100012, 1002, '2022-07-12');
+INSERT INTO attend(ano, mno, adate) VALUES(100013, 1002, '2022-07-13');
+INSERT INTO attend(ano, mno, adate) VALUES(100014, 1002, '2022-07-14');
+INSERT INTO attend(ano, mno, adate) VALUES(100015, 1002, '2022-07-15');
+INSERT INTO attend(ano, mno, adate) VALUES(100016, 1002, '2022-07-16');
+INSERT INTO attend(ano, mno, adate) VALUES(100017, 1002, '2022-07-17');
+INSERT INTO attend(ano, mno, adate) VALUES(100018, 1002, '2022-07-18');
+INSERT INTO attend(ano, mno, adate) VALUES(100019, 1002, '2022-07-19');
+INSERT INTO attend(ano, mno, adate) VALUES(100020, 1002, '2022-07-20');
+--attend table 1003--
+INSERT INTO attend(ano, mno, adate) VALUES(100021, 1003, '2022-07-01');
+INSERT INTO attend(ano, mno, adate) VALUES(100022, 1003, '2022-07-03');
+INSERT INTO attend(ano, mno, adate) VALUES(100023, 1003, '2022-07-05');
+INSERT INTO attend(ano, mno, adate) VALUES(100024, 1003, '2022-07-07');
+INSERT INTO attend(ano, mno, adate) VALUES(100025, 1003, '2022-07-09');
+INSERT INTO attend(ano, mno, adate) VALUES(100026, 1003, '2022-07-11');
+INSERT INTO attend(ano, mno, adate) VALUES(100027, 1003, '2022-07-13');
+INSERT INTO attend(ano, mno, adate) VALUES(100028, 1003, '2022-07-15');
+INSERT INTO attend(ano, mno, adate) VALUES(100029, 1003, '2022-07-17');
+INSERT INTO attend(ano, mno, adate) VALUES(100030, 1003, '2022-07-19');
+--attend table 1004--
+INSERT INTO attend(ano, mno, adate) VALUES(100031, 1004, '2022-07-02');
+INSERT INTO attend(ano, mno, adate) VALUES(100032, 1004, '2022-07-04');
+INSERT INTO attend(ano, mno, adate) VALUES(100033, 1004, '2022-07-06');
+INSERT INTO attend(ano, mno, adate) VALUES(100034, 1004, '2022-07-08');
+INSERT INTO attend(ano, mno, adate) VALUES(100035, 1004, '2022-07-10');
+INSERT INTO attend(ano, mno, adate) VALUES(100036, 1004, '2022-07-12');
+INSERT INTO attend(ano, mno, adate) VALUES(100037, 1004, '2022-07-14');
+INSERT INTO attend(ano, mno, adate) VALUES(100038, 1004, '2022-07-16');
+INSERT INTO attend(ano, mno, adate) VALUES(100039, 1004, '2022-07-18');
+INSERT INTO attend(ano, mno, adate) VALUES(100040, 1004, '2022-07-20');
+
+--transaction table--
+INSERT INTO transaction(tno, adno, gno, mno, tdate, dno, ddate, quantity) VALUES(100001, );
+
+--review table--
+INSERT INTO review() VALUES();
+
+
+
+
+
+
+
+
+
+
+
+
+

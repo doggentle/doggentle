@@ -81,7 +81,9 @@
 </div>
 </header>
 <div class="w3-content" style="max-width:1200px;">
-	<p>${data}</p>
+	<p>${data.aid}</p>
+	<p>${data.tid}</p>
+	<p>${data.cid}</p>
 </div>
 <!-- Intro
 	================================================== -->

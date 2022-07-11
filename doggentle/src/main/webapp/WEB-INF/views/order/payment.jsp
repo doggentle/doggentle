@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Cart</title>
+	<title>Payment</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -18,8 +18,8 @@
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js//order/cart.js"></script>
@@ -57,7 +57,7 @@
 		<!-- Your Logo -->
 		<a href="/www/" class="navbar-brand"><img src="/www/img/logo.png" width="250px" height="auto"><span></span></a>
 	</div>
-	<a class="navbar-brand" style="font-size: 20pt; padding-top: 30px;">장바구니</a>
+	<a class="navbar-brand" style="font-size: 20pt; padding-top: 30px;">결제하기</a>
 	<!-- Start Navigation -->
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	<ul class="nav navbar-nav">
@@ -80,62 +80,84 @@
 	</nav>
 </div>
 </header>
-
-<!-- Intro
-	================================================== -->
-<div class="container">
-	<div class="w3-content">
-		<div class="w3-col w3-center w3-padding w3-margin-bottom">
-			<h>장바구니</h1>
+<div class="w3-content" style="max-width:1200px;">
+	<div class="w3-col w3-right w3-border" style="margin-top: 150px; min-height: 200px;">
+		<div class="w3-col m4 w3-right" style="display:inline-block; min-height:200px;">
+			<div class="w3-margin">
+				<h3>주문자 정보</h3>
+				<div class="w3-margin-left">
+					<p>아이디: XXXX</p>
+					<p>메일: XXXXX</p>
+					<p>아이디: XXXX</p>
+					<p>메일: XXXXX</p>
+				</div>
+			</div>
 		</div>
-		<div class="w3-col w3-center w3-margin-bottom">
-
-		</div>
-	</div>
-    <br/>
-<div class="container">
-	<div class="box65">
-    <br/>
-		<form id="frm" name="frm" style="margin-top: 80px; max-width: 900px;">
-			<div class="w3-container w3-card w3-round w3-white" style="padding:7.5px; height:115px;">
-				<div class="w3-col m3 w3-border-right" style="height: 100px; padding-left: 25px; padding-top: 0px;">
-					<input class="w3-margin-right" type="checkbox" name="" value="">
-					<div style="display:inline-block; width:130px; height:100px;">
+		<div class="w3-col m8 w3-border-right" style="display:inline-block; min-height:200px;">
+			<div class="w3-margin">
+				<h3>상품 정보</h3>
+				<div class="w3-margin-left" style="text-align: center;">
+					<div class="w3-col m3 w3-padding" style="height:200px;">
 						<img src="https://www.w3schools.com/w3css/img_snowtops.jpg"
 								class="w3-round" style="width:120px; height:100px;">
 					</div>
-				</div>
-				<div class="w3-col m3 w3-center w3-border-right" style="height:100px">
-					<div class="">
-						<h3>${MyInfo.isshow}</h3>
-						<h5>제품이름</h5>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>상품이름</h4>
+						<p>무슨무슨 제품</p>
 					</div>
-				</div>
-				<div class="w3-col m2 w3-center w3-border-right" style="height:100px">
-					<div class="">
-						<h3>${MyInfo.isshow}</h3>
-						<h5>구매수량</h5>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>상품가격</h4>
+						<p>얼마얼마</p>
 					</div>
-				</div>
-				<div class="w3-col m3 w3-center w3-border-right" style="height:100px">
-					<div class="">
-						<h3>${MyInfo.isshow}</h3>
-						<h5>제품가격</h5>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>구매수량</h4>
+						<p>몇 개</p>
 					</div>
-				</div>
-				<div class="w3-col m1 w3-center" style="height:100px">
-					<button class="w3-light-gray w3-padding" style="margin-top: 25px; border:0px;">삭제</button>
 				</div>
 			</div>
-		</form>
+		</div>
+	</div>
+	<div class="w3-col w3-right w3-border" style="margin-top: 10px; min-height: 200px;">
+		<div class="w3-col m4 w3-right" style="display:inline-block; min-height:200px;">
+			<div class="w3-margin">
+				<h3>결제 상세정보</h3>
+				<div class="w3-margin-left">
+					<h4>주문금액</h4>
+					<div class="w3-margin-left">
+						<p>상품금액: XXXXX</p>
+						<p>배송비: XXXX</p>
+						<p>포인트 사용: XXXXX</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w3-col m8 w3-border-right" style="display:inline-block; min-height:200px;">
+			<div class="w3-margin">
+				<h3>배송지 정보</h3>
+				<div class="w3-margin-left" style="text-align: center;">
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<img src="https://www.w3schools.com/w3css/img_snowtops.jpg"
+								class="w3-round" style="width:120px; height:100px;">
+					</div>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>상품이름</h4>
+						<p>무슨무슨 제품</p>
+					</div>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>상품가격</h4>
+						<p>얼마얼마</p>
+					</div>
+					<div class="w3-col m3 w3-padding" style="height:200px;">
+						<h4>구매수량</h4>
+						<p>몇 개</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<hr>
-<div>
-	<p>총 제품가격</p>
-	<button id="goPayment">총 몇 건 주문하기</button>
-</div>
-<!-- 슬라이드 -->
+<!-- Intro
+	================================================== -->
 
 <script src="/www/js/jquery.min.js"></script>
 <script src="/www/js/bootstrap.min.js"></script>

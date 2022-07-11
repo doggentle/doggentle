@@ -22,4 +22,10 @@ public class Order {
 		mv.setViewName("/order/cart");
 		return mv;
 	}
+	
+	@RequestMapping("/payment.dog")
+	public ModelAndView payForm(ModelAndView mv) {
+		mv.setViewName("/order/payment");
+		return mv;
+	}
 }

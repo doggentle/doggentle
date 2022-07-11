@@ -85,22 +85,24 @@
 		<h1>문의 관리</h1>
 	</div>
 	
-		<div class="w3-round-large w3-card-4 w3-margin-bottom w3-padding" style="margin: 10px 70px 0px 70px">
-				<div class="w3-border-bottom">
-					<span class="mgb10 ft10"><b>테이블 언제 재입고 되나요?</b></span>
-					<span class="w3-right mgb10 ft10"><small>tmddus 2022.07.09</small></span>
-				</div>
-				<div class="w3-margin-top">
-					<span class="w3-padding ft12">제곧내</span>
-				</div>
+		<div class="w3-col w3-light-grey w3-center w3-border">
+			<div class="w3-col m2 w3-border-right qna">답변상태</div>
+			<div class="w3-col m6 w3-border-right qna">제목</div>
+			<div class="w3-col m2 w3-border-right qna">작성자</div>
+			<div class="w3-col m2 qna">작성일</div>
 		</div>
-		<div class="w3-round-large w3-card-4 w3-margin-bottom w3-padding" style="margin: 10px 70px 0px 100px">
-				<div class="w3-border-bottom">
-					<span class="mgb10 ft10"><b>테이블 언제 재입고 되나요?</b></span>
-					<span class="w3-right mgb10 ft10"><small>tmddus 2022.07.09</small></span>
-				</div>
-				<div class="w3-margin-top">
-					<span class="w3-padding ft12">제곧내</span>
-				</div>
+		<div class="w3-col w3-center">
+			<div class="w3-col m2 w3-border-right qna">미답변</div>
+			<div class="w3-col m6 w3-border-right qna">테이블 재입고 언제되나요???</div>
+			<div class="w3-col m2 w3-border-right qna">tmddus</div>
+			<div class="w3-col m2 qna">2022.07.10</div>
+		</div>
+		<div class="w3-col w3-light-gray">
+			<div class="qna">제곧내 어쩌구 저쩌구</div>
+			<hr>
+			<div class="qna w3-margin">
+				<textarea class="w3-input w3-border w3-padding" rows="3" style="resize: none"></textarea>
+				<div class="w3-button">등록</div>
+			</div>
 		</div>
 	</div>

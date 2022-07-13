@@ -104,7 +104,6 @@
 				<label for="${data.mno}" class="w3-col m5 w3-border-right">${data.mno}</label>
 				<label for="${data.mno}" class="w3-col m7 w3-border-right">${data.id}</label>
 			</div>
-			<!-- 라디오버튼으로 처리해보기 -->
 			<label for="${data.mno}" class="w3-col m3 w3-border-right">${data.mail}</label>
 			<label for="${data.mno}" class="w3-col m3 w3-border-right">${data.jdate}</label>
 			<label for="${data.mno}" class="w3-col m1 w3-border-right">${data.tcnt}</label>
@@ -112,7 +111,7 @@
 			<label for="${data.mno}" class="w3-col m1">${data.spoint}</label>
 		</div>
 				
-		<div class="o${data.mno}" id="o${data.mno}" style="margin: 50px;">
+		<div class="o${data.mno}" id="o${data.mno}" style="margin: 50px; display: none;">
 		</div>
 </c:forEach>
 		

@@ -24,7 +24,10 @@ $(document).ready(function(){
 	
 	$('.minfo').click(function() {
 		var txt = $(this).attr('id');
-				
+		if($('.o' + txt).css('display') == 'block'){
+			$('.o'+txt).css('display', 'none').html('');			
+			return;
+		}
 		$.ajax({
 			url: '/www/manager/orderList.dog',
 			type: 'POST',

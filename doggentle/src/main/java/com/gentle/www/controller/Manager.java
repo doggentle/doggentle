@@ -1,21 +1,14 @@
 package com.gentle.www.controller;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
 
-import com.gentle.www.dao.ManagerDao;
-import com.gentle.www.vo.ManagerVO;
-import com.gentle.www.vo.MemberVO;
+import com.gentle.www.dao.*;
+import com.gentle.www.vo.*;
 
 @Controller
 @RequestMapping("/manager")
@@ -81,7 +74,24 @@ public class Manager {
 		
 		List<ManagerVO> list = mgDao.getQNAList();
 		mv.addObject("LIST", list);
-		
+				
+		return mv;
+	}
+	
+	// 관리자 답변 등록 함수
+	@RequestMapping("/addAnswerProc.dog")
+	public ModelAndView addAnswerProc(ModelAndView mv, QnAVO qVO) {
+				
+		qVO.setMno(mgDao.getMngMno(qVO.getId()));
+		int cnt = mgDao.addAnswer(qVO);
+				
+		if(cnt == 0) {
+			mv.addObject("MSG", "NO");
+		} else {
+			mv.addObject("MSG", "OK");
+		}
+		mv.addObject("VIEW", "/www/manager/inquiry.dog");
+		mv.setViewName("manager/redirect");
 		return mv;
 	}
 	

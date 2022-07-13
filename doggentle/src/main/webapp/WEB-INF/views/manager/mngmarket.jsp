@@ -22,8 +22,6 @@
 	
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
-	<script type="module" src="/www/js/utils.js"></script>
-	<script type="module" src="/www/js/components.js"></script>
 	<script type="text/javascript" src="/www/js/manager/graph.js"></script>
 	
 	<!-- Fonts -->

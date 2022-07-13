@@ -31,5 +31,15 @@ public class ManagerDao {
 	public List<ManagerVO> getQNAList() {
 		return sqlSession.selectList("mgSQL.getQNA");
 	}
+	
+	// 관리자 Mno
+	public int getMngMno(String id) {
+		return sqlSession.selectOne("mgSQL.getMno", id);
+	}
+	
+	// 관리자 QNA 답변
+	public int addAnswer(QnAVO qVO) {
+		return sqlSession.insert("mgSQL.insertAnswer", qVO);
+	}
 
 }

@@ -11,9 +11,23 @@
 	padding: 10px 0px 10px 0px;
 }
 
+.qnabody {
+	padding: 20px 30px 20px 30px;
+}
+
+.bar {
+	margin: 0px 20px 0px 20px;
+	height:1px;
+	background-color: gray;
+}
+
 .box50 {
 	display: inline-block;
 	width: 500px;
+}
+
+.abody {
+	padding: 0px 0px 10px 40px;
 }
 
 .search {

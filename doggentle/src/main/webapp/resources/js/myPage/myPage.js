@@ -34,15 +34,7 @@ $(document).ready(function(){
 		$('#pwfr').stop().slideDown(300);
 	});
 	 
-		$('#avtfr').stop().slideUp(300, function(){
-			if(sgen == 'M'){
-				$('#favt').css('display', 'none');
-				$('#mavt').css('display', 'block');
-			} else {
-				$('#mavt').css('display', 'none');
-				$('#favt').css('display', 'block');
-			}
-			
-			$('#avtfr').stop().slideDown(300);
-		});
+	$('#chpw1').click(function(){
+		$
+	});
 });

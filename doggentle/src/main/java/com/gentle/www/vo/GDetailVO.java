@@ -1,13 +1,14 @@
 package com.gentle.www.vo;
 
 import java.text.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GDetailVO {
    private int gno, price, cano, hits, ino, cnt, stock, upno, quantity;
    private Date salesdate;
    private String gname, gdetail, caname, upname, savename, dir, adrs, money, sdate;
+   
+   
 public int getGno() {
 	return gno;
 }
@@ -19,6 +20,8 @@ public int getPrice() {
 }
 public void setPrice(int price) {
 	this.price = price;
+	DecimalFormat df = new DecimalFormat("###,###");
+	setMoney(df.format(price));
 }
 public int getCano() {
 	return cano;

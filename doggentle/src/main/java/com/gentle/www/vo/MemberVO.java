@@ -9,7 +9,6 @@ public class MemberVO {
 	private String mail, id, pw, bdate, gen, jdate, isshow, money;
 	//private Date birth, join;
 	
-	DecimalFormat df = new DecimalFormat("###,###");
 
 	
 	public int getMno() {
@@ -32,6 +31,7 @@ public class MemberVO {
 	}
 	public void setSpoint(int spoint) {
 		this.spoint = spoint;
+		DecimalFormat df = new DecimalFormat("###,###");
 		setMoney(df.format(spoint));
 	}
 	public void setMno(int mno) {

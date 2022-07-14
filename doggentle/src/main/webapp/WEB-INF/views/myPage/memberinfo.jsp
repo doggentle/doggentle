@@ -23,6 +23,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -129,19 +130,19 @@
 	      		</div>
 	   		 </div>
 <!-- Middle Column -->
-	  <div class="w3-col m9">
-	  	<div class="w3-row-padding">
-	       	<div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-col m9 w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<h3>아이디 : ${SID}</h3>
-	            			<h3>${MyInfo.mail}</h3>
-							<button class="btn w3-padding-large w3-large">회원정보 수정</button>	            		
-						</div>
-	            	</div>
-	            		<div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
+		<div class="w3-col m9">
+			<div class="w3-row-padding">
+				<div class="w3-col m12">
+		          	<div class="w3-container w3-card w3-round w3-white">
+		            	<div class="w3-col m9 w3-padding">
+		            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
+		            		<div>
+		            			<h3>아이디 : ${SID}</h3>
+		            			<h3>${MyInfo.mail}</h3>
+								<button class="btn w3-padding-large w3-large">회원정보 수정</button>	            		
+							</div>
+		            	</div>
+		            	<div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
 	            			<div class="w3-col m6">
 		            			<h3>${MyInfo.isshow}</h3>
 		            			<h5>회원등급</h5>
@@ -150,17 +151,72 @@
 		            			<h3>${MyInfo.money}P</h3>
 		            			<h5>포인트</h5>
 	            			</div>
+		            	</div>
+		          	</div>
+				</div>
+			</div>
+			
+			
+	      	<div class="w3-row-padding"><br>
+				<h2 style="margin-left:5px;">로그인 정보</h2>
+	       		<div class="w3-col m12">
+	          		<div class="w3-container w3-center">
+	            		<div class="w3-row w3-padding">
+	            			<h3 class="w3-col m3 w3-left-align">이 메 일 </h3> 
+	            			<div style="margin-top: 10px">
+	            				<input class="w3-col m5 w3-center-align" type="text" value="${DATA.mail}" readonly> 
+	            				<button class="w3-col m1 w3-margin-left" id="chmail">수정</button> 
+	            			</div>
 	            		</div>
-	          	</div>
-	        </div>
-	      </div>
-	  </div>
-
+	            		<div class="w3-row w3-padding ">
+	            			<h3 class="w3-col m3 w3-left-align">비밀번호</h3>
+	            			<div style="margin-top: 10px">
+	            				<input class="w3-col m5 w3-center-align" type="password" id="pw" value="${DATA.pw}" readonly> 
+	            				<button class="w3-col m1 w3-margin-left" id="chpw">수정</button> 
+	            			</div>
+	            		</div>
+	            		<div style="display: none" id="pwfr">
+		            		<div class="w3-row w3-padding ">
+		            			<h3 class="w3-col m3 w3-left-align">새 비밀번호</h3>
+		            			<div style="margin-top: 10px">
+		            				<input class="w3-col m5 w3-center-align" type="password"> 
+		            			</div>
+		            		</div>
+		            		<div class="w3-row w3-padding ">
+		            			<h3 class="w3-col m3 w3-left-align">확인 비밀번호</h3>
+		            			<div style="margin-top: 10px"> 
+		            				<input class="w3-col m5 w3-center-align" type="password">
+		            				<button class="w3-col m1 w3-margin-left" id="changepw">수정</button> 
+		            			</div>
+		            		</div>
+	            		</div>
+	          		</div>
+	        	</div>
+			</div>
+	      	
+	      	<div class="w3-row-padding"><br>
+				<h2 style="margin-left:5px;">개인정보</h2>
+	       		<div class="w3-col m12">
+	          		<div class="w3-container">
+	            		<div class="w3-padding">
+	            			<h3>생년월일 : ${DATA.bdate}</h3>
+	            		</div>
+	            		<div class="w3-padding">
+	            			<h3>가 입 일 : ${DATA.jdate}</h3>
+	            		</div>
+	          		</div>
+	        	</div>
+			</div>
+	      	
+		</div>
 <!-- Middle Column end -->
 	   	</div>
 <!-- Page Container end -->
 	  </div>
-	  
+
+<form method="POST" action="/www/myPage/memberinfo.dog" id="frm">
+	<input type="hidden" id="" name="" value="">
+</form>
 	  
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">

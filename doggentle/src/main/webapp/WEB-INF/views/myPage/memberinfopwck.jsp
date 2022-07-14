@@ -23,6 +23,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -135,13 +136,20 @@
 	          	<div class="w3-container w3-card w3-round w3-white w3-center-align">
 	       		<h2 class="w3-center">회원정보 확인을 위해 비밀번호를 입력해주세요.</h2> 
 	            		<div class="w3-col m3 w3-margin"><h2>비밀번호 입력 : </h2></div>
-	            		<input type="password" class="w3-col m6 w3-margin w3-padding-large">
-						<button class="btn w3-margin w3-padding-large w3-large">확인</button>	            		
+	            		<input type="hidden" id="id" value="${SID}">
+	            		<input type="password" class="w3-col m6 w3-margin w3-padding-large" id="pw">
+						<button class="btn w3-margin w3-padding-large w3-large" id="check">확인</button>	            		
 	          	</div>
 	        </div>
 	      </div>
 	  </div>
-
+	  
+ 	
+ 	
+ 	
+<form method="POST" action="/www/myPage/memberinfo.dog" id="frm">
+	<input type="hidden" id="result" name="result" value="">
+</form>
 <!-- Middle Column end -->
 	   	</div>
 <!-- Page Container end -->
@@ -153,5 +161,16 @@
   <h5>GenTleDog</h5>
 </footer>
 
+	  <div id="msgWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-blue"> 
+		        <span class="w3-button w3-display-topright" id="msgClose">&times;</span>
+		        <h2>알림 메세지</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-margin-top w3-margin-bottom" id="msg">비밀번호가 틀렸습니다.</h3>
+	    	</div>
+	    </div>
+ 	</div>
 </body>
 </html>

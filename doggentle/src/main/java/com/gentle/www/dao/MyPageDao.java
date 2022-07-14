@@ -14,6 +14,9 @@ public class MyPageDao {
 	public MemberVO getMyInfo(String id) {
 		return sqlSession.selectOne("mpSQL.getMyInfo", id);
 	}
+	public MemberVO getMember(String id) {
+		return sqlSession.selectOne("mpSQL.getMember", id);
+	}
 	
 	public List<GDetailVO> getCartList(String id) {
 		return sqlSession.selectList("mpSQL.getCartList", id);
@@ -22,6 +25,13 @@ public class MyPageDao {
 	public List<GDetailVO> getTransacList(String id){
 		return sqlSession.selectList("mpSQL.getTransacList", id);
 	}
+	public int getMemberCheck(MemberVO mVO) {
+		return sqlSession.selectOne("mpSQL.getMemberCheck", mVO);
+	}
+	
+	
+	
+	
 	
 	// 내 주소록 리스트 가져오기
 	public List<AddressVO> getMyAddrList(String id){

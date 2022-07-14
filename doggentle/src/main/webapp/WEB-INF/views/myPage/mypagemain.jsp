@@ -120,7 +120,7 @@
 	         					<dd><a href="">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
-	         					<dd><a href="/www/myPage/memberinfo#.dog">회원정보 수정</a></dd>
+	         					<dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
 	         					<dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
 	         					<dd><a href="">포인트</a></dd> 
 	         				</dl>
@@ -199,8 +199,8 @@
 <!-- 반복 관심내역 영역 끝 -->
 				<h5 class="w3-right"><a href="" class="more">더보기</a></h5>
 			</div>	      
+<!-- 관심내역 영역 끝-->	
 	    </div>
-<!-- 관심내역 영역 -->	
 	  </div>
 	</div>
 	

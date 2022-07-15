@@ -43,7 +43,7 @@ $(document).ready(function(){
 		// 할일...
 		// 기존 내용 지우고
 		$('#gPanel').css('display', 'none');
-		$('#gPanel').html('');
+ 		$('#gPanel').html('');
 		
 		// 분류 번호 가져오고...
 		var sno = $(this).val();
@@ -59,13 +59,14 @@ $(document).ready(function(){
 			
 				if(arr.length > 0){
 					for(var i = 0 ; i < arr.length ; i++ ){
-						var stag = '<div class="w3-half w3-center pdAll5 product" id="' + arr[i].gno + '">' +
-									'<div class="w3-col w3-card-4 pdAll10">' +
-									'<img src="/www' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:100%">' +
-									'<div class="w3-col" style="height: 92px;"><h3>' + arr[i].gname + '</h3></div>' + 
-									'<p>가 격 : ' + arr[i].price + '</p>' + 
+						var stag = 
+
+									'<div class="w3-center w3-quarter product" id="' + arr[i].gno + '">' +
+									'<div class="w3-col w3-margin-bottom">' +
+									'<img class="gbtn" src="/www' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:30%;cursor: pointer;">' +
+									'<div class="w3-col" style="height: 92px;"><p>Code:' + arr[i].gno + ' </p><p>상품명 : ' + arr[i].gname + '</p><p>가 격 : ' + arr[i].price + '</p></div>' + 
 									'</div>' +
-									'</div>';
+									'</div>' ;
 						
 						$('#gPanel').append(stag);
 					}
@@ -82,10 +83,10 @@ $(document).ready(function(){
 		// 할일
 		// 상품번호 알아내고
 		var sno = $(this).attr('id');
-	//$(location).attr('href', '/www/productDetail.blp?gno=' + sno);
 	
-		// post 방식 전송
 	$(document.frm.gno).val(sno);
 		$('#frm').submit();
 	}); 
+	
+
 });

@@ -47,4 +47,13 @@ public class MainController {
 		List<GDetailVO> list = gDao.getProductList(gVO);
 		return list;
 	}
+	// 상품 리스트 요청 전담 처리함수
+	@RequestMapping("/srcList.dog")
+	@ResponseBody
+	public List<GDetailVO> srcGoods(GDetailVO gVO){
+		List<GDetailVO> list = gDao.srcGoods(gVO);
+		return list;
+	}
+	
+	//키워드 검색 전담 처리함수
 }

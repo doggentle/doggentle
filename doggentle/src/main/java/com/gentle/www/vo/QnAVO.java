@@ -7,7 +7,22 @@ public class QnAVO {
 	private int ano, mngno;
 	private String mid, abody, adate;
 
+	// 문의작성용 vo
+	private int tno, gno;
 
+		
+	public int getTno() {
+		return tno;
+	}
+	public void setTno(int tno) {
+		this.tno = tno;
+	}
+	public int getGno() {
+		return gno;
+	}
+	public void setGno(int gno) {
+		this.gno = gno;
+	}
 	public int getAno() {
 		return ano;
 	}
@@ -80,12 +95,14 @@ public class QnAVO {
 	public void setQdate(String qdate) {
 		this.qdate = qdate;
 	}
-	
 	@Override
 	public String toString() {
 		return "QnAVO [qno=" + qno + ", mno=" + mno + ", upqno=" + upqno + ", id=" + id + ", title=" + title + ", body="
-				+ body + ", qdate=" + qdate + "]";
+				+ body + ", qdate=" + qdate + ", ano=" + ano + ", mngno=" + mngno + ", mid=" + mid + ", abody=" + abody
+				+ ", adate=" + adate + ", tno=" + tno + ", gno=" + gno + "]";
 	}
+	
+
 	
 
 

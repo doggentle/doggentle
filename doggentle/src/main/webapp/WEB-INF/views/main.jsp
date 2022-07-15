@@ -23,7 +23,9 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/gDetail/gDetail.js"></script>
 	<script type="text/javascript" src="/www/js/category/category.js"></script>
+	<script type="text/javascript" src="/www/js/category/search.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -136,26 +138,20 @@
 
 	</div>
 	</div>
-  			<!-- 제품 리스트 페이지... -->
-		<form method="POST" action="/www/productDetail.dog" name="frm" id="frm">
-			<input type="hidden" name="gno" >
-		</form>
-		<div class="w3-col w3-margin-top" id="gPanel">
-		</div>
+
     <br/>
 <div class="container">
 	<div class="box65 w3-center">
     <br/>
-                     <form class="">
                         <div class="w3-container">
                                  <i class="fas fa-search h4 text-body"></i>
                              <!--end of col-->
-                                 <input class="search" type="search" placeholder="찾으시는 상품을 입력해주세요">
+                                 <input class="search" type="search" id="keyword" name="keyword" placeholder="찾으시는 상품을 입력해주세요">
                              <!--end of col-->
-                                 <button class="schbtn btn btn-lg btn-success w3-hover-green" type="submit">Search</button>
+                             	<input type="hidden" name="gname" id="gname" >
                              <!--end of col-->
+                                 <button class="schbtn btn btn-lg btn-success w3-hover-green" id="srcbtn">Search</button>
                         </div>
-                     </form>
 	</div>
 </div>
 
@@ -164,6 +160,18 @@
 <div class="container">
 	<hr>
 	<div class="row">
+	  			<!-- 제품 리스트 페이지... -->
+		<div>
+			<h1>검색된 상품</h1>
+			<hr>
+		</div>
+		<form method="POST" action="/www/gDetail/gDetail.dog" name="frm" id="frm">
+			<input type="hidden" name="gno"  id="gno" value="">
+			<input type="hidden" id="schstr" name="schstr" value="">
+		</form>
+
+		<div class="w3-col w3-margin-top" id="gPanel"></div>
+		<div class="w3-col w3-margin-top" id="sPanel"></div>
 	<div>
 		<h1>새로운 상품</h1>
 	</div>

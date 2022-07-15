@@ -21,7 +21,7 @@ import com.gentle.www.vo.GDetailVO;
 		
 		@RequestMapping("/gDetail.dog")
 		public ModelAndView GoodsDetail(ModelAndView mv, GDetailVO gVO) {
-			GDetailVO gno = gDao.gDetInfo(gVO.getGno());
+			gVO = gDao.gDetInfo(gVO.getGno());
 			mv.addObject("DATA", gVO);
 			mv.setViewName("gDetail/gDetail");
 			

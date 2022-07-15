@@ -7,11 +7,19 @@
 		SELECT
 		    id, mail, isshow, sumpoint spoint
 		FROM
-		    member, point
+		    member m, point p
+		WHERE
+		    id = #{id}
+		    AND m.mno = p.mno
+	</select>
+	<select id="getMember" resultType="mVO" parameterType="string">
+		SELECT
+		    mail, pw, bdate, jdate 
+		FROM
+		    member
 		WHERE
 		    id = #{id}
 	</select>
-	
 	<select id="getCartList" resultType="gVO" parameterType="string">
 		SELECT
 		   gname, price, savename, dir
@@ -49,5 +57,26 @@
 		    )
 		WHERE
 		    rownum between 1 and 3
+	</select>
+	
+	<select id="getMemberCheck" resultType="int" parameterType="mVO">
+		SELECT
+			COUNT(*)
+		FROM
+			MEMBER
+		WHERE
+			id = #{id}
+			AND pw = #{pw}
+	</select>
+	
+	
+	<select id="myAddressList" resultType="adVO" parameterType="string">
+		SELECT
+		    adno, who, a.mno mno, pno, adrs, contact, isuse
+		FROM
+		    address a, member m
+		WHERE
+		    a.mno = m.mno
+		    AND id = #{id}
 	</select>
 </mapper> 

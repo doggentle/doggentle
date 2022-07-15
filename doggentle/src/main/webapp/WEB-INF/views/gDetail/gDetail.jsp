@@ -92,7 +92,7 @@
 </div>
 </header>
 	 <form method="POST" action="" id="frm" name="frm">
-	 	<input type="hidden" name="gno" id="sgno" value="${sgno}">
+	 	<input type="hidden" name="sgno" id="sgno" value="${sgno}">
 	 </form>
 <div class="container">
 		<div class="gcard">
@@ -101,7 +101,7 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="/www${DATA.dir}${DATA.savename}" style="height:400px;"/></div>
 						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
@@ -116,8 +116,10 @@
 						</ul>
 						
 					</div>
+					
 					<div class="gdetails col-md-6">
-						<h3 class="product-title" id="gname" value="${data.gname}">${data.gname}</h3>
+					
+						<h3 class="product-title" id="gname">상품명 : ${DATA.gname}</h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -128,10 +130,10 @@
 							</div>
 							<span class="review-no">41 reviews</span>
 						</div>
-						<h4 class="price">제품코드 : <span id="gno" name="gno" value="100001">100001</span></h4>						
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-						<h4 class="price">가격 : <span id="price" name="price" value="${data.price}">${data.price}</span></h4>
-						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" value="${data.stock}">${data.stock}</span></h5>
+						<h4 class="price">제품코드 : ${DATA.gno}</h4>						
+						<p class="product-description">${DATA.gdetail}</p>
+						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}</span></h4>
+						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" >${DATA.stock}</span></h5>
                     <div class="qsection" style="padding-bottom:20px;">
                         <h6 class="title-attr"><small>수량</small></h6>                    
                         <div>
@@ -157,25 +159,11 @@
                     </ul>
                     <div style="width:100%;border-top:1px solid silver">
                         <p style="padding:15px;">
-								<span id="gDetail">${data.gDetail}</span>
+								<span id="gDetail">${DATA.gdetail}</span>
                         </p>
                         <small>
                             <ul>
-                                <li>Super AMOLED capacitive touchscreen display with 16M colors</li>
-                                <li>Available on GSM, AT T, T-Mobile and other carriers</li>
-                                <li>Compatible with GSM 850 / 900 / 1800; HSDPA 850 / 1900 / 2100 LTE; 700 MHz Class 17 / 1700 / 2100 networks</li>
-                                <li>MicroUSB and USB connectivity</li>
-                                <li>Interfaces with Wi-Fi 802.11 a/b/g/n/ac, dual band and Bluetooth</li>
-                                <li>Wi-Fi hotspot to keep other devices online when a connection is not available</li>
-                                <li>SMS, MMS, email, Push Mail, IM and RSS messaging</li>
-                                <li>Front-facing camera features autofocus, an LED flash, dual video call capability and a sharp 4128 x 3096 pixel picture</li>
-                                <li>Features 16 GB memory and 2 GB RAM</li>
-                                <li>Upgradeable Jelly Bean v4.2.2 to Jelly Bean v4.3 Android OS</li>
-                                <li>17 hours of talk time, 350 hours standby time on one charge</li>
-                                <li>Available in white or black</li>
-                                <li>Model I337</li>
-                                <li>Package includes phone, charger, battery and user manual</li>
-                                <li>Phone is 5.38 inches high x 2.75 inches wide x 0.13 inches deep and weighs a mere 4.59 oz </li>
+<img src="https://img.junglebook.co.kr/scm/desc/vNrKvQjBMyoKFWMri1sJOKi77U3rIkbYSULPTdOF.jpeg">
                             </ul>  
                         </small>
                     </div>

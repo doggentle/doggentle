@@ -17,18 +17,22 @@ public class GDetailDao {
 		return sqlSession.selectOne("gSQL.gDetInfo", gno);
 	}
 	
-	//타입이 다른 2개이상의 데이터가 꺼내지므로 VO에 담는다
+	//대카테고리
 	public List<GDetailVO> getStratCate(){
 		
 		return sqlSession.selectList("gSQL.startCate");
 	}
-	
+	//카테고리
 	public List<GDetailVO> getCateList(GDetailVO gVO){
 		
 		return sqlSession.selectList("gSQL.cateList", gVO);
 	}
-	// 상품 리스트 조회 전담 처리함수
+	// 상품리스트 검색 조회 전담 처리함수
 	public List<GDetailVO> getProductList(GDetailVO gVO){
 		return sqlSession.selectList("gSQL.gList", gVO);
+	}
+	// 키워드 검색 전담 처리함수
+	public List<GDetailVO> srcGoods(GDetailVO gVO){
+		return sqlSession.selectList("gSQL.srcGoods", gVO);
 	}
 }

@@ -48,4 +48,39 @@
 		ORDER BY
 			tno DESC
 	</select>
+	
+	<select id="getLabels" resultType="mgVO">
+		SELECT substr(mon, 4, 2) label
+		FROM (
+		        SELECT ADD_MONTHS (sysdate, LEVEL - 6) mon
+		        FROM DUAL
+		        CONNECT BY rownum &lt; 7
+		    )
+	</select>
+	
+	<select id="getQNA" resultType="qVO">
+		SELECT q.qno, q.title, q.body, q.mno, q.qdate, a.qno ano, a.body abody, a.mno mngno, a.qdate adate, m.id, mng.id mid
+		FROM qna q, qna a, member m, member mng
+		WHERE q.qno = a.upqno(+)
+		AND q.title is not null
+		AND q.mno = m.mno
+		AND a.mno = mng.mno(+)
+	</select>
+	
+	<select id="getMno" parameterType="string" resultType="int">
+		SELECT mno
+		FROM member
+		WHERE id = #{id}
+	</select>
+	
+	<insert id="insertAnswer" parameterType="qVO">
+		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(qno) + 1, 10001) FROM qna
+		</selectKey>
+			INSERT INTO
+				qna(qno, body, upqno, mno)
+			VALUES (
+				#{qno}, #{body}, #{upqno}, #{mno}
+			)
+	</insert>
 </mapper>

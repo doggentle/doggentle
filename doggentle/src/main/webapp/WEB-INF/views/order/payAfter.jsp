@@ -80,10 +80,13 @@
 	</nav>
 </div>
 </header>
-<div class="w3-content" style="max-width:1200px;">
-	<p>${data.aid}</p>
-	<p>${data.tid}</p>
-	<p>${data.cid}</p>
+<div class="w3-content w3-center" style="max-width:1200px; margin-top:10%;">
+	<div>감사합니다!</div>
+	<div>결제가 완료 되었습니다.</div>
+	<div class="w3-radius w3-card w3-margin w3-col m6" style="text-align:center; float:none;">
+			<button id="goHome" style="float:none;" class="w3-button w3-blue w3-col half">홈으로 돌아가기</button>
+			<button id="goMyPage" style="float:none;" class="w3-button w3-light-blue w3-col half">마이페이지</button>
+	</div>
 </div>
 <!-- Intro
 	================================================== -->

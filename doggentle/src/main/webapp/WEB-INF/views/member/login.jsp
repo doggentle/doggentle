@@ -41,7 +41,7 @@
 					    <a class="box ml10" href="/www/member/findpw.dog">비밀번호 찾기</a>
 					</div>	
 					<div class="cpntainer w3-margin-top">
-						<a class="box ml10" id="test">test</a>
+						<a class="box ml10" id="test">kakaoloUnlink</a>
 						<a class="custpage1" href="${pageContext.request.contextPath}/logout">로그아웃<a href="${deleteTokenUrl}"></a></a>
 					</div>	
 				</form>
@@ -55,7 +55,7 @@ console.log(Kakao.isInitialized()); 			//초기화가 잘 되었을 경우 콘�
 function loginWithKakao() {
 	Kakao.Auth.login({
 	    success: function(authObj) {
-	    	alert(JSON.stringify(authObj))
+	    	alert(JSON.stringify(authObj));
 	    },
 	    fail: function(err) {
 	    	alert(JSON.stringify(err))

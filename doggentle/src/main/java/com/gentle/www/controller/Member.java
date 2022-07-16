@@ -140,6 +140,11 @@ public class Member {
 	public ModelAndView fnidProc(ModelAndView mv, MemberVO mVO, RedirectView rv) {
 		String mail = mVO.getMail();
 		mVO = mDao.findidProc(mail);
+		if(mVO.getId()==null) {
+			mv.addObject("MSG", "일치하는 아이디가 없습니다.");
+			mv.setViewName("/member/findid");
+			return mv;
+		}
 		mSrvc.gmailReady();
 		mSrvc.fnidSend(mVO);
 		rv.setUrl("/www/member/login.dog");
@@ -153,11 +158,23 @@ public class Member {
 	}
 	@RequestMapping("/fnpwProc.dog")
 	public ModelAndView fnpwProc(ModelAndView mv, MemberVO mVO, RedirectView rv) {
-		String id = mVO.getId();
-		String mail = mVO.getMail();
-		
 		String pw = mDao.findpwProc(mVO);
+		int cnt = Integer.parseInt(pw);
+		if(cnt==0) {//입력한 아이디 메일이 틀릴 경우
+			mv.addObject("MSG", "입력한 메일주소가 올바르지 않습니다.");
+			mv.setViewName("/member/findpw");
+			return mv;
+		}
+		CodeGenerate cdg = new CodeGenerate();
+		int code = cdg.codeTwo();
+		pw = code+"";
 		mVO.setPw(pw);
+		int cnt2 = mDao.findpwChange(mVO);
+		if(cnt2==0) {//6코드 비번 변경작업이 안 되었을때
+			mv.addObject("MSG", "통신오류, 잠시후 다시 시도해 주세요.");
+			mv.setViewName("/member/findpw");
+			return mv;
+		}
 		mSrvc.gmailReady();
 		mSrvc.fnpwSend(mVO);
 		rv.setUrl("/www/member/login.dog");

@@ -6,11 +6,17 @@ import java.util.Date;
 
 public class MemberVO {
 	private int mno, tcnt, rcnt, spoint;
-	private String mail, id, pw, bdate, gen, jdate, isshow, money;
+	private String mail, id, pw, bdate, gen, jdate, isshow, money, spw;
 	//private Date birth, join;
 	
 
 	
+	public String getSpw() {
+		return spw;
+	}
+	public void setSpw(String spw) {
+		this.spw = spw;
+	}
 	public int getMno() {
 		return mno;
 	}

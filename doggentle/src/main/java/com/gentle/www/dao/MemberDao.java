@@ -58,6 +58,29 @@ public class MemberDao {
 	public String findpwProc(MemberVO mVO) {
 		return sqlSession.selectOne("mSQL.getFindpw", mVO);
 	}
+	//findpwProc 이후 비번 변
+	public int findpwChange(MemberVO mVO) {
+		return sqlSession.update("mSQL.pwChange", mVO);
+	}
+	
+	//Getting Customer Information
+	public MemberVO getCustInfo(String id) {
+		return sqlSession.selectOne("mSQL.customerInfo", id);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

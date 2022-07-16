@@ -21,6 +21,7 @@
 </script>
 </head>
 <body>
+	<input id="msg" type="hidden" value="${MSG}">
 	<div class="w3-content w3-center">
 		<a href="/www/" ><img src="/www/img/logo.png" class="blogo"></a>
 		<div class="container w3-center w3-padding">

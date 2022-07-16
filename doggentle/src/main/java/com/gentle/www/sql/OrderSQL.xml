@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="oSQL"> 
+	<sql id="cartList">
+		<![CDATA[
+			SELECT
+				cno, c.gno gno, quantity quant, gname, gdetail, price, g.ino ino, savename, dir
+			FROM
+				cart c, goods g, img i
+			WHERE
+				c.gno = g.gno
+				AND
+				g.ino = i.ino
+				AND
+				c.isshow = 'Y'
+	            AND
+	            i.purpose = 'gds'
+				AND
+		]]>
+	</sql>
+	
+	<select id="myCartList" resultType="oVO" parameterType="string">
+		<include refid="cartList" />
+			mno = (
+				SELECT
+					mno
+				FROM
+					member
+				WHERE
+					id = #{id}
+				)
+	</select>
+	
+	<select id="estCartList" resultType="oVO" parameterType="List">
+		<include refid="cartList" />
+		cno IN
+		<foreach collection="list" item="cno" open="(" close=")"  separator=",">
+			#{cno}
+		</foreach>
+	</select>
+	
+	<update id="delCartCase" parameterType="int">
+		UPDATE
+			cart
+		SET
+			isshow = 'N'
+		WHERE
+			cno = #{cno}
+	</update>
+	<select id="myAddrList" resultType="adVO" parameterType="string">
+		SELECT
+			adno, who, a.mno mno, pno, adrs, contact
+		FROM
+			address a, member m
+		WHERE
+			a.mno = m.mno
+			AND isuse = 'Y'
+			AND id = #{id}
+	</select>
+</mapper> 

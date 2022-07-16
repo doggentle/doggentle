@@ -47,7 +47,21 @@
 				</form>
 			</div>
 		</div>
-	</div>	
+	</div>
+<c:if test="${not empty MSG}">
+<div id="msgWin" class="w3-modal" style="display: block">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-blue"> 
+		        <span class="w3-button w3-display-topright" id="msgClose">&times;</span>
+		        <h2>알림 메세지</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-margin-top w3-margin-bottom" id="msg">${MSG}</h3>
+	    	</div>
+	    </div>
+ 	</div>
+</c:if>
+	
 <script>
 Kakao.init('f603e5ca480d29a16da9bf0bb94cf55e'); //고유 키값을 입력해야 한다
 console.log(Kakao.isInitialized()); 			//초기화가 잘 되었을 경우 콘솔에 'true' 출력

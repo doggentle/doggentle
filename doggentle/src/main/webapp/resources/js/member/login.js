@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 	
 	$('#jbtn').click(function(){
-		$(location).attr(href, '/www/member/join.dog')
+		$(location).attr(href, '/www/member/join.dog');
 	});
 	
 	$('#kabtn').click(function(){
@@ -23,6 +23,9 @@ $(document).ready(function() {
 		unlinkApp();
 	});
 	
+	$('#msgClose').click(function(){
+		$('#msgWin').css('display', 'none');
+	});
 	
 });
 	

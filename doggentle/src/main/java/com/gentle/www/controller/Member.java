@@ -38,20 +38,22 @@ public class Member {
 		int cnt = mDao.getLogin(mVO);
 		String ck = mDao.ckLogin(mVO.getId());
 		
-		System.out.println("ck : " + ck);
 		
 		if(cnt == 1) {
-			if(ck.equals("cst")) { // 회원일 경우
-				session.setAttribute("SID", mVO.getId());
-				
-				rv.setUrl("/www/");
-			} else { // 관리자일 경우
+			System.out.println("ok");
+			if(ck.equals("mng")) { 
 				session.setAttribute("MID", mVO.getId());
 				
 				rv.setUrl("/www/manager/main.dog");
+			} else { 
+				session.setAttribute("SID", mVO.getId());
+				
+				rv.setUrl("/www/");	
 			}
 		} else { // 로그인 실패
-			rv.setUrl("/www/member/login.dog");
+			mv.addObject("MSG", "회원정보가 일치하지 않음");
+			mv.setViewName("member/login");
+			return mv;
 		}
 		mv.setView(rv);
 		

@@ -7,6 +7,11 @@
 	background-repeat:no-repeat;
 }
 
+.goods {
+	display: flex;
+	align-items: center;
+}
+
 .qna {
 	padding: 10px 0px 10px 0px;
 }

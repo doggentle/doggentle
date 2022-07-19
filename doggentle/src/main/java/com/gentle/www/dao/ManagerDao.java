@@ -41,5 +41,25 @@ public class ManagerDao {
 	public int addAnswer(QnAVO qVO) {
 		return sqlSession.insert("mgSQL.insertAnswer", qVO);
 	}
+	
+	// 관리자 성별 차트 data
+	public List<ManagerVO> getGenData() {
+		return sqlSession.selectList("mgSQL.genData");
+	}
+	
+	// 관리자 회원가입 차트 data
+	public List<ManagerVO> getMonthJoinData() {
+		return sqlSession.selectList("mgSQL.monthJoinData");
+	}
+	
+	// 관리자 상품리스트
+	public List<ManagerVO> getMngGoodsList() {
+		return sqlSession.selectList("mgSQL.mngGoodsList");
+	}
+	
+	// 관리자 상품정보
+	public List<ManagerVO> getMngGoodsInfo(int gno) {
+		return sqlSession.selectOne("mgSQL.mngGoodsInfo", gno);
+	}
 
 }

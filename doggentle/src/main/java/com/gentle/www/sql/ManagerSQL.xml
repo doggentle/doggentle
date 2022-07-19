@@ -62,9 +62,10 @@
 		SELECT q.qno, q.title, q.body, q.mno, q.qdate, a.qno ano, a.body abody, a.mno mngno, a.qdate adate, m.id, mng.id mid
 		FROM qna q, qna a, member m, member mng
 		WHERE q.qno = a.upqno(+)
-		AND q.title is not null
+        AND m.isshow not like 'mng'
 		AND q.mno = m.mno
 		AND a.mno = mng.mno(+)
+        order by qdate asc
 	</select>
 	
 	<select id="getMno" parameterType="string" resultType="int">
@@ -78,9 +79,59 @@
 			SELECT NVL(MAX(qno) + 1, 10001) FROM qna
 		</selectKey>
 			INSERT INTO
-				qna(qno, body, upqno, mno)
+				qna(qno, title, body, upqno, mno)
 			VALUES (
-				#{qno}, #{body}, #{upqno}, #{mno}
+				#{qno}, #{title}, #{body}, #{upqno}, #{mno}
 			)
 	</insert>
+	
+	<select id="genData" resultType="mgVO">
+		SELECT count(*) data
+		FROM member
+		WHERE not isshow = 'mng'
+		GROUP BY gen
+	</select>
+	
+	<select id="monthJoinData" resultType="mgVO">
+		SELECT data, month
+		FROM (
+		            SELECT substr(ADD_MONTHS (sysdate, LEVEL - 6), 0, 5)  month
+		            FROM DUAL
+		            CONNECT BY rownum &lt; 7
+		        ) m1
+		        ,(
+		            select substr(jdate, 0, 5) j, count(*) data
+		            FROM member
+		            WHERE NOT isshow = 'mng'
+		            group by substr(jdate, 0, 5)
+		        ) m2
+		WHERE m1.month = m2.j(+) 
+		ORDER BY month
+	</select>
+	
+	<select id="mngGoodsList" resultType="mgVO">
+		SELECT g.gno, caname, gname, savename, price, hits, stock, issell
+		FROM goods g, category c, img i
+		WHERE
+		    g.cano = c.cano
+		    AND g.ino = i.ino
+		    AND purpose = 'gds'
+	</select>'
+	
+	<select id="mngGoodsInfo" parameterType="int" resultType="mgVO">
+		SELECT
+		    gno, g.cano, gname, gdetail, g.ino, i.savename, price, stock, issell, large, middle, small
+		FROM
+		    goods g, img i, (
+		        SELECT c.cano small, g.cano middle, z.cano large
+		        FROM category c, category g, category z
+		        WHERE
+		        g.cano = c.upno
+		        AND z.cano = g.upno
+		    ) cate
+		WHERE
+		    gno = ${gno}
+		    AND cate.small = g.cano
+		    AND g.ino = i.ino
+	</select>
 </mapper>

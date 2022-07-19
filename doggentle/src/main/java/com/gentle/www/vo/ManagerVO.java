@@ -1,41 +1,82 @@
 package com.gentle.www.vo;
 
 public class ManagerVO {
-	private int mno, tno, ino, price, quantity;
-	private String gname, label;
-	
-	private int qno, upqno;
-	private String title, body, qdate;
+	private int gno, mno, tno, ino, price, quantity, data, hits, stock, large, middle, small;
+	private String caname, gname, savename, label, month, isshow, issell;
 
-	public int getQno() {
-		return qno;
+	
+	
+	public int getLarge() {
+		return large;
 	}
-	public void setQno(int qno) {
-		this.qno = qno;
+	public void setLarge(int large) {
+		this.large = large;
 	}
-	public int getUpqno() {
-		return upqno;
+	public int getMiddle() {
+		return middle;
 	}
-	public void setUpqno(int upqno) {
-		this.upqno = upqno;
+	public void setMiddle(int middle) {
+		this.middle = middle;
 	}
-	public String getTitle() {
-		return title;
+	public int getSmall() {
+		return small;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setSmall(int small) {
+		this.small = small;
 	}
-	public String getBody() {
-		return body;
+	public String getIssell() {
+		return issell;
 	}
-	public void setBody(String body) {
-		this.body = body;
+	public void setIssell(String issell) {
+		this.issell = issell;
 	}
-	public String getQdate() {
-		return qdate;
+	public int getGno() {
+		return gno;
 	}
-	public void setQdate(String qdate) {
-		this.qdate = qdate;
+	public void setGno(int gno) {
+		this.gno = gno;
+	}
+	public int getHits() {
+		return hits;
+	}
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public String getCaname() {
+		return caname;
+	}
+	public void setCaname(String caname) {
+		this.caname = caname;
+	}
+	public String getSavename() {
+		return savename;
+	}
+	public void setSavename(String savename) {
+		this.savename = savename;
+	}
+	public String getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(String isshow) {
+		this.isshow = isshow;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public int getData() {
+		return data;
+	}
+	public void setData(int data) {
+		this.data = data;
 	}
 	public String getLabel() {
 		return label;

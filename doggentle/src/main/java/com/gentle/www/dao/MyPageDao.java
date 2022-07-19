@@ -20,7 +20,7 @@ public class MyPageDao {
 	
 	public List<GDetailVO> getCartList(String id) {
 		return sqlSession.selectList("mpSQL.getCartList", id);
-	}
+	} 
 	
 	public List<GDetailVO> getTransacList(String id){
 		return sqlSession.selectList("mpSQL.getTransacList", id);

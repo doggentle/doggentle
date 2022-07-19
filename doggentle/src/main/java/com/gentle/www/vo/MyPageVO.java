@@ -27,7 +27,7 @@ public class MyPageVO {
 		return upno;
 	}
 	public void setUpno(int upno) {
-		this.upno = upno;
+		this.upno = upno; 
 	}
 	public String getDate() {
 		return odate;

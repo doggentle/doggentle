@@ -14,7 +14,7 @@ public class MemberVO {
 	public String getSpw() {
 		return spw;
 	}
-	public void setSpw(String spw) {
+	public void setSpw(String spw) { 
 		this.spw = spw;
 	}
 	public int getMno() {

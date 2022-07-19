@@ -76,7 +76,7 @@
 		WHERE
 			id = #{id}
 			AND NOT pw = #{spw}
-	</update>
+	</update> 
 	
 	<select id="myAddressList" resultType="adVO" parameterType="string">
 		SELECT

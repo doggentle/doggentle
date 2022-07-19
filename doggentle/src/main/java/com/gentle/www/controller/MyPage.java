@@ -69,7 +69,7 @@ public class MyPage {
 		mv.setViewName("myPage/myattend");
 		return mv;
 	}
-	
+	 
 	// 회원정보 확인하는 뷰
 	@RequestMapping("/memberinfopwck.dog")
 	public ModelAndView memberInfo(ModelAndView mv) {

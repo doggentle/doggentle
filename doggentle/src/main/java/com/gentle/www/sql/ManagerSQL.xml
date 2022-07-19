@@ -116,9 +116,9 @@
 		    g.cano = c.cano
 		    AND g.ino = i.ino
 		    AND purpose = 'gds'
-	</select>'
+	</select>
 	
-	<select id="mngGoodsInfo" parameterType="int" resultType="mgVO">
+	<select id="mngGoodsInfo" parameterType="String" resultType="mgVO">
 		SELECT
 		    gno, g.cano, gname, gdetail, g.ino, i.savename, price, stock, issell, large, middle, small
 		FROM
@@ -130,7 +130,7 @@
 		        AND z.cano = g.upno
 		    ) cate
 		WHERE
-		    gno = ${gno}
+		    gno = #{gno}
 		    AND cate.small = g.cano
 		    AND g.ino = i.ino
 	</select>

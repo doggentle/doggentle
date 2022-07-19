@@ -58,7 +58,7 @@ public class ManagerDao {
 	}
 	
 	// 관리자 상품정보
-	public List<ManagerVO> getMngGoodsInfo(int gno) {
+	public ManagerVO getMngGoodsInfo(String gno) {
 		return sqlSession.selectOne("mgSQL.mngGoodsInfo", gno);
 	}
 

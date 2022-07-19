@@ -159,20 +159,19 @@ public class Manager {
 		return mv;
 	}
 	@RequestMapping("/addgoods.dog")
-	public ModelAndView managerAddGodds(ModelAndView mv, int gno) {
+	public ModelAndView managerAddGodds(ModelAndView mv, String gno) {
 		List<GDetailVO> list = gDao.getStratCate();
 		
 		mv.addObject("LIST", list);
 		System.out.println(gno);
 		
 		mv.setViewName("manager/mngaddgoods");
-		if(gno == 0) {			
+		if(gno.equals(null) || gno == "") {			
 			return mv;
 		} else {
-			List<ManagerVO> info = mgDao.getMngGoodsInfo(gno);
-			mv.addObject("INFO", info);
+			ManagerVO mgVO = mgDao.getMngGoodsInfo(gno);
+			mv.addObject("INFO", mgVO);
 		}
-		
 		return mv;
 	}
 	

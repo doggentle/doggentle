@@ -30,7 +30,7 @@ $(document).ready(function(){
 	});
 	
 	$('#okbtn').click(function(){
-		var stno = $('#ordno').val();
+		var stno = $('#ogtno').val();
 		
 		$.ajax({
 			url: '/www/qna/getOrderGoodsList.dog',
@@ -44,7 +44,7 @@ $(document).ready(function(){
 					var gno = data.gno;
 					var name = data.name;
 					
-					$('#glist').append('<option class="w3-center" value="' + gno + '">' + name + '</option>');
+					$('#glist').append('<option class="w3-center" value="' +gno + '">' + name + '</option>');
 				}
 			},
 			error: function(){

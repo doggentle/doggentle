@@ -33,10 +33,8 @@ public class MyPageDao {
 		return sqlSession.update("mpSQL.changePw", mVO);
 	}
 	
-	//내 문의 리스트 가져오기
-	public List<QnAVO> getQnaList(String id) {
-		return sqlSession.selectList("mpSQL.qnaList", id);	
-	}
+	
+	
 	
 	// 내 주소록 리스트 가져오기
 	public List<AddressVO> getMyAddrList(String id){

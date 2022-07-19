@@ -84,10 +84,10 @@
 		<li>
 		<a href="/www/order/cart.dog">장바구니</a>
 		</li>
-</c:if>
 		<li>
 		<a href="/www/qna/qnaWrite.dog">문의하기</a>
 		</li>
+</c:if>
 	</ul>
 	</nav>
 </div>

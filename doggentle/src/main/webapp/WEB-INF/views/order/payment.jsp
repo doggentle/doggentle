@@ -148,7 +148,7 @@
 </c:forEach>
 <c:forEach var="addr" items="${ADDLIST}">
 				<div class="w3-container w3-border w3-round w3-white" style="padding:7.5px; height:115px;">
-						<div class="w3-col m3 w3-center w3-border-right" style="height:100px">
+						<div class="w3-center w3-border-right" style="height:100px">
 							<input class="w3-margin-right" type="checkbox" name="adno" value="${addr.adno}">
 							<div style="display:inline-block; width:130px; height:100px;">
 									<h4>받는사람 : ${addr.who}</h4>

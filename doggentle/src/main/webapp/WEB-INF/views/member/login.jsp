@@ -68,8 +68,49 @@ console.log(Kakao.isInitialized()); 			//초기화가 잘 되었을 경우 콘�
 
 function loginWithKakao() {
 	Kakao.Auth.login({
-	    success: function(authObj) {
-	    	alert(JSON.stringify(authObj));
+	    success: (auth) =>{
+	    	Kakao.Auth.setAccessToken(auth.access_token);
+	    	Kakao.API.request({
+	    		url: '/v2/user/me',
+	    		data:{
+	    			property_keys: [ 'properties.nickname',
+	    							'kakao_account.email',
+	    							'kakao_account.birthday',
+	    							'kakao_account.gender',],
+	    		},
+	    		success: function(response){
+	    				if(response.id != ''){
+		    				//var knickname = response.properties.nickname;
+		    				var kid = response.id;
+		    				var kmail = response.kakao_account.email;
+		    				var kbirth = response.kakao_account.birthday;
+		    				var kgen = response.kakao_account.gender;
+		    				$.ajax({
+		    					url:'/www/member/kakaoIdCheck.dog',
+		    					type:'post',
+		    					dataType:'json',
+		    					data:{
+		    						//nick: knickname,
+		    						id: kid,
+		    						mail: kmail,
+		    						gen: kgen,
+		    						bdate: kbirth
+		    					},
+		    					success:function(data){
+		    						if(data.result=='OK'){
+		    							$(location).attr('href', '/www/');
+		    						}
+		    					},
+		    					error:function(error){
+		    						alert('통신에러, 다시 시도해 주세요.');
+		    					}
+		    				});
+	    				}
+	    		},
+	    		fail: function(error){
+	    			console.log(error);
+	    		},
+	    	});
 	    },
 	    fail: function(err) {
 	    	alert(JSON.stringify(err))

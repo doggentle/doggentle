@@ -23,6 +23,8 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
+	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -40,6 +42,9 @@
 	<link rel="shortcut icon" href="/www/img/favicon.ico">
 </head>
 <body>
+	<form name="fm" id="frm" method="POST" action="">
+		<input type="hidden" name="id" value="${SID}">	
+	</form>
 	<header id="header" class="navbar navbar-inverse navbar-fixed-top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
@@ -115,7 +120,7 @@
 	         					<dd><a href="">주문내역</a></dd>
 	         					<dd><a href="">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
-	         					<dd><a href="">문의 내역</a></dd>
+	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
 	         					<dd><a href="">리뷰관리</a></dd>
 	         					<dd><a href="">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
@@ -132,26 +137,26 @@
 	  <div class="w3-col m9">
 	  	<div class="w3-row-padding">
 	       	<div class="w3-col m12">
-	          	<div class="w3-container w3-card w3-round w3-white">
-	            	<div class="w3-col m9 w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
-	            		<div>
-	            			<h3>아이디 : ${SID}</h3>
-	            			<h3>${MyInfo.mail}</h3>
-							<button class="btn w3-padding-large w3-large">회원정보 수정</button>	            		
-						</div>
-	            	</div>
-	            		<div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
-	            			<div class="w3-col m6">
-		            			<h3>${MyInfo.isshow}</h3>
-		            			<h5>회원등급</h5>
-	            			</div>
-	            			<div class="w3-col m6 w3-border-left">
-		            			<h3>${MyInfo.money}P</h3>
-		            			<h5>포인트</h5>
-	            			</div>
-	            		</div>
-	          	</div>
+	        <div class="w3-col w3-white w3-card-4 w3-round-large pd15">
+			<div class="w3-col w3-light-grey w3-center w3-border">
+				<div class="w3-col m1 w3-border-right">문의번호</div>
+				<div class="w3-col m2 w3-border-right">문의상품</div>
+				<div class="w3-col m6 w3-border-right">제목</div>
+				<div class="w3-col m1 w3-border-right">상품번호</div>
+				<div class="w3-col m2 w3-border-right">등록일</div>
+			</div>
+			
+<c:forEach var="data" items="${QNALIST}">
+				<div class="w3-col m1 w3-border-right">${data.qno}</div>
+				<div class="w3-col m2 w3-border-right">${data.name}</div>
+				<div class="w3-col m6 w3-border-right">${data.title}</div>
+				<div class="w3-col m1 w3-border-right">${data.gno}</div>
+				<div class="w3-col m2 w3-border-right">${data.adate}</div>
+
+</c:forEach>
+			</div>
+		<a class="w3-border w3-right w3-blue w3-margin-top" href="/www/qna/qnaWrite.dog">문의하기</a>
+		</div>
 	        </div>
 	      </div>
 	  </div>
@@ -159,8 +164,7 @@
 <!-- Middle Column end -->
 	   	</div>
 <!-- Page Container end -->
-	  </div>
-	  
+
 	  
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">

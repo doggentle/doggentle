@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gentle.www.dao.GDetailDao;
@@ -20,12 +21,15 @@ import com.gentle.www.vo.GDetailVO;
 
 		
 		@RequestMapping("/gDetail.dog")
-		public ModelAndView GoodsDetail(ModelAndView mv, GDetailVO gVO) {
+		public ModelAndView GoodsDetail(ModelAndView mv, GDetailVO gVO, int gno) {
 			gVO = gDao.gDetInfo(gVO.getGno());
+			List<GDetailVO> list = gDao.getIntProductList(gno);
+			mv.addObject("LIST", list);
 			mv.addObject("DATA", gVO);
 			mv.setViewName("gDetail/gDetail");
 			
 			return mv;
 		}
+
 
 }

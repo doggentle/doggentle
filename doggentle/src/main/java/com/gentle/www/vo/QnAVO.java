@@ -2,15 +2,27 @@ package com.gentle.www.vo;
 
 public class QnAVO {
 	private int qno, mno, upqno;
-	private String id, title, body, qdate;
+	private String id, title, body, qdate, name;
 	
 	private int ano, mngno;
 	private String mid, abody, adate;
 
 	// 문의작성용 vo
-	private int tno, gno;
+	private int tno, gno, cnt;
 
-		
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getTno() {
 		return tno;
 	}
@@ -51,8 +63,9 @@ public class QnAVO {
 		return adate;
 	}
 	public void setAdate(String adate) {
-		this.adate = adate;
-	}
+	   String[] array = adate.split(" "); 
+	      this.adate = array[0];
+	   }
 	public int getQno() {
 		return qno;
 	}
@@ -98,9 +111,10 @@ public class QnAVO {
 	@Override
 	public String toString() {
 		return "QnAVO [qno=" + qno + ", mno=" + mno + ", upqno=" + upqno + ", id=" + id + ", title=" + title + ", body="
-				+ body + ", qdate=" + qdate + ", ano=" + ano + ", mngno=" + mngno + ", mid=" + mid + ", abody=" + abody
-				+ ", adate=" + adate + ", tno=" + tno + ", gno=" + gno + "]";
+				+ body + ", qdate=" + qdate + ", name=" + name + ", ano=" + ano + ", mngno=" + mngno + ", mid=" + mid
+				+ ", abody=" + abody + ", adate=" + adate + ", tno=" + tno + ", gno=" + gno + ", cnt=" + cnt + "]";
 	}
+	
 	
 
 	

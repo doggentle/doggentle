@@ -26,8 +26,8 @@
 	    <mapper resource="com/gentle/www/sql/GDetailSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/OrderSQL.xml" />
-<!-- 	    <mapper resource="com/gentle/www/sql/QnaSQL.xml" />
- -->	</mappers> 
+		<mapper resource="com/gentle/www/sql/QnaSQL.xml" />
+	</mappers> 
 	
 	
 </configuration>

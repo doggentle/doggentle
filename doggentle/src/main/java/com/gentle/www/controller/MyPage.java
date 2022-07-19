@@ -144,7 +144,15 @@ public class MyPage {
 		return result;
 	}
 	
-	
+	//문의리스트 보기 요청
+	@RequestMapping("/QnaList.dog")
+	public ModelAndView QnaList(ModelAndView mv, HttpSession session, QnAVO qVO) {
+		String id = (String) session.getAttribute("SID");
+		List<QnAVO> qnalist = myDao.getQnaList(id);
+		mv.addObject("QNALIST", qnalist);
+		mv.setViewName("myPage/qnalist");
+		return mv;
+	}
 	
 	
 	

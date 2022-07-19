@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="mpSQL"> 
+	<select id="getMyInfo" resultType="mVO" parameterType="string">
+		SELECT
+        	pno, id, mail, isshow, sumpoint spoint
+  		FROM
+        	member m, point p, (SELECT MAX(pno) pmax FROM point p, member m WHERE id = #{id} AND p.mno = m.mno )
+    	WHERE
+        	pmax = pno
+        	AND p.mno = m.mno
+	</select>
+	<select id="getMember" resultType="mVO" parameterType="string">
+		SELECT
+		    mail, pw, bdate, jdate 
+		FROM
+		    member
+		WHERE
+		    id = #{id}
+	</select>
+	<select id="getCartList" resultType="gVO" parameterType="string">
+		SELECT
+		   gname, price, savename, dir
+		FROM(
+		    SELECT
+		        g.gno, g.gname gname, g.price price, savename, dir
+		    FROM
+		        cart c, member m, goods g, img i
+		    WHERE
+		        m.id = #{id}
+		        AND m.mno = c.mno
+		        AND c.gno = g.gno
+		        AND g.ino = i.ino
+		    ORDER BY cno desc
+		)
+		WHERE rownum between 1 and 3 
+	</select>
+	
+	<select id="getTransacList" resultType="gVO" parameterType="string">
+		SELECT 
+   			 gname, price, quantity, salesdate, adrs, savename, dir
+		FROM
+		    (
+		    SELECT 
+		        g.gname gname, g.price price, t.quantity quantity, t.tdate salesdate, a.adrs adrs, i.savename savename, i.dir dir
+		    FROM
+		        transaction t, goods g, img i, member m, address a
+		    WHERE
+		        m.id = 'eafadfadf'
+		        AND m.mno = t.mno
+		        AND t.gno = g.gno
+		        AND t.adno = a.adno
+		        AND g.ino = i.ino
+		    ORDER BY t.tno desc
+		    )
+		WHERE
+		    rownum between 1 and 3
+	</select>
+	
+	<select id="getMemberCheck" resultType="int" parameterType="mVO">
+		SELECT
+			COUNT(*)
+		FROM
+			MEMBER
+		WHERE
+			id = #{id}
+			AND pw = #{pw}
+	</select>
+	<update id="changePw" parameterType="mVO">
+		UPDATE 
+			member
+		SET
+			pw = #{spw}
+		WHERE
+			id = #{id}
+			AND NOT pw = #{spw}
+	</update> 
+	
+	<select id="myAddressList" resultType="adVO" parameterType="string">
+		SELECT
+		    adno, who, a.mno mno, pno, adrs, contact, isuse
+		FROM
+		    address a, member m
+		WHERE
+		    a.mno = m.mno
+		    AND id = #{id}
+	</select>
+	
+	<select id="qnaList" resultType="qVO" parameterType="qVO">
+		SELECT
+		    qno, g.gname name, title, i.gno gno, qdate
+		FROM
+		    (
+		    SELECT
+		        qno, id, title, gno, qdate
+		    FROM
+		        qna q, member m
+		    WHERE
+		        q.mno = m.mno
+		        and id = ${id}
+		    ) i, goods g
+		WHERE
+		    i.gno = g.gno
+    </select>
+</mapper> 

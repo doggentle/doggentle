@@ -31,6 +31,10 @@ public class GDetailDao {
 	public List<GDetailVO> getProductList(GDetailVO gVO){
 		return sqlSession.selectList("gSQL.gList", gVO);
 	}
+	// 관심상품 리스트 검색 조회 전담 처리함수
+	public List<GDetailVO> getIntProductList(int gno){
+		return sqlSession.selectList("gSQL.igList", gno);
+	}
 	// 키워드 검색 전담 처리함수
 	public List<GDetailVO> srcGoods(GDetailVO gVO){
 		return sqlSession.selectList("gSQL.srcGoods", gVO);

@@ -25,7 +25,8 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
-	<script type="text/javascript" src="/www/js/qna.js"></script>
+	<script type="text/javascript" src="/www/js/qna/qna.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -118,7 +119,7 @@
 	         					<dd><a href="">주문내역</a></dd>
 	         					<dd><a href="">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
-	         					<dd><a href="">문의 내역</a></dd>
+	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
 	         					<dd><a href="">리뷰관리</a></dd>
 	         					<dd><a href="">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
@@ -133,12 +134,7 @@
 	   		 </div>
 <!-- Middle Column -->
 <form name="fm" id="frm" method="POST" action="">
-<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
-<input type="hidden" name="tno" id="tno">
-<input type=hidden name="mno" value="">
-<input type=hidden name="gno" value="">
-
-<input type="hidden" id="uploadCategory" name="uploadCategory" value="qna">
+	<input type="hidden" name="id" value="${SID}">	
 </form>
 
 	  <div class="w3-col m9">
@@ -153,59 +149,35 @@
         <col width=50>
 		<tr>
 			<th>아이디</th>
-			<td>sgk0648</td>
+			<td>${SID}</td>
 		</tr>
 		
 		
 		<tr>
 			<th>주문번호</th>
 			<td>
-			<input type=text name=ordno style="width:25%" class="dsmform" value="">
+			<input type=text id="ordno" style="width:25%" class="dsmform" value="">
 			<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray" style="height: 70%;">주문조회</button>
-			</td>
-		</tr>
-		<tr>
-			<th>답변 받을 이메일</th>
-			<td><input type=text name=email value="sgk0648@gmail.com" class="dsmform" size=26>
-			<span class=noline style="padding-left:10px"></span>
-			</td>
-		</tr>
-		
-		<tr>
-			<th>답변 받을 전화</th>
-			<td>
-			<input type=text name=mobile value="010" size=26 maxlength=13 class="dsmform">
-			<span class=noline style="padding-left:10px"></span>
+				<select class="w3-select w3-border" style="width: 35%" id="glist">				
+					<option disabled selected >문의할 상품 선택</option>
+				</select>
 			</td>
 		</tr>
 
 		<tr>
 			<th>제목</th>
-			<td><input type=text name=subject style="width:97%" label="제목" class="dsmform" value=""></td>
+			<td><input type=text id="title" style="width:97%" label="제목" class="dsmform" value=""></td>
 		</tr>
 		
 		<tr>
 			<th>내용</th>
 			<td>
 
-			<textarea name=contents style="width:97%;height:100px;" class="dsmform" label="내용"></textarea>
+			<textarea id="contents" style="width:97%;height:100px;" class="dsmform" label="내용" value=""></textarea>
 
 		</td>
 		</tr>
-		<tr>
-	
-			<th>첨부파일</th>	
-				<td id="filebox" style="width: 50px;">
-					<input type=file name=file value=""size=1 class="upfile">
-				</td>
-		</tr>
-		<tr>
-				<th>Preview</th>
-			<th id="previewbox" style="display: none;">
-				<div class="w3-col m10 w3-center" id="preview">
-				</div>
-			</th>
-		</tr>
+
 		
 		</table>
 	</div></div>
@@ -217,36 +189,39 @@
       <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('id01').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
-        <h2>주문 내역</h2>
+        <h2 class="w3-center">${SID} 님의 주문 내역</h2>
       </header>
       <div class="w3-container">
 <div class="w3-col w3-white w3-card-4 w3-round-large pd15">
 			<div class="w3-col w3-light-grey w3-center w3-border">
 				<div class="w3-col m3">
-					<div class="w3-col m5 w3-border-right">주문일자</div>
-					<div class="w3-col m6 w3-border-right">주문번호</div>
+					<div class="w3-col m6 w3-border-right">주문일자</div>
+					<div class="w3-col m5 w3-border-right">주문번호</div>
 				</div>
 				<div class="w3-col m4 w3-border-right">상품</div>
 				<div class="w3-col m2 w3-border-right">상품번호</div>
 				<div class="w3-col m2 w3-border-right">주문자</div>
 				<div class="w3-col m1">선택</div>
 			</div>
+			
 <c:forEach var="data" items="${LIST}">
 			<div class="w3-col w3-white w3-hover-blue w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.tno}">
 				<div class="w3-col m3">
-					<div class="w3-col m5 w3-border-right">${data.tdate}</div>
-					<div class="w3-col m6 w3-border-right">${data.tno}</div>
+					<div class="w3-col m6 w3-border-right">${data.adate}</div>
+					<div class="w3-col m5 w3-border-right">${data.tno}</div>
 				</div>
-				<div class="w3-col m4 w3-border-right">${data.gname}</div>
+				<div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
 				<div class="w3-col m2 w3-border-right">${data.gno}</div>
 				<div class="w3-col m2 w3-border-right">${data.id}</div>
 				<div class="w3-col m1">
-				<input type="radio" name="chk" id="chk" class="w3-radio" value=""> <label for="chk"></label>
-				</div>				
+				<input type="radio" name="seltno" class="w3-radio chksel" id="ogtno" value="${data.tno}">
+				</div>
 			</div>
 </c:forEach>
 		</div>
+				<div class="w3-right w3-margin-top w3-button w3-gray" id="okbtn">확인</div>
       </div>
+
       <div class="w3-center">
 			<div class="w3-bar w3-border w3-round-medium w3-card w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">

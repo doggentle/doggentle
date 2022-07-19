@@ -165,7 +165,6 @@
 	            			<h3 class="w3-col m3 w3-left-align">이 메 일 </h3> 
 	            			<div style="margin-top: 10px">
 	            				<input class="w3-col m5 w3-center-align" type="text" value="${DATA.mail}" readonly> 
-	            				<button class="w3-col m1 w3-margin-left" id="chmail">수정</button> 
 	            			</div>
 	            		</div>
 	            		<div class="w3-row w3-padding ">
@@ -179,13 +178,13 @@
 		            		<div class="w3-row w3-padding ">
 		            			<h3 class="w3-col m3 w3-left-align">새 비밀번호</h3>
 		            			<div style="margin-top: 10px">
-		            				<input class="w3-col m5 w3-center-align" type="password"> 
+		            				<input class="w3-col m5 w3-center-align" type="password" id="newpw"> 
 		            			</div>
 		            		</div>
 		            		<div class="w3-row w3-padding ">
 		            			<h3 class="w3-col m3 w3-left-align">확인 비밀번호</h3>
 		            			<div style="margin-top: 10px"> 
-		            				<input class="w3-col m5 w3-center-align" type="password">
+		            				<input class="w3-col m5 w3-center-align" type="password" id="checkpw">
 		            				<button class="w3-col m1 w3-margin-left" id="changepw">수정</button> 
 		            			</div>
 		            		</div>
@@ -214,9 +213,21 @@
 <!-- Page Container end -->
 	  </div>
 
-<form method="POST" action="/www/myPage/memberinfo.dog" id="frm">
-	<input type="hidden" id="" name="" value="">
-</form>
+
+<input type="hidden" id="exist" name="pw" value="">
+<input type="hidden" id="change" name="" value="">
+ 
+<div id="msgWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-blue"> 
+		        <span class="w3-button w3-display-topright" id="msgClose">&times;</span>
+		        <h2>알림 메세지</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-margin-top w3-margin-bottom" id="msg"></h3>
+	    	</div>
+	    </div>
+ 	</div>
 	  
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">

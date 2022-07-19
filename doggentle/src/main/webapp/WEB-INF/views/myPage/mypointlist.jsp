@@ -20,6 +20,7 @@
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
@@ -152,6 +153,63 @@
 	            			</div>
 	            		</div>
 	          	</div>
+	        </div>
+	      </div>
+	      
+	      <div class="w3-row-padding"><br> 
+	       	<div class="w3-col m12">
+	          	<div class="w3-container w3-card w3-round w3-white">
+	            	<div class="w3-col w3-padding">
+	            		<div class="w3-col m2">
+	            			<button class="btn w3-padding-large w3-large">전체내역</button>	
+	            		</div>
+	            		<div class="w3-col m2">
+	            			<button class="btn w3-padding-large w3-large">적립내역</button>	
+	            		</div>
+	            		<div class="w3-col m5 w3-right w3-center w3-margin-top">
+            				<input class="w3-col m5 w3-left date" type="date" id="startDate" >
+            				<span> ~ </span>
+            				<input class="w3-col m5 w3-right date" type="date" id="endDate" >	
+	            		</div>
+	            	</div>
+	            	<div class="w3-col w3-padding w3-card w3-round w3-white w3-center">
+	            		<div class="w3-col m1">
+	            			<select class="w3-select w3-border" name="pList" id="pList">
+								<option disabled selected>분류</option>
+								<option class="w3-center" value="100">적립</option>
+								<option class="w3-center" value="200">사용</option>
+							</select>	
+	            		</div>
+	            		<div class="w3-col m7">
+	            			<h3>내용</h3> 
+	            		</div>
+	            		<div class="w3-col m2 w3-right">
+	            			<h3>일자</h3>
+	            		</div>
+	            		<div class="w3-col m2  w3-right">
+	            			<h3>금액</h3>
+	            		</div>
+	            	</div>
+	            	<div class="w3-col"> 
+	            		<hr style="border-top: 2px solid #eee"> 
+	            	</div>
+	          <c:forEach  var="data" items="${POINT}">
+	            	<div class="w3-col w3-padding w3-center w3-border-bottom">
+	            		<div class="w3-col m1 w3-red">
+	            			<h5 class="w3-large">사용</h5>
+	            		</div>
+	            		<div class="w3-col m7">
+	            			<h5>이벤트 당첨</h5> 
+	            		</div>
+	            		<div class="w3-col m2 w3-right">
+	            			<h3>2022-07-17</h3>
+	            		</div>
+	            		<div class="w3-col m2  w3-right">
+	            			<h3>500</h3>
+	            		</div>
+	            	</div>
+	            </c:forEach>	
+	            </div> 
 	        </div>
 	      </div>
 	  </div>

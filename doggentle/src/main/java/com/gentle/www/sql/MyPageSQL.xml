@@ -5,12 +5,12 @@
 <mapper namespace="mpSQL"> 
 	<select id="getMyInfo" resultType="mVO" parameterType="string">
 		SELECT
-		    id, mail, isshow, sumpoint spoint
-		FROM
-		    member m, point p
-		WHERE
-		    id = #{id}
-		    AND m.mno = p.mno
+        	pno, id, mail, isshow, sumpoint spoint
+  		FROM
+        	member m, point p, (SELECT MAX(pno) pmax FROM point p, member m WHERE id = #{id} AND p.mno = m.mno )
+    	WHERE
+        	pmax = pno
+        	AND p.mno = m.mno
 	</select>
 	<select id="getMember" resultType="mVO" parameterType="string">
 		SELECT
@@ -68,7 +68,15 @@
 			id = #{id}
 			AND pw = #{pw}
 	</select>
-	
+	<update id="changePw" parameterType="mVO">
+		UPDATE 
+			member
+		SET
+			pw = #{spw}
+		WHERE
+			id = #{id}
+			AND NOT pw = #{spw}
+	</update>
 	
 	<select id="myAddressList" resultType="adVO" parameterType="string">
 		SELECT

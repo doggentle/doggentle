@@ -20,6 +20,7 @@
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
@@ -121,8 +122,8 @@
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
 	         					<dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
-	         					<dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
-	         					<dd><a href="">포인트</a></dd> 
+	         	 				<dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
+	         					<dd><a href="/www/myPage/myPoint.dog">포인트</a></dd> 
 	         				</dl>
 	         			</div>
 	        		</div>

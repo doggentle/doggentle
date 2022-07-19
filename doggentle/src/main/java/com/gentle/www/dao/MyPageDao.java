@@ -29,6 +29,9 @@ public class MyPageDao {
 		return sqlSession.selectOne("mpSQL.getMemberCheck", mVO);
 	}
 	
+	public int changePw(MemberVO mVO) {
+		return sqlSession.update("mpSQL.changePw", mVO);
+	}
 	
 	
 	

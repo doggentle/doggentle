@@ -22,6 +22,7 @@ public class MyPage {
 	@Autowired
 	MemberDao mDao;
 	
+	// 마이페이지관류 뷰에 들어가는 회원정보
 	public void getMember(ModelAndView mv, HttpSession session) {
 		String sid = (String)session.getAttribute("SID");
 		if(sid != null) {
@@ -40,14 +41,13 @@ public class MyPage {
 		}
 	}
 	
+	// 마이페이지 메인
 	@RequestMapping("/mypagemain.dog")
-	public ModelAndView myPageMain(ModelAndView mv, HttpSession session) {
+	public ModelAndView myPageMain(ModelAndView mv, HttpSession session, MemberVO mVO) {
 			String sid = (String)session.getAttribute("SID");
 			getMember(mv, session);
-			MemberVO mVO = myDao.getMyInfo(sid);
 			List<GDetailVO> olist = myDao.getTransacList(sid);
 			List<GDetailVO> alist = myDao.getCartList(sid);
-			session.setAttribute("MyInfo", mVO);
 			session.setAttribute("OLIST", olist);
 			session.setAttribute("ALIST", alist);
 			mv.setViewName("myPage/mypagemain");
@@ -55,19 +55,29 @@ public class MyPage {
 		return mv;
 	}
 	
+	// 회원포인트 뷰
+	@RequestMapping("/myPoint.dog")
+	public ModelAndView myPointList(ModelAndView mv, HttpSession session) {
+		getMember(mv, session);
+		mv.setViewName("myPage/mypointlist");
+		return mv; 
+	}
+	
+	//달력 뷰
 	@RequestMapping("/myattend.dog")
 	public ModelAndView calendar(ModelAndView mv) {
 		mv.setViewName("myPage/myattend");
 		return mv;
 	}
 	
-	
+	// 회원정보 확인하는 뷰
 	@RequestMapping("/memberinfopwck.dog")
 	public ModelAndView memberInfo(ModelAndView mv) {
 		mv.setViewName("myPage/memberinfopwck");
 		return mv;
 	}
 	
+	// 회원정보 뷰 보여주기 전 회원확인 ajax
 	@RequestMapping("/memberinfopwckProc.dog")
 	@ResponseBody
 	public String memberInfopwckProc(MemberVO mVO) {
@@ -81,6 +91,7 @@ public class MyPage {
 		return result;
 	}
 	
+	// 회원정보 뷰
 	@RequestMapping("/memberinfo.dog")
 	public ModelAndView memberInfo(ModelAndView mv, MemberVO mVO, HttpSession session, String result) {
 		String sid = (String)session.getAttribute("SID");
@@ -107,9 +118,30 @@ public class MyPage {
 		return mv;
 	}
 	
+	// 회원정보 수정 proc
 	@RequestMapping("/memberinfoProc.dog")
-	public ModelAndView memberInfoProc(ModelAndView mv, MemberVO mVO) {
-		return mv;
+	@ResponseBody 
+	public String memberInfoProc(HttpSession session, MemberVO mVO) {
+		String result = "NO"; 
+		if(mVO.getPw() != null) {
+			mVO.setId((String) session.getAttribute("SID"));
+			int cnt = myDao.getMemberCheck(mVO);
+			if(cnt == 0) {
+				result = "NON";
+			} else {
+				int ccnt = myDao.changePw(mVO);
+				if(ccnt != 0) {
+					result = "OK";
+				} else {
+					result = "NO";
+				} 
+			}
+			System.out.println("비밀번호 처리 " + result);
+			return result;
+		} else if(mVO.getMail() != null) {
+			System.out.println("이메일 처리");
+		}
+		return result;
 	}
 	
 	

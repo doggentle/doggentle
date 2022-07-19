@@ -14,12 +14,16 @@ $(document).ready(function(){
 		$(location).attr('href', '/www/manager/sales.dog');
 	});
 	
-	$('#stbtn').click(function() {
-		$(location).attr('href', '/www/manager/stock.dog');
+	$('#gdbtn').click(function() {
+		$(location).attr('href', '/www/manager/goods.dog');
 	});
 	
 	$('#iqbtn').click(function() {
 		$(location).attr('href', '/www/manager/inquiry.dog');
+	});
+	
+	$('#agbtn').click(function() {
+		$(location).attr('href', '/www/manager/addgoods.dog');
 	});
 	
 	$('.minfo').click(function() {

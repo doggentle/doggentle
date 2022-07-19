@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 	$('.add').click(function() {
 		var txt = $(this).parent().parent().attr('id');
-		alert(txt);
+		alert($('#title').val());
 
 		$('#upqno').val(txt);
 		

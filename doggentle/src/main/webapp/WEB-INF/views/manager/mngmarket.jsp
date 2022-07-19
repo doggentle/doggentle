@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>관리자 마켓관리</title>
+	<title>관리자 마켓통계</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -91,10 +91,16 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-		<h1>마켓 관리</h1>
+		<h1>마켓 통계</h1>
 	</div>
 	<div class="">
-		<canvas id="myChart"></canvas>
+		<canvas id="myChart1"></canvas>
+	</div>
+	<div class="w3-center">
+		<div style="width:500px; height: auto;">
+		<h3>성비</h3>
+			<canvas id="myChart2"></canvas>
+		</div>
 	</div>
 </div>
 
@@ -102,15 +108,14 @@
 </body>
 
 <script>
-const ctx = document.getElementById('myChart');
-
-const myChart = new Chart(ctx, {
+const ctx1 = document.getElementById('myChart1');
+const myChart = new Chart(ctx1, {
     type: 'bar',
     data: {
-        labels: [${LABELS[0].label},${LABELS[1].label},${LABELS[2].label},${LABELS[3].label},${LABELS[4].label},${LABELS[5].label}],
+        labels: ['${LIST[0].month}','${LIST[1].month}','${LIST[2].month}','${LIST[3].month}','${LIST[4].month}','${LIST[5].month}'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '가입한 회원 수',
+            data: [${LIST[0].data}, ${LIST[1].data}, ${LIST[2].data}, ${LIST[3].data}, ${LIST[4].data}, ${LIST[5].data}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -131,9 +136,42 @@ const myChart = new Chart(ctx, {
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
+    	plugins: {
+	    	legend: {
+	    	    display: false
+	    	}
+    	}	
+	}
+});
+
+const ctx2 = document.getElementById('myChart2');
+let chart = new Chart(ctx2, {
+    type: 'pie',
+    data:{
+        labels: ['남자', '여자'],
+        datasets: [{
+            label: '# of Votes',
+            data: [${DATA[0].data}, ${DATA[1].data}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 14
+                    }
+                }
             }
         }
     }

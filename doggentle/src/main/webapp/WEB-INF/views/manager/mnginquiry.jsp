@@ -120,6 +120,8 @@
 				<textarea class="w3-input w3-border w3-padding" id="body" name="body" rows="3" style="resize: none"></textarea>
 				<input type="hidden" name="id" value="${MID}">
 				<input type="hidden" name="upqno" id="upqno" value="">
+				<input type="hidden" name="title" id="title" value ="${data.title}">
+				
 				<div class="w3-blue w3-button w3-right w3-margin-top w3-margin-bottom add" id="abtn">등록</div>
 			</form>			
 </c:if>
@@ -134,6 +136,10 @@
 		</div>
 </c:forEach>
 	</div>
+	
+<form method="POST" name="frm" id="frm">
+
+</form>
 
 <c:if test="${MSG eq 'OK'}">
 <div id="modal" class="w3-modal" style="display: block;">

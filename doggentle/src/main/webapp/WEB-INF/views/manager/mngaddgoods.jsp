@@ -21,7 +21,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/manager/manager.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript" src="/www/js/manager/category.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -84,65 +84,84 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-	<p>관리자 페이지</p>
-	<div class="w3-button col-2" id="mkbtn">마켓 통계</div>
-	<div class="w3-button col-2" id="mbbtn">회원 관리</div>
-	<div class="w3-button col-2" id="slbtn">매출 관리</div>
-	<div class="w3-button col-2" id="gdbtn">상품 관리</div>
-	<div class="w3-button col-2" id="iqbtn">문의 관리</div>
+		<h1>상품 등록</h1>
 	</div>
 	
-	<div class="w3-center w3-margin-top">
-		<h2>오늘 로그인한 회원 수 : ${TODAY}</h2>
-	</div>
-	
-	
-	<div class="">
-		<canvas id="myChart"></canvas>
+	<div>
+		<form method="POST" action="/www/board/boardWriteProc.blp" encType="multipart/form-data"
+				id="frm" name="frm" class="w3-col w3-border w3-padding">
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="title" class="w3-col s2">카테고리</label>
+			
+				<select class="w3-border w3-center" id="cate1">
+					<option disabled selected># 대분류 #</option>
+		<c:forEach var="data" items="${LIST}">
+					<option value="${data.cano}">${data.caname}</option>
+		</c:forEach>
+				</select>
+					
+				<select class="w3-border w3-center" id="cate2">
+					<option disabled selected># 중분류 #</option>
+				</select>
+				
+				<select class="w3-border w3-center" id="cate3">
+					<option disabled selected># 소분류 #</option>
+				</select>
+			
+			</div>
+			
+			<div class="w3-col w3-margin-bottom">
+				<label for="title" class="w3-col s2 w3-margin-top">상품명</label>
+				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+			</div>
+			
+			<div class="w3-col">
+				<label for="gbody" class="w3-col s2 w3-margin-top">상품설명</label>
+				<div class="w3-col m10">
+					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
+							id="gbody" name="gbody" rows="7" style="resize: none;"></textarea>
+				</div>
+			</div>
+			
+			<div class="w3-col w3-margin-bottom">
+				<label class="w3-col s2 w3-margin-top">이미지 업로드</label>
+				<div class="w3-col m10" id="filebox">
+					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">
+				</div>
+			</div>
+			
+			<div class="w3-col w3-margin-bottom" id="previewbox" style="display: none;">
+				<label class="w3-col s2 w3-margin-top">상품이미지</label>
+				<div class="w3-col m10 w3-center" id="preview">
+				</div>
+			</div>
+
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="title" class="w3-col s2 w3-margin-top">가격</label>
+				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+			</div>
+			
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="title" class="w3-col s2 w3-margin-top">재고</label>
+				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+			</div>
+			
+			
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="title" class="w3-col s2">판매여부</label>
+				<div>
+					<input type="radio" id="sell" name="issell" class=""><label for="sell">판매</label>
+					<input type="radio" id="stop" name="issell" class=""><label for="stop">중지</label>
+				</div>
+			</div>
+
+		</form>
+		
+		<div class="w3-col w3-margin-top">
+			<div class="w3-half w3-button w3-light-gray" id="bbtn">뒤로가기</div>
+			<div class="w3-half w3-button w3-blue" id="addbtn">상품등록</div>
+		</div>
 	</div>
 </div>
-<!-- Bootstrap core JavaScript
-	================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 </body>
-
-
-<script>
-const ctx = document.getElementById('myChart');
-
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['${DAY[1]}', '${DAY[1]}', '${DAY[2]}', '${DAY[3]}', '${DAY[4]}', '${DAY[5]}'],
-        datasets: [{
-            label: '로그인 횟수',
-            data: [${DATA[1]}, ${DATA[1]}, ${DATA[2]}, ${DATA[3]}, ${DATA[4]}, ${DATA[5]}], 
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
 </html>

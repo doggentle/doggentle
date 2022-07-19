@@ -46,6 +46,7 @@ public class Member {
 				
 				rv.setUrl("/www/manager/main.dog");
 			} else { 
+				mVO.setCnt(cnt);
 				session.setAttribute("SID", mVO.getId());
 				
 				rv.setUrl("/www/");	

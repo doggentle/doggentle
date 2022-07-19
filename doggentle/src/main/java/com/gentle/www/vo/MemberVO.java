@@ -5,12 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MemberVO {
-	private int mno, tcnt, rcnt, spoint;
+	private int mno, tcnt, rcnt, spoint, cnt;
 	private String mail, id, pw, bdate, gen, jdate, isshow, money, spw;
 	//private Date birth, join;
 	
 
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getSpw() {
 		return spw;
 	}

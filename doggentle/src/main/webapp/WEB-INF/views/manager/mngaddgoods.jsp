@@ -112,14 +112,14 @@
 			
 			<div class="w3-col w3-margin-bottom">
 				<label for="title" class="w3-col s2 w3-margin-top">상품명</label>
-				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border"><span>${INFO.gname}</span>
 			</div>
 			
 			<div class="w3-col">
 				<label for="gbody" class="w3-col s2 w3-margin-top">상품설명</label>
 				<div class="w3-col m10">
 					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
-							id="gbody" name="gbody" rows="7" style="resize: none;"></textarea>
+							id="gbody" name="gbody" rows="7" style="resize: none;">${INFO.gdetail}</textarea>
 				</div>
 			</div>
 			

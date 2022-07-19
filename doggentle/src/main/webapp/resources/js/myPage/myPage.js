@@ -7,7 +7,7 @@ var close = function(spw){
 	$('#pw').attr('readonly', true);
 };
 
-var today = new Date();
+var today = new Date(); 
 var year = today.getFullYear();
 var tmonth = ('0' + (today.getMonth() + 1)).slice(-2);
 var day = ('0' + today.getDate()).slice(-2);

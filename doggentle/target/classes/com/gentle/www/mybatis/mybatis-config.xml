@@ -16,6 +16,8 @@
 		<typeAlias alias="gVO" type="com.gentle.www.vo.GDetailVO"/>
 		<typeAlias alias="adVO" type="com.gentle.www.vo.AddressVO"/>
 		<typeAlias alias="qVO" type="com.gentle.www.vo.QnAVO"/>
+		<typeAlias alias="oVO" type="com.gentle.www.vo.OrderVO"/>
+		<typeAlias alias="myVO" type="com.gentle.www.vo.MyPageVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -23,8 +25,9 @@
 	    <mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/GDetailSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
+	    <mapper resource="com/gentle/www/sql/OrderSQL.xml" />
 <!-- 	    <mapper resource="com/gentle/www/sql/QnaSQL.xml" />
- -->	</mappers>
+ -->	</mappers> 
 	
 	
 </configuration>

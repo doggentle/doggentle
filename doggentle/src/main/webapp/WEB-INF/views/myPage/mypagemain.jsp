@@ -154,7 +154,7 @@
 	            			</div>
 	            		</div>
 	          	</div>
-	        </div>
+	        </div> 
 	      </div>
 <!-- 주문내역 영역 -->
 	      <div class="w3-row-padding"><br>

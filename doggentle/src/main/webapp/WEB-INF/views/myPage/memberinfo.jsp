@@ -11,7 +11,7 @@
 	<title>회원정보 수정</title>
 	
 	<!-- Styles -->
-	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='/www/css/bootstrap.min.css'> 
 	<link rel='stylesheet' href='/www/css/myPage.css'>	
 	<link rel='stylesheet' href='/www/css/animate.min.css'>
 	<link rel='stylesheet' href="/www/css/font-awesome.min.css"/>

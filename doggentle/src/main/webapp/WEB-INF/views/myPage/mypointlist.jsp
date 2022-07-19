@@ -188,7 +188,7 @@
 	            		</div>
 	            		<div class="w3-col m2  w3-right">
 	            			<h3>금액</h3>
-	            		</div>
+	            		</div> 
 	            	</div>
 	            	<div class="w3-col"> 
 	            		<hr style="border-top: 2px solid #eee"> 

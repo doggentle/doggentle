@@ -30,6 +30,16 @@
 				#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}, 'ext'
 			)
 	</insert>
+	<insert id="addKakao" parameterType="mVO">
+		<selectKey keyProperty = "mno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(mno) + 1, 1001) FROM member
+		</selectKey>
+			INSERT INTO
+				member(mno, mail, id, pw, bdate, gen, isshow)
+			VALUES (
+				#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}, 'cst'
+			)
+	</insert>
 	<insert id="addCert" parameterType="cVO">
 		<selectKey keyProperty = "cno" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(cno)+1, 100001) FROM cert

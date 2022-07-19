@@ -78,12 +78,6 @@ public class Order {
 		mv.setViewName("/order/payment");
 		return mv;
 	}
-	
-									@RequestMapping("/payExecute.dog")
-									public String payExecute() {
-										return "";
-								    }
-										
 
 	@RequestMapping("/kakaopay.blp")
 	@ResponseBody
@@ -142,4 +136,26 @@ public class Order {
 		return "{\"result\":\"NO\"}";
 	}
 	
+	@RequestMapping("/trReady.dog")
+	@ResponseBody
+	public String trReady(OrderVO oVO) {
+		List list = Arrays.asList(oVO.getCnoArr());
+		int listCnt = oDao.trReady(list);
+		oVO.setCno((int)list.get(0));
+		int mCnt = oDao.trExec(oVO);
+		return "{\"result\":\"OK\"}";
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

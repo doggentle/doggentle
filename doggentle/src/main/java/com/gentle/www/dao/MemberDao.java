@@ -26,6 +26,9 @@ public class MemberDao {
 	public int addMember(MemberVO mVO) {
 		return sqlSession.insert("mSQL.addMember", mVO);
 	}
+	public int addKakao(MemberVO mVO) {
+		return sqlSession.insert("mSQL.addKakao", mVO);
+	}
 	
 	// 회원가입 시, cert테이블 default isverify -> 'N'
 	public int addCert(CertVO cVO) {

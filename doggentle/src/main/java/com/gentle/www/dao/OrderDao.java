@@ -33,8 +33,16 @@ public class OrderDao {
 		return sqlSession.selectList("oSQL.myAddrList", id);
 	}
 	
-	//새 거래번호 발급
-	public String getNewPK() {
-		return "";
+	//tr시작, List에 속한 cart isshow 'N' 설
+	public int trReady(List list) {
+		return sqlSession.update("oSQL.trReady", list);
+	}
+	//tr입력VO 생성
+	public OrderVO trReadyVO(int cno) {
+		return sqlSession.selectOne("oSQL.trReadyVO", cno);
+	}
+	//
+	public int trExec(OrderVO oVO) {
+		return sqlSession.insert("oSQL.trExecute", oVO);
 	}
 }

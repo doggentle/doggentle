@@ -184,4 +184,31 @@ public class Member {
 		return mv;
 	}
 	
+	@RequestMapping("/kakaoIdCheck.dog")
+	@ResponseBody
+	public String kakaoIdCheck(MemberVO mVO, HttpSession session, RedirectView rv) {
+		String tdate = mVO.getBdate();
+		mVO.setBdate("2000-"+tdate.substring(0,2)+"-"+tdate.substring(2,tdate.length()));
+		
+		mVO.setPw(mVO.getId());//암호는 id와 같게 설정하기로 협의됨
+		if(mVO.getGen().equals("male")) {
+			mVO.setGen("M");
+		}else if(mVO.getGen().equals("female")) {
+			mVO.setGen("F");
+		}
+		
+		if(mDao.getLogin(mVO)==1) {
+			session.setAttribute("SID", mVO.getId());
+			return "{\"result\":\"OK\"}";
+		}else if(mDao.getLogin(mVO)==0) {
+			if(mDao.addKakao(mVO)==1) {
+				session.setAttribute("SID", mVO.getId());
+				return "{\"result\":\"OK\"}";
+			}else {
+				return "{\"result\":\"NO\"}";
+			}
+		}
+		return "{\"result\":\"NO\"}";
+	}
+	
 }

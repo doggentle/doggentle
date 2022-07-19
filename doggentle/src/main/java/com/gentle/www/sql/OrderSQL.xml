@@ -59,4 +59,26 @@
 			AND isuse = 'Y'
 			AND id = #{id}
 	</select>
+	<update id="trReady" parameterType="List">
+		UPDATE
+			cart
+		SET
+			isshow = 'N'
+		WHERE
+			cno IN
+		<foreach collection="list" item="cno" open="(" close=")" separator=",">
+			#{cno}
+		</foreach>
+	</update>
+	<select id="trReadyVO" resultType="int" parameterType="oVO">
+		SELECT
+			gno, mno, quantity
+		FROM
+			cart
+		WHERE
+			cno = #{cno}
+	</select>
+
+
+
 </mapper> 

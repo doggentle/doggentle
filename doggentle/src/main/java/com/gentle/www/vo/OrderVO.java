@@ -3,10 +3,17 @@ package com.gentle.www.vo;
 import java.util.Arrays;
 
 public class OrderVO {
-	private int cno, gno, quant, price, ino, gdsCount, ttlPrice, adno, quantity, total_amount;
+	private int cno, gno, quant, price, ino, gdsCount, ttlPrice, adno, quantity, total_amount, mno;
 	private Integer[] cnoArr;
 	private String gname, gdetail, savename, dir, partner_user_id, item_name;
 	
+	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 	public int getQuantity() {
 		return quantity;
 	}

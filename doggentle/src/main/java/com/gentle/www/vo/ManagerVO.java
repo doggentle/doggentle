@@ -1,88 +1,34 @@
 package com.gentle.www.vo;
 
-public class ManagerVO {
-	private int gno, mno, tno, ino, price, quantity, data, hits, stock, large, middle, small;
-	private String caname, gname, savename, label, month, isshow, issell;
+import java.util.Arrays;
+import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+public class ManagerVO {
+	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small;
+	private String caname, gname, gdetail, dir, savename, label, month, isshow, issell;
+
+	private MultipartFile file;
 	
 	
-	public int getLarge() {
-		return large;
+	public String getDir() {
+		return dir;
 	}
-	public void setLarge(int large) {
-		this.large = large;
+	public void setDir(String dir) {
+		this.dir = dir;
 	}
-	public int getMiddle() {
-		return middle;
+	public MultipartFile getFile() {
+		return file;
 	}
-	public void setMiddle(int middle) {
-		this.middle = middle;
-	}
-	public int getSmall() {
-		return small;
-	}
-	public void setSmall(int small) {
-		this.small = small;
-	}
-	public String getIssell() {
-		return issell;
-	}
-	public void setIssell(String issell) {
-		this.issell = issell;
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	public int getGno() {
 		return gno;
 	}
 	public void setGno(int gno) {
 		this.gno = gno;
-	}
-	public int getHits() {
-		return hits;
-	}
-	public void setHits(int hits) {
-		this.hits = hits;
-	}
-	public int getStock() {
-		return stock;
-	}
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-	public String getCaname() {
-		return caname;
-	}
-	public void setCaname(String caname) {
-		this.caname = caname;
-	}
-	public String getSavename() {
-		return savename;
-	}
-	public void setSavename(String savename) {
-		this.savename = savename;
-	}
-	public String getIsshow() {
-		return isshow;
-	}
-	public void setIsshow(String isshow) {
-		this.isshow = isshow;
-	}
-	public String getMonth() {
-		return month;
-	}
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	public int getData() {
-		return data;
-	}
-	public void setData(int data) {
-		this.data = data;
-	}
-	public String getLabel() {
-		return label;
-	}
-	public void setLabel(String label) {
-		this.label = label;
 	}
 	public int getMno() {
 		return mno;
@@ -102,6 +48,12 @@ public class ManagerVO {
 	public void setIno(int ino) {
 		this.ino = ino;
 	}
+	public int getCano() {
+		return cano;
+	}
+	public void setCano(int cano) {
+		this.cano = cano;
+	}
 	public int getPrice() {
 		return price;
 	}
@@ -114,18 +66,102 @@ public class ManagerVO {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public int getData() {
+		return data;
+	}
+	public void setData(int data) {
+		this.data = data;
+	}
+	public int getHits() {
+		return hits;
+	}
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public int getLarge() {
+		return large;
+	}
+	public void setLarge(int large) {
+		this.large = large;
+	}
+	public int getMiddle() {
+		return middle;
+	}
+	public void setMiddle(int middle) {
+		this.middle = middle;
+	}
+	public int getSmall() {
+		return small;
+	}
+	public void setSmall(int small) {
+		this.small = small;
+	}
+	public String getCaname() {
+		return caname;
+	}
+	public void setCaname(String caname) {
+		this.caname = caname;
+	}
 	public String getGname() {
 		return gname;
 	}
 	public void setGname(String gname) {
 		this.gname = gname;
 	}
+	public String getGdetail() {
+		return gdetail;
+	}
+	public void setGdetail(String gdetail) {
+		this.gdetail = gdetail;
+	}
+	public String getSavename() {
+		return savename;
+	}
+	public void setSavename(String savename) {
+		this.savename = savename;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(String isshow) {
+		this.isshow = isshow;
+	}
+	public String getIssell() {
+		return issell;
+	}
+	public void setIssell(String issell) {
+		this.issell = issell;
+	}
 	@Override
 	public String toString() {
-		return "ManagerVO [mno=" + mno + ", tno=" + tno + ", ino=" + ino + ", price=" + price + ", quantity=" + quantity
-				+ ", gname=" + gname + ", label=" + label + "]";
+		return "ManagerVO [gno=" + gno + ", mno=" + mno + ", tno=" + tno + ", ino=" + ino + ", cano=" + cano
+				+ ", price=" + price + ", quantity=" + quantity + ", data=" + data + ", hits=" + hits + ", stock="
+				+ stock + ", large=" + large + ", middle=" + middle + ", small=" + small + ", caname=" + caname
+				+ ", gname=" + gname + ", gdetail=" + gdetail + ", savename=" + savename + ", label=" + label
+				+ ", month=" + month + ", isshow=" + isshow + ", issell=" + issell + ", file=" + file
+				+ "]";
 	}
+
 	
 	
+ 
 	
 }

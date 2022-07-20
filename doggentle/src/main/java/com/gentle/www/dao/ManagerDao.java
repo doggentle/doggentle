@@ -61,5 +61,15 @@ public class ManagerDao {
 	public ManagerVO getMngGoodsInfo(String gno) {
 		return sqlSession.selectOne("mgSQL.mngGoodsInfo", gno);
 	}
+	
+	// 관리자 상품 이미지 업로드
+	public int addGoodsImg (ImageVO iVO) {
+		return sqlSession.insert("mgSQL.insertGoodsImg", iVO);
+	}
+	
+	// 관리자 상품 등록
+	public int addGoods(ManagerVO mgVO) {
+		return sqlSession.insert("mgSQL.insertGoods", mgVO);
+	}
 
 }

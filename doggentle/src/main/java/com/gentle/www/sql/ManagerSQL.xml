@@ -110,7 +110,7 @@
 	</select>
 	
 	<select id="mngGoodsList" resultType="mgVO">
-		SELECT g.gno, caname, gname, savename, price, hits, stock, issell
+		SELECT g.gno, caname, gname, dir, savename, price, hits, stock, issell
 		FROM goods g, category c, img i
 		WHERE
 		    g.cano = c.cano
@@ -120,7 +120,7 @@
 	
 	<select id="mngGoodsInfo" parameterType="String" resultType="mgVO">
 		SELECT
-		    gno, g.cano, gname, gdetail, g.ino, i.savename, price, stock, issell, large, middle, small
+		    gno, g.cano, gname, gdetail, g.ino, dir, i.savename, price, stock, issell, large, middle, small
 		FROM
 		    goods g, img i, (
 		        SELECT c.cano small, g.cano middle, z.cano large
@@ -134,4 +134,30 @@
 		    AND cate.small = g.cano
 		    AND g.ino = i.ino
 	</select>
+	
+	<insert id="insertGoodsImg" parameterType="iVO">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(ino) + 1, 100001) FROM img
+		</selectKey>
+			INSERT INTO
+				img(ino, upname, savename, dir, volume, purpose)
+			VALUES (
+				#{ino}, #{upname}, #{savename}, #{dir}, #{volume}, 'gds'
+			)
+	</insert>
+	
+	<insert id="insertGoods" parameterType="mgVO">
+		<selectKey keyProperty="gno,ino" resultType="mgVO" order="BEFORE">
+			SELECT gno, ino
+			FROM 
+			    (SELECT NVL(MAX(gno) + 1, '100001') gno FROM goods),
+			    (SELECT MAX(ino) ino FROM img)
+		</selectKey>
+			INSERT INTO
+				goods(gno, price, cano, ino, issell, gname, gdetail, stock)
+			VALUES (
+				#{gno}, #{price}, #{cano}, #{ino}, #{issell}, #{gname}, #{gdetail}, #{stock}
+			)
+	</insert>
+	
 </mapper>

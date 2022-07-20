@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.*;
 
 import com.gentle.www.service.*;
@@ -23,8 +24,10 @@ public class Manager {
 	ManagerDao mgDao;
 	@Autowired
 	GDetailDao gDao;
-
-	Counter count;
+	
+	@Autowired
+	GoodsService gSrvc;
+	 
 	
 	//관리자 메인
 	@RequestMapping("/main.dog")
@@ -98,6 +101,9 @@ public class Manager {
         List<String> keySet = new ArrayList<>(loginCnt.keySet());        
         List<Integer> valueSet = new ArrayList<>(loginCnt.values());
     
+        System.out.print(keySet);
+        System.out.println(valueSet);
+        
 		mv.addObject("TODAY", cnt[5]);	
 		mv.addObject("DAY", keySet);
 		mv.addObject("DATA", valueSet);
@@ -159,18 +165,32 @@ public class Manager {
 		return mv;
 	}
 	@RequestMapping("/addgoods.dog")
-	public ModelAndView managerAddGodds(ModelAndView mv, String gno) {
+	public ModelAndView managerAddGoods(ModelAndView mv, String gno) {
 		List<GDetailVO> list = gDao.getStratCate();
 		
 		mv.addObject("LIST", list);
-		System.out.println(gno);
 		
 		mv.setViewName("manager/mngaddgoods");
-		if(gno.equals(null) || gno == "") {			
+		if(gno == null) {			
 			return mv;
 		} else {
 			ManagerVO mgVO = mgDao.getMngGoodsInfo(gno);
 			mv.addObject("INFO", mgVO);
+		}
+		return mv;
+	}
+	
+	@RequestMapping("/addGoodsProc.dog")
+	public ModelAndView mngAddGoodsProc(ModelAndView mv, MultipartRequest file, ManagerVO mgVO, ImageVO iVO) {
+		System.out.println(mgVO);
+		mv.setViewName("manager/redirect");
+		try {
+			gSrvc.addGoods(mgVO);
+			mv.addObject("VIEW", "/www/manager/goods.dog");
+
+		} catch(Exception e) {
+			mv.addObject("VIEW", "/www/manager/addgoods.dog");
+			e.printStackTrace();
 		}
 		return mv;
 	}

@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/manager/manager.js"></script>
 	<script type="text/javascript" src="/www/js/manager/category.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>	
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -84,84 +85,129 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
+<c:if test="${empty INFO}">
 		<h1>상품 등록</h1>
+</c:if>
+<c:if test="${not empty INFO}">
+		<h1>상품 수정</h1>
+</c:if>
 	</div>
 	
 	<div>
-		<form method="POST" action="/www/board/boardWriteProc.blp" encType="multipart/form-data"
-				id="frm" name="frm" class="w3-col w3-border w3-padding">
+		<form method="POST" action="/www/manager/addGoodsProc.dog" enctype="multipart/form-data"
+							id="frm" name="frm" class="w3-col w3-border w3-padding" >
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">카테고리</label>
-			
-				<select class="w3-border w3-center" id="cate1">
-					<option disabled selected># 대분류 #</option>
+				
+				<select class="w3-border w3-center" id="cate1" required>
+					<option value="" disabled selected># 대분류 #</option>
+				
 		<c:forEach var="data" items="${LIST}">
-					<option value="${data.cano}">${data.caname}</option>
+			<c:if test="${INFO.large eq data.cano}">
+					<option id="large" value="${data.cano}" selected>${data.caname}</option>			
+			</c:if>
+			<c:if test="${INFO.large ne data.cano}">
+					<option value="${data.cano}">${data.caname}</option>			
+			</c:if>
 		</c:forEach>
 				</select>
 					
-				<select class="w3-border w3-center" id="cate2">
-					<option disabled selected># 중분류 #</option>
-				</select>
+				<div id="${INFO.middle}" style="display: inline-block">				
+					<select class="w3-border w3-center" id="cate2" required>
+						<option disabled selected># 중분류 #</option>
+					</select>
+				</div>
 				
-				<select class="w3-border w3-center" id="cate3">
+				<div id="${INFO.small}" style="display: inline-block">				
+				<select class="w3-border w3-center" id="cate3" name="cano" required>
 					<option disabled selected># 소분류 #</option>
 				</select>
-			
+				</div>
+				
 			</div>
 			
 			<div class="w3-col w3-margin-bottom">
 				<label for="title" class="w3-col s2 w3-margin-top">상품명</label>
-				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border"><span>${INFO.gname}</span>
+				<input type="text" id="gname" name="gname" value="${INFO.gname}" class="w3-col m10 w3-input w3-border" required>
 			</div>
 			
 			<div class="w3-col">
 				<label for="gbody" class="w3-col s2 w3-margin-top">상품설명</label>
 				<div class="w3-col m10">
 					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
-							id="gbody" name="gbody" rows="7" style="resize: none;">${INFO.gdetail}</textarea>
+							id="gdetail" name="gdetail" rows="7" style="resize: none;" required>${INFO.gdetail}</textarea>
 				</div>
 			</div>
 			
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-col s2 w3-margin-top">이미지 업로드</label>
 				<div class="w3-col m10" id="filebox">
-					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">
+					<input value="${INFO.savename}" type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile" required>
 				</div>
 			</div>
-			
+<c:if test="${empty INFO}">			
 			<div class="w3-col w3-margin-bottom" id="previewbox" style="display: none;">
 				<label class="w3-col s2 w3-margin-top">상품이미지</label>
 				<div class="w3-col m10 w3-center" id="preview">
+				
+					<div class="inblock pdAll10 picbox w3-card">
+						<div class="w3-col w3-border w3-margin-right" style="overflow: hidden;">
+							<img src="" height="300px" width="auto" id="img" class="infoAvtBox">
+						</div>
+					</div>
+				
 				</div>
 			</div>
+</c:if>
+
+<c:if test="${not empty INFO}">			
+			<div class="w3-col w3-margin-bottom" id="previewbox">
+				<label class="w3-col s2 w3-margin-top">기존 상품이미지</label>
+				<div class="w3-col m10 w3-center" id="preview">
+					
+					<div class="inblock pdAll10 picbox w3-card">
+						<div class="w3-col w3-border w3-margin-right" style="overflow: hidden;">
+							<img src="${INFO.dir}${INFO.savename}" height="300px" width="auto" id="img" name="" class="infoAvtBox">
+						</div>
+					</div>
+				</div>
+			</div>
+</c:if>
 
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2 w3-margin-top">가격</label>
-				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+				<input type="text" id="price" name="price" value="${INFO.price}" class="w3-col m10 w3-input w3-border" required>
 			</div>
 			
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2 w3-margin-top">재고</label>
-				<input type="text" id="gname" name="gname" class="w3-col m10 w3-input w3-border">
+				<input type="text" id="stock" name="stock" value="${INFO.stock}" class="w3-col m10 w3-input w3-border" required>
 			</div>
 			
 			
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">판매여부</label>
 				<div>
-					<input type="radio" id="sell" name="issell" class=""><label for="sell">판매</label>
-					<input type="radio" id="stop" name="issell" class=""><label for="stop">중지</label>
+	<c:if test="${empty INFO}">
+					<input type="radio" id="sell" name="issell" class="" value="Y" required><label for="sell">판매</label>
+					<input type="radio" id="stop" name="issell" class="" value="N"><label for="stop">중지</label>
+	</c:if>
+	<c:if test="${INFO.issell eq 'Y'}">
+					<input type="radio" id="sell" name="issell" class="" value="Y" checked><label for="sell">판매</label>
+					<input type="radio" id="stop" name="issell" class="" value="N"><label for="stop">중지</label>
+	</c:if>
+	<c:if test="${INFO.issell eq 'N'}">
+					<input type="radio" id="sell" name="issell" class="" value="Y"><label for="sell">판매</label>
+					<input type="radio" id="stop" name="issell" class="" value="N" checked><label for="stop">중지</label>
+	</c:if>
 				</div>
 			</div>
-
 		</form>
-		
-		<div class="w3-col w3-margin-top">
-			<div class="w3-half w3-button w3-light-gray" id="bbtn">뒤로가기</div>
-			<div class="w3-half w3-button w3-blue" id="addbtn">상품등록</div>
-		</div>
 	</div>
-</div>
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<div class="w3-half w3-button w3-light-gray" id="bbtn">뒤로가기</div>
+				<div class="w3-half w3-button w3-blue w3-hover-gray" id="addbtn">상품등록</div>
+			</div>
+	</div>
 </body>
 </html>

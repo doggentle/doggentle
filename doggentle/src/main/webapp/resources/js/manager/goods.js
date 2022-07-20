@@ -5,4 +5,12 @@ $(document).ready(function() {
 		$('#gno').val(txt);
 		$('#frm').submit();
 	});
+	
+	$('#sel').change(function() {
+		if($('#sel').is(':checked')) {
+	
+		} else {
+			
+		}
+	});
 });

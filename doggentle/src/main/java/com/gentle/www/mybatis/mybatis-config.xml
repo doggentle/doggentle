@@ -18,6 +18,7 @@
 		<typeAlias alias="qVO" type="com.gentle.www.vo.QnAVO"/>
 		<typeAlias alias="oVO" type="com.gentle.www.vo.OrderVO"/>
 		<typeAlias alias="myVO" type="com.gentle.www.vo.MyPageVO"/>
+		<typeAlias alias="page" type="com.gentle.www.util.PageUtil"/>
 	</typeAliases>
 	
 	<mappers>

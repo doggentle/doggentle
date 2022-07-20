@@ -161,15 +161,16 @@
 	          	<div class="w3-container w3-card w3-round w3-white">
 	            	<div class="w3-col" style="margin: 15px 0px;">
 	            		<div class="w3-col m2">
-	            			<button class="btn w3-padding-large w3-large">전체내역</button>	
+	            			<button class="btn w3-padding-large w3-large" id="allbtn">전체내역</button>	
 	            		</div>
 	            		<div class="w3-col m2">
-	            			<button class="btn w3-padding-large w3-large">적립내역</button>	
+	            			<button class="btn w3-padding-large w3-large" id="apbtn">적립내역</button>	
 	            		</div>
+            				<button class="btn w3-margin w3-right" id="seldate">조회</button>
 	            		<div class="w3-col m5 w3-right w3-center w3-margin-top">
             				<input class="w3-col m4 w3-left date" type="date" id="startDate" >
             				~
-            				<input class="w3-col m4 w3-right date" type="date" id="endDate" >	
+            				<input class="w3-col m4 w3-right date" type="date" id="endDate" >
 	            		</div>
 	            	</div>
 	            	<div class="w3-col w3-padding w3-card w3-round w3-white w3-center">
@@ -189,16 +190,16 @@
 	            	<div class="w3-col"> 
 	            		<hr style="border-top: 2px solid #eee"> 
 	            	</div>
-	          <c:forEach  var="data" items="${POINT}">
+	          <c:forEach  var="data" items="${LIST}">
 	            	<div class="w3-col w3-padding w3-center w3-border-bottom">
 	            	 <c:choose>
-	            	 	<c:when test="${data.upcno eq 200}">
+	            	 	<c:when test="${data.upno eq 200}">
 		            		<div class="w3-col m1 w3-red">
 		            			<h5 class="w3-large">사용</h5>
 		            		</div>
 	            	 	</c:when>
-	            	 	<c:when test="${data.cno eq 100}">
-		            		<div class="w3-col m1 w3-red">
+	            	 	<c:when test="${data.upno eq 100}">
+		            		<div class="w3-col m1 w3-green">
 		            			<h5 class="w3-large">적립</h5>
 		            		</div>
 	            	 	</c:when>
@@ -218,7 +219,31 @@
 	            			<h3>${data.pvalue}</h3>
 	            		</div>
 	            	</div>
-	            </c:forEach>	
+	            </c:forEach>
+	            	<div class="w3-center">
+						<div class="w3-bar w3-border w3-round-medium w3-card w3-margin-top w3-margin-bottom">
+				<c:if test="${PAGE.startPage eq 1}">
+							<div class="w3-bar-item w3-light-grey">&laquo;</div>
+				</c:if>
+				<c:if test="${PAGE.startPage ne 1}">
+							<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
+				</c:if>
+				<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
+						<c:if test="${page eq PAGE.nowPage}">
+							<div class="w3-bar-item w3-orange">${page}</div>
+						</c:if>
+						<c:if test="${page ne PAGE.nowPage}">
+							<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${page}">${page}</div>
+						</c:if>
+				</c:forEach>
+						<c:if test="${PAGE.endPage eq PAGE.totalPage}">
+							<div class="w3-bar-item w3-light-grey">&raquo;</div>
+						</c:if>
+						<c:if test="${PAGE.endPage ne PAGE.totalPage}">
+							<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
+						</c:if>
+						</div>
+					</div>	
 	            </div> 
 	        </div>
 	      </div>
@@ -228,7 +253,13 @@
 	   	</div>
 <!-- Page Container end -->
 	  </div>
-	  
+
+<form method="POST" action="/www/myPage/myPoint.dog" id="frm" name="frm">
+		<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
+		<input type="hidden" name="supno" id="supno" value="${DATE.supno}">
+		<input type="hidden" name="startdate" id="startdate" value="${DATE.startdate}">
+		<input type="hidden" name="enddate" id="enddate" value="${DATE.enddate}">
+</form>
 	  
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">

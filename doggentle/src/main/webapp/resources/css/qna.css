@@ -1,7 +1,8 @@
 .popbox .titbox {
     width: 100%;
     height: 60px;
-    border-bottom: 1px solid #d4d4d4;
+    
+
 }
 .popbox .titbox .tit {
     float: left;

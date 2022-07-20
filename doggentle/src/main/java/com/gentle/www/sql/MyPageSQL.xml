@@ -87,4 +87,62 @@
 		    a.mno = m.mno
 		    AND id = #{id}
 	</select>
+	
+		<select id="qnaList" resultType="qVO" parameterType="string">
+		SELECT
+		    qno, g.gname name, title, i.gno gno, qdate
+		FROM
+		    (
+		    SELECT
+		        qno, id, title, gno, qdate
+		    FROM
+		        qna q, member m
+		    WHERE
+		        q.mno = m.mno
+		        and id = #{id}
+		    ) i, goods g
+		WHERE
+		    i.gno = g.gno
+    </select>
+	
+	<!-- <select id ="getPointCount" resultType="int" parameterType="string">
+		select
+		    count(*)
+		from
+		    point p, member m
+		where
+		    id = 'jjy'
+		    AND m.mno = p.mno
+		    <if test="startdate neq null  ">
+		    AND odate between '22-07-10' and '22-07-18'
+		    </if>
+	</select>
+	
+	<select id="getPointList" resultType="myVO" parameterType="myVO">
+		SELECT
+		    pvalue, odate, body, upcno
+		FROM
+		    (
+		    SELECT
+		        rownum rno, pvalue, odate, body, upcno
+		    FROM
+		        (
+		        SELECT 
+		            pno, cno, pvalue, to_char(odate, 'YY-MM-DD') odate
+		        FROM
+		            POINT p, MEMBER m
+		        WHERE
+		            id = 세션아이디
+		            AND p.mno = m.mno
+		         <if test="startdate neq null  ">
+		            AND odate between 처음날짜 and 마지막날짜
+		         </if>
+		        ) s, CODE c
+		    WHERE
+		        s.cno = c.cno
+		    ORDER BY pno desc
+		    )
+		WHERE	
+		    rno between 시작페이지 and 끝나는 페이지  
+	</select> -->
 </mapper> 

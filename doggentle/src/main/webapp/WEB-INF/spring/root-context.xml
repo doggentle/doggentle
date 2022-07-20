@@ -16,8 +16,8 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<!--<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
-		<property name="url" value="jdbc:oracle:thin:@192.168.1.198:1521:xe" /><!--home-->		
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /><!---->
+		<!--<property name="url" value="jdbc:oracle:thin:@192.168.1.198:1521:xe" />home-->		
 		<!--<property name="url" value="jdbc:oracle:thin:@192.168.0.113:1521:xe" />--><!--class -->
 		<!--<property name="url" value="jdbc:oracle:thin:@192.168.1.48:1521:xe" />-->
 		<property name="username" value="gentle" />

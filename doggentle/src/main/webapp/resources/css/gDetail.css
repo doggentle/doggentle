@@ -176,5 +176,62 @@ li.gactive {
 .qsection{background: #eee;width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;}
 div.qsection > div {width:100%;display:inline-flex;background: #eee;}
 div.qsection > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
+.tab_list ul li a {
+    color: #666;
+    font-size: 13px;
+    display: block;
+}
+.tab_list ul {
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+.tab_list ul .ov a {
+    color: #fff;
+    font-weight: 700;
+}
+.tab_list ul li.first {
+    width: 24.5%;
+}
+.tab_list ul .ov {
+    border: 1px solid #747474;
+    background: #747474;
+}
+.tab_list ul li {
+    float: left;
+    width: 25%;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid #d2d2d2;
+    margin-left: -1px;
+    background-color: #fbfafa;
+}
+.tab_box .con > .tit {
+    clear: both;
+    margin: 0 0 10px 0;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    text-align: left;
+    list-style: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: #4d4d4d;
+}
+.tab_box .con > ul > li {
+    display: list-item;
+    margin-bottom: 5px;
+    list-style: decimal;
+    color: #4d4d4d;
+    margin-left: 15px;
+    line-height: 15px;
+    font-size: 12px;
+}
 
+.tab_box {
+    clear: both;
+    width: 100%;
+    margin: 20px 0 0 0;
+}
 /*# sourceMappingURL=style.css.map */

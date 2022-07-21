@@ -98,7 +98,7 @@
 const ctx = document.getElementById('myChart');
 
 const myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'line', 
     data: {
         labels: [${LABELS[0].label},${LABELS[1].label},${LABELS[2].label},${LABELS[3].label},${LABELS[4].label},${LABELS[5].label}],
         datasets: [{

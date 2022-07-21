@@ -65,7 +65,7 @@
 		<li>
 		<a href="/www/manager/market.dog">마켓통계</a>
 		</li>
-		<li>
+		<li> 
 		<a href="/www/manager/member.dog">회원관리</a>
 		</li>
 		<li>

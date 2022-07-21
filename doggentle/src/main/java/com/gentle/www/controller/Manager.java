@@ -111,7 +111,7 @@ public class Manager {
    @RequestMapping("/market.dog")
    public ModelAndView managerMarket(ModelAndView mv) {
       //List<ManagerVO> list = mgDao.getLabels();
-      
+       
       List<ManagerVO> list = mgDao.getMonthJoinData();
       
       List<ManagerVO> data = mgDao.getGenData();

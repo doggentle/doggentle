@@ -179,7 +179,7 @@ let chart = new Chart(ctx2, {
                 }
             }
         }
-    }
+    } 
 });
     
 const ctx3 = document.getElementById('myChart3');

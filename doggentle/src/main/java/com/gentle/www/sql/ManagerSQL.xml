@@ -41,7 +41,7 @@
 	<select id="orderInfo" parameterType="int" resultType="mgVO">
 		SELECT
 		    tno, ino, gname, price, quantity
-		FROM 
+		FROM  
 		    goods g, transaction t
 		WHERE
 			mno = #{mno}

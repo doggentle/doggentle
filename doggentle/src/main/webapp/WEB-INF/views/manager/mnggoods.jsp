@@ -72,7 +72,7 @@
 		<li>
 		<a href="/www/manager/sales.dog">매출관리</a>
 		</li>
-		<li>
+		<li> 
 		<a href="/www/manager/goods.dog">상품관리</a>
 		</li>
 		<li>

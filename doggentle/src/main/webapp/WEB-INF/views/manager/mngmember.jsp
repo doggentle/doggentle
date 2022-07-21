@@ -57,7 +57,7 @@
 	<!-- Start Navigation -->
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	<ul class="nav navbar-nav">
-<c:if test="${not empty MID}">
+<c:if test="${not empty MID}">   
 		<li>
 		<a href="/www/member/logout.dog">로그아웃</a>
 		</li>

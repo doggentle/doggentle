@@ -136,4 +136,33 @@
       WHERE
           rno BETWEEN #{page.startCont} AND #{page.endCont}  
    </select>
+   
+   <select id="getAttend" resultType="string" parameterType="myVO">
+	   SELECT 
+		    adate
+		FROM
+		    ATTEND a, MEMBER m
+		WHERE
+		    id = #{id}
+		    AND m.mno = a.mno
+		    AND adate LIKE #{adate} || '%'
+		ORDER BY adate asc
+   </select>
+   
+	<select id="qnaList" resultType="qVO" parameterType="qVO">
+      SELECT
+          qno, g.gname name, title, i.gno gno, qdate
+      FROM
+          (
+          SELECT
+              qno, id, title, gno, qdate
+          FROM
+              qna q, member m
+          WHERE
+              q.mno = m.mno
+              and id = ${id}
+          ) i, goods g
+      WHERE
+          i.gno = g.gno
+    </select>
 </mapper> 

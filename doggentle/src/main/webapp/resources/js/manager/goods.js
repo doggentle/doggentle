@@ -8,9 +8,9 @@ $(document).ready(function() {
 	
 	$('#sel').change(function() {
 		if($('#sel').is(':checked')) {
-	
+
 		} else {
-			
+
 		}
 	});
 });

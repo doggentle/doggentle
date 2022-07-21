@@ -4,8 +4,8 @@ public class ImageVO {
 	private int ino;
 	private long volume;
 	private String upname, savename, dir;
-	
-	
+
+
 	public int getIno() {
 		return ino;
 	}
@@ -36,7 +36,7 @@ public class ImageVO {
 	public void setDir(String dir) {
 		this.dir = dir;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ImageVO [ino=" + ino + ", volume=" + volume + ", upname=" + upname + ", savename=" + savename + ", dir="

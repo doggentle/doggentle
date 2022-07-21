@@ -17,40 +17,40 @@ import com.gentle.www.vo.*;
 @Aspect
 
 public class GoodsService {
-	
+
 	@Autowired
 	ManagerDao mgDao;
-	
+
 	public ImageVO uploadProc(MultipartFile file) {
 		ImageVO iVO = uploadProc(file, "/upload");
-		
+
 		return iVO;
 	}
-	
+
 	public ImageVO uploadProc(MultipartFile file, String dir) {
 		ImageVO iVO = new ImageVO();
-		
+
 		String path = this.getClass().getResource("").getPath();
 		path = path.substring(0, path.indexOf("/WEB-INF")) + "/resources" + dir;
-		
+
 		iVO.setDir("/www" + dir + "/");
-		
+
 		System.out.println(path);
-		
+
 		long len = file.getSize();
 		iVO.setVolume(len);
-		
+
 		String upName = file.getOriginalFilename();
 		if(upName == null) {
 			return iVO;
 		}
-	
+
 		iVO.setUpname(upName);
-		
+
 		String saveName = ImageUtil.rename(path, upName);
-		
+
 		iVO.setSavename(saveName);
-		
+
 		try {
 			File f = new File(path, saveName);
 			if(!f.exists()) {
@@ -62,7 +62,7 @@ public class GoodsService {
 		}
 		return iVO;
 	}
-	
+
 	@Transactional
 	public void addGoods(ManagerVO mgVO) {
 		if(mgVO.getFile() != null) {
@@ -72,7 +72,7 @@ public class GoodsService {
 				mgDao.addGoods(mgVO);
 			}
 		}
-		
-		
+
+
 	}
-}
+} 

@@ -41,10 +41,11 @@
 	<select id="orderInfo" parameterType="int" resultType="mgVO">
 		SELECT
 		    tno, ino, gname, price, quantity
-		FROM
-		    goods, transaction
+		FROM  
+		    goods g, transaction t
 		WHERE
 			mno = #{mno}
+			AND g.gno = t.gno
 		ORDER BY
 			tno DESC
 	</select>
@@ -159,5 +160,23 @@
 				#{gno}, #{price}, #{cano}, #{ino}, #{issell}, #{gname}, #{gdetail}, #{stock}
 			)
 	</insert>
+	
+	<select id="cateData" resultType="mgVO">
+		SELECT count(*) data, large, label
+		FROM transaction t, goods g, category c,
+		    (
+		        SELECT c.cano small, z.cano large, z.caname label
+		        FROM category c, category g, category z
+		        WHERE
+		        g.cano = c.upno
+		        AND z.cano = g.upno
+		    )
+		WHERE
+		 t.gno = g.gno
+		 AND g.cano = c.cano
+		 AND small = c.cano
+		 group by large, label
+		 order by large
+	</select>
 	
 </mapper>

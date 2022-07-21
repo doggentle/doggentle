@@ -98,9 +98,13 @@
 		<canvas id="myChart1"></canvas>
 	</div>
 	<div class="w3-center">
-		<div style="width:500px; height: auto;">
+		<div style="width:500px; height: auto; display: inline-block;">
 		<h3>성비</h3>
 			<canvas id="myChart2"></canvas>
+		</div>
+		<div style="width:500px; height: auto; display: inline-block;">
+		<h3>카테고리 별 판매율</h3>
+			<canvas id="myChart3"></canvas>
 		</div>
 	</div>
 </div>
@@ -175,7 +179,39 @@ let chart = new Chart(ctx2, {
                 }
             }
         }
-    }
+    } 
+});
+    
+const ctx3 = document.getElementById('myChart3');
+let chart2 = new Chart(ctx3, {
+    type: 'pie',
+    data:{
+        labels: ['${CATE[0].label}', '${CATE[1].label}', '${CATE[2].label}', '${CATE[3].label}'],
+        datasets: [{
+            label: '# of Votes',
+            data: [${CATE[0].data}, ${CATE[1].data}, ${CATE[2].data}, ${CATE[3].date}],
+            backgroundColor: [
+            	'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    	plugins: {
+	    	legend: {
+	    	    display: false
+	    	}
+    	}	
+	}
 });
 </script>
 </html>

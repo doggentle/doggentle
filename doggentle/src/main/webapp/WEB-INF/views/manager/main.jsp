@@ -59,21 +59,24 @@
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	<ul class="nav navbar-nav">
 <c:if test="${not empty MID}">
-		<li>
-		<a href="/www/member/main.dog">관리자</a>
-		</li>
-		<li>
+		<li> 
 		<a href="/www/member/logout.dog">로그아웃</a>
 		</li>
 </c:if>
 		<li>
-		<a href="/www/">카테고리</a>
+		<a href="/www/manager/market.dog">마켓통계</a>
 		</li>
 		<li>
-		<a href="/www/">마켓정보</a>
+		<a href="/www/manager/member.dog">회원관리</a>
 		</li>
 		<li>
-		<a href="/www/">문의하기</a>
+		<a href="/www/manager/sales.dog">매출관리</a>
+		</li>
+		<li>
+		<a href="/www/manager/goods.dog">상품관리</a>
+		</li>
+		<li>
+		<a href="/www/manager/inquiry.dog">문의관리</a>
 		</li>
 	</ul>
 	</nav>
@@ -83,13 +86,9 @@
 <!-- Intro
 	================================================== -->
 <div class="container">
-	<div class="box65 w3-center" style="margin-top: 100px;">
-	<p>관리자 페이지</p>
-	<div class="w3-button col-2" id="mkbtn">마켓 통계</div>
-	<div class="w3-button col-2" id="mbbtn">회원 관리</div>
-	<div class="w3-button col-2" id="slbtn">매출 관리</div>
-	<div class="w3-button col-2" id="gdbtn">상품 관리</div>
-	<div class="w3-button col-2" id="iqbtn">문의 관리</div>
+	<div class="box65 w3-center w3-margin-bottom" style="margin-top: 120px;">
+	<p class="w3-margin">관리자 페이지</p>
+
 	</div>
 	
 	<div class="w3-center w3-margin-top">

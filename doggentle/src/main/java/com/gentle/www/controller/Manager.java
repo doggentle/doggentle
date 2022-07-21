@@ -116,8 +116,11 @@ public class Manager {
       
       List<ManagerVO> data = mgDao.getGenData();
       
+      List<ManagerVO> cate = mgDao.getCateData();
+      
       mv.addObject("LIST", list);
       mv.addObject("DATA", data);
+      mv.addObject("CATE", cate);
       
       mv.setViewName("manager/mngmarket");
       return mv;

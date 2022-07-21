@@ -71,5 +71,10 @@ public class ManagerDao {
 	public int addGoods(ManagerVO mgVO) {
 		return sqlSession.insert("mgSQL.insertGoods", mgVO);
 	}
+	
+	// 관리자 카테고리별 판매 데이터
+	public List<ManagerVO> getCateData() {
+		return sqlSession.selectList("mgSQL.cateData");
+	}
 
 }

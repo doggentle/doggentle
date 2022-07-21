@@ -1,108 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
-			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
-<mapper namespace="mSQL">
-	<select id="login" resultType="int" parameterType="mVO">
-		SELECT
-			count(*)
-		FROM
-			member
-		WHERE
-			id = #{id}
-			AND pw = #{pw}
-	</select>
-	<select id="loginck" resultType="string" parameterType="string">
-		SELECT
-			isshow
-		FROM
-			member
-		WHERE
-			id = #{id}
-	</select>
-	<insert id="addMember" parameterType="mVO">
-		<selectKey keyProperty = "mno" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(mno) + 1, 1001) FROM member
-		</selectKey>
-			INSERT INTO
-				member(mno, mail, id, pw, bdate, gen, isshow)
-			VALUES (
-				#{mno}, #{mail}, #{id}, #{pw}, #{bdate}, #{gen}, 'ext'
-			)
-	</insert>
-	<insert id="addCert" parameterType="cVO">
-		<selectKey keyProperty = "cno" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(cno)+1, 100001) FROM cert
-		</selectKey>
-			INSERT INTO
-				cert(cno, ccode, cmail)
-			VALUES (
-				#{cno}, #{ccode}, #{cmail}
-			)
-	</insert>
-	<select id="getJoinCert" resultType="cVO" parameterType="string">
-		SELECT
-		    mno, id, cno, ccode, cmail
-		FROM
-		    member, cert
-		WHERE
-		    cno = (
-		        SELECT
-		            MAX(cno) cno
-		        FROM
-		            cert
-		        WHERE
-		            cmail = #{cmail}
-		            AND isverify = 'N'
-		    )
-		    AND mail = cmail
-	</select>
-	<update id="certMno" parameterType="int">
-		UPDATE
-			member
-		SET
-			isshow = 'cst'
-		WHERE
-			mno = #{mno}
-	</update>
-	<update id="certCno" parameterType="int">
-		UPDATE
-			cert
-		SET
-			isverify = 'Y'
-		WHERE
-			cno = #{cno}
-	</update>
-	<select id="getFindid" resultType="mVO" parameterType="string">
-		SELECT
-			id, mail
-		FROM
-			member
-		WHERE
-			mail = #{mail}
-	</select>
-	<select id="getFindpw" resultType="string" parameterType="mVO">
-		SELECT
-			pw
-		FROM
-			member
-		WHERE
-			mail = #{mail}
-			AND id = #{id}
-	</select>
-	<insert id="addPoint" parameterType="int">
-		INSERT INTO
-			point(pno, mno, cno, pvalue, sumpoint)
-		VALUES(
-			(SELECT NVL(MAX(pno)+1, 100001) FROM point),
-			#{mno}, 101, 100, 100
-		 )
-	</insert>
+   PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+         "http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="mgSQL">
+   <select id="memberInfo" resultType="mVO">
+      SELECT mno, id, mail, jdate, tcnt, rcnt, NVL(sumpoint, 0) spoint
+      FROM member m,
+          (
+              SELECT count(t.mno) tcnt, m.mno no1
+              FROM transaction t, member m
+              WHERE m.mno = t.mno(+)
+              GROUP BY m.mno
+          ),
+          (
+              SELECT count(r.rno) rcnt, m.mno no2
+              FROM review r, transaction t, member m
+              WHERE r.tno(+) = t.tno
+              AND m.mno = t.mno(+)
+              GROUP BY m.mno
+          ), 
+          (
+              SELECT mb.mno no3, m1.sumpoint sumpoint
+              FROM
+              (
+                  SELECT m.mno, p.sumpoint, p.pno
+                  FROM point p, member m
+                  WHERE m.mno = p.mno(+)
+                  AND p.pno IN (SELECT max(pno) mpno FROM point GROUP BY mno)
+              ) m1,
+              member mb
+              WHERE m1.mno(+) = mb.mno
+          )
+      WHERE no1 = m.mno
+          AND no2 = m.mno
+          AND no3 = m.mno
+          AND isshow = 'cst'
+      ORDER BY m.mno ASC
+   </select>
+   
+   <select id="orderInfo" parameterType="int" resultType="mgVO">
+      SELECT
+          tno, ino, gname, price, quantity
+      FROM
+          goods, transaction
+      WHERE
+         mno = #{mno}
+      ORDER BY
+         tno DESC
+   </select>
+   
+   <select id="getLabels" resultType="mgVO">
+      SELECT substr(mon, 4, 2) label
+      FROM (
+              SELECT ADD_MONTHS (sysdate, LEVEL - 6) mon
+              FROM DUAL
+              CONNECT BY rownum &lt; 7
+          )
+   </select>
+   
+   <select id="getQNA" resultType="qVO">
+      SELECT q.qno, q.title, q.body, q.mno, q.qdate, a.qno ano, a.body abody, a.mno mngno, a.qdate adate, m.id, mng.id mid
+      FROM qna q, qna a, member m, member mng
+      WHERE q.qno = a.upqno(+)
+        AND m.isshow not like 'mng'
+      AND q.mno = m.mno
+      AND a.mno = mng.mno(+)
+        order by qdate asc
+   </select>
+   
+   <select id="getMno" parameterType="string" resultType="int">
+      SELECT mno
+      FROM member
+      WHERE id = #{id}
+   </select>
+   
+   <insert id="insertAnswer" parameterType="qVO">
+      <selectKey keyProperty="qno" resultType="int" order="BEFORE">
+         SELECT NVL(MAX(qno) + 1, 10001) FROM qna
+      </selectKey>
+         INSERT INTO
+            qna(qno, title, body, upqno, mno)
+         VALUES (
+            #{qno}, #{title}, #{body}, #{upqno}, #{mno}
+         )
+   </insert>
+   
+   <select id="genData" resultType="mgVO">
+      SELECT count(*) data
+      FROM member
+      WHERE not isshow = 'mng'
+      GROUP BY gen
+   </select>
+   
+   <select id="monthJoinData" resultType="mgVO">
+      SELECT data, month
+      FROM (
+                  SELECT substr(ADD_MONTHS (sysdate, LEVEL - 6), 0, 5)  month
+                  FROM DUAL
+                  CONNECT BY rownum &lt; 7
+              ) m1
+              ,(
+                  select substr(jdate, 0, 5) j, count(*) data
+                  FROM member
+                  WHERE NOT isshow = 'mng'
+                  group by substr(jdate, 0, 5)
+              ) m2
+      WHERE m1.month = m2.j(+) 
+      ORDER BY month
+   </select>
+   
+   <select id="mngGoodsList" resultType="mgVO">
+      SELECT g.gno, caname, gname, dir, savename, price, hits, stock, issell
+      FROM goods g, category c, img i
+      WHERE
+          g.cano = c.cano
+          AND g.ino = i.ino
+          AND purpose = 'gds'
+   </select>
+   
+   <select id="mngGoodsInfo" parameterType="String" resultType="mgVO">
+      SELECT
+          gno, g.cano, gname, gdetail, g.ino, dir, i.savename, price, stock, issell, large, middle, small
+      FROM
+          goods g, img i, (
+              SELECT c.cano small, g.cano middle, z.cano large
+              FROM category c, category g, category z
+              WHERE
+              g.cano = c.upno
+              AND z.cano = g.upno
+          ) cate
+      WHERE
+          gno = #{gno}
+          AND cate.small = g.cano
+          AND g.ino = i.ino
+   </select>
+   
+   <insert id="insertGoodsImg" parameterType="iVO">
+      <selectKey keyProperty="ino" resultType="int" order="BEFORE">
+         SELECT NVL(MAX(ino) + 1, 100001) FROM img
+      </selectKey>
+         INSERT INTO
+            img(ino, upname, savename, dir, volume, purpose)
+         VALUES (
+            #{ino}, #{upname}, #{savename}, #{dir}, #{volume}, 'gds'
+         )
+   </insert>
+   
+   <insert id="insertGoods" parameterType="mgVO">
+      <selectKey keyProperty="gno,ino" resultType="mgVO" order="BEFORE">
+         SELECT gno, ino
+         FROM 
+             (SELECT NVL(MAX(gno) + 1, '100001') gno FROM goods),
+             (SELECT MAX(ino) ino FROM img)
+      </selectKey>
+         INSERT INTO
+            goods(gno, price, cano, ino, issell, gname, gdetail, stock)
+         VALUES (
+            #{gno}, #{price}, #{cano}, #{ino}, #{issell}, #{gname}, #{gdetail}, #{stock}
+         )
+   </insert>
+   
+   <update id="updateGoods" parameterType="int">
+      UPDATE
+         goods
+      SET
+         cano = #{cano},
+         gname = #{gname},
+         gdetail = #{gdetail},
+         price = #{price},
+         stock = #{stock},
+         issell = #{issell}
+   </update>
+   
 </mapper>
-
-
-
-
-
-
-

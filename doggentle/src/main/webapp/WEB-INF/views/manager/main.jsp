@@ -113,10 +113,10 @@ const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['${DAY[1]}', '${DAY[1]}', '${DAY[2]}', '${DAY[3]}', '${DAY[4]}', '${DAY[5]}'],
+        labels: ['${DAY[0]}', '${DAY[1]}', '${DAY[2]}', '${DAY[3]}', '${DAY[4]}', '${DAY[5]}'],
         datasets: [{
             label: '로그인 횟수',
-            data: [${DATA[1]}, ${DATA[1]}, ${DATA[2]}, ${DATA[3]}, ${DATA[4]}, ${DATA[5]}], 
+            data: [${DATA[0]}, ${DATA[1]}, ${DATA[2]}, ${DATA[3]}, ${DATA[4]}, ${DATA[5]}], 
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

@@ -102,7 +102,7 @@
 <c:if test="${data.ano ne 0}">
 			<div class="w3-col m2 w3-border-right qna">답변완료</div>
 </c:if>
-			<div class="w3-col m5 w3-border-right qna">${data.title}</div>
+			<div class="w3-col m5 w3-border-right qna tt" id="${data.title}">${data.title}</div>
 			<div class="w3-col m2 w3-border-right qna">${data.id}</div>
 			<div class="w3-col m3 qna">${data.qdate}</div>
 		</div>
@@ -116,14 +116,8 @@
 			<div class="qna w3-margin" id="${data.qno}">
 
 <c:if test="${data.ano eq 0}">
-			<form method="POST" id="frm" name="frm" action="/www/manager/addAnswerProc.dog">
-				<textarea class="w3-input w3-border w3-padding" id="body" name="body" rows="3" style="resize: none"></textarea>
-				<input type="hidden" name="id" value="${MID}">
-				<input type="hidden" name="upqno" id="upqno" value="">
-				<input type="hidden" name="title" id="title" value ="${data.title}">
-				
+				<textarea class="w3-input w3-border w3-padding" id="b${data.qno}" name="body" rows="3" style="resize: none"></textarea>
 				<div class="w3-blue w3-button w3-right w3-margin-top w3-margin-bottom add" id="abtn">등록</div>
-			</form>			
 </c:if>
 	
 <c:if test="${data.ano ne 0}">
@@ -137,8 +131,11 @@
 </c:forEach>
 	</div>
 	
-<form method="POST" name="frm" id="frm">
-
+<form method="POST" id="frm" name="frm" action="/www/manager/addAnswerProc.dog">
+	<input type="hidden" name="body" id="body" name="body">
+	<input type="hidden" name="id" value="${MID}">
+	<input type="hidden" name="upqno" id="upqno" value="">
+	<input type="hidden" name="title" id="title" value ="">
 </form>
 
 <c:if test="${MSG eq 'OK'}">

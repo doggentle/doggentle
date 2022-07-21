@@ -10,9 +10,16 @@ $(document).ready(function() {
 	});
 	
 	$('.add').click(function() {
-		var txt = $(this).parent().parent().attr('id');
-		alert($('#title').val());
-
+		var tt = $(this).prev().val();
+		if(!tt) {
+			$(this).prev().focus();
+			return;
+		}
+		
+		var txt = $(this).parent().attr('id');
+		
+		$('#title').val('답변');
+		$('#body').val(tt);
 		$('#upqno').val(txt);
 		
 		$('#frm').submit();

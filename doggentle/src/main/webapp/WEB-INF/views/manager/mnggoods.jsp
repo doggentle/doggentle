@@ -90,11 +90,6 @@
 		<div class="w3-button w3-blue" id="agbtn">상품 등록</div>
 		<div class="w3-right">
 			<input type="checkbox" name="sel" id="sel"><label for="sel">판매중인 상품만 보기</label>
-			<select class="w3-border" name="orderList" id="orderList">
-				<option disabled selected># 카테고리 선택 #</option>
-				<option value="">거실</option>
-				<option value="">주방</option>
-			</select>
 		</div>
 	</div>
 	<div>
@@ -117,7 +112,7 @@
 				<div class="w3-col m3">${data.caname}</div>
 				<div class="w3-col m5">${data.gname}</div>
 				<div class="w3-col m4">
-					<div class="w3-col"><img src="/www/img/goods/${data.savename}" height="100px" width="auto"></div>
+					<div class="w3-col"><img src="${data.dir}${data.savename}" height="100px" width="auto"></div>
 				</div>
 			</div>
 			<div class="w3-col m5">						

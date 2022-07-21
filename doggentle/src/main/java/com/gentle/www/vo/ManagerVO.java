@@ -1,11 +1,37 @@
 package com.gentle.www.vo;
 
-public class ManagerVO {
-	private int gno, mno, tno, ino, price, quantity, data, hits, stock, large, middle, small;
-	private String caname, gname, savename, label, month, isshow, issell;
+import org.springframework.web.multipart.MultipartFile;
 
+public class ManagerVO {
+	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small;
+	private String caname, gname, gdetail, dir, savename, label, month, isshow, issell;
+
+	private MultipartFile file;
 	
-	
+	public int getCano() {
+		return cano;
+	}
+	public void setCano(int cano) {
+		this.cano = cano;
+	}
+	public String getGdetail() {
+		return gdetail;
+	}
+	public void setGdetail(String gdetail) {
+		this.gdetail = gdetail;
+	}
+	public String getDir() {
+		return dir;
+	}
+	public void setDir(String dir) {
+		this.dir = dir;
+	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public int getLarge() {
 		return large;
 	}

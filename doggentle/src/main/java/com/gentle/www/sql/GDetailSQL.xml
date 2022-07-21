@@ -45,7 +45,7 @@
 		<!-- gno 관심상품 리스트 조회 질의명령 -->
 	<select id="igList" resultType="gVO" parameterType="gVO">
 		select
-		    c.gno, c.gname, c.price, c.cano, i.dir, i.savename, c.caname
+		    c.gno gno, c.gname gname, c.price price, c.cano cano, i.dir dir, i.savename savename
 		from
 		    (
 		        SELECT

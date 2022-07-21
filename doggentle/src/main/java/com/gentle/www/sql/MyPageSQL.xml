@@ -137,7 +137,7 @@
           rno BETWEEN #{page.startCont} AND #{page.endCont}  
    </select>
    
-   <select id="getAttend" resultType="string[]" parameterType="myVO">
+   <select id="getAttend" resultType="string" parameterType="myVO">
 	   SELECT 
 		    adate
 		FROM

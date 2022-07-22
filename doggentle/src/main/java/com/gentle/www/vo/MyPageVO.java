@@ -8,16 +8,32 @@ public class MyPageVO {
    private int mno, tcnt, rcnt, spoint;
    private String mail, id, pw, bdate, gen, jdate, isshow, money, spw;
     
-   //포인트 관리
+   // 출석 관련
+   private int ano;
+   private String adate;
+   //포인트 관련
    private int pvalue, upno, supno;
    private String odate, body;
    
    // 날짜 처리
    private String startdate, enddate;
-   
-   // 페이징 처리
-   
-   // 날짜에 관해서
+  
+   // 출석관려 
+   public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+	public String getAdate() {
+		return adate;
+	}
+	public void setAdate(String adate) {
+		String[] array = adate.split(" "); 
+        this.adate = array[0];
+	}
+	
+// 날짜에 관해서
    public String getStartdate() {
 	   return startdate;
    }
@@ -48,7 +64,7 @@ public class MyPageVO {
       return odate;
    }
    public void setOdate(String odate) {
-          String[] array = odate.split(" "); 
+        String[] array = odate.split(" "); 
         this.odate = array[0];
    }
    public String getBody() {

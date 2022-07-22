@@ -79,9 +79,12 @@ public class MyPage {
    
    //달력 뷰
    @RequestMapping("/myattend.dog")
-   public ModelAndView calendar(ModelAndView mv) {
-      mv.setViewName("myPage/myattend");
-      return mv;
+   public ModelAndView calendar(ModelAndView mv, HttpSession session, MyPageVO myVO) {
+	   getMember(mv, session);
+	   List<String> list = myDao.getattend(myVO);
+	   mv.addObject("ATTEND", list);
+       mv.setViewName("myPage/myattend");
+       return mv;
    }
     
    // 회원정보 확인하는 뷰

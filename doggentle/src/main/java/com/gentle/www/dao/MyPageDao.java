@@ -41,6 +41,10 @@ public class MyPageDao {
    public List<MyPageVO> getPointList(HashMap<String, Object> map) {
       return sqlSession.selectList("mpSQL.getPointList", map);
    }
+   // n년/n월 해당날짜 가져오기
+   public List<String> getattend(MyPageVO myVO) {
+	   return sqlSession.selectList("mpSQL.getAttend", myVO);
+   } 
    
    //내 문의 리스트 가져오기
    public List<QnAVO> getQnaList(String id) {

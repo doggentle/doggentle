@@ -23,7 +23,7 @@ $(document).ready(function() {
 		$('#upqno').val(txt);
 		
 		$('#frm').submit();
-	});
+	}); 
 	var qno;
 	
 	$('.edit').click(function() {

@@ -69,7 +69,7 @@ $(document).ready(function(){
 									'</div>' ;
 						
 						$('#gPanel').append(stag);
-					}
+					} 
 					$('#gPanel').css('display', 'block');
 				}
 			},

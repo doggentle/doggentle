@@ -23,6 +23,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/manager/graph.js"></script>
+		<script src="/www/js/bootstrap.min.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -67,20 +68,23 @@
 	<ul class="nav navbar-nav">
 <c:if test="${not empty MID}">
 		<li>
-		<a href="/www/member/main.dog">관리자</a>
-		</li>
-		<li>
 		<a href="/www/member/logout.dog">로그아웃</a>
 		</li>
 </c:if>
 		<li>
-		<a href="/www/">카테고리</a>
+		<a href="/www/manager/market.dog">마켓통계</a>
+		</li>
+		<li> 
+		<a href="/www/manager/member.dog">회원관리</a>
 		</li>
 		<li>
-		<a href="/www/">마켓정보</a>
+		<a href="/www/manager/sales.dog">매출관리</a>
 		</li>
 		<li>
-		<a href="/www/">문의하기</a>
+		<a href="/www/manager/goods.dog">상품관리</a>
+		</li>
+		<li>
+		<a href="/www/manager/inquiry.dog">문의관리</a>
 		</li>
 	</ul>
 	</nav>
@@ -91,7 +95,7 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-		<h1>마켓 통계</h1>
+		<a href="/www/manager/main.dog"><h1>마켓 통계</h1></a>
 	</div>
 	<div class="w3-center w3-margin w3-padding">
 		<h3>가입한 회원 수<span style="font-size: 10pt;"> (단위:월)</span></h3>
@@ -189,7 +193,7 @@ let chart2 = new Chart(ctx3, {
         labels: ['${CATE[0].label}', '${CATE[1].label}', '${CATE[2].label}', '${CATE[3].label}'],
         datasets: [{
             label: '# of Votes',
-            data: [${CATE[0].data}, ${CATE[1].data}, ${CATE[2].data}, ${CATE[3].date}],
+            data: [${CATE[0].data}, ${CATE[1].data}, ${CATE[2].data}, ${CATE[3].data}],
             backgroundColor: [
             	'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',

@@ -40,12 +40,13 @@
 	
 	<select id="orderInfo" parameterType="int" resultType="mgVO">
 		SELECT
-		    tno, ino, gname, price, quantity
+		    tno, g.ino, TO_CHAR(tdate, 'YYYY-mm-dd') tdate, dir, savename, gname, price, quantity
 		FROM  
-		    goods g, transaction t
+		    goods g, transaction t, img i
 		WHERE
 			mno = #{mno}
 			AND g.gno = t.gno
+			AND g.ino = i.ino
 		ORDER BY
 			tno DESC
 	</select>
@@ -163,7 +164,7 @@
 	
 	<select id="cateData" resultType="mgVO">
 		SELECT count(*) data, large, label
-		FROM transaction t, goods g, category c,
+		FROM transaction t, goods g,
 		    (
 		        SELECT c.cano small, z.cano large, z.caname label
 		        FROM category c, category g, category z
@@ -173,10 +174,43 @@
 		    )
 		WHERE
 		 t.gno = g.gno
-		 AND g.cano = c.cano
-		 AND small = c.cano
+		 AND g.cano = small
 		 group by large, label
 		 order by large
+	</select>
+	
+	<select id="salesTotalDay" resultType="mgVO">
+       	 SELECT NVL(data, 0) data, label
+              FROM
+              (
+                  SELECT TO_CHAR(sysdate + LEVEL-6, 'YY/mm/dd') label
+         FROM DUAL
+         CONNECT BY rownum &lt; 7
+           ) t,
+           (
+               SELECT SUM(quantity * price) data, TO_CHAR(tdate, 'YY/mm/dd') tdate
+               FROM transaction t, goods g
+               WHERE
+               g.gno = t.gno
+               group by TO_CHAR(tdate, 'YY/mm/dd')
+           ) tt
+           WHERE t.label = tt.tdate(+)
+           order by label
+	</select>
+	
+	<select id="salesSum" resultType="mgVO">
+		SELECT  TO_CHAR(NVL(SUM(quantity * price),0), 'FM999,999,999,999,999,999') total, sum, data
+		FROM transaction t, goods g, 
+		    (
+		        SELECT TO_CHAR(NVL(SUM(quantity * price), 0), 'FM999,999,999,999,999,999') sum, count(tno) data
+		        FROM transaction t, goods g
+		        WHERE t.gno = g.gno
+		        AND TO_CHAR(tdate, 'YY/mm/dd') = TO_CHAR(sysdate, 'YY/mm/dd')
+		    )
+		WHERE
+		    t.gno = g.gno
+		group by
+		    sum, data
 	</select>
 	
 </mapper>

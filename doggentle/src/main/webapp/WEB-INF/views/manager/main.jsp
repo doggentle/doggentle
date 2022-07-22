@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/manager/manager.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="/www/js/bootstrap.min.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -90,13 +91,24 @@
 	<p class="w3-margin">관리자 페이지</p>
 
 	</div>
-	
-	<div class="w3-center w3-margin-top">
-		<h2>오늘 로그인한 회원 수 : ${TODAY}</h2>
+	<div class="w3-margin w3-padding">
+		<div class="w3-col w3-light-grey w3-center w3-border">
+			<div class="w3-col m3 w3-border-right"><h4>오늘 로그인한 회원 수</h4></div>
+			<div class="w3-col m3 w3-border-right"><h4>오늘 판매 건수</h4></div>
+			<div class="w3-col m3 w3-border-right"><h4>오늘 판매 금액</h4></div>
+			<div class="w3-col m3 w3-border-right"><h4>판매 총액</h4></div>
+		</div>
+		<div class="w3-col w3-center w3-border">
+			<div class="w3-col m3 w3-border-right"><h4>${TODAY}</h4></div>
+			<div class="w3-col m3 w3-border-right"><h4>${SUM.data}</h4></div>		
+			<div class="w3-col m3 w3-border-right"><h4>${SUM.sum}</h4></div>
+			<div class="w3-col m3 w3-border-right"><h4>${SUM.total}</h4></div>
+		</div>
 	</div>
 	
 	
-	<div class="">
+	<div class="w3-center">
+		<h3 style="margin-top: 100px;">로그인 횟수<span style="font-size: 12pt"> (단위:일)</span></h3>
 		<canvas id="myChart"></canvas>
 	</div>
 </div>
@@ -144,4 +156,5 @@ const myChart = new Chart(ctx, {
     }
 });
 </script>
+
 </html>

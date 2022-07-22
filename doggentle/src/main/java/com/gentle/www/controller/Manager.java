@@ -101,6 +101,9 @@ public class Manager {
         List<String> keySet = new ArrayList<>(loginCnt.keySet());        
         List<Integer> valueSet = new ArrayList<>(loginCnt.values());
         
+      ManagerVO mVO = mgDao.getSalesSum();
+      mv.addObject("SUM", mVO);
+        
       mv.addObject("TODAY", cnt[5]);   
       mv.addObject("DAY", keySet);
       mv.addObject("DATA", valueSet);
@@ -142,6 +145,7 @@ public class Manager {
    public List<ManagerVO> orderList(ManagerVO mgVO) {
       List<ManagerVO> list = mgDao.getOrderInfo(mgVO.getMno());
       
+      
       return list;
    }
    
@@ -149,9 +153,9 @@ public class Manager {
    @RequestMapping("/sales.dog")
    public ModelAndView managerSales(ModelAndView mv) {
       mv.setViewName("manager/mngsales");
-      List<ManagerVO> list = mgDao.getLabels();
+      List<ManagerVO> list = mgDao.getSalesTotalDay();
+      mv.addObject("DAY", list);
       
-      mv.addObject("LABELS", list);
       return mv;
    }
    @RequestMapping("/goods.dog")

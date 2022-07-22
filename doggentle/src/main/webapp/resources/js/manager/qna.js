@@ -24,4 +24,22 @@ $(document).ready(function() {
 		
 		$('#frm').submit();
 	});
+	var qno;
+	
+	$('.edit').click(function() {
+		var tt = $(this).parent().parent().attr('id');
+		qno = tt;
+		var txt = $(this).prev().text();
+		
+		$('#a' + tt).hide();
+		$('#btn' + tt).show();
+		$('.e'+ tt).append('<textarea class="w3-input w3-border w3-padding" name="body" rows="3" style="resize: none" require></textarea>'
+				+ '<div class="w3-orange w3-button w3-right w3-margin-top w3-margin-bottom edit" id="ebtn">수정</div>');
+		
+	
+	});
+	
+	$('#btn' + qno).click(function() {
+		$('#frm').submit();
+	});
 });

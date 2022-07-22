@@ -21,6 +21,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="/www/js/bootstrap.min.js"></script>
 	
 	
 	<!-- Fonts -->
@@ -89,8 +90,11 @@
 	<div class="box65 w3-center" style="margin-top: 100px;">
 		<h1>매출 관리</h1>
 	</div>
-	<div class="">
+	<div class="w3-center w3-margin w3-padding">
+		<div>
+		<h3>일별 매출</h3>
 		<canvas id="myChart"></canvas>
+		</div>
 	</div>
 </div>
 </body>
@@ -100,10 +104,10 @@ const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
     type: 'line', 
     data: {
-        labels: [${LABELS[0].label},${LABELS[1].label},${LABELS[2].label},${LABELS[3].label},${LABELS[4].label},${LABELS[5].label}],
+        labels: ['${DAY[0].label}','${DAY[1].label}','${DAY[2].label}','${DAY[3].label}','${DAY[4].label}','${DAY[5].label}'],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [${DAY[0].data}, ${DAY[1].data}, ${DAY[2].data}, ${DAY[3].data}, ${DAY[4].data}, ${DAY[5].data}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

@@ -76,5 +76,15 @@ public class ManagerDao {
 	public List<ManagerVO> getCateData() {
 		return sqlSession.selectList("mgSQL.cateData");
 	}
+	
+	// 관리자 매출관리 데이터(일별)
+	public List<ManagerVO> getSalesTotalDay() {
+		return sqlSession.selectList("mgSQL.salesTotalDay");
+	}
+	
+	// 관리자 오늘 매출 & total
+	public ManagerVO getSalesSum() {
+		return sqlSession.selectOne("mgSQL.salesSum");
+	}
 
 }

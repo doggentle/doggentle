@@ -4,10 +4,29 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ManagerVO {
 	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small;
-	private String caname, gname, gdetail, dir, savename, label, month, isshow, issell;
+	private String caname, gname, gdetail, dir, savename, label, month, isshow, issell, tdate, sum, total;
 
 	private MultipartFile file;
 	
+	
+	public String getSum() {
+		return sum;
+	}
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
+	public String getTotal() {
+		return total;
+	}
+	public void setTotal(String total) {
+		this.total = total;
+	}
+	public String getTdate() {
+		return tdate;
+	}
+	public void setTdate(String tdate) {
+		this.tdate = tdate;
+	}
 	public int getCano() {
 		return cano;
 	}

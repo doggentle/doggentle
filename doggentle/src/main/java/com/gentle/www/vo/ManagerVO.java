@@ -1,6 +1,6 @@
 package com.gentle.www.vo;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartFile; 
 
 public class ManagerVO {
 	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small;

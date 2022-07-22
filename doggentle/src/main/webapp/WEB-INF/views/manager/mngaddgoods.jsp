@@ -23,6 +23,7 @@
    <script type="text/javascript" src="/www/js/manager/manager.js"></script>
    <script type="text/javascript" src="/www/js/manager/category.js"></script>
    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>   
+   	<script src="/www/js/bootstrap.min.js"></script>
    
    <!-- Fonts -->
    <link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>

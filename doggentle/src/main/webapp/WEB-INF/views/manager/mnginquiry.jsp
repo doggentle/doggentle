@@ -21,6 +21,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/manager/qna.js"></script>
+		<script src="/www/js/bootstrap.min.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -116,7 +117,7 @@
 			<div class="qnabody">${data.body}</div>
 	
 			<hr class="bar">	
-			<div class="qna w3-margin" id="${data.qno}">
+			<div class="qna w3-margin e${data.qno}" id="${data.qno}">
 
 <c:if test="${data.ano eq 0}">
 				<textarea class="w3-input w3-border w3-padding" id="b${data.qno}" name="body" rows="3" style="resize: none"></textarea>
@@ -124,9 +125,11 @@
 </c:if>
 	
 <c:if test="${data.ano ne 0}">
+			<div id="a${data.qno}">
 				<div class="w3-right">${data.adate}</div>
-				<div class="abody">${data.abody}</div>
-				<div class="w3-orange w3-button w3-right w3-margin-top w3-margin-bottom" id="mbtn">수정</div>
+				<div class="abody ${data.qno}">${data.abody}</div>
+				<div class="w3-orange w3-button w3-right w3-margin-top w3-margin-bottom edit">수정</div>
+			</div>
 </c:if>
 			
 			</div>			

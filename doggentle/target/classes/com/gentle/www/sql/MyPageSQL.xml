@@ -160,7 +160,7 @@
               qna q, member m
           WHERE
               q.mno = m.mno
-              and id = ${id}
+              and id = #{id}
           ) i, goods g
       WHERE
           i.gno = g.gno

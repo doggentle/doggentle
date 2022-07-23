@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="/www/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/www/js/manager/graph.js"></script>
 	
 	
 	<!-- Fonts -->
@@ -88,26 +89,114 @@
 	================================================== -->
 <div class="container">
 	<div class="box65 w3-center" style="margin-top: 100px;">
-		<h1>매출 관리</h1>
+		<a href="/www/manager/main.dog"><h1>매출 관리</h1></a>
 	</div>
 	<div class="w3-center w3-margin w3-padding">
+		<div style="display: flex; justify-content: end;">
+		<select id="type">
+			<option value="daily" selected>일 단위</option>
+			<option value="monthly">월 단위</option>
+		</select>
+		</div>
 		<div>
-		<h3>일별 매출</h3>
-		<canvas id="myChart"></canvas>
+		<div id="day">
+			<h3>일별 매출</h3>
+			<canvas id="myChart1"></canvas>
+		</div>
+		<div id="month">
+			<h3>월별 매출</h3>
+			<canvas id="myChart2"></canvas>
+		</div>
+		<h3>카테고리별 매출</h3>
+		<canvas id="myChart3"></canvas>
 		</div>
 	</div>
 </div>
 </body>
 <script>
-const ctx = document.getElementById('myChart');
+const ctx1 = document.getElementById('myChart1');
 
-const myChart = new Chart(ctx, {
+const myChart1 = new Chart(ctx1, {
     type: 'line', 
     data: {
         labels: ['${DAY[0].label}','${DAY[1].label}','${DAY[2].label}','${DAY[3].label}','${DAY[4].label}','${DAY[5].label}'],
         datasets: [{
-            label: '# of Votes',
+            label: '금액',
             data: [${DAY[0].data}, ${DAY[1].data}, ${DAY[2].data}, ${DAY[3].data}, ${DAY[4].data}, ${DAY[5].data}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+const ctx2 = document.getElementById('myChart2');
+
+const myChart2 = new Chart(ctx2, {
+    type: 'line', 
+    data: {
+        labels: ['${MONTH[0].month}','${MONTH[1].month}','${MONTH[2].month}','${MONTH[3].month}','${MONTH[4].month}','${MONTH[5].month}'],
+        datasets: [{
+            label: '금액',
+            data: [${MONTH[0].data}, ${MONTH[1].data}, ${MONTH[2].data}, ${MONTH[3].data}, ${MONTH[4].data}, ${MONTH[5].data}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+const ctx3 = document.getElementById('myChart3');
+
+const myChart3 = new Chart(ctx3, {
+    type: 'bar', 
+    data: {
+        labels: ['${CATE[0].label}','${CATE[1].label}','${CATE[2].label}','${CATE[3].label}'],
+        datasets: [{
+            label: '총액',
+            data: [${CATE[0].data}, ${CATE[1].data}, ${CATE[2].data}, ${CATE[3].data}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

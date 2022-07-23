@@ -74,4 +74,14 @@ public class GoodsService {
 		
 		
 	}
+	
+	public void editGoods(ManagerVO mgVO) {
+		if(mgVO.getFile() != null) {
+			ImageVO iVO = uploadProc(mgVO.getFile());
+			int cnt = mgDao.addGoodsImg(iVO);
+			if(cnt == 1) { // 이미지 등록에 성공하면?
+				mgDao.editGoodsInfo(mgVO);
+			}
+		}
+	}
 }

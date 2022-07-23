@@ -14,6 +14,7 @@ import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.*;
 
 import com.gentle.www.service.*;
+import com.gentle.www.util.PageUtil;
 import com.gentle.www.dao.*;
 import com.gentle.www.vo.*;
 
@@ -130,10 +131,15 @@ public class Manager {
    }
    // 매니저 회원 관리 @@@
    @RequestMapping("/member.dog")
-   public ModelAndView managerMember(ModelAndView mv) {
+   public ModelAndView managerMember(ModelAndView mv, PageUtil page) {
       
-      List<MemberVO> list = mgDao.getMemberInfo();
+	  int total = mgDao.getMemberTotal();
+	  
+	  page.setPage(total);
+	  
+      List<MemberVO> list = mgDao.getMemberInfo(page);
       
+      mv.addObject("PAGE", page);
       mv.addObject("LIST", list);
       
       mv.setViewName("manager/mngmember");
@@ -155,6 +161,12 @@ public class Manager {
       mv.setViewName("manager/mngsales");
       List<ManagerVO> list = mgDao.getSalesTotalDay();
       mv.addObject("DAY", list);
+      
+      List<ManagerVO> cate = mgDao.getCateSalesSum();
+      mv.addObject("CATE", cate);
+      
+      List<ManagerVO> month = mgDao.getSalesTotatlMonth();
+      mv.addObject("MONTH", month);
       
       return mv;
    }
@@ -192,12 +204,17 @@ public class Manager {
       int gno = mgVO.getGno();
       
       if(gno != 0) { // 수정이면
-         
+    	  try {
+    		  gSrvc.editGoods(mgVO);
+    		  mv.addObject("VIEW", "/www/manager/goods.dog");
+    	  } catch(Exception e) {
+    		  mv.addObject("VIEW", "/www/manager/addgoods.dog");
+    		  e.printStackTrace();
+    	  }
       } else { // 상품 등록
          try {
             gSrvc.addGoods(mgVO);
             mv.addObject("VIEW", "/www/manager/goods.dog");
-   
          } catch(Exception e) {
             mv.addObject("VIEW", "/www/manager/addgoods.dog");
             e.printStackTrace();
@@ -205,6 +222,8 @@ public class Manager {
       }
       return mv;
    }
+   
+   
    
    @RequestMapping("/cateList.dog")
    @ResponseBody

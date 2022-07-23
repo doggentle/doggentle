@@ -167,9 +167,14 @@ public class ManagerVO {
 	}
 	@Override
 	public String toString() {
-		return "ManagerVO [mno=" + mno + ", tno=" + tno + ", ino=" + ino + ", price=" + price + ", quantity=" + quantity
-				+ ", gname=" + gname + ", label=" + label + "]";
+		return "ManagerVO [gno=" + gno + ", mno=" + mno + ", tno=" + tno + ", ino=" + ino + ", cano=" + cano
+				+ ", price=" + price + ", quantity=" + quantity + ", data=" + data + ", hits=" + hits + ", stock="
+				+ stock + ", large=" + large + ", middle=" + middle + ", small=" + small + ", caname=" + caname
+				+ ", gname=" + gname + ", gdetail=" + gdetail + ", dir=" + dir + ", savename=" + savename + ", label="
+				+ label + ", month=" + month + ", isshow=" + isshow + ", issell=" + issell + ", tdate=" + tdate
+				+ ", sum=" + sum + ", total=" + total + ", file=" + file + "]";
 	}
+
 	
 	
 	

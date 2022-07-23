@@ -3,9 +3,18 @@
 	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
 			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
 <mapper namespace="mgSQL">
-	<select id="memberInfo" resultType="mVO">
-		SELECT mno, id, mail, jdate, tcnt, rcnt, NVL(sumpoint, 0) spoint
-		FROM member m,
+	<select id="memberTotal" resultType="int">
+		SELECT count(*) cnt
+		FROM member
+		WHERE isshow not like 'mng'
+	</select>
+
+
+	<select id="memberInfo" resultType="mVO" parameterType="page">
+		SELECT   rno, mno, id, mail, jdate, tcnt, rcnt, spoint 
+		FROM (
+		    SELECT ROWNUM rno, mno, id, mail, jdate, tcnt, rcnt, NVL(sumpoint, 0) spoint
+		    FROM member m,
 		    (
 		        SELECT count(t.mno) tcnt, m.mno no1
 		        FROM transaction t, member m
@@ -31,11 +40,14 @@
 		        member mb
 		        WHERE m1.mno(+) = mb.mno
 		    )
-		WHERE no1 = m.mno
+		    WHERE no1 = m.mno
 		    AND no2 = m.mno
 		    AND no3 = m.mno
 		    AND isshow = 'cst'
-		ORDER BY m.mno ASC
+		    ORDER BY m.mno ASC
+		)
+		WHERE rno between #{startCont} AND #{endCont}
+
 	</select>
 	
 	<select id="orderInfo" parameterType="int" resultType="mgVO">
@@ -175,6 +187,7 @@
 		WHERE
 		 t.gno = g.gno
 		 AND g.cano = small
+		 AND t.isshow = 'Y'
 		 group by large, label
 		 order by large
 	</select>
@@ -192,6 +205,7 @@
                FROM transaction t, goods g
                WHERE
                g.gno = t.gno
+               AND t.isshow = 'Y'
                group by TO_CHAR(tdate, 'YY/mm/dd')
            ) tt
            WHERE t.label = tt.tdate(+)
@@ -205,6 +219,7 @@
 		        SELECT TO_CHAR(NVL(SUM(quantity * price), 0), 'FM999,999,999,999,999,999') sum, count(tno) data
 		        FROM transaction t, goods g
 		        WHERE t.gno = g.gno
+		        AND t.isshow = 'Y'
 		        AND TO_CHAR(tdate, 'YY/mm/dd') = TO_CHAR(sysdate, 'YY/mm/dd')
 		    )
 		WHERE
@@ -212,5 +227,61 @@
 		group by
 		    sum, data
 	</select>
+	
+	<select id="cateSalesSum" resultType="mgVO">
+		SELECT  SUM(quantity * price) data, large, label
+		FROM transaction t, goods g,
+		    (
+		        SELECT c.cano small, z.cano large, z.caname label
+		        FROM category c, category g, category z
+		        WHERE
+		        g.cano = c.upno
+		        AND z.cano = g.upno
+		    ) 
+		WHERE
+		    t.gno = g.gno
+		    AND small = g.cano
+		    AND t.isshow = 'Y'
+		group by large, label
+		order by large
+	</select>
+	
+	<select id="salesTotalMonth" resultType="mgVO">
+	    SELECT data, month
+		FROM (
+		            SELECT substr(ADD_MONTHS (sysdate, LEVEL - 6), 0, 5)  month
+		            FROM DUAL
+		            CONNECT BY rownum &lt; 7
+		        ) m1
+		        ,(
+		            select substr(tdate, 0, 5) j, SUM(quantity * price) data
+		            FROM transaction t, goods g
+		            WHERE t.isshow = 'Y'
+                    AND t.gno = g.gno
+		            group by substr(tdate, 0, 5)
+		        ) m2
+		WHERE m1.month = m2.j(+) 
+		ORDER BY month
+	</select>
+	
+	<update id="editGoodsInfo" parameterType="mgVO">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+			SELECT MAX(ino) ino
+			FROM img
+		</selectKey>
+		UPDATE
+			goods
+		SET
+			cano = #{cano},
+			gname = #{gname},
+			gdetail = #{gdetail},
+			stock = #{stock},
+			price = #{price},
+			issell = #{issell},
+			ino = #{ino}
+		WHERE
+			gno = #{gno}
+			
+	</update>
 	
 </mapper>

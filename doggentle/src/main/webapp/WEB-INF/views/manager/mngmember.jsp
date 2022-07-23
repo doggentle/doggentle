@@ -118,11 +118,42 @@
 		<div class="o${data.mno}" id="o${data.mno}" style="margin: 50px; display: none;">
 		</div>
 </c:forEach>
+
+	<!-- 페이지 처리 시작 -->
+		<div class="w3-center">
+			<div class="w3-bar w3-border w3-margin-bottom" style="margin-top: 100px;">
+	<c:if test="${PAGE.startPage eq 1}">
+				<div class="w3-bar-item w3-light-grey">&laquo;</div>
+	</c:if>
+	<c:if test="${PAGE.startPage ne 1}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
+	</c:if>
+	<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
+			<c:if test="${page eq PAGE.nowPage}">
+				<div class="w3-bar-item w3-orange">${page}</div>
+			</c:if>
+			<c:if test="${page ne PAGE.nowPage}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${page}">${page}</div>
+			</c:if>
+	</c:forEach>
+			<c:if test="${PAGE.endPage eq PAGE.totalPage}">
+				<div class="w3-bar-item w3-light-grey">&raquo;</div>
+			</c:if>
+			<c:if test="${PAGE.endPage ne PAGE.totalPage}">
+				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
+			</c:if>
+			</div>
+		</div>
+		<!-- 페이지 처리 태그 끝 -->
 		
 
 
 <!-- 리뷰 추가할지 말지 -->
 	</div>
+	
+		<form method="POST" action="/www/manager/member.dog" id="frm" name="frm">
+		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
+		</form>
 </div>
 </body>
 </html>

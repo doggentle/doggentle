@@ -1,16 +1,16 @@
 $(document).ready(function() {
+	$('#month').hide();
 	
-/*	$.ajax({
-		url: '/www/manager/graphList.dog',
-		type: 'POST',
-		dataType: 'json',
-		async : false,
-		success: function(arr) {
-		
-		},
-		error: function() {
-			alert('오류');
+	$('#type').change(function() {
+		var result = $('#type option:selected').val();
+		if(result == 'daily') { 
+			$('#day').show();
+			$('#month').hide();
+		} else {
+			$('#month').show();
+			$('#day').hide();
 		}
-	});*/
+	});
+
 	
 });

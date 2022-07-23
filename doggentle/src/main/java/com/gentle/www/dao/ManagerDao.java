@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gentle.www.util.PageUtil;
 import com.gentle.www.vo.*;
 
 public class ManagerDao {
@@ -12,9 +13,14 @@ public class ManagerDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
+	// 멤버 count
+	public int getMemberTotal() {
+		return sqlSession.selectOne("mgSQL.memberTotal");
+	}
+	
 	// 관리자 회원보기
-	public List<MemberVO> getMemberInfo() {
-		return sqlSession.selectList("mgSQL.memberInfo");
+	public List<MemberVO> getMemberInfo(PageUtil page) {
+		return sqlSession.selectList("mgSQL.memberInfo", page);
 	}
 	
 	// 관리자 회원보기 주문내역
@@ -85,6 +91,21 @@ public class ManagerDao {
 	// 관리자 오늘 매출 & total
 	public ManagerVO getSalesSum() {
 		return sqlSession.selectOne("mgSQL.salesSum");
+	}
+	
+	// 관리자 카테고리 별 총액
+	public List<ManagerVO> getCateSalesSum() {
+		return sqlSession.selectList("mgSQL.cateSalesSum");
+	}
+	
+	// 관리자 매출관리 month총액
+	public List<ManagerVO> getSalesTotatlMonth() {
+		return sqlSession.selectList("mgSQL.salesTotalMonth");
+	}
+	
+	// 관리자 상품 수정
+	public int editGoodsInfo(ManagerVO mgVO) {
+		return sqlSession.update("mgSQL.editGoodsInfo", mgVO);
 	}
 
 }

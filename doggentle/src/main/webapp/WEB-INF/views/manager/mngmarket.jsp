@@ -101,7 +101,7 @@
 		<h3>가입한 회원 수<span style="font-size: 10pt;"> (단위:월)</span></h3>
 		<canvas id="myChart1"></canvas>
 	</div>
-	<div class="w3-center">
+	<div class="w3-center w3-margin w3-padding">
 		<div style="width:500px; height: auto; display: inline-block;">
 		<h3>성비</h3>
 			<canvas id="myChart2"></canvas>

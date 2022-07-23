@@ -5,12 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MemberVO {
-	private int mno, tcnt, rcnt, spoint, cnt;
+	private int mno, tcnt, rcnt, spoint, cnt, rno;
 	private String mail, id, pw, bdate, gen, jdate, isshow, money, spw;
 	//private Date birth, join;
 	
-
-	
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
 	public int getCnt() {
 		return cnt;
 	}

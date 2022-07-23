@@ -112,7 +112,6 @@
 					
 					<div class="gdetails col-md-6">
 					
-						<h4 class="product-title" id="gname">상품명 : ${DATA.gname}</h4>
 						<h3 class="product-title" id="gname">상품명 : ${DATA.gname}</h3>
 						<div class="rating">
 							<div class="stars">
@@ -126,7 +125,7 @@
 						</div>
 						<h4 class="price">제품코드 : ${DATA.gno}</h4>						
 						<p class="product-description">${DATA.gdetail}</p>
-						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}</span></h4>
+						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}원</span></h4>
 						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" >${DATA.stock}</span></h5>
                     <div class="qsection" style="padding-bottom:20px;">
                         <h6 class="title-attr"><small>수량</small></h6>                    
@@ -152,7 +151,7 @@
 			<ul>
 				<li class="ov first"><a href="#viewtab1">상품상세정보</a></li>
 				<li><a href="#viewtab2">관련상품</a></li>
-				<li><a href="#viewtab3">배송정보</a></li>
+				<li><a href="#viewtab3">상품 리뷰</a></li>
 				<li><a href="#viewtab4">교환 및 반품안내</a></li>
 							</ul>
 		</div>
@@ -171,7 +170,7 @@
 			<ul>
 				<li class="first"><a href="#viewtab1">상품상세정보</a></li>
 				<li class="ov"><a href="#viewtab2">관련상품</a></li>
-				<li><a href="#viewtab3">배송정보</a></li>
+				<li><a href="#viewtab3">상품 리뷰</a></li>
 				<li><a href="#viewtab4">교환 및 반품안내</a></li>
 			</ul>
 		</div>
@@ -186,7 +185,8 @@
         	<img class="gbtn" src="/www${DATA.dir}${DATA.savename}" alt="Product" style="width:30%; height: 100px; cursor: pointer;">
         	<div class="w3-col" style="height: 92px;">
 	        	<div>상품명 : ${DATA.gname}</div>
-	        	<div>가  격 : ${DATA.price}</div>
+	        	<div>가  격 : ${DATA.price}원</div>
+	        	<div>${DATA.caname}</div>
         	</div>
         	</div>
         	</div>
@@ -200,37 +200,48 @@
 			<ul>
 				<li class="first"><a href="#viewtab1">상품상세정보</a></li>
 				<li><a href="#viewtab2">관련상품</a></li>
-				<li class="ov"><a href="#viewtab3">배송정보</a></li>
+				<li class="ov"><a href="#viewtab3">상품 리뷰</a></li>
 				<li><a href="#viewtab4">교환 및 반품안내</a></li>
 							</ul>
 		</div>
-		<div class="tab_box">
-			<div class="con">
-				<ul>
-					<li>기본배송료는 박스수량 관계 없이 3,500원 입니다. (도서,산간,오지 일부지역은 배송비가 추가될 수 있습니다)</li>
-					<li>본 상품의 평균 배송일은 3 일입니다.(입금 확인 후) 설치 상품의 경우 다소 늦어질수 있습니다.[배송예정일은 주문시점(주문순서)에 따른 유동성이 발생하므로 평균 배송일과는 차이가 발생할 수 있습니다.]</li>
-				    <li>반품 배송비: 2,500원</li>
-				    <li>교환 배송비: 5,000원 (왕복 택배비)</li>
-				    <li>고객님의 단순 변심으로 인한 반품 시 반품택배비는 고객님이 부담해야 합니다.</li>
-				    <li>단, 교환/반품 상품 중 상품불량 또는 상품정보 상이로 인한 반송비는 독신사에서 부담합니다.</li>
-				    
-				</ul>
-				</hr>
-		        <ul> 
-				<h4>퀵배송</h4>
-      			<h2>퀵배송 주문가능 시간내 주문건은 당일배송</h2>
-		        <li>서울지역에서 서비스를 이용하실 수 있습니다.</li> 
-		        <li>월~금 00:00 ~ 13:59 주문건에 대해 당일 퀵배송이 가능합니다.</li>
-		        <li>토요일/일요일/휴일 퀵배송 주문이 불가능 합니다.</li> 
-        </ul>
+
+		<div class="w3-col w3-round-large w3-card-2 w3-margin-bottom w3-padding" style="margin-left: 40px; width: 80%;">
+			<div class="w3-col w3-border-right m1" style="width: 80px; height: 100px;">
+				<b class="w3-margin-left">글번호</b>
+				<img src="/www/img/goods/dog01.jpg" class="w3-border w3-border-grey w3-margin-right">
+			</div>
+			<div class="w3-rest w3-padding">
+				<div class="w3-col w3-border-bottom">
+					<span class="mgb10 ft10"><b>작성자 : 아이디</b></span>
+					<span class="w3-right mgb10 ft10"><small>날짜</small></span>
+				</div>
+				<div class="w3-col">
+					<span class="mgb10 ft10"><b class="w3-margin-top">상품이름</b></span>
+					<span class="w3-right mgb10 ft10">   
+						<p class="star-rating">
+					      <a class="fas fa-star" id="star1" onclick="add(this,1)"></a>
+					      <a class="fas fa-star" id="star2" onclick="add(this,2)"></a>
+					      <a class="fas fa-star" id="star3" onclick="add(this,3)"></a>
+					      <a class="far fa-star" id="star4" onclick="add(this,4)"></a>
+					      <a class="far fa-star" id="star5" onclick="add(this,5)"></a>
+					   </p>
+   					</span>
+				<div class="w3-col w3-margin-top">
+					<span class="w3-col ft12 w3-border-bottom">제목</span>
+				</div>
+				<div class="w3-col">
+					<span class="w3-col ft12">본문</span>
+				</div>
+				</div>
 			</div>
 		</div>
+
 		<a name="viewtab4"></a>
 		<div class="tab_list">
 			<ul>
 				<li class="first"><a href="#viewtab1">상품상세정보</a></li>
 				<li><a href="#viewtab2">관련상품</a></li>
-				<li><a href="#viewtab3">배송정보</a></li>
+				<li><a href="#viewtab3">상품 리뷰</a></li>
 				<li class="ov"><a href="#viewtab4">교환 및 반품안내</a></li>
 							</ul>
 		</div>

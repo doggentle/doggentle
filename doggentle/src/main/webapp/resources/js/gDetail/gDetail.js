@@ -8,19 +8,6 @@
 	});
    
    
-            //-- 물품상세 설명 띄우기
-            $("ul.gmenu-items > li").on("click",function(){
-                $("ul.gmenu-items > li").removeClass("gactive");
-                $(this).addClass("gactive");
-            });
-
-            $(".attr,.attr2").on("click",function(){
-                var clase = $(this).attr("class");
-
-                $("." + clase).removeClass("active");
-                $(this).addClass("active");
-            });
-
             //-- 수량버튼 이벤트처리
             $(".btn-minus").click(function(){
                 var now = $('#quantity').val();

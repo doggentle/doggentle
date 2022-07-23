@@ -27,6 +27,7 @@
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
 	<script type="text/javascript" src="/www/js/qna/qna.js"></script>
 	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
+	<script type="text/javascript" src="/www/js/review/review.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -142,120 +143,79 @@
 	       	<div class="w3-col m12">
 	          	<div class="w3-container">
 	          	  <div class="w3-content mxw700">
-  <div class="titbox"><h2>1:1문의작성</h2></div>
+
+  <div class="titbox"><h2>리뷰 작성</h2></div>
   <div class="conboxbg">
     <div class="conbox">
       <table width=500 cellpadding=4 cellspacing=0 border=0 class="pop_write" >
         <col width=50>
-		<tr>
-			<th>아이디</th>
-			<td>${SID}</td>
-		</tr>
-		
-		
-		<tr>
-			<th>주문번호</th>
-			<td>
-			<input type=text id="ordno" style="width:25%" class="dsmform" value="">
-			<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray" style="height: 70%;">주문조회</button>
-				<select class="w3-select w3-border" style="width: 35%" id="glist">				
-					<option disabled selected >문의할 상품 선택</option>
-				</select>
-			</td>
-		</tr>
+      <tr>
+         <th>아이디</th>
+         <td>${SID}</td>
+      </tr>
+      <tr>
+         <th>별점</th>
+<td class="form-group">
+   <p class="star-rating">
+      <a class="fas fa-star" id="star1" onclick="add(this,1)"></a>
+      <a class="fas fa-star" id="star2" onclick="add(this,2)"></a>
+      <a class="fas fa-star" id="star3" onclick="add(this,3)"></a>
+      <a class="far fa-star" id="star4" onclick="add(this,4)"></a>
+      <a class="far fa-star" id="star5" onclick="add(this,5)"></a>
+   </p>
+</td>
+      </tr>
+      
+      <tr>
+         <th>후기 상품</th>
+         <td>상품명</td>
+      </tr>
 
-		<tr>
-			<th>제목</th>
-			<td><input type=text id="title" style="width:80%" label="제목" class="dsmform" value=""></td>
-		</tr>
-		
-		<tr>
-			<th>내용</th>
-			<td>
+      <tr>
+         <th>제목</th>
+         <td><input type=text id="title" style="width:80%" label="제목" class="dsmform" value=""></td>
+      </tr>
+      
+      <tr>
+         <th>내용</th>
+         <td>
 
-			<textarea id="contents" style="width:80%;height:100px;" class="dsmform" label="내용" value=""></textarea>
+         <textarea id="contents" style="width:80%;height:100px;" class="dsmform" label="내용" value=""></textarea>
 
-		</td>
-		</tr>
-
-		
-		</table>
-	</div></div>
-	
-	<!-- 모달창 뷰 -->
-
-  <div id="id01" class="qw3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2 class="w3-center">${SID} 님의 주문 내역</h2>
-      </header>
-      <div class="w3-container">
-<div class="w3-col w3-white w3-card-4 w3-round-large pd15">
-			<div class="w3-col w3-light-grey w3-center w3-border">
-				<div class="w3-col m3">
-					<div class="w3-col m6 w3-border-right">주문일자</div>
-					<div class="w3-col m5 w3-border-right">주문번호</div>
-				</div>
-				<div class="w3-col m4 w3-border-right">상품</div>
-				<div class="w3-col m2 w3-border-right">상품번호</div>
-				<div class="w3-col m2 w3-border-right">주문자</div>
-				<div class="w3-col m1">선택</div>
-			</div>
-			
-<c:forEach var="data" items="${LIST}">
-			<div class="w3-col w3-white w3-hover-blue w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.tno}">
-				<div class="w3-col m3">
-					<div class="w3-col m6 w3-border-right">${data.adate}</div>
-					<div class="w3-col m5 w3-border-right">${data.tno}</div>
-				</div>
-				<div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
-				<div class="w3-col m2 w3-border-right">${data.gno}</div>
-				<div class="w3-col m2 w3-border-right">${data.id}</div>
-				<div class="w3-col m1">
-				<input type="radio" name="seltno" class="w3-radio chksel" id="ogtno" value="${data.tno}">
-				</div>
-			</div>
-</c:forEach>
-		</div>
-				<div class="w3-right w3-margin-top w3-button w3-gray" id="okbtn">확인</div>
-      </div>
-
-      <div class="w3-center">
-			<div class="w3-bar w3-border w3-round-medium w3-card w3-margin-top w3-margin-bottom">
-	<c:if test="${PAGE.startPage eq 1}">
-				<div class="w3-bar-item w3-light-grey">&laquo;</div>
-	</c:if>
-	<c:if test="${PAGE.startPage ne 1}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
-	</c:if>
-	<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
-			<c:if test="${page eq PAGE.nowPage}">
-				<div class="w3-bar-item w3-orange">${page}</div>
-			</c:if>
-			<c:if test="${page ne PAGE.nowPage}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${page}">${page}</div>
-			</c:if>
-	</c:forEach>
-			<c:if test="${PAGE.endPage eq PAGE.totalPage}">
-				<div class="w3-bar-item w3-light-grey">&raquo;</div>
-			</c:if>
-			<c:if test="${PAGE.endPage ne PAGE.totalPage}">
-				<div class="w3-bar-item w3-button w3-hover-blue pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
-			</c:if>
-			</div>
-		</div>
-    </div>
-  </div>
+      </td>
+      </tr>
+      
+      <tr>
+         <th>이미지</th>
+         <td>
+            <input value="" type="file" name="file" style="width:80%;" "class="w3-input w3-border w3-margin-bottom upfile" required>
+         </td>
+      </tr>
+      
+<c:if test="${empty INFO}">
+      <tr style="display: none;" id="previewbox">
+      <th>상품이미지</th>
+         <td style="overflow: hidden;" id="preview">
+              <img src="" height="300px" width="auto" id="img" class="infoAvtBox">
+         </td>
+      </tr>
+</c:if>
+<c:if test="${empty INFO}">
+      <tr style="display: none;" id="previewbox">
+      <th>상품이미지</th>
+         <td style="overflow: hidden;" id="preview">
+              <img src="" height="300px" width="auto" id="img" class="infoAvtBox">
+         </td>
+      </tr>
+</c:if>
+</table>
 </div>
-   <!-- submit -->
-  <div>
   <div class="btnbox2">
     <div class="cen bootstrap">
 		<button type="button" id="btn_save" style="width:20%" class="btn-default btn-lg btn-block btn-primary">글쓰기</button>
     </div>
   </div>
+   <!-- submit -->
 
 	  </div>
 	  </div>

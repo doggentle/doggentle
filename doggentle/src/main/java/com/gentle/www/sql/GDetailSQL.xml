@@ -44,21 +44,28 @@
    </select>
       <!-- gno 관심상품 리스트 조회 질의명령 -->
    <select id="igList" resultType="gVO" parameterType="gVO">
-      select
-          c.gno gno, c.gname gname, c.price price, c.cano cano, i.dir dir, i.savename savename
-      from
-          (
-              SELECT
-                gno, cano
-            FROM
-                goods g, img i
-            WHERE
-                  gno = #{gno} and
-                g.ino = i.ino
-          ) s, goods c, img i
-      where
-          s.cano = c.cano and
-          c.ino = i.ino
+		select
+		    r.gno gno, r.gname gname, r.price price, c.cano cano, r.dir dir, r.savename savename, caname
+		from
+		    (
+		      select
+		          c.gno gno, c.gname gname, c.price price, c.cano cano, i.dir dir, i.savename savename
+		      from
+		          (
+		              SELECT
+		                gno, cano
+		            FROM
+		                goods g, img i
+		            WHERE
+		                  gno = #{gno} and
+		                g.ino = i.ino
+		          ) s, goods c, img i
+		      where
+		          s.cano = c.cano and
+		          c.ino = i.ino
+		    )r, category c
+		where
+		    c.cano = r.cano
    </select>
       <!-- 키워드로 물품 검색 -->
    <select id="srcGoods" parameterType="gVO" resultType="gVO">

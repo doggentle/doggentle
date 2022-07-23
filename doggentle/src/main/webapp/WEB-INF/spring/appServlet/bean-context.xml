@@ -17,6 +17,7 @@
 	<bean id="gDao" class="com.gentle.www.dao.GDetailDao" />
     <bean id="qDao" class="com.gentle.www.dao.QnaDao" />
     <bean id="oDao" class="com.gentle.www.dao.OrderDao" />
+    <bean id="rDao" class="com.gentle.www.dao.ReviewDao" />
 	
 	<!-- 서비스 클래스 빈 처리 -->
 	<bean id="mSrvc" class="com.gentle.www.service.MailService" />

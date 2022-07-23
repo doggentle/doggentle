@@ -133,6 +133,43 @@
 	<!-- Middle Column -->
 	<div class="w3-col m9">
 <!-- 주문내역 영역 -->
+	   	 	<h1 class="w3-margin-left">작성 가능한 리뷰</h1>
+	   	 	<hr>
+		<div class="w3-col w3-round-large w3-card-2 w3-margin-bottom w3-padding" style="margin-left: 40px; width: 80%;">
+			<div class="w3-col w3-border-right m1" style="width: 80px; height: 100px;">
+				<b class="w3-margin-left">글번호</b>
+				<img src="/www/img/goods/dog01.jpg" class="w3-border w3-border-grey w3-margin-right">
+			</div>
+			<div class="w3-rest w3-padding">
+				<div class="w3-col w3-border-bottom">
+					<span class="mgb10 ft10"><b>작성자 : 아이디</b></span>
+					<span class="mgb10 ft10"><small>날짜</small></span>
+							<span class="w3-button w3-border ft10 w3-red w3-right" id="rdelbtn"><small>삭제</small></span>
+							<span class="w3-button w3-border ft10 w3-gray w3-right" id="reditbtn"><small>수정</small></span>
+				</div>
+				<div class="w3-col">
+					<span class="mgb10 ft10"><b class="w3-margin-top">상품이름</b></span>
+					<span class="w3-right mgb10 ft10">   
+						<p class="star-rating">
+					      <a class="fas fa-star" id="star1" onclick="add(this,1)"></a>
+					      <a class="fas fa-star" id="star2" onclick="add(this,2)"></a>
+					      <a class="fas fa-star" id="star3" onclick="add(this,3)"></a>
+					      <a class="far fa-star" id="star4" onclick="add(this,4)"></a>
+					      <a class="far fa-star" id="star5" onclick="add(this,5)"></a>
+					   </p>
+   					</span>
+				<div class="w3-col w3-margin-top">
+					<span class="w3-col ft12 w3-border-bottom">제목</span>
+				</div>
+				<div class="w3-col">
+					<span class="w3-col ft12">본문</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w3-col m9">
+<!-- 주문내역 영역 -->
 	   	 	<h1 class="w3-margin-left">내가 작성한 리뷰</h1>
 	   	 	<hr>
 		<div class="w3-col w3-round-large w3-card-2 w3-margin-bottom w3-padding" style="margin-left: 40px; width: 80%;">
@@ -167,6 +204,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+</div>
 	
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">

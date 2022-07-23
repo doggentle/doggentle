@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	var one = false;
+	$('.pbtn').click(function(){
+		var spage = $(this).attr('id');
+		$('#nowPage').val(spage);
+		$('#frm').submit();
+	});
 
 
 	$('#mkbtn').click(function() {

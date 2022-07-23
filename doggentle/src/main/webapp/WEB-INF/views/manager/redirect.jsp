@@ -17,6 +17,9 @@
 <c:if test="${not empty MSG}">
 		<input type="hidden" name="msg" value="${MSG}">
 </c:if>
+<c:if test="${not empty NOWPAGE}">
+		<input type="hidden" name="nowPage" value="${NOWPAGE}">
+</c:if>
 	</form>
 </body>
 </html>

@@ -9,8 +9,8 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gentle.www.dao.GDetailDao;
-import com.gentle.www.vo.GDetailVO;
+import com.gentle.www.dao.*;
+import com.gentle.www.vo.*;
 
 
 @Controller
@@ -18,12 +18,20 @@ public class MainController {
 	@Autowired
 	GDetailDao gDao;
 	
+	@Autowired
+	MainDao mainDao;
+	
 	@RequestMapping({"/", "/main.dog"})
 	public ModelAndView getMain(ModelAndView mv, HttpSession session) {
 		List<GDetailVO> list = gDao.getStratCate();
 		
 		//데이터 심고
 		session.setAttribute("LIST", list);
+		
+		List<ManagerVO> newItems = mainDao.getMainNew();
+		List<ManagerVO> hitItems = mainDao.getMainHit();
+		mv.addObject("NEW", newItems);
+		mv.addObject("HIT", hitItems);
 		mv.setViewName("main");
 		return mv;
 	}

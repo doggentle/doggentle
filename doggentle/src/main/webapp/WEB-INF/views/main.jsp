@@ -17,6 +17,7 @@
 	<link rel='stylesheet' href="/www/css/style.css"/>
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -172,147 +173,27 @@
 
 		<div class="w3-col w3-margin-top" id="gPanel"></div>
 		<div class="w3-col w3-margin-top" id="sPanel"></div>
-	<div>
-		<h1>새로운 상품</h1>
+		<div>
+			<h1>새로운 상품</h1>
+		</div>
+			<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+	            <div class="MultiCarousel-inner">
+	<c:forEach var="data" items="${NEW}">
+	                <div class="item" style="width:500px">
+	                    <div class="pad15">
+	                <a href="">
+	                        <img src="${data.dir}${data.savename}" width="auto" height="100px">
+	                        <p>${data.gname}</p>
+	                        <p>${data.label}원</p>
+	                </a>
+	                    </div>
+	                </div>
+	</c:forEach>
+			</div>
+				<button class="btn-primary leftLst arrow"><</button>
+	            <button class="btn-primary rightLst arrow">></button>
+		</div>
 	</div>
-		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-            <div class="MultiCarousel-inner">
-
-                <div class="item">
-                    <div class="pad15">
-                <a href="">
-                        <img src="/www/img/test.png" width="100px" height="auto">
-                        <p>상품이름</p>
-                        <p>30,000원</p>
-                </a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <p class="lead">Multi Item Carousel</p>
-                        <p>₹ 1</p>
-                        <p>₹ 6000</p>
-                        <p>50% off</p>
-                    </div>
-                </div>
-            </div>
-            <button class="btn-primary leftLst arrow"><</button>
-            <button class="btn-primary rightLst arrow">></button>
-        </div>
-	</div>
-
 <hr>
 <div>
 	<h1>
@@ -321,60 +202,34 @@
 </div>
 
 <div class="container">
-         <div class="row">
-         </div>
          <div class="portfolio-item row">
-            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm w3-center">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="/www/img/test.png" width="200px" height="auto" alt="">
-               <p>제목</p>
-               <p>얼마얼마</p>
-               </a>
-            </div>
-           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm w3-center">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="/www/img/test.png" width="200px" height="auto" alt="">
-               <p>제목</p>
-               <p>얼마얼마</p> 
-               </a>
-            </div>
-    <div class="item selfie col-lg-3 col-md-4 col-6 col-sm w3-center">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="/www/img/test.png" width="200px" height="auto" alt="">
-               <p>제목</p>
-               <p>얼마얼마</p>
-               </a>
-            </div>
-    <div class="item selfie col-lg-3 col-md-4 col-6 col-sm w3-center">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="/www/img/test.png" width="200px" height="auto" alt="">
-               <p>제목</p>
-               <p>얼마얼마</p>
-               </a>
-            </div>
-           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" alt="">
-               </a>
-            </div>
-          <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" alt="">
-               </a>
-            </div>
-           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" alt="">
-               </a>
-            </div>
-         <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-               <a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" class="fancylight popup-btn" data-fancybox-group="light"> 
-               <img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" alt="">
-               </a>
-            </div>
+<c:forEach var="data" items="${HIT}">
+			<a href="">
+	            <div class="item col-lg-3 col-md-4 col-6 col-sm w3-center">
+	               <img class="img-fluid" src="${data.dir}${data.savename}" width="auto" height="200px" alt="">
+	               <p>${data.gname}</p>
+	               <p>판매량 : ${data.hit}개</p>
+	               <p>${data.label}원</p>
+	            </div>
+            </a>
+</c:forEach>
          </div>
       </div>
 </div>
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="#" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
+
 <!-- Bootstrap core JavaScript
 	================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

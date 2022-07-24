@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 									'<div class="w3-center w3-quarter product w3-border" id="' + arr[i].gno + '">' +
 									'<div class="w3-col w3-margin-bottom">' +
-									'<img class="gbtn" src="/www' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:30%; height: 100px; cursor: pointer;">' +
+									'<img class="gbtn" src="' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:30%; height: 100px; cursor: pointer;">' +
 									'<div class="w3-col" style="height: 92px;"><p>Code:' + arr[i].gno + ' </p><p>상품명 : ' + arr[i].gname + '</p><p>가 격 : ' + arr[i].price + '</p></div>' + 
 									'</div>' +
 									'</div>' ;

@@ -31,6 +31,7 @@
 	    <mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
 	    <mapper resource="com/gentle/www/sql/OrderSQL.xml" />
 		<mapper resource="com/gentle/www/sql/QnaSQL.xml" />
+		<mapper resource="com/gentle/www/sql/MainSQL.xml" />
 <!-- 
  		<mapper resource="com/gentle/www/sql/ReviewSQL.xml" /> -->
 	</mappers> 

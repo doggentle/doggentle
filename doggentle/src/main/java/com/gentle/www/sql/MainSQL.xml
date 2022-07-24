@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainSQL">
+	<select id="mainNew" resultType="mgVO">
+		SELECT gno, gname, TO_CHAR(price, 'FM999,999,999,999') label, savename, dir
+		FROM goods g, img i
+		WHERE
+		g.ino = i.ino
+		AND issell = 'Y'
+		AND rownum &lt; 11
+		order by salesdate desc
+	</select>
+	
+	<select id="mainHit" resultType="mgVO">
+		SELECT gno, gname, TO_CHAR(price, 'FM999,999,999,999,999') label, savename, dir, TO_CHAR(hits, 'FM999,999,999,999') hit
+		FROM goods g, img i
+		WHERE
+		g.ino = i.ino
+		AND issell = 'Y'
+		AND rownum &lt; 9
+		order by hits desc
+	</select>
+</mapper>

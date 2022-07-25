@@ -1,1 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DYD Mapper 3.0//EN"
+			"http://mybatis.org/dyd/mybatis-3-mapper.dtd">
+<mapper namespace="rSQL">
+	<insert id="reviewImage" parameterType="iVO">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(ino) + 1, 100001) FROM img
+		</selectKey>
+		INSERT INTO
+			img(ino, upname, savename, dir, volume, purpose)
+		VALUES (
+			#{ino}, #{upname}, #{savename}, #{dir}, #{volume}, 'rev'
+		)
+	</insert>
+	
+	<select id="existRevImg" resultType="int">
+		SELECT MAX(ino) ino
+		FROM img
+	</select>
+
+	<insert id="reviewWrite" parameterType="rVO">
+		<selectKey keyProperty="rno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(rno) + 1, 100001) FROM review
+		</selectKey>
+		INSERT INTO
+			review(rno, tno, title, body, score, ino)
+		VALUES (
+				#{rno}, #{tno}, #{title}, #{body}, #{score}, #{ino}
+			)
+	</insert>
+	
+	<select id="reviewGname" parameterType="int" resultType="string">
+		SELECT gname
+		FROM goods g, transaction t
+		WHERE g.gno = t.gno
+		AND tno = #{tno}
+	</select>
+	
+	<select id="reviewList" parameterType="string" resultType="rVO">
+		SELECT rno, dir, savename, TO_CHAR(rdate, 'yyyy-MM-dd') rdate, gname, title, body, score
+		FROM goods g, img i, review r, transaction t, member m
+		WHERE g.ino = i.ino
+		AND t.tno = r.tno
+		AND t.gno = g.gno
+		AND m.mno = t.mno
+		AND id = #{id}
+		order by rdate desc
+	</select>
+</mapper>

@@ -19,6 +19,8 @@ public class GoodsService {
 	
 	@Autowired
 	ManagerDao mgDao;
+	@Autowired
+	ReviewDao rDao;
 	
 	public ImageVO uploadProc(MultipartFile file) {
 		ImageVO iVO = uploadProc(file, "/upload");
@@ -62,6 +64,7 @@ public class GoodsService {
 		return iVO;
 	}
 	
+	// 상품
 	@Transactional
 	public void addGoods(ManagerVO mgVO) {
 		if(mgVO.getFile() != null) {
@@ -71,8 +74,25 @@ public class GoodsService {
 				mgDao.addGoods(mgVO);
 			}
 		}
+	}
 		
-		
+	// 리뷰
+	@Transactional
+	public void addReview(ReviewVO rVO) {
+		if(rVO.getFile() != null) {
+			ImageVO iVO = uploadProc(rVO.getFile());			
+			int cnt = rDao.addReviewImage(iVO);
+			if(cnt == 1) { // 이미지 등록에 성공하면?
+				int ino = rDao.existReviewImage();
+				rVO.setIno(ino);
+				System.out.println(rVO);
+				rDao.addReviewWrite(rVO);
+			}
+		} else { // 사진 없이 리뷰만 올리는 경우
+			int ino = 0;
+			rVO.setIno(ino);
+			rDao.addReviewWrite(rVO);
+		}
 	}
 	
 	public void editGoods(ManagerVO mgVO) {

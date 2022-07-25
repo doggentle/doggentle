@@ -202,7 +202,7 @@
 </div>
 
 <div class="container">
-         <div class="portfolio-item row">
+         <div class="portfolio-item row" style="margin-top: 20px;">
 <c:forEach var="data" items="${HIT}">
 			<a href="">
 	            <div class="item col-lg-3 col-md-4 col-6 col-sm w3-center">

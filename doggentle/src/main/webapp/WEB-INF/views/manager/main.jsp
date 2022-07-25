@@ -17,6 +17,7 @@
 	<link rel='stylesheet' href="/www/css/style.css"/>
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 	
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
@@ -112,9 +113,20 @@
 		<canvas id="myChart"></canvas>
 	</div>
 </div>
-<!-- Bootstrap core JavaScript
-	================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
+
 </body>
 
 

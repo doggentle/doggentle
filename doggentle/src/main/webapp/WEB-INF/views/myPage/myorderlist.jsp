@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>나의 QnA</title>
+	<title>나의 주문내역</title>
 	
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
@@ -18,6 +18,7 @@
 	<link rel='stylesheet' href="/www/css/style.css"/>
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
@@ -138,47 +139,42 @@
 <div class="w3-col w3-white w3-card-4 w3-round-large pd15">
          <div class="w3-col w3-light-grey w3-center w3-border">
             <div class="w3-col m3">
-               <div class="w3-col m6 w3-border-right">주문일자</div>
-               <div class="w3-col m5 w3-border-right">주문번호</div>
+               <div class="rr w3-col m7 w3-border-right">주문일자</div>
+               <div class="rr w3-col m5 w3-border-right">주문번호</div>
             </div>
-            <div class="w3-col m4 w3-border-right">상z품</div>
-            <div class="w3-col m2 w3-border-right">상품번호</div>
-            <div class="w3-col m2 w3-border-right">주문자</div>
-            <div class="w3-col m1">리뷰</div>
-         </div>
+            <div class="rr w3-col m4 w3-border-right">상품명</div>
+            <div class="rr w3-col m2 w3-border-right">금액</div>
+            <div class="rr w3-col m2 w3-border-right">주문수량</div>
+            <div class="rr w3-col m1">리뷰</div>
+         </div> 
          
 <c:forEach var="data" items="${LIST}">
-         <div class="w3-col w3-hover-pale-blue w3-center w3-border-bottom w3-border-left w3-border-right brdList">
+         <div class="w3-col w3-hover-pale-blue w3-center w3-border-left w3-border-right brdList" style="display: flex; align-items: center;">
             <div class="w3-col m3">
-               <div class="w3-col m6 w3-border-right">${data.adate}</div>
-               <div class="w3-col m5 w3-border-right">${data.tno}</div>
+               <div class="rr w3-col m7 w3-border-right">${data.tdate}</div>
+               <div class="rr w3-col m5 w3-border-right">${data.tno}</div>
             </div>
-            <div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
-            <div class="w3-col m2 w3-border-right">${data.gno}</div>
-            <div class="w3-col m2 w3-border-right">${data.id}</div>
+            <div class="rr w3-col m4 w3-border-right">${data.gname}</div>
+            <div class="rr w3-col m2 w3-border-right">${data.sum}원</div>
+            <div class="rr w3-col m2 w3-border-right">${data.quantity}개</div>
             <div class="w3-col m1">
+	<c:if test="${data.cnt eq 0}">
+            <div id="${data.tno}" class="w3-button w3-border w3-background-color-gold rvbtn">리뷰</div>
+    </c:if>
+	<c:if test="${data.cnt ne 0}">
+            완료
+    </c:if>
             </div>
          </div>
-<c:forEach var="data" items="${LIST}">
-         <div class="w3-col w3-pale-red w3-hover-pale-yellow w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.tno}">
-            <div class="w3-col m3">
-               <div class="w3-col m6 w3-border-right">${data.adate}</div>
-               <div class="w3-col m5 w3-border-right">${data.tno}</div>
-            </div>
-            <div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
-            <div class="w3-col m2 w3-border-right">${data.gno}</div>
-            <div class="w3-col m2 w3-border-right">${data.id}</div>
-            <div class="w3-col m1">
-            <input type="button" name="seltno" class="w3-button w3-border w3-background-color-gold" id="ogtno" value="리뷰">
-            </div>
-         </div>
-</c:forEach>
 </c:forEach>
       </div>
             <div class="w3-right w3-margin-top w3-button w3-gray" id="okbtn">확인</div>
       </div>
 	      </div>
 	  </div>
+<form method="POST" id="frm" name="frm" action="/www/review/reviewWrite.dog">
+	<input type="hidden" id="tno" name="tno" value="">
+</form>
 
 <!-- Middle Column end -->
 	   	</div>
@@ -186,8 +182,18 @@
 
 	  
 <!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>GenTleDog</h5>
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </footer>
 
 </body>

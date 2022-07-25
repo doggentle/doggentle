@@ -18,6 +18,7 @@
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 	<link rel='stylesheet' href="/www/css/manager.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 	
 	
 	<!-- JavaScript -->
@@ -112,9 +113,22 @@
 		</div>
 	</div>
 </div>
-
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
 
 </body>
+
 
 <script>
 const ctx1 = document.getElementById('myChart1');

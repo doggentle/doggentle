@@ -186,9 +186,13 @@ public class MyPage {
    }
    // 나의 주문내역 리스트
    @RequestMapping("/myOrderList.dog")
-   public ModelAndView myOrderList(ModelAndView mv, HttpSession session, QnAVO qVO) {
+   public ModelAndView myOrderList(ModelAndView mv, HttpSession session, ManagerVO mVO) {
 		String id = (String) session.getAttribute("SID");
-		List<QnAVO> list = qDao.getOrderList(id);
+		if(id == null) {
+			mv.setViewName("member/login");
+			return mv;
+		}
+		List<ManagerVO> list = qDao.getOrderList(id);
 		mv.addObject("LIST", list);
       mv.setViewName("myPage/myorderlist");
       return mv;

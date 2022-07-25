@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gentle.www.dao.QnaDao;
 import com.gentle.www.util.PageUtil;
-import com.gentle.www.vo.QnAVO;
+import com.gentle.www.vo.*;
 
 
 @Controller
@@ -27,7 +27,7 @@ import com.gentle.www.vo.QnAVO;
 		@RequestMapping("/qnaWrite.dog")
 		public ModelAndView QnaView(ModelAndView mv, QnAVO qVO, HttpSession session) {
 			String id = (String) session.getAttribute("SID");
-			List<QnAVO> list = qDao.getOrderList(id);
+			List<ManagerVO> list = qDao.getOrderList(id);
 			mv.addObject("LIST", list);
 			mv.setViewName("qna/qnaWrite");
 			

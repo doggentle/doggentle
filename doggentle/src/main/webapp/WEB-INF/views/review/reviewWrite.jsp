@@ -20,6 +20,7 @@
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 	<link rel='stylesheet' href="/www/css/qna.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
@@ -134,9 +135,7 @@
 	      		</div>
 	   		 </div>
 <!-- Middle Column -->
-<form name="fm" id="frm" method="POST" action="">
-	<input type="hidden" name="id" value="${SID}">	
-</form>
+<form name="frm" id="frm" method="POST" action="/www/review/reviewWriteProc.dog" enctype="multipart/form-data">
 
 	  <div class="w3-col m9">
 	  	<div class="w3-row-padding">
@@ -147,14 +146,14 @@
   <div class="titbox"><h2>리뷰 작성</h2></div>
   <div class="conboxbg">
     <div class="conbox">
-      <table width=500 cellpadding=4 cellspacing=0 border=0 class="pop_write" >
+      <table class="pop_write" >
         <col width=50>
       <tr>
-         <th>아이디</th>
-         <td>${SID}</td>
+         <th class="rvlb">아이디</th>
+         <td class="rvval">${SID}</td>
       </tr>
       <tr>
-         <th>별점</th>
+         <th class="rvlb">별점</th>
 <td class="form-group">
    <p class="star-rating">
       <a class="fas fa-star" id="star1" onclick="add(this,1)"></a>
@@ -165,56 +164,47 @@
    </p>
 </td>
       </tr>
-      
       <tr>
-         <th>후기 상품</th>
-         <td>상품명</td>
+         <th class="rvlb">상품명</th>
+         <td class="rvval">${GNAME}</td>
       </tr>
-
       <tr>
-         <th>제목</th>
-         <td><input type=text id="title" style="width:80%" label="제목" class="dsmform" value=""></td>
+         <th class="rvlb">제목</th>
+         <td><input type=text id="title" name="title" class="w3-col m10 w3-input w3-border" value="" required></td>
       </tr>
-      
       <tr>
-         <th>내용</th>
+         <th class="rvlb">내용</th>
          <td>
-
-         <textarea id="contents" style="width:80%;height:100px;" class="dsmform" label="내용" value=""></textarea>
-
+         <textarea id="body" name="body" style="resize: none;" class="w3-col w3-input w3-padding w3-border m10" rows="7" required></textarea>
       </td>
       </tr>
-      
       <tr>
-         <th>이미지</th>
-         <td>
-            <input value="" type="file" name="file" style="width:80%;" "class="w3-input w3-border w3-margin-bottom upfile" required>
+         <th class="rvlb">이미지</th>
+         <td id="filebox">
+            <input value="" type="file" id="file" name="file" class="w3-col w3-input w3-border m10 upfile">
          </td>
-      </tr>
-      
-<c:if test="${empty INFO}">
+      </tr>      
       <tr style="display: none;" id="previewbox">
-      <th>상품이미지</th>
+      	 <th class="rvlb">리뷰사진</th>
          <td style="overflow: hidden;" id="preview">
-              <img src="" height="300px" width="auto" id="img" class="infoAvtBox">
+ 			<div class="inblock pdAll10 picbox w3-card">
+                <div class="w3-center m10 w3-col w3-border w3-margin-right" style="overflow: hidden;">
+                   <img src="" height="300px" width="auto" id="img" class="infoAvtBox">
+                </div>
+             </div>
          </td>
       </tr>
-</c:if>
-<c:if test="${empty INFO}">
-      <tr style="display: none;" id="previewbox">
-      <th>상품이미지</th>
-         <td style="overflow: hidden;" id="preview">
-              <img src="" height="300px" width="auto" id="img" class="infoAvtBox">
-         </td>
-      </tr>
-</c:if>
+
 </table>
 </div>
   <div class="btnbox2">
     <div class="cen bootstrap">
-		<button type="button" id="btn_save" style="width:20%" class="btn-default btn-lg btn-block btn-primary">글쓰기</button>
+		<button type="button" id="reviewbtn" class="w3-margin btn-default btn-lg btn-primary">글쓰기</button>
     </div>
   </div>
+  <input type="hidden" id="score" name="score" value="3">
+  <input type="hidden" name="tno" value="${TNO}">
+  
    <!-- submit -->
 
 	  </div>
@@ -223,11 +213,22 @@
 	  </div>
 	  </div>
 	  </div>
+</form>
 	  </div>
-<!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>GenTleDog</h5>
-</footer>
-
+	  </div>
 </body>
+<!-- Footer -->
+	<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
 </html>

@@ -6,14 +6,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gentle.www.util.PageUtil;
-import com.gentle.www.vo.QnAVO;
+import com.gentle.www.vo.*;
 
 public class QnaDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
 	//주문목록 조회 함수
-	public List<QnAVO> getOrderList(String id){
+	public List<ManagerVO> getOrderList(String id){
 		return sqlSession.selectList("qSQL.OrderList", id);
 	}
 	//주문 상품목록 조회 함수

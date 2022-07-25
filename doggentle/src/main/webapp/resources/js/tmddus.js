@@ -102,5 +102,12 @@ $(document).ready(function () {
         var slide = $(Parent).attr("data-slide");
         ResCarousel(ell, Parent, slide);
     }
+    
+    $('.rvbtn').click(function() {
+    	var txt = $(this).attr('id');
+    	
+    	$('#tno').val(txt);
+    	$('#frm').submit();
+    });
 
 });

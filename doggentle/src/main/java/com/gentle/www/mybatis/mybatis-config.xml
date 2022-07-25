@@ -19,6 +19,7 @@
 		<typeAlias alias="oVO" type="com.gentle.www.vo.OrderVO"/>
 		<typeAlias alias="myVO" type="com.gentle.www.vo.MyPageVO"/>
 		<typeAlias alias="iVO" type="com.gentle.www.vo.ImageVO"/>
+		<typeAlias alias="rVO" type="com.gentle.www.vo.ReviewVO"/>
 		<typeAlias alias="image" type="com.gentle.www.util.ImageUtil"/>
 		<typeAlias alias="page" type="com.gentle.www.util.PageUtil"/>
 		<typeAlias alias="calendar" type="com.gentle.www.util.MyCalendar"/>
@@ -32,6 +33,7 @@
 	    <mapper resource="com/gentle/www/sql/OrderSQL.xml" />
 		<mapper resource="com/gentle/www/sql/QnaSQL.xml" />
 		<mapper resource="com/gentle/www/sql/MainSQL.xml" />
+		<mapper resource="com/gentle/www/sql/ReviewSQL.xml" />
 <!-- 
  		<mapper resource="com/gentle/www/sql/ReviewSQL.xml" /> -->
 	</mappers> 

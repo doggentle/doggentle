@@ -3,13 +3,20 @@ package com.gentle.www.vo;
 import org.springframework.web.multipart.MultipartFile; 
 
 public class ManagerVO {
-	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small;
+	private int gno, mno, tno, ino, cano, price, quantity, data, hits, stock, large, middle, small, cnt;
 	private String caname, gname, gdetail, dir, savename, label, month, isshow, issell, tdate, sum, total, hit;
 
 	private MultipartFile file;
+	
+	
 
-	
-	
+
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getHit() {
 		return hit;
 	}

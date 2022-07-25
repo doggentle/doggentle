@@ -5,27 +5,22 @@
 <mapper namespace="qSQL">
 	
 		<!-- 주문목록 조회 질의명령 -->
-	<select id="OrderList" resultType="qVO" parameterType="qVO">
-		SELECT
-		    id, tdate adate, t.tno tno, upno, gname name, t.gno gno, s.mno mno, 
-		    (SELECT COUNT(*) FROM TRANSACTION WHERE s.tno = upno) cnt
-		FROM
-		    (
-		    SELECT 
-		        TNO, gno, t.MNO mno, id
-		    FROM
-		        TRANSACTION t, MEMBER m
-		    WHERE
-		        id = #{id}
-		        AND t.mno = m.mno
-		        AND upno is null
-		    ) s, TRANSACTION t, GOODS g
-		WHERE
-		    s.tno = t.tno
-		    AND s.gno = g.gno
-		ORDER BY
-		    TNO desc
-	</select>	
+	<select id="OrderList" resultType="mgVO" parameterType="string">
+		SELECT TO_CHAR(tdate, 'yyyy-MM-dd') tdate, t.tno, gname, TO_CHAR((price * quantity), 'FM999,999,999,999') sum, quantity, NVL(cnt, 0) cnt
+		FROM transaction t, goods g, member m, 
+		(
+		    SELECT count(*) cnt, t.tno
+		    FROM transaction t, review r
+		    WHERE t.tno = r.tno
+		    group by t.tno
+		) tt
+		WHERE t.gno = g.gno
+		AND t.mno = m.mno
+		AND t.tno = tt.tno(+)
+		AND id = #{id}
+		order by tdate desc
+	</select>
+	
 	<!-- 주문목록 상품들 조회 -->
 	<select id="OrderGoodsList" resultType="qVO" parameterType="int">
 		SELECT

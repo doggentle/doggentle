@@ -12,10 +12,6 @@ public class QnaDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	// 게시글 리스트 조회 전담 처리함수
-	public List<QnAVO> getList(PageUtil page){
-		return sqlSession.selectList("qSQL.getList", page);
-	}
 	//주문목록 조회 함수
 	public List<QnAVO> getOrderList(String id){
 		return sqlSession.selectList("qSQL.OrderList", id);
@@ -24,9 +20,11 @@ public class QnaDao {
 	public List<QnAVO> getOrderGoodsList(int tno){
 		return sqlSession.selectList("qSQL.OrderGoodsList", tno);
 	}
-	/*
-	 * // 문의글 등록 public int qnaWrite(QnAVO qVO) { return
-	 * sqlSession.insert("qSQL.qnaWrite", qVO); }
-	 */
+	
+	  // 문의글 등록 
+	public int qnaWrite(QnAVO qVO) { 
+		return sqlSession.insert("qSQL.qnaWrite", qVO); 
+	}
+	 
 
 }

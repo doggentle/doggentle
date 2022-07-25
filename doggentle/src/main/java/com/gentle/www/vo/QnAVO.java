@@ -5,12 +5,18 @@ public class QnAVO {
 	private String id, title, body, qdate, name;
 	
 	private int ano, mngno;
-	private String mid, abody, adate;
+	private String mid, abody, adate, view;
 
 	// 문의작성용 vo
 	private int tno, gno, cnt;
 
 	
+	public String getView() {
+		return view;
+	}
+	public void setView(String view) {
+		this.view = view;
+	}
 	public String getName() {
 		return name;
 	}
@@ -112,10 +118,9 @@ public class QnAVO {
 	public String toString() {
 		return "QnAVO [qno=" + qno + ", mno=" + mno + ", upqno=" + upqno + ", id=" + id + ", title=" + title + ", body="
 				+ body + ", qdate=" + qdate + ", name=" + name + ", ano=" + ano + ", mngno=" + mngno + ", mid=" + mid
-				+ ", abody=" + abody + ", adate=" + adate + ", tno=" + tno + ", gno=" + gno + ", cnt=" + cnt + "]";
+				+ ", abody=" + abody + ", adate=" + adate + ", view=" + view + ", tno=" + tno + ", gno=" + gno
+				+ ", cnt=" + cnt + "]";
 	}
-	
-	
 
 	
 

@@ -133,33 +133,50 @@
 	   		 </div>
 <!-- Middle Column -->
 	  <div class="w3-col m9">
-	  <h2 class="w3-center" style="border-bottom: 1px solid #d4d4d4;">나의 문의 내역</h2>
-	  	<div class="w3-row-padding">
-	       	<div class="w3-col m12">
-	        <div class="w3-col w3-white w3-card-4 w3-round-large pd15">
-			<div class="w3-col w3-gray w3-center w3-border">
-				<div class="w3-col m1 w3-border-right">문의번호</div>
-				<div class="w3-col m2 w3-border-right">문의상품</div>
-				<div class="w3-col m6 w3-border-right">제목</div>
-				<div class="w3-col m1 w3-border-right">상품번호</div>
-				<div class="w3-col m2 w3-border-right">등록일</div>
-			</div>
-			
-<c:forEach var="data" items="${QNALIST}">
-			<div class="w3-col w3-light-grey w3-center w3-border">
-				<div class="w3-col m1 w3-border-right">${data.qno}</div>
-				<div class="w3-col m2 w3-border-right">${data.name}</div>
-				<div class="w3-col m6 w3-border-right">${data.title}</div>
-				<div class="w3-col m1 w3-border-right">${data.gno}</div>
-				<div class="w3-col m2 w3-border-right">${data.qdate}</div>
-			</div>
-			<hr>
+	  <h2 class="w3-center" style="border-bottom: 1px solid #d4d4d4;">나의 주문 내역</h2>
+	  	<div class="w3-container">
+<div class="w3-col w3-white w3-card-4 w3-round-large pd15">
+         <div class="w3-col w3-light-grey w3-center w3-border">
+            <div class="w3-col m3">
+               <div class="w3-col m6 w3-border-right">주문일자</div>
+               <div class="w3-col m5 w3-border-right">주문번호</div>
+            </div>
+            <div class="w3-col m4 w3-border-right">상z품</div>
+            <div class="w3-col m2 w3-border-right">상품번호</div>
+            <div class="w3-col m2 w3-border-right">주문자</div>
+            <div class="w3-col m1">리뷰</div>
+         </div>
+         
+<c:forEach var="data" items="${LIST}">
+         <div class="w3-col w3-hover-pale-blue w3-center w3-border-bottom w3-border-left w3-border-right brdList">
+            <div class="w3-col m3">
+               <div class="w3-col m6 w3-border-right">${data.adate}</div>
+               <div class="w3-col m5 w3-border-right">${data.tno}</div>
+            </div>
+            <div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
+            <div class="w3-col m2 w3-border-right">${data.gno}</div>
+            <div class="w3-col m2 w3-border-right">${data.id}</div>
+            <div class="w3-col m1">
+            </div>
+         </div>
+<c:forEach var="data" items="${LIST}">
+         <div class="w3-col w3-pale-red w3-hover-pale-yellow w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.tno}">
+            <div class="w3-col m3">
+               <div class="w3-col m6 w3-border-right">${data.adate}</div>
+               <div class="w3-col m5 w3-border-right">${data.tno}</div>
+            </div>
+            <div class="w3-col m4 w3-border-right">${data.name}외${data.cnt}건</div>
+            <div class="w3-col m2 w3-border-right">${data.gno}</div>
+            <div class="w3-col m2 w3-border-right">${data.id}</div>
+            <div class="w3-col m1">
+            <input type="button" name="seltno" class="w3-button w3-border w3-background-color-gold" id="ogtno" value="리뷰">
+            </div>
+         </div>
 </c:forEach>
-
-			</div>
-		<a class="w3-border w3-right w3-blue w3-margin-top" href="/www/qna/qnaWrite.dog">문의하기</a>
-		</div>
-	        </div>
+</c:forEach>
+      </div>
+            <div class="w3-right w3-margin-top w3-button w3-gray" id="okbtn">확인</div>
+      </div>
 	      </div>
 	  </div>
 

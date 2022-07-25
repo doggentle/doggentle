@@ -36,7 +36,8 @@
 			g.gno = t.gno and
 			(upno like stno or tno like stno)
 	</select>
-<!-- 	<insert id="qnaWrite"parameterType="qVO">
+	
+ 	<insert id="qnaWrite" parameterType="qVO">
 		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
 			SELECT
 				NVL(MAX(qno) + 1, 100001)
@@ -44,8 +45,25 @@
 				qna
 		</selectKey>
 			INSERT INTO
-				qna (qno, title, id, body)
+			    qna(qno, title, body, gno, mno 				
+							    <if test="upqno neq 0">
+									, upqno
+								</if>)
 			VALUES
-				(#{qno}, #{title}, #{id}, #{body})
-	</insert> -->
+			    (#{qno}, #{title}, #{body},
+			    (SELECT
+			        gno
+			     FROM
+			        goods
+			     WHERE
+			        gname = #{name}), (SELECT
+	                                        mno
+	                                    FROM
+	                                        member
+	                                    WHERE
+	                                        id = #{id})			
+	            <if test="upqno neq 0">
+					, upqno
+				</if>)
+	</insert>
 </mapper>

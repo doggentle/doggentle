@@ -22,7 +22,8 @@ import com.gentle.www.vo.QnAVO;
 		
 	@Autowired
 	QnaDao qDao;
-	
+		
+		//문의 글쓰기 폼
 		@RequestMapping("/qnaWrite.dog")
 		public ModelAndView QnaView(ModelAndView mv, QnAVO qVO, HttpSession session) {
 			String id = (String) session.getAttribute("SID");
@@ -32,19 +33,39 @@ import com.gentle.www.vo.QnAVO;
 			
 			return mv;
 		}
+		//문의 주문내역 조회
 		@RequestMapping("/getOrderGoodsList.dog")
 		@ResponseBody
 		public List<QnAVO> getOrderGoodsList(QnAVO qVO){
 			List<QnAVO> list = qDao.getOrderGoodsList(qVO.getTno());
 			return list;
 		}
-		/*
-		 * //문의글 등록
-		 * 
-		 * @RequestMapping("/qnaWrite.dog") public ModelAndView qnaWrite(ModelAndView
-		 * mv, QnAVO qVO) {
-		 * 
-		 * return mv; }
-		 */
+		
+		//문의 글 등록
+		@RequestMapping("/QnaList.dog")
+		public ModelAndView addQna(ModelAndView mv, QnAVO qVO, HttpSession session, String name) {
+			
+			System.out.println("실행");
+			String sid = (String) session.getAttribute("SID");
+			
+			mv.setViewName("manager/redirect");
+			if(sid == null) {
+				mv.addObject("VIEW", "/www/member/login.dog");
+				return mv;
+			}
+			qVO.setId(sid);
+			qVO.setName(name);
+			
+			int cnt = qDao.qnaWrite(qVO);
+			System.out.println(cnt);
+			
+			if(cnt != 0) {
+				
+				mv.addObject("VIEW", "/www/myPage/QnaList.dog");
+			}
+			
+			return mv;
+		}
+
 
 	}

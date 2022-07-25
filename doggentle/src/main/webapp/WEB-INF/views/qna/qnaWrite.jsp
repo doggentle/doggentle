@@ -133,9 +133,7 @@
 	      		</div>
 	   		 </div>
 <!-- Middle Column -->
-<form name="fm" id="frm" method="POST" action="">
-	<input type="hidden" name="id" value="${SID}">	
-</form>
+
 
 	  <div class="w3-col m9">
 	  	<div class="w3-row-padding">
@@ -145,6 +143,8 @@
   <div class="titbox"><h2>1:1문의작성</h2></div>
   <div class="conboxbg">
     <div class="conbox">
+<form method="POST" action="" name="frm" id="frm">
+
       <table width=500 cellpadding=4 cellspacing=0 border=0 class="pop_write" >
         <col width=50>
 		<tr>
@@ -152,13 +152,13 @@
 			<td>${SID}</td>
 		</tr>
 		
-		
 		<tr>
+
 			<th>주문번호</th>
 			<td>
 			<input type=text id="ordno" style="width:25%" class="dsmform" value="">
-			<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray" style="height: 70%;">주문조회</button>
-				<select class="w3-select w3-border" style="width: 35%" id="glist">				
+			<button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray" style="height: 70%;">주문조회</button>
+				<select class="w3-select w3-border" style="width: 35%" id="name" name="name" >				
 					<option disabled selected >문의할 상품 선택</option>
 				</select>
 			</td>
@@ -166,20 +166,21 @@
 
 		<tr>
 			<th>제목</th>
-			<td><input type=text id="title" style="width:80%" label="제목" class="dsmform" value=""></td>
+			<td><input type=text id="title" name="title" style="width:80%" class="dsmform"></td>
 		</tr>
 		
 		<tr>
 			<th>내용</th>
 			<td>
 
-			<textarea id="contents" style="width:80%;height:100px;" class="dsmform" label="내용" value=""></textarea>
+			<textarea id="body" name="body" style="width:80%;height:100px;" class="dsmform"></textarea>
 
 		</td>
 		</tr>
 
 		
 		</table>
+</form>
 	</div></div>
 	
 	<!-- 모달창 뷰 -->

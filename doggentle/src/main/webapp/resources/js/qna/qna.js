@@ -1,18 +1,6 @@
 $(document).ready(function(){
 
-	//페이지 버튼
-	/*$('.pbtn').click(function(){
-		// 클릭된 버튼의 아이디 읽고
-		var spage = $(this).attr('id');
-		
-		$('#nowPage').val(spage);
-		$('#bno').prop('disabled', true);
-		
-		// action 속성 변경하고
-		$('#frm').attr('action', '/www/qna/qnaWrite.dog');
-		$('#frm').submit();
-		
-	});*/
+
 	//주문목록 선택하기
 	$('#okbtn').click(function(){
 		 var stno = $('[name="seltno"]:checked').val();
@@ -21,12 +9,6 @@ $(document).ready(function(){
 		 $('#ordno').submit();
 		 
 		 $('#id01').css('display', 'none');
-	});
-	
-	//문의글 등록 버튼처리
-	$('#okbtn').click(function(){
-		$('#frm').attr('action', '/www/qna/qnaWrite.dog');
-		$('#frmo').submit();
 	});
 	
 	$('#okbtn').click(function(){
@@ -44,12 +26,17 @@ $(document).ready(function(){
 					var gno = data.gno;
 					var name = data.name;
 					
-					$('#glist').append('<option class="w3-center" value="' +gno + '">' + name + '</option>');
+					$('#name').append('<option class="w3-center" value="' +gno + '">' + name + '</option>');
 				}
 			},
 			error: function(){
 				alert('### 통신 오류 ###');
 			}
 		});
+	});
+	
+	$('#btn_save').click(function() {
+		$('#frm').attr('action', '/www/qna/QnaList.dog');
+		$('#frm').submit();
 	});
 });

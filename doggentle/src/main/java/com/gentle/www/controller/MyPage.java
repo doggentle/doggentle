@@ -22,6 +22,8 @@ public class MyPage {
    MyPageDao myDao;
    @Autowired
    MemberDao mDao;
+   @Autowired
+   QnaDao qDao;
    
    // 마이페이지관류 뷰에 들어가는 회원정보
    public void getMember(ModelAndView mv, HttpSession session) {
@@ -180,6 +182,15 @@ public class MyPage {
       List<AddressVO> adlist = myDao.getMyAddrList((String)session.getAttribute("SID"));
       mv.setViewName("/address/myAddrList");
       mv.addObject("ADLIST", adlist);
+      return mv;
+   }
+   // 나의 주문내역 리스트
+   @RequestMapping("/myOrderList.dog")
+   public ModelAndView myOrderList(ModelAndView mv, HttpSession session, QnAVO qVO) {
+		String id = (String) session.getAttribute("SID");
+		List<QnAVO> list = qDao.getOrderList(id);
+		mv.addObject("LIST", list);
+      mv.setViewName("myPage/myorderlist");
       return mv;
    }
 }

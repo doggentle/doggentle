@@ -5,24 +5,24 @@
 <mapper namespace="oSQL"> 
 	<sql id="cartList">
 		<![CDATA[
-			SELECT
-				cno, c.gno gno, quantity quant, gname, gdetail, price, g.ino ino, savename, dir
-			FROM
-				cart c, goods g, img i
-			WHERE
-				c.gno = g.gno
-				AND
-				g.ino = i.ino
-				AND
-				c.isshow = 'Y'
-	            AND
-	            i.purpose = 'gds'
-				AND
+			
 		]]>
 	</sql>
 	
 	<select id="myCartList" resultType="oVO" parameterType="string">
-		<include refid="cartList" />
+		SELECT
+			cno, c.gno gno, quantity quant, gname, gdetail, price, g.ino ino, savename, dir, g.stock stock
+		FROM
+			cart c, goods g, img i
+		WHERE
+			c.gno = g.gno
+			AND
+			g.ino = i.ino
+			AND
+			c.isshow = 'Y'
+            AND
+            i.purpose = 'gds'
+			AND
 			mno = (
 				SELECT
 					mno
@@ -34,8 +34,20 @@
 	</select>
 	
 	<select id="estCartList" resultType="oVO" parameterType="List">
-		<include refid="cartList" />
-		cno IN
+		SELECT
+			cno, c.gno gno, quantity quant, gname, gdetail, price, g.ino ino, savename, dir
+		FROM
+			cart c, goods g, img i
+		WHERE
+			c.gno = g.gno
+			AND
+			g.ino = i.ino
+			AND
+			c.isshow = 'Y'
+            AND
+            i.purpose = 'gds'
+			AND
+			cno IN
 		<foreach collection="list" item="cno" open="(" close=")"  separator=",">
 			#{cno}
 		</foreach>
@@ -51,7 +63,7 @@
 	</update>
 	<select id="myAddrList" resultType="adVO" parameterType="string">
 		SELECT
-			adno, who, a.mno mno, pno, adrs, contact
+			adno, who, a.mno mno, LPAD(pno, 5, '0') pno, adrs, contact
 		FROM
 			address a, member m
 		WHERE
@@ -70,7 +82,7 @@
 			#{cno}
 		</foreach>
 	</update>
-	<select id="trReadyVO" resultType="int" parameterType="oVO">
+	<select id="trReadyVO" resultType="oVO" parameterType="int">
 		SELECT
 			gno, mno, quantity
 		FROM
@@ -78,6 +90,73 @@
 		WHERE
 			cno = #{cno}
 	</select>
+	
+	<insert id="trExecMo" parameterType="oVO">
+		<selectKey keyProperty ="tno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(tno)+1, 100001) FROM transaction
+		</selectKey>
+		INSERT INTO
+			transaction( tno, adno, gno, mno, quantity )
+		VALUES(
+			#{tno}, #{adno}, #{gno}, #{mno}, #{quantity}
+		)
+	</insert>
+	<insert id="trExecCh" parameterType="oVO">
+		<selectKey keyProperty ="tno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(tno)+1, 100001) FROM transaction
+		</selectKey>
+		INSERT INTO
+			transaction( tno, adno, gno, mno, quantity, upno )
+		VALUES(
+			#{tno}, #{adno}, #{gno}, #{mno}, #{quantity}, #{upno}
+		)
+	</insert>
+	<update id="trDone" parameterType="int">
+		UPDATE
+			transaction
+		SET
+			isshow='Y'
+		WHERE
+			tno IN(
+				SELECT
+					tno
+				FROM
+					transaction
+				WHERE
+					tno = #{tno}
+					OR upno = #{tno}
+			)
+	</update>
+	<select id="trDone2" parameterType="int" resultType="adVO">
+		SELECT
+			who, contact, adrs, LPAD(pno, 5, '0') pno
+		FROM
+			address
+		WHERE
+			adno = (
+					SELECT
+						adno
+					FROM
+						transaction
+					WHERE
+						tno = #{tno} 
+				)
+	</select>
+	<select id="trDoneTest" parameterType="int" resultType="int">
+		SELECT
+			count(tno)
+		FROM
+			transaction
+		WHERE
+			tno = #{tno}
+			OR upno = #{tno}
+	</select>
+	
+	
+
+
+
+
 
 
 

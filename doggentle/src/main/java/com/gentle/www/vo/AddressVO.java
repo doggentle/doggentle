@@ -1,10 +1,16 @@
 package com.gentle.www.vo;
 
 public class AddressVO {
-	private int adno, mno, pno;
-	private String who, adrs, contact, isuse;
+	private int adno, mno;
+	private String who, adrs, contact, isuse, pno;
 	
 	
+	public String getPno() {
+		return pno;
+	}
+	public void setPno(String pno) {
+		this.pno = pno;
+	}
 	public int getAdno() {
 		return adno;
 	}
@@ -16,12 +22,6 @@ public class AddressVO {
 	}
 	public void setMno(int mno) {
 		this.mno = mno;
-	}
-	public int getPno() {
-		return pno;
-	}
-	public void setPno(int pno) {
-		this.pno = pno;
 	}
 	public String getWho() {
 		return who;

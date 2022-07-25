@@ -3,11 +3,29 @@ package com.gentle.www.vo;
 import java.util.Arrays;
 
 public class OrderVO {
-	private int cno, gno, quant, price, ino, gdsCount, ttlPrice, adno, quantity, total_amount, mno;
+	private int cno, gno, quant, price, ino, gdsCount, ttlPrice, adno, quantity, total_amount, mno, tno, upno, stock;
 	private Integer[] cnoArr;
 	private String gname, gdetail, savename, dir, partner_user_id, item_name;
 	
 	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public int getUpno() {
+		return upno;
+	}
+	public void setUpno(int upno) {
+		this.upno = upno;
+	}
+	public int getTno() {
+		return tno;
+	}
+	public void setTno(int tno) {
+		this.tno = tno;
+	}
 	public int getMno() {
 		return mno;
 	}
@@ -120,9 +138,9 @@ public class OrderVO {
 	public String toString() {
 		return "OrderVO [cno=" + cno + ", gno=" + gno + ", quant=" + quant + ", price=" + price + ", ino=" + ino
 				+ ", gdsCount=" + gdsCount + ", ttlPrice=" + ttlPrice + ", adno=" + adno + ", quantity=" + quantity
-				+ ", total_amount=" + total_amount + ", cnoArr=" + Arrays.toString(cnoArr) + ", gname=" + gname
-				+ ", gdetail=" + gdetail + ", savename=" + savename + ", dir=" + dir + ", partner_user_id="
-				+ partner_user_id + ", item_name=" + item_name + "]";
+				+ ", total_amount=" + total_amount + ", mno=" + mno + ", tno=" + tno + ", cnoArr="
+				+ Arrays.toString(cnoArr) + ", gname=" + gname + ", gdetail=" + gdetail + ", savename=" + savename
+				+ ", dir=" + dir + ", partner_user_id=" + partner_user_id + ", item_name=" + item_name + "]";
 	}
 	
 	

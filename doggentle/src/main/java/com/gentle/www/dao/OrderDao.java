@@ -41,8 +41,24 @@ public class OrderDao {
 	public OrderVO trReadyVO(int cno) {
 		return sqlSession.selectOne("oSQL.trReadyVO", cno);
 	}
-	//
-	public int trExec(OrderVO oVO) {
-		return sqlSession.insert("oSQL.trExecute", oVO);
+	//상위 transaction row
+	public int trExecMo(OrderVO oVO) {
+		return sqlSession.insert("oSQL.trExecMo", oVO);
+	}
+	//하위 transaction row
+	public int trExecCh(OrderVO oVO) {
+		return sqlSession.insert("oSQL.trExecCh", oVO);
+	}
+	//승인 후transaction 마무리작업
+	public int trDone(int tno) {
+		return sqlSession.update("oSQL.trDone", tno);
+	}
+	//승인 후transaction 마무리작업2
+	public AddressVO trDone2(int tno) {
+		return sqlSession.selectOne("oSQL.trDone2", tno);
+	}
+	//transaction row 확인
+	public int trDoneTest(int tno) {
+		return sqlSession.selectOne("oSQL.trDoneTest", tno);
 	}
 }

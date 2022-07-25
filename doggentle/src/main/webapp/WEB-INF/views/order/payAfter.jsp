@@ -40,6 +40,8 @@
 	<link rel="shortcut icon" href="/www/img/favicon.ico">
 </head>
 <body>
+<input type="hidden" id="pgtkn" value="${pg_token}">
+<input type="hidden" id="partner_user_id" value="${partner_user_id}">
 <!-- Begin Hero Bg -->
 <!-- End Hero Bg
 	================================================== -->

@@ -27,7 +27,8 @@ import com.gentle.www.vo.*;
 		@RequestMapping("/qnaWrite.dog")
 		public ModelAndView QnaView(ModelAndView mv, QnAVO qVO, HttpSession session) {
 			String id = (String) session.getAttribute("SID");
-			List<ManagerVO> list = qDao.getOrderList(id);
+			qVO.setId(id);
+			List<QnAVO> list = qDao.getOrderList(qVO);
 			mv.addObject("LIST", list);
 			mv.setViewName("qna/qnaWrite");
 			

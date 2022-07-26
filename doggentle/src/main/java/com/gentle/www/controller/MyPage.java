@@ -192,7 +192,7 @@ public class MyPage {
 			mv.setViewName("member/login");
 			return mv;
 		}
-		List<ManagerVO> list = qDao.getOrderList(id);
+		List<ManagerVO> list = qDao.getOrderListed(id);
 		mv.addObject("LIST", list);
       mv.setViewName("myPage/myorderlist");
       return mv;

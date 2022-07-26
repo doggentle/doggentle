@@ -203,7 +203,7 @@
     </div>
   </div>
   <input type="hidden" id="score" name="score" value="3">
-  <input type="hidden" name="tno" value="${TNO}">
+  <input type="hidden" id="tno" name="tno" value="${TNO}">
   
    <!-- submit -->
 

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gentle.www.vo.GDetailVO;
+import com.gentle.www.vo.ReviewVO;
 
 public class GDetailDao {
 	
@@ -38,5 +39,9 @@ public class GDetailDao {
 	// 키워드 검색 전담 처리함수
 	public List<GDetailVO> srcGoods(GDetailVO gVO){
 		return sqlSession.selectList("gSQL.srcGoods", gVO);
+	}
+	// 상품 리뷰 리스트 조회 전담 처리함수
+	public List<ReviewVO> goodsReview(int gno){
+		return sqlSession.selectList("gSQL.goodsReview",gno);
 	}
 }

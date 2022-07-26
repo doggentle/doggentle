@@ -12,7 +12,7 @@ $(document).ready(function(){
 	});
 	
 	$('#okbtn').click(function(){
-		var stno = $('#ogtno').val();
+		var stno = $('#ordno').val();
 		
 		$.ajax({
 			url: '/www/qna/getOrderGoodsList.dog',
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	});
 	
 	$('#btn_save').click(function() {
-		$('#frm').attr('action', '/www/qna/QnaList.dog');
+		$('#frm').attr('action', '/www/myPage/QnaWriteProc.dog');
 		$('#frm').submit();
 	});
 });

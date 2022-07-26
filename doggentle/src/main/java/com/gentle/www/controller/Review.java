@@ -41,6 +41,8 @@ public class Review {
 	public ModelAndView ReviewWrite(ModelAndView mv, int tno) {
 		mv.setViewName("/review/reviewWrite");
 		
+		System.out.println(tno);
+		
 		String gname = rDao.getReviewGname(tno);
 		mv.addObject("GNAME", gname);
 		mv.addObject("TNO", tno);

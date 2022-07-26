@@ -6,11 +6,12 @@
    <!-- 물품상세정보 조회 질의명령 -->
    <select id="gDetInfo" resultType="gVO" parameterType="int" >
       SELECT
-         gno, gname, stock, gdetail, price, dir, savename
+         gno, gname, stock, gdetail, price, dir, savename, score
       FROM
-          goods g, img i
+          goods g, img i, review r
       WHERE
          g.ino = i.ino AND
+         g.ino = r.ino AND
           gno = #{gno}
    </select>
       <!-- 대 카테고리 리스트 조회 질의명령 -->
@@ -78,5 +79,23 @@
             g.gno = i.ino AND
          gname like '%' || #{gname} || '%'
    </select>
+   
+   <!-- 상품에 대한 리뷰 리스트 검색 -->
+   <select id="goodsReview" parameterType="int" resultType="rVO">
+		SELECT
+		    rno, dir, savename, TO_CHAR(rdate, 'yyyy-MM-dd') rdate, gname, title, body, score
+		FROM
+		    goods g, transaction t,
+		    (
+		        SELECT dir, savename, tno, body, title, score, rdate, rno
+		        FROM img i, review r
+		        WHERE i.ino = r.ino
+		    ) rr
+		WHERE
+		    t.gno = g.gno
+		    AND rr.tno = t.tno
+		    AND g.gno = #{gno}
+		ORDER BY rdate desc
+</select>
 </mapper>
    

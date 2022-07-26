@@ -173,7 +173,34 @@ public class MyPage {
        mv.setViewName("myPage/qnalist");
        return mv;
     }
-   
+    
+	//문의 글 등록
+	@RequestMapping("/QnaWriteProc.dog")
+	public ModelAndView addQna(ModelAndView mv, QnAVO qVO, HttpSession session, String name) {
+		
+		System.out.println("실행");
+		String sid = (String) session.getAttribute("SID");
+		
+		mv.setViewName("manager/redirect");
+		if(sid == null) {
+			mv.addObject("VIEW", "/www/member/login.dog");
+			return mv;
+		}
+		qVO.setId(sid);
+		qVO.setName(name);
+		
+		int cnt = qDao.qnaWrite(qVO);
+		System.out.println(cnt);
+		
+		if(cnt != 0) {
+			
+			mv.addObject("VIEW", "/www/myPage/QnaList.dog");
+		}
+		
+		return mv;
+	}
+
+
    
    
    //주소록 목록보기요청

@@ -4,11 +4,19 @@ import java.text.*;
 import java.util.Date;
 
 public class GDetailVO {
-   private int gno, price, cano, hits, ino, cnt, stock, upno, quantity;
+   private int gno, price, cano, hits, ino, cnt, stock, upno, quantity, score;
    private Date salesdate;
    private String gname, gdetail, caname, upname, savename, dir, adrs, money, sdate;
    
    
+   
+
+public int getScore() {
+	return score;
+}
+public void setScore(int score) {
+	this.score = score;
+}
 public int getGno() {
 	return gno;
 }

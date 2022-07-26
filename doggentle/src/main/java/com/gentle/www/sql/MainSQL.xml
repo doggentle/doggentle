@@ -6,7 +6,7 @@
 	<select id="mainNew" resultType="mgVO">
 		SELECT gno, gname, TO_CHAR(price, 'FM999,999,999,999') label, savename, dir
 		FROM goods g, img i
-		WHERE
+		WHERE 
 		g.ino = i.ino
 		AND issell = 'Y'
 		AND rownum &lt; 11

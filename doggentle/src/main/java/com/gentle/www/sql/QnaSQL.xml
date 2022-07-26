@@ -69,13 +69,8 @@
 		</selectKey>
 			INSERT INTO
 			    qna(qno, title, body, gno, mno 				
-							    <if test="upqno neq 0">
-									, upqno
-								</if>)
 			VALUES
 			    (#{qno}, #{title}, #{body}, #{gno}, #{mno})			
-	            <if test="upqno neq 0">
-					, upqno
-				</if>)
+
 	</insert>
 </mapper>

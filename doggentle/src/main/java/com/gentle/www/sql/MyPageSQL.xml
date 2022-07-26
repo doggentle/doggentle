@@ -140,7 +140,7 @@
 		        FROM
 		            point p, code c, member m
 		        WHERE
-		            id = #{id}
+		            id = #{myVO.id}
 		            AND m.mno = p.mno
 		            AND p.cno = c.cno
 		    <if test="myVO.startdate neq null and myVO.enddate neq null and myVO.startdate neq '' and myVO.enddate neq ''">

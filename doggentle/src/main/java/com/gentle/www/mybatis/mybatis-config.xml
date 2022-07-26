@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
-	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
-		<setting name="cacheEnabled" value="false" />
-		<setting name="useGeneratedKeys" value="true" />
-		<setting name="defaultExecutorType" value="REUSE" />
-	</settings>
-	
-	<typeAliases>
-		<typeAlias alias="mVO" type="com.gentle.www.vo.MemberVO"/>
-        <typeAlias alias="mgVO" type="com.gentle.www.vo.ManagerVO"/>	
-		<typeAlias alias="cVO" type="com.gentle.www.vo.CertVO"/>
-		<typeAlias alias="gVO" type="com.gentle.www.vo.GDetailVO"/>
-		<typeAlias alias="adVO" type="com.gentle.www.vo.AddressVO"/>
-		<typeAlias alias="qVO" type="com.gentle.www.vo.QnAVO"/>
-		<typeAlias alias="oVO" type="com.gentle.www.vo.OrderVO"/>
-		<typeAlias alias="myVO" type="com.gentle.www.vo.MyPageVO"/>
-		<typeAlias alias="iVO" type="com.gentle.www.vo.ImageVO"/>
-		<typeAlias alias="rVO" type="com.gentle.www.vo.ReviewVO"/>
-		<typeAlias alias="image" type="com.gentle.www.util.ImageUtil"/>
-		<typeAlias alias="page" type="com.gentle.www.util.PageUtil"/>
-		<typeAlias alias="calendar" type="com.gentle.www.util.MyCalendar"/>
-	</typeAliases>
-	
-	<mappers>
-		<mapper resource="com/gentle/www/sql/MemberSQL.xml" />
- 	    <mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
- 	    <mapper resource="com/gentle/www/sql/GDetailSQL.xml" />
-	    <mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
-	    <mapper resource="com/gentle/www/sql/OrderSQL.xml" />
-		<mapper resource="com/gentle/www/sql/QnaSQL.xml" />
-		<mapper resource="com/gentle/www/sql/MainSQL.xml" />
-		<mapper resource="com/gentle/www/sql/ReviewSQL.xml" />
-<!-- 
- 		<mapper resource="com/gentle/www/sql/ReviewSQL.xml" /> -->
-	</mappers> 
-	
-	
+   <settings>
+      <setting name="cacheEnabled" value="false" />
+      <setting name="useGeneratedKeys" value="true" />
+      <setting name="defaultExecutorType" value="REUSE" />
+   </settings>
+   
+   <typeAliases>
+      <typeAlias alias="mVO" type="com.gentle.www.vo.MemberVO"/>
+        <typeAlias alias="mgVO" type="com.gentle.www.vo.ManagerVO"/>   
+      <typeAlias alias="cVO" type="com.gentle.www.vo.CertVO"/>
+      <typeAlias alias="gVO" type="com.gentle.www.vo.GDetailVO"/>
+      <typeAlias alias="adVO" type="com.gentle.www.vo.AddressVO"/>
+      <typeAlias alias="qVO" type="com.gentle.www.vo.QnAVO"/>
+      <typeAlias alias="oVO" type="com.gentle.www.vo.OrderVO"/>
+      <typeAlias alias="myVO" type="com.gentle.www.vo.MyPageVO"/>
+      <typeAlias alias="iVO" type="com.gentle.www.vo.ImageVO"/>
+      <typeAlias alias="rVO" type="com.gentle.www.vo.ReviewVO"/>
+      <typeAlias alias="calVO" type="com.gentle.www.vo.CalendarVO"/>
+      <typeAlias alias="image" type="com.gentle.www.util.ImageUtil"/>
+      <typeAlias alias="page" type="com.gentle.www.util.PageUtil"/>
+      <typeAlias alias="calendar" type="com.gentle.www.util.MyCalendar"/>
+   </typeAliases>
+   
+   <mappers>
+    <mapper resource="com/gentle/www/sql/MemberSQL.xml" />
+	<mapper resource="com/gentle/www/sql/ManagerSQL.xml" />
+	<mapper resource="com/gentle/www/sql/GDetailSQL.xml" />
+	<mapper resource="com/gentle/www/sql/MyPageSQL.xml" />
+	<mapper resource="com/gentle/www/sql/OrderSQL.xml" />
+	<mapper resource="com/gentle/www/sql/QnaSQL.xml" />
+	<mapper resource="com/gentle/www/sql/MainSQL.xml" />
+	<mapper resource="com/gentle/www/sql/ReviewSQL.xml" />
+   </mappers> 
+   
+   
 </configuration>

@@ -25,6 +25,8 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/attend.js"></script>
+	<script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	
 	
@@ -43,12 +45,12 @@
 	
 <style type="text/css">
 /* 기본스타일  */	
-	table{ background-color: #F2F2F2;}
+	table{ background-color: white;}
 	
 	tr{height: 60px;}
-	td{width: 100px; text-align: left; font-size: 15pt; font-family: D2coding;} 
+	td{width: 100px; height: 100px; text-align: left; font-size: 15pt; font-family: D2coding;} 
 /* 타이틀 스타일 */
-	th#title {font-size: 20pt; font-weight: bold; color: #FFBF00; font-family: D2coding; }
+	th#title {font-size: 20pt; font-weight: bold; color: white; font-family: D2coding; }
 
 /* 요일 스타일 */
 	td.sunday{ text-align: center; font-weight: bold; color: red; font-family: D2coding; }
@@ -56,9 +58,9 @@
 	td.etcday{ text-align: center; font-weight: bold; color: black; font-family: D2coding; }
 
 /* 날짜 스타일 */
-	td.sun{ text-align: left; font-size: 15pt; color: red; font-family: D2coding; vertical-align: top;}
-	td.sat{ text-align: left; font-size: 15pt; color: blue; font-family: D2coding; vertical-align: top;}
-	td.etc{ text-align: left; font-size: 15pt; color: black; font-family: D2coding; vertical-align: top;}
+	td.sun{ font-size: 15pt; color: red; font-family: D2coding; vertical-align: top;}
+	td.sat{ font-size: 15pt; color: blue; font-family: D2coding; vertical-align: top;}
+	td.etc{ font-size: 15pt; color: black; font-family: D2coding; vertical-align: top;}
 	
 	td.redbefore{ text-align: right; font-size: 12pt; color: red; font-family: D2coding; vertical-align: top;}
 	td.before{ text-align: right; font-size: 12pt; color: gray; font-family: D2coding; vertical-align: top;}
@@ -93,17 +95,17 @@
 				<a href="/www/member/logout.dog">로그아웃</a>
 				</li>
 				<li>
-				<a href="/www/">마이페이지</a>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 				</li>
 				<li>
-				<a href="/www/">출석</a>
+				<a href="/www/myPage/myattend.dog">출석</a>
 				</li>
 				<li>
-				<a href="/www/">장바구니</a>
+				<a href="/www/order/cart.dog">장바구니</a>
 				</li>
 		</c:if>
 				<li>
-				<a href="/www/">문의하기</a>
+				<a href="/www/myPage/qnaWrite.dog">문의하기</a>
 				</li>
 			</ul>
 			</nav>
@@ -137,17 +139,17 @@
 	         			<div class="w3-container w3-left-align" style="margin-top: 20px">
 	         				<dl>
 	         					<dt class="w3-block">쇼핑정보</dt>
-	         					<dd><a href="">주문내역</a></dd>
-	         					<dd><a href="">장바구니</a></dd>
+	         					<dd><a href="/www/myPage/myOrderList.dog">주문내역</a></dd>
+	         					<dd><a href="/www/order/cart.dog">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
-	         					<dd><a href="">문의 내역</a></dd>
-	         					<dd><a href="">리뷰관리</a></dd>
-	         					<dd><a href="">출    석</a></dd>
+	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
+	         					<dd><a href="/www/review/reviewList.dog">리뷰관리</a></dd>
+	         					<dd><a href="/www/myPage/myattend.dog">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
-	         					<dd><a href="">회원정보 수정</a></dd>
-	         					<dd><a href="">주소록 관리</a></dd>
-	         					<dd><a href="">포인트</a></dd> 
+	         					<dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
+	         	 				<dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
+	         					<dd><a href="/www/myPage/myPoint.dog">포인트</a></dd> 
 	         				</dl>
 	         			</div>
 	        		</div>
@@ -183,49 +185,23 @@
 	      <div class="w3-row-padding"><br> 
 	       	<div class="w3-col m12 w3-cneter">
 	          	<div class="w3-container w3-center">
-	            	<%
-						// 컴퓨터 시스템의 년, 월 받아오기
-							Date date = new Date();
-							int year = date.getYear() +1900;
-							int month = date.getMonth() +1;
-						
-							//	오류사항 걸러주기	
-							try{
-								year = Integer.parseInt(request.getParameter("year"));
-								month = Integer.parseInt(request.getParameter("month"));
-								
-								if(month>=13){
-									year++;
-									month =1;
-								}else if(month <=0){
-									year--;
-									month =12;
-								}
-							}catch(Exception e){
-								
-							}
-						
-						%>
 	            	
 	            	<!-- 달력 만들기 -->
 						<table class="w3-col w3-center" border ="1" cellpadding="5" cellspacing="0">
-							<tr>
+							<tr style="background-color: #389de0;">
 						<!-- 이전달 버튼 만들기 --> 
-								<th>
-								<%-- <a href ="?year=<%=year%>&month=<%month-1%>">이전 달</a> --%>
-								<input type="button" value="이전 달" onclick="location.href='?year=<%=year%>&month=<%=month-1%>'">
+								<th class="w3-left " style="border: none; margin: 1em auto; padding-bottom: 10px;">
+									<input type="button" class="w3-large w3-blue" style="border-color: white" value="이전 달" id="prev">
 								</th>
-								
+								 
 						<!-- 제목 만들기 -->
-								<th id = "title" colspan = "5">
-								<%=year%>년  <%=month%>월
+								<th class="w3-center"id = "title" colspan = "5">
+									${ATTEND.year}년  ${ATTEND.month}월
 								</th>
-								
+								 
 						<!-- 다음달 버튼 만들기 -->
-								<th>
-								<%-- <a href ="?year=<%=year%>&month=<%month+1%>">다음 달</a> --%>
-								<input type="button" value="다음 달" onclick="location.href='?year=<%=year%>&month=<%=month+1%>'">
-								
+								<th class="w3-right " style="border: none; margin: 1em auto; padding-bottom: 10px;">
+									<input type="button" class="w3-large w3-blue" style="border-color: white" value="다음 달" id="next">
 								</th>
 							</tr>
 						<!-- 요일 표시칸 만들어주기(단, 토,일요일은 색을 다르게 하기위해 구분해주기) -->
@@ -240,55 +216,75 @@
 							</tr>
 							
 						<!-- 날짜 집어 넣기 -->
-							<tr>
-							<%
-						//	1일의 요일을 계산한다(자주 쓰이기 때문에 변수로 선언해두기)
-								int first = MyCalendar.weekDay(year, month, 1);
-							
-						//	1일이 출력될 위치 전에 전달의 마지막 날짜들을 넣어주기위해 전 달날짜의 시작일을 계산한다.
-								int start = 0 ;
-								start = month ==1? MyCalendar.lastDay(year-1, 12)- first : MyCalendar.lastDay(year, month-1)- first;
 						
-						//	1일이 출력될 위치를 맞추기 위해 1일의 요일만큼 반복하여 전달의날짜를 출력한다.
-								for(int i= 1; i<= first; i++){
-									if(i==1){
-						/* 일요일(빨간색)과 다른날들의 색을 구별주기  */
-										out.println("<td class = 'redbefore'>"+(month ==1? 12 : month-1)+"/"+ ++start +"</td>");
-									}else{
-										out.println("<td class = 'before'>"+(month ==1? 12 : month-1)+"/"+ ++start +"</td>");
-										
-									}
-								}
-						
-						/* 1일부터 달력을 출력한 달의 마지막 날짜까지 반복하며 날짜를 출력 */
-								for(int i = 1; i <= MyCalendar.lastDay(year, month); i++){
-									/* 요일별로 색깔 다르게 해주기위해 td에 class 태그걸어주기 */
-									switch(MyCalendar.weekDay(year, month, i)){
-										case 0 :
-											out.println("<td class ='sun'>" +i +"</td>");
-											break;
-										case 6 :
-											out.println("<td class ='sat'>" +i +"</td>");
-											break;
-										default :
-											out.println("<td class ='etc'>" +i +"</td>");
-											break;
-									}
-									
-						/* 출력한 날짜(i)가 토요일이고 그달의 마지막 날짜이면 줄을 바꿔주기 */
-									if(MyCalendar.weekDay(year, month, i) == 6 && i != MyCalendar.lastDay(year, month)){
-										out.println("</tr><tr>");			
-									}
-								}
-								if(MyCalendar.weekDay(year, month, MyCalendar.lastDay(year, month)) !=6){
-									for(int i = MyCalendar.weekDay(year, month, MyCalendar.lastDay(year, month))+1; i < 7; i++){
-										out.println("<td></td>");	
-									}
-								}
-						
-							%>
+							<tr id="setcalendar">
+						<c:forEach var="beforeDay" items="${ATTEND.sDate}" varStatus="status">
+							<c:choose>
+								<c:when test="${status.count == 1 && beforeDay != 1}">
+									<td class ="redbefore" id="redbefore">${beforeDay}</td>
+								</c:when>
+								<c:when test="${status.count == 1 && beforeDay == 1}">
+									<td class ="sun w3-center" id="${beforeDay}"><h5 class='w3-left-align'>${beforeDay}</h5></td>
+								</c:when>
+								<c:when test="${(status.count % 7) == 1}">
+									<td class ="sun w3-center" id="${beforeDay}"><h5 class='w3-left-align'>${beforeDay}</h5></td>
+									<c:choose>
+										<c:when test="${status.last == true}">
+											<c:choose>
+												<c:when test="${status.count <= 35}">
+													<c:forEach var="pullday" begin="${status.count + 1}" end="35" step="1">
+														<td></td>
+													</c:forEach>
+												</c:when>
+												<c:when test="${status.count > 35}">
+													<c:forEach var="pullday" begin="${status.count + 1}" end="42" step="1">
+														<td></td>
+													</c:forEach>
+												</c:when>
+											</c:choose>
+										</c:when> 
+									</c:choose>
+								</c:when>
+								<c:when test="${(status.count % 7 ) == 0}">
+									<td class ="sat w3-center" id="${beforeDay}"><h5 class='w3-left-align'>${beforeDay}</h5></td>
+									<c:choose> 
+										<c:when test="${status.last == true}">
+											 
+										</c:when> 
+										<c:otherwise> 
+											</tr><tr>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<c:choose> 
+										<c:when test="${beforeDay > 7 && status.count < 7}">
+											<td class ="before" id="before">${beforeDay}</td>
+										</c:when>
+										<c:otherwise>
+											<td class ="etc w3-center" id="${beforeDay}"><h5 class='w3-left-align'>${beforeDay}</h5></td>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${status.last == true}">
+											<c:choose>
+												<c:when test="${status.count <= 35}">
+													<c:forEach var="pullday" begin="${status.count + 1}" end="35" step="1">
+														<td></td>
+													</c:forEach>
+												</c:when>
+												<c:when test="${status.count > 35}">
+													<c:forEach var="pullday" begin="${status.count + 1}" end="42" step="1">
+														<td></td>
+													</c:forEach>
+												</c:when>
+											</c:choose>
+										</c:when>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 							</tr>
-							
 						</table>
 	            	</div>
 	            	
@@ -300,11 +296,25 @@
 <!-- Page Container end -->	 
 	  </div>
 	  
-	  
+	  <form method="POST" action="/www/myPage/myattend.dog" id="frm" name="frm">
+	  	<input type="hidden" id="year" name="year" value="${ATTEND.year}">
+	  	<input type="hidden" id="month" name="month" value="${ATTEND.month}">
+	  </form>
+	  <input type="hidden" id="myattend" value="${MYATTEND}">
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">
   <h5>GenTleDog</h5>
 </footer>
-
+	<div id="msgWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-blue"> 
+		        <span class="w3-button w3-display-topright" id="msgClose">&times;</span>
+		        <h2>알림 메세지</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-margin-top w3-margin-bottom" id="msg">출석이 완료 되었습니다. 100포인트 지급되었습니다.</h3>
+	    	</div>
+	    </div>
+ 	</div>
 </body>
 </html>

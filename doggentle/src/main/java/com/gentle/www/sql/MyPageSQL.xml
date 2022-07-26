@@ -21,42 +21,62 @@
           id = #{id}
    </select>
    <select id="getCartList" resultType="gVO" parameterType="string">
-      SELECT
-         gname, price, savename, dir
-      FROM(
-          SELECT
-              g.gno, g.gname gname, g.price price, savename, dir
-          FROM
-              cart c, member m, goods g, img i
-          WHERE
-              m.id = #{id}
-              AND m.mno = c.mno
-              AND c.gno = g.gno
-              AND g.ino = i.ino
-          ORDER BY cno desc
+    SELECT
+    	gno, gname, price, savename, dir, cnt
+    FROM
+      (
+	      SELECT
+	         rownum rno, gno, gname, price, savename, dir, cnt
+	      FROM(
+	          SELECT
+	              g.gno gno, g.gname gname, g.price price, savename, dir, quantity cnt
+	          FROM
+	              cart c, member m, goods g, img i
+	          WHERE
+	              m.id = #{id}
+	              AND m.mno = c.mno
+	              AND c.gno = g.gno
+	              AND g.ino = i.ino
+	          ORDER BY cno desc
+	      	)
       )
-      WHERE rownum between 1 and 3 
+      WHERE
+      	rno between 1 and 3
    </select>
    
    <select id="getTransacList" resultType="gVO" parameterType="string">
-      SELECT 
-             gname, price, quantity, salesdate, adrs, savename, dir
-      FROM
-          (
-          SELECT 
-              g.gname gname, g.price price, t.quantity quantity, t.tdate salesdate, a.adrs adrs, i.savename savename, i.dir dir
-          FROM
-              transaction t, goods g, img i, member m, address a
-          WHERE
-              m.id = 'eafadfadf'
-              AND m.mno = t.mno
-              AND t.gno = g.gno
-              AND t.adno = a.adno
-              AND g.ino = i.ino
-          ORDER BY t.tno desc
-          )
-      WHERE
-          rownum between 1 and 3
+      SELECT
+		    tno gno, price, cnt, to_char(tdate, 'yy/mm/dd') sdate, adrs, gname, dir, savename
+		FROM
+		    (
+		    SELECT
+		        rownum rno, s.tno tno, s.price price, cnt, tdate, adrs, gname, dir, savename  
+		    FROM
+		        (
+		        SELECT 
+		            s.upno tno, sum(s.price) price, count(*)-1 cnt
+		        FROM
+		            (
+		                SELECT
+		                    nvl(upno, tno) upno, (quantity * price) price
+		                FROM
+		                    transaction t, member m, goods g
+		                WHERE
+		                    id = #{id}
+		                    AND m.mno = t.mno
+		                    AND t.gno = g.gno
+		            )s
+		        group by s.upno
+		        )s, transaction t, address a, goods g, img i
+		    WHERE
+		        s.tno = t.tno
+		        AND t.adno = a.adno
+		        AND t.gno = g.gno
+		        AND g.ino = i.ino
+		        order by tdate desc
+		    )
+		WHERE 
+		    rno between 1 and 3
    </select>
    
    <select id="getMemberCheck" resultType="int" parameterType="mVO">
@@ -107,47 +127,93 @@
    </select>
     
    <select id="getPointList" resultType="myVO" parameterType="Hashmap">
-      SELECT
-          pvalue, odate, body, upcno upno
-      FROM
-          (
-          SELECT
-              rownum rno, pvalue, odate, body, upcno
-          FROM
-              (
-              SELECT 
-                  pno, cno, pvalue, to_char(odate, 'YY-MM-DD') odate
-              FROM
-                  POINT p, MEMBER m
-              WHERE
-                  id = #{myVO.id}
-                  AND p.mno = m.mno
-             <if test="myVO.startdate neq null and myVO.enddate neq null and myVO.startdate neq '' and myVO.enddate neq ''">
-                 AND odate between #{myVO.startdate} and #{myVO.enddate}
-            </if>
-              ) s, CODE c
-          WHERE
-              s.cno = c.cno
-          <if test="myVO.supno neq 0">
-             AND upcno = #{myVO.supno}
-         </if>
-          ORDER BY pno desc
-          )
-      WHERE
-          rno BETWEEN #{page.startCont} AND #{page.endCont}  
+     	SELECT
+		    upno, body, odate, pvalue
+		FROM
+		(
+		    SELECT
+		        rownum rno, upno, body, odate, pvalue
+		    FROM
+		    (
+		        SELECT
+		            c.upcno upno, body, to_char(odate, 'yy-mm-dd') odate, pvalue
+		        FROM
+		            point p, code c, member m
+		        WHERE
+		            id = 'jjy'
+		            AND m.mno = p.mno
+		            AND p.cno = c.cno
+		    <if test="myVO.startdate neq null and myVO.enddate neq null and myVO.startdate neq '' and myVO.enddate neq ''">
+		            AND odate between #{myVO.startdate} and #{myVO.enddate}
+		    </if>
+		    <if test="myVO.supno neq 0">
+		             AND upcno = #{myVO.supno}
+		    </if>
+		        order by odate desc
+		    )
+		)
+		WHERE
+		    rno between #{page.startCont} and #{page.endCont} 
    </select>
    
-   <select id="getAttend" resultType="string" parameterType="myVO">
-	   SELECT 
-		    adate
+   <select id="getAttend" resultType="integer" parameterType="calVO">
+        SELECT 
+		    to_char(adate, 'dd')
 		FROM
 		    ATTEND a, MEMBER m
 		WHERE
 		    id = #{id}
 		    AND m.mno = a.mno
-		    AND adate LIKE #{adate} || '%'
+		    AND to_char(adate, 'yyyyfmmm') like #{year}||#{month}
 		ORDER BY adate asc
    </select>
+   
+   <insert id="addAttend" parameterType="myVO">
+   		<!-- <selectKey keyProperty="ano" resultType="int" order="BEFORE">
+   			SELECT NVL(MAX(ano) + 1, 100001) FROM attend
+   		</selectKey> -->
+   		INSERT INTO attend(ano, mno)
+		VALUES((SELECT NVL(MAX(ano) + 1, 100001) FROM attend), (SELECT MNO FROM MEMBER WHERE id=#{id}))
+   </insert>
+   <insert id="occurpoint" parameterType="myVO">
+   		<selectKey keyProperty="pno,mno,spoint" resultType="myVO" order="BEFORE">
+   			SELECT
+			    (SELECT MAX(pno)+1 FROM POINT) pno, s.mno mno, s.sumpoint spoint
+			FROM
+			    point p,
+			    (
+			        SELECT 
+			            (sumpoint
+		            <if test="supno &gt; 100 and supno &lt; 200">
+			             + 
+		            </if>
+		            <if test="supno &gt; 200 and supno &lt; 300">
+			             - 
+		            </if>
+			             #{pvalue}
+			             ) sumpoint, mno, pno
+			        FROM
+			        (
+			            SELECT 
+			                MAX(pno)spno 
+			            FROM 
+			                point p, member m
+			            WHERE
+			                id = #{id}
+			                AND m.mno = p.mno
+			        ), point
+			        WHERE
+			            spno = pno
+			    )s
+			WHERE
+			    p.pno = s.pno
+   		</selectKey>
+   		INSERT INTO 
+   			point(pno, mno, cno, pvalue, sumpoint)
+   		VALUES(
+   			#{pno}, #{mno}, #{supno}, #{pvalue}, #{spoint}
+   		)
+   </insert>
    
 	<select id="qnaList" resultType="qVO" parameterType="qVO">
       SELECT

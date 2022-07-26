@@ -72,14 +72,14 @@
 				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 				</li>
 				<li>
-				<a href="/www/">출석</a>
+				<a href="/www/myPage/myattend.dog">출석</a>
 				</li>
 				<li>
-				<a href="/www/">장바구니</a>
+				<a href="/www/order/cart.dog">장바구니</a>
 				</li>
 		</c:if>
 				<li>
-				<a href="/www/">문의하기</a>
+				<a href="/www/myPage/qnaWrite.dog">문의하기</a>
 				</li>
 			</ul>
 			</nav>
@@ -113,12 +113,12 @@
 	         			<div class="w3-container w3-left-align" style="margin-top: 20px">
 	         				<dl>
 	         					<dt class="w3-block">쇼핑정보</dt>
-	         					<dd><a href="">주문내역</a></dd>
-	         					<dd><a href="">장바구니</a></dd>
+	         					<dd><a href="/www/myPage/myOrderList.dog">주문내역</a></dd>
+	         					<dd><a href="/www/order/cart.dog">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
-	         					<dd><a href="">문의 내역</a></dd>
-	         					<dd><a href="">리뷰관리</a></dd>
-	         					<dd><a href="">출    석</a></dd>
+	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
+	         					<dd><a href="/www/review/reviewList.dog">리뷰관리</a></dd>
+	         					<dd><a href="/www/myPage/myattend.dog">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
 	         					<dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
@@ -164,11 +164,18 @@
 	       	<div class="w3-col m12">
 	          	<div class="w3-container w3-card w3-round w3-white">
 	            	<div class="w3-padding">
-	            		<img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
+	            		<a href="/www/gDetail/gDetail.dog?gno=${data.gno}"><img src="${data.dir}${data.savename}" class="w3-left w3-margin-right w3-padding" style="width:150px"></a>
 	            		<div>
-	            			<p style="font-size:20pt">${data.gname}</p>
+	            		<c:choose>
+		            		<c:when test="${data.cnt > 0}">
+		            			<p style="font-size:20pt">${data.gname} 외 ${data.cnt}개</p>
+		            		</c:when>
+		            		<c:otherwise>
+		            			<p style="font-size:20pt">${data.gname}</p>
+		            		</c:otherwise>
+		            	</c:choose>
 	            			<h4>주문일 : ${data.sdate}</h4>
-	            			<h4>가격 : ${data.money}원  ·  ${data.quantity}개</h4>
+	            			<h4>금액 : ${data.money}원</h4>
 	            			<h4>주소 : ${data.adrs}</h4>          		
 						</div>
 	            	</div>
@@ -176,7 +183,7 @@
 	        </div>
 </c:forEach>
 <!-- 반복으로 주문내역  끝 -->
-	        	<h5 class="w3-right"><a href="" class="more">더보기</a></h5>
+	        	<h5 class="w3-right"><a href="/www/myPage/myOrderList.dog" class="more">더보기</a></h5>
 	      </div>
 <!-- 주문내역 영역 끝 -->
 
@@ -188,17 +195,17 @@
 	       	<div class="w3-col m12">
 	          	<div class="w3-container w3-card w3-round w3-white">
 	            	<div class="w3-padding">
-	            		<img src="/www/img/test.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
+	            		<a href="/www/gDetail/gDetail.dog?gno=${data.gno}"><img src="${data.dir}${data.savename}" class="w3-left w3-margin-right w3-padding" style="width:150px"></a>
 	            		<div>
 	            			<p style="font-size:20pt">${data.gname}</p>
-	            			<h3>가격 : ${data.money}원  ·  <span>1</span>개</h3>
+	            			<h3>가격 : ${data.money}원  ·  <span>${data.cnt}</span>개</h3>
 						</div> 
 	            	</div>
 	          	</div>
 	        </div>
 </c:forEach>
 <!-- 반복 관심내역 영역 끝 -->
-				<h5 class="w3-right"><a href="" class="more">더보기</a></h5>
+				<h5 class="w3-right"><a href="/www/order/cart.dog" class="more">더보기</a></h5>
 			</div>	      
 <!-- 관심내역 영역 끝-->	
 	    </div>

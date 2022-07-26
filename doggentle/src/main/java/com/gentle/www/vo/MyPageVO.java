@@ -12,7 +12,7 @@ public class MyPageVO {
    private int ano;
    private String adate;
    //포인트 관련
-   private int pvalue, upno, supno;
+   private int pno, pvalue, upno, supno;
    private String odate, body;
    
    // 날짜 처리
@@ -29,8 +29,7 @@ public class MyPageVO {
 		return adate;
 	}
 	public void setAdate(String adate) {
-		String[] array = adate.split(" "); 
-        this.adate = array[0];
+        this.adate = adate;
 	}
 	
 // 날짜에 관해서
@@ -48,10 +47,17 @@ public class MyPageVO {
    }
    
    // 포인트에 관해서
+   
+   public int getPno() {
+	   return pno;
+   }
+   public void setPno(int pno) {
+	   this.pno = pno;
+   }
 	public int getPvalue() {
 	      return pvalue;
 	}
-   public void setPvalue(int pvalue) {
+public void setPvalue(int pvalue) {
       this.pvalue = pvalue;
    }
    public int getUpno() {
@@ -162,12 +168,14 @@ public class MyPageVO {
    public void setMoney(String money) {
       this.money = money;
    }
-	@Override
-	public String toString() {
-		return "MyPageVO [mno=" + mno + ", tcnt=" + tcnt + ", rcnt=" + rcnt + ", spoint=" + spoint + ", mail=" + mail
-				+ ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen=" + gen + ", jdate=" + jdate + ", isshow="
-				+ isshow + ", money=" + money + ", spw=" + spw + ", pvalue=" + pvalue + ", upno=" + upno + ", supno="
-				+ supno + ", odate=" + odate + ", body=" + body + ", startdate=" + startdate + ", enddate=" + enddate + "]";
-	}
+@Override
+public String toString() {
+	return "MyPageVO [mno=" + mno + ", tcnt=" + tcnt + ", rcnt=" + rcnt + ", spoint=" + spoint + ", mail=" + mail
+			+ ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen=" + gen + ", jdate=" + jdate + ", isshow="
+			+ isshow + ", money=" + money + ", spw=" + spw + ", ano=" + ano + ", adate=" + adate + ", pvalue=" + pvalue
+			+ ", upno=" + upno + ", supno=" + supno + ", odate=" + odate + ", body=" + body + ", startdate=" + startdate
+			+ ", enddate=" + enddate + "]";
+}
+	
    
 }

@@ -2,6 +2,7 @@ package com.gentle.www.controller;
 
 import java.text.DecimalFormat;
 import java.util.*;
+import java.time.*;
 
 import javax.servlet.http.*;
 
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 import com.gentle.www.dao.*;
-import com.gentle.www.util.PageUtil;
+import com.gentle.www.util.*;
 import com.gentle.www.vo.*;
 
 @Controller
@@ -24,6 +25,7 @@ public class MyPage {
    MemberDao mDao;
    @Autowired
    QnaDao qDao;
+   
    
    // 마이페이지관류 뷰에 들어가는 회원정보
    public void getMember(ModelAndView mv, HttpSession session) {
@@ -81,12 +83,45 @@ public class MyPage {
    
    //달력 뷰
    @RequestMapping("/myattend.dog")
-   public ModelAndView calendar(ModelAndView mv, HttpSession session, MyPageVO myVO) {
-	   getMember(mv, session);
-	   List<String> list = myDao.getattend(myVO);
-	   mv.addObject("ATTEND", list);
+   public ModelAndView calendar(ModelAndView mv, HttpSession session, MyPageVO myVO, CalendarVO calVO, MyCalendar mcal) {
+      getMember(mv, session);
+      calVO.setId((String)session.getAttribute("SID"));
+      
+      if(calVO.getYear() != 0 || calVO.getMonth() != 0) {
+         new MyCalendar(calVO.getYear(), calVO.getMonth());
+      }
+      calVO.setsDate(mcal.setDate());
+      calVO.setYear(mcal.getYear());
+      calVO.setMonth(mcal.getMonth());
+      calVO.setDay(mcal.getDay());
+      List<Integer> myattend = myDao.getattend(calVO);
+      
+      
+      mv.addObject("MYATTEND", myattend);
+      mv.addObject("ATTEND", calVO);
        mv.setViewName("myPage/myattend");
        return mv;
+   }
+   
+   // 출석 처리
+   @RequestMapping("/attendProc.dog")
+   @ResponseBody
+   public String attendProc(HttpSession session, MyPageVO myVO) {
+      String result = "NO";
+      String id = (String)session.getAttribute("SID");
+      myVO.setId(id);
+      int acnt = myDao.addattend(myVO);
+      System.out.println(acnt);
+      int ocnt = 0;
+      if(acnt != 0) {
+         ocnt = myDao.occurpoint(myVO);
+      }
+      System.out.println(ocnt);
+      if(acnt == 1 && ocnt == 1) {
+         result = "OK";
+      }
+      System.out.println(result);
+      return result;
    }
     
    // 회원정보 확인하는 뷰
@@ -164,43 +199,43 @@ public class MyPage {
    }
    
  //문의리스트 보기 요청
-    @RequestMapping("/QnaList.dog")
-    public ModelAndView QnaList(ModelAndView mv, HttpSession session, QnAVO qVO) {
-       String id = (String) session.getAttribute("SID");
-       System.out.println(id);
-       List<QnAVO> qnalist = myDao.getQnaList(id);
-       mv.addObject("QNALIST", qnalist);
-       mv.setViewName("myPage/qnalist");
-       return mv;
-    }
-    
-	//문의 글 등록
-	@RequestMapping("/QnaWriteProc.dog")
-	public ModelAndView addQna(ModelAndView mv, QnAVO qVO, HttpSession session, String name) {
-		
-		System.out.println("실행");
-		String sid = (String) session.getAttribute("SID");
-		
-		mv.setViewName("manager/redirect");
-		if(sid == null) {
-			mv.addObject("VIEW", "/www/member/login.dog");
-			return mv;
-		}
-		qVO.setId(sid);
-		qVO.setName(name);
-		
-		int cnt = qDao.qnaWrite(qVO);
-		System.out.println(cnt);
-		
-		if(cnt != 0) {
-			
-			mv.addObject("VIEW", "/www/myPage/QnaList.dog");
-		}
-		
-		return mv;
-	}
+   @RequestMapping("/QnaList.dog")
+   public ModelAndView QnaList(ModelAndView mv, HttpSession session, QnAVO qVO) {
+      String id = (String) session.getAttribute("SID");
+      System.out.println(id);
+      List<QnAVO> qnalist = myDao.getQnaList(id);
+      mv.addObject("QNALIST", qnalist);
+      mv.setViewName("myPage/qnalist");
+      return mv;
+   }
+   
+  //문의 글 등록
+  @RequestMapping("/QnaWriteProc.dog")
+  public ModelAndView addQna(ModelAndView mv, QnAVO qVO, HttpSession session, String name) {
+     
+     System.out.println("실행");
+     String sid = (String) session.getAttribute("SID");
+     
+     mv.setViewName("manager/redirect");
+     if(sid == null) {
+        mv.addObject("VIEW", "/www/member/login.dog");
+        return mv;
+     }
+     qVO.setId(sid);
+     qVO.setName(name);
+     
+     int cnt = qDao.qnaWrite(qVO);
+     System.out.println(cnt);
+     
+     if(cnt != 0) {
+        
+        mv.addObject("VIEW", "/www/myPage/QnaList.dog");
+     }
+     
+     return mv;
+  }
 
-
+   
    
    
    //주소록 목록보기요청
@@ -214,13 +249,13 @@ public class MyPage {
    // 나의 주문내역 리스트
    @RequestMapping("/myOrderList.dog")
    public ModelAndView myOrderList(ModelAndView mv, HttpSession session, ManagerVO mVO) {
-		String id = (String) session.getAttribute("SID");
-		if(id == null) {
-			mv.setViewName("member/login");
-			return mv;
-		}
-		List<ManagerVO> list = qDao.getOrderListed(id);
-		mv.addObject("LIST", list);
+      String id = (String) session.getAttribute("SID");
+      if(id == null) {
+         mv.setViewName("member/login");
+         return mv;
+      }
+      List<ManagerVO> list = qDao.getOrderListed(id);
+      mv.addObject("LIST", list);
       mv.setViewName("myPage/myorderlist");
       return mv;
    }

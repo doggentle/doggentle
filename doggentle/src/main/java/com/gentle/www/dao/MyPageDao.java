@@ -42,9 +42,17 @@ public class MyPageDao {
       return sqlSession.selectList("mpSQL.getPointList", map);
    }
    // n년/n월 해당날짜 가져오기
-   public List<String> getattend(MyPageVO myVO) {
-	   return sqlSession.selectList("mpSQL.getAttend", myVO);
+   public List<Integer> getattend(CalendarVO calVO) { 
+	   return sqlSession.selectList("mpSQL.getAttend", calVO);
    } 
+   // 출석 등록
+   public int addattend(MyPageVO myVO) {
+	   return sqlSession.insert("mpSQL.addAttend", myVO);
+   }
+   // 포인 발생
+   public int occurpoint(MyPageVO myVO) {
+	   return sqlSession.insert("mpSQL.occurpoint", myVO);
+   }
    
    //내 문의 리스트 가져오기
    public List<QnAVO> getQnaList(String id) {

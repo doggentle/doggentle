@@ -130,7 +130,9 @@ $(document).ready(function(){
 		$('#nowPage').val(1);
 		$('#startdate').val($('#startDate').val());
 		var edate = new Date($('#endDate').val());
-		edate.setDate(edate.getDate() + 1);
+		if(day == edate.getDate()){
+			edate.setDate(edate.getDate() + 1);
+		}
 		var enddate = edate.getFullYear() + '-' + (edate.getMonth() + 1) + '-' + edate.getDate(); 
 		$('#enddate').val(enddate);
 		$('#frm').submit();

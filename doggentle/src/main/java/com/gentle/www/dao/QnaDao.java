@@ -13,8 +13,11 @@ public class QnaDao {
 	SqlSessionTemplate sqlSession;
 	
 	//주문목록 조회 함수
-	public List<ManagerVO> getOrderList(String id){
-		return sqlSession.selectList("qSQL.OrderList", id);
+	public List<QnAVO> getOrderList(QnAVO qVO){
+		return sqlSession.selectList("qSQL.OrderList", qVO);
+	}
+	public List<ManagerVO> getOrderListed(String id){
+		return sqlSession.selectList("qSQL.OrderListed", id);
 	}
 	//주문 상품목록 조회 함수
 	public List<QnAVO> getOrderGoodsList(int tno){

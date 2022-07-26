@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<title>DogGentle</title>
-	
+	 
 	<!-- Styles -->
 	<link rel='stylesheet' href='/www/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='/www/css/animate.min.css'>

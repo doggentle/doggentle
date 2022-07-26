@@ -25,7 +25,7 @@ public class MainController {
 	public ModelAndView getMain(ModelAndView mv, HttpSession session) {
 		List<GDetailVO> list = gDao.getStratCate();
 		
-		//데이터 심고
+		//데이터 심고 
 		session.setAttribute("LIST", list);
 		
 		List<ManagerVO> newItems = mainDao.getMainNew();

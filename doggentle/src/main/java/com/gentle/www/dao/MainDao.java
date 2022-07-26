@@ -11,7 +11,7 @@ public class MainDao {
 
 	@Autowired
 	SqlSessionTemplate sqlSession;
-	
+	 
 	//메인 새로운 상품
 	public List<ManagerVO> getMainNew() {
 		return sqlSession.selectList("mainSQL.mainNew");

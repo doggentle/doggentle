@@ -39,10 +39,6 @@ $(document).ready(function() {
 		   var tit = $('#title').val();
 		   var bod = $('#body').val();
 		   
-		   var tt = $('#tno').val();
-		   alert(tt);
-		   
-		   		   
 		   if(!ck) {
 			   $('#file').attr('disabled', true);
 		   }		   

@@ -24,10 +24,7 @@
 <script type="text/javascript" src="/www/js/myPage/myPage.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/www/js/tmddus.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	
-	
+	<script type="text/javascript" src="/www/js/tmddus.js"></script>	
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -149,16 +146,12 @@
 				</div>
 				<div class="w3-col">
 					<span class="mgb10 ft10"><b class="w3-margin-top">상품명 : ${data.gname}</b></span>
-					<span class="w3-right mgb10 ft10">   
-						<p class="star-rating">
-<c:forEach begin="1" end="${data.score}">
-      					<a class="fas fa-star"></a>
-</c:forEach>
-<c:forEach begin="${data.score + 1}" end="5">
-					      <a class="far fa-star"></a>
-</c:forEach>
-					   </p>
-   					</span>
+				<div class="wrap-star">
+					<div class='star-rating1'>
+						<span style="width: ${data.score*20}%;"></span>
+					</div>
+				</div>
+   			
 				<div class="w3-col w3-margin-top">
 					<span class="w3-col ft12 w3-border-bottom">제목 : ${data.title}</span>
 				</div>

@@ -18,15 +18,14 @@
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 	<link rel='stylesheet' href="/www/css/gDetail.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
-	<script type="text/javascript" src="/www/js/gDetail/gDetail.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	
+	<script type="text/javascript" src="/www/js/gDetail/gDetail.js"></script>	
 	
 	
 	<!-- Fonts -->
@@ -40,7 +39,35 @@
 			
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/www/img/favicon.ico">
+<style type="text/css">   
+
+      	  .star {
+  position: relative;
+  font-size: 2rem;
+  color: #ddd;
+}
+
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.star span {
+  width: 0;
+  position: absolute; 
+  left: 0;
+  color: red;
+  overflow: hidden;
+  pointer-events: none;
+}
+      </style>
+	
 </head>
+ 
 <body>
 <!-- Begin Hero Bg -->
 <!-- End Hero Bg
@@ -61,33 +88,33 @@
 	</div>
 	<!-- Start Navigation -->
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-	<ul class="nav navbar-nav">
-<c:if test="${empty SID}">
-		<li>
-		<a href="/www/member/login.dog">로그인</a>
-		</li>
-		<li>
-		<a href="/www/member/join.dog">회원가입</a>
-		</li>
-</c:if>
-<c:if test="${not empty SID}">
-		<li>
-		<a href="/www/member/logout.dog">로그아웃</a>
-		</li>
-		<li>
-		<a href="/www/myPage/mypagemain.dog">마이페이지</a>
-		</li>
-		<li>
-		<a href="/www/myPage/myattend.dog">출석</a>
-		</li>
-		<li>
-		<a href="/www/">장바구니</a>
-		</li>
-</c:if>
-		<li>
-		<a href="/www/">문의하기</a>
-		</li>
-	</ul>
+		<ul class="nav navbar-nav">
+		<c:if test="${empty SID}">
+				<li>
+				<a href="/www/member/login.dog">로그인</a>
+				</li>
+				<li>
+				<a href="/www/member/join.dog">회원가입</a>
+				</li>
+		</c:if>
+		<c:if test="${not empty SID}">
+				<li>
+				<a href="/www/member/logout.dog">로그아웃</a>
+				</li>
+				<li>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
+				</li>
+				<li>
+				<a href="/www/myPage/myattend.dog">출석</a>
+				</li>
+				<li>
+				<a href="/www/order/cart.dog">장바구니</a>
+				</li>
+		</c:if>
+				<li>
+				<a href="/www/qna/qnaWrite.dog">문의하기</a>
+				</li>
+			</ul>
 	</nav>
 </div>
 </header>
@@ -102,7 +129,7 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="/www${DATA.dir}${DATA.savename}" style="height:400px;"/></div>
+						  <div class="tab-pane active" id="pic-1"><img src="${DATA.dir}${DATA.savename}" height="400px" width="auto"/></div>
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
 
@@ -113,17 +140,15 @@
 					<div class="gdetails col-md-6">
 					
 						<h3 class="product-title" id="gname">상품명 : ${DATA.gname}</h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
-						<h4 class="gno">제품코드 : ${DATA.gno}</h4>						
+					<span class="w3-right mgb10 ft10">
+   					</span>
+				<div class="wrap-star">
+					<h2>평점 : ${DATA.score}</h2>
+					<div class='star-rating2'>
+						<span style="width: ${DATA.score*20}%"></span>
+					</div>
+				</div>
+						<h4 class="price">제품코드 : ${DATA.gno}</h4>						
 						<p class="product-description">${DATA.gdetail}</p>
 						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}원</span></h4>
 						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" >${DATA.stock}</span></h5>
@@ -179,16 +204,18 @@
 				<h1>관련 상품</h1>
 			<hr>
 		</div>
-<c:forEach var="DATA" items="${LIST}">
+<c:forEach var="test" items="${LIST}">
         	<div class="w3-center w3-quarter product w3-padding">
+        	<a href="/www/gDetail/gDetail.dog?gno=${test.gno}">
         	<div class="w3-margin-bottom w3-col w3-border">
-        	<img class="gbtn" src="/www${DATA.dir}${DATA.savename}" alt="Product" style="width:30%; height: 100px; cursor: pointer;">
+        	<img src="${test.dir}${test.savename}" alt="Product" style="width:30%; height: 100px;">
         	<div class="w3-col" style="height: 92px;">
-	        	<div>상품명 : ${DATA.gname}</div>
-	        	<div>가  격 : ${DATA.price}원</div>
-	        	<div>${DATA.caname}</div>
+	        	<div>상품명 : ${test.gname}</div>
+	        	<div>가  격 : ${test.price}원</div>
+	        	<div>${test.caname}</div>
         	</div>
         	</div>
+        	</a>
         	</div>
 </c:forEach>
 
@@ -205,36 +232,42 @@
 							</ul>
 		</div>
 
-		<div class="w3-col w3-round-large w3-card-2 w3-margin-bottom w3-padding" style="margin-left: 40px; width: 80%;">
-			<div class="w3-col w3-border-right m1" style="width: 80px; height: 100px;">
-				<b class="w3-margin-left">글번호</b>
-				<img src="/www/img/goods/dog01.jpg" class="w3-border w3-border-grey w3-margin-right">
+<div class="w3-col m9">
+<!-- 주문내역 영역 -->
+	   	 	<h1 class="w3-margin-left">상품 리뷰</h1>
+	   	 	<hr>
+<c:forEach var="rdata" items="${RLIST}">
+		<div class="w3-col w3-round-large w3-card-2 w3-margin-bottom w3-padding" style="margin-left: 40px; width: 80%; display: flex; align-items: center;">
+			<div class="w3-col m3">
+				<img src="${rdata.dir}${rdata.savename}" class="w3-border w3-border-grey w3-margin-right">
 			</div>
 			<div class="w3-rest w3-padding">
 				<div class="w3-col w3-border-bottom">
-					<span class="mgb10 ft10"><b>작성자 : 아이디</b></span>
-					<span class="w3-right mgb10 ft10"><small>날짜</small></span>
+					<span class="mgb10 ft10">작성일 : ${rdata.rdate}</span>
+							<span class="w3-button w3-border ft10 w3-red w3-right" id="rdelbtn"><small>삭제</small></span>
+							<span class="w3-button w3-border ft10 w3-gray w3-right" id="reditbtn"><small>수정</small></span>
 				</div>
 				<div class="w3-col">
-					<span class="mgb10 ft10"><b class="w3-margin-top">상품이름</b></span>
-					<span class="w3-right mgb10 ft10">   
-						<p class="star-rating">
-					      <a class="fas fa-star" id="star1" onclick="add(this,1)"></a>
-					      <a class="fas fa-star" id="star2" onclick="add(this,2)"></a>
-					      <a class="fas fa-star" id="star3" onclick="add(this,3)"></a>
-					      <a class="far fa-star" id="star4" onclick="add(this,4)"></a>
-					      <a class="far fa-star" id="star5" onclick="add(this,5)"></a>
-					   </p>
-   					</span>
+					<span class="mgb10 ft10"><b class="w3-margin-top">상품명 : ${rdata.gname}</b></span>
+					<div class="w3-right mgb10 ft10">   
+						<div class="wrap-star">
+							<div class='star-rating1'>
+								<span style="width: ${rdata.score*20}%;"></span>
+							</div>
+						</div>
+  					</div>
 				<div class="w3-col w3-margin-top">
-					<span class="w3-col ft12 w3-border-bottom">제목</span>
+					<span class="w3-col ft12 w3-border-bottom">제목 : ${rdata.title}</span>
 				</div>
 				<div class="w3-col">
-					<span class="w3-col ft12">본문</span>
+					<span class="w3-col ft12">내용 : ${rdata.body}</span>
 				</div>
 				</div>
 			</div>
 		</div>
+</c:forEach>		
+		
+	</div>
 
 		<a name="viewtab4"></a>
 		<div class="tab_list">
@@ -271,6 +304,19 @@
 		</div>
 			</div>
 	</div>
+	<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
 <!-- Intro
 	================================================== -->
 

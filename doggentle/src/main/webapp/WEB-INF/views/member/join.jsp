@@ -56,5 +56,18 @@
 </div>
 </div>
 </div>
+<footer style="margin-top: 100px;">
+	<div class="bottom section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="copyright">
+						<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 </body>
 </html>

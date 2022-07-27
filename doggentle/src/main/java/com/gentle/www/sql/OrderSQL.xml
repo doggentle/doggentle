@@ -177,6 +177,7 @@
 					id=#{id}
 			)
 			AND gno = #{gno}
+			AND isshow = 'Y'
 	</select>
 	<insert id="addCart" parameterType="oVO">
 		<selectKey keyProperty ="cno,mno" resultType="oVO" order="BEFORE">

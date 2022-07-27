@@ -48,6 +48,19 @@
 			</div>
 		</div>
 	</div>
+<footer style="margin-top: 100px;">
+	<div class="bottom section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="copyright">
+						<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 <c:if test="${not empty MSG}">
 <div id="msgWin" class="w3-modal" style="display: block;">
 	    <div class="w3-modal-content w3-animate-top w3-card-4">
@@ -61,6 +74,7 @@
 	    </div>
  	</div>
 </c:if>
+
 	
 <script>
 Kakao.init('f603e5ca480d29a16da9bf0bb94cf55e'); //고유 키값을 입력해야 한다

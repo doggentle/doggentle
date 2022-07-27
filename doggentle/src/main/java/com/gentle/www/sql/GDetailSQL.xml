@@ -6,7 +6,7 @@
    <!-- 물품상세정보 조회 질의명령 -->
    <select id="gDetInfo" resultType="gVO" parameterType="int" >
     SELECT
-         g.gno, gname, stock, gdetail, price, dir, savename, score
+         g.gno, gname, stock, gdetail, price, dir, savename, NVL(score, 0) score
       FROM
           goods g, img i, 
           (
@@ -18,7 +18,7 @@
           ) gg
       WHERE
          g.ino = i.ino
-         AND gg.gno = g.gno
+         AND gg.gno(+) = g.gno
          AND g.gno = #{gno}
    </select>
       <!-- 대 카테고리 리스트 조회 질의명령 -->

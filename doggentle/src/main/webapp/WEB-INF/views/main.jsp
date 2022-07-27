@@ -181,7 +181,7 @@
 	<c:forEach var="data" items="${NEW}">
 	                <div class="item" style="width:500px">
 	                    <div class="pad15">
-	                <a href="">
+					<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
 	                        <img src="${data.dir}${data.savename}" width="auto" height="100px">
 	                        <p>${data.gname}</p>
 	                        <p>${data.label}원</p>
@@ -204,7 +204,7 @@
 <div class="container">
          <div class="portfolio-item row" style="margin-top: 20px;">
 <c:forEach var="data" items="${HIT}">
-			<a href="">
+			<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
 	            <div class="item col-lg-3 col-md-4 col-6 col-sm w3-center">
 	               <img class="img-fluid" src="${data.dir}${data.savename}" width="auto" height="200px" alt="">
 	               <p>${data.gname}</p>
@@ -222,7 +222,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="copyright">
-							<p>© <span>2018</span> <a href="#" class="transition">doggentle</a> All rights reserved.</p>
+							<p>© <span>2022</span> <a href="#" class="transition">doggentle</a> All rights reserved.</p>
 						</div>
 					</div>
 				</div>

@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="/www/js//order/cart.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> -->
 	
+	<link rel='stylesheet' href="/www/css/test.css"/>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" src="/www/js/pay/payment.js"></script>
 	<!-- Fonts -->
@@ -53,23 +54,33 @@
 	<a class="navbar-brand" style="font-size: 20pt; padding-top: 30px;">결제하기</a>
 	<!-- Start Navigation -->
 	<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-	<ul class="nav navbar-nav">
-		<li>
-		<a href="/www/member/logout.dog">로그아웃</a>
-		</li>
-		<li>
-		<a href="/www/myPage/mypagemain.dog">마이페이지</a>
-		</li>
-		<li>
-		<a href="/www/myPage/myattend.dog">출석</a>
-		</li>
-		<li>
-		<a href="/www/order/cart.dog">장바구니</a>
-		</li>
-		<li>
-		<a href="/www/">문의하기</a>
-		</li>
-	</ul>
+		<ul class="nav navbar-nav">
+		<c:if test="${empty SID}">
+				<li>
+				<a href="/www/member/login.dog">로그인</a>
+				</li>
+				<li>
+				<a href="/www/member/join.dog">회원가입</a>
+				</li>
+		</c:if>
+		<c:if test="${not empty SID}">
+				<li>
+				<a href="/www/member/logout.dog">로그아웃</a>
+				</li>
+				<li>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
+				</li>
+				<li>
+				<a href="/www/myPage/myattend.dog">출석</a>
+				</li>
+				<li>
+				<a href="/www/order/cart.dog">장바구니</a>
+				</li>
+		</c:if>
+				<li>
+				<a href="/www/qna/qnaWrite.dog">문의하기</a>
+				</li>
+			</ul>
 	</nav>
 </div>
 </header>
@@ -193,5 +204,18 @@
 	        </div>
 	    </div>
 	</div>
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
 </body>
 </html>

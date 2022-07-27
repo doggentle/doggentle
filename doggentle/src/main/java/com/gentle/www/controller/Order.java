@@ -169,19 +169,17 @@ public class Order {
 			oVO.setAdno(adno);
 			listCnt2 = oDao.trExecMo(oVO);//상위 transaction row 입력
 			tnoCnt = oVO.getTno();
-			if(list.size()!=1) {//나머지 하위 transaction row 입력
-				for(int i=1;i<list.size();i++) {
-					voCnt = (int)list.get(i);
-					oVO = oDao.trReadyVO(voCnt);
-					oVO.setAdno(adno);
-					oVO.setUpno(tnoCnt);
-					listCnt2 = listCnt2 + oDao.trExecCh(oVO);
-				}
-				if(listCnt2==listCnt1) {
-					return "{\"result\":\"OK\", \"tno\":\""+tnoCnt+"\"}";
-				}else {
-					return "{\"result\":\"NO\"}";
-				}
+			for(int i=1;i<list.size();i++) {
+				voCnt = (int)list.get(i);
+				oVO = oDao.trReadyVO(voCnt);
+				oVO.setAdno(adno);
+				oVO.setUpno(tnoCnt);
+				listCnt2 = listCnt2 + oDao.trExecCh(oVO);
+			}
+			if(listCnt2==listCnt1) {
+				return "{\"result\":\"OK\", \"tno\":\""+tnoCnt+"\"}";
+			}else {
+				return "{\"result\":\"NO\"}";
 			}
 		}else {
 			oVO.setMno(oDao.getMno((String)session.getAttribute("SID")));
@@ -193,7 +191,6 @@ public class Order {
 				return "{\"result\":\"NO\"}";
 			}
 		}
-		return "{\"result\":\"NO\"}";
 	}
 	
 	@RequestMapping("/payAfter.dog")

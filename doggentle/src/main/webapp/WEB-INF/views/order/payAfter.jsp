@@ -104,7 +104,7 @@
 	                    <tr>
 	                        <td>   </td>
 	                        <td>
-	                        	<a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+	                        	<a class="thumbnail pull-left" href="#"> <img class="media-object" src="" onerror="this.onerror=null; this.src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png';" style="width: 72px; height: 72px;"> </a>
 	                        </td>
 	                        <td class="col-sm-2 col-md-2"><h5>주문번호</h5></td>
 	                        <td>

@@ -56,11 +56,12 @@
 	</select>
 	<select id="estCartOne" resultType="oVO" parameterType="int">
 		SELECT
-			gno, gname, price
+			g.gno gno, g.gname gname, g.price price, i.dir dir, i.savename savename
 		FROM
-			goods
+			goods g, img i
 		WHERE
-			issell = 'Y'
+			g.ino = i.ino
+			AND issell = 'Y'
 			AND gno = #{gno}
 	</select>
 	
@@ -152,6 +153,17 @@
 					WHERE
 						tno = #{tno} 
 				)
+	</select>
+	<select id="trDone3" parameterType="int" resultType="oVO">
+		SELECT
+			t.tno tno, t.gno gno, t.quantity quantity, g.price price, g.ino ino, savename, dir
+		FROM
+			transaction t, goods g, img i
+		WHERE
+			t.gno = g.gno
+			AND g.ino = i.ino
+			AND g.issell = 'Y'
+			AND t.tno = #{tno}
 	</select>
 	<select id="trDoneTest" parameterType="int" resultType="int">
 		SELECT

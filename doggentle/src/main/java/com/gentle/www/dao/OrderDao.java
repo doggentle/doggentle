@@ -88,12 +88,8 @@ public class OrderDao {
 	public int cartQtyIn(OrderVO oVO) {
 		return sqlSession.update("oSQL.cartQtyIn", oVO);
 	}
-	//goods 재고수량 변경을 위한 배열질의문
-	public List<OrderVO> trDone3(int tno) {
-		return sqlSession.selectList("oSQL.trDone3", tno);
-	}
-	//각각의 자료로 goods 테이블의 재고수량 변경
-	public int trDone4(OrderVO oVO) {
-		return sqlSession.update("oSQL.reDone4", oVO);
+	//trDone3 아 진짜 모르겠다 
+	public OrderVO trDone3(int tno) {
+		return sqlSession.selectOne("oSQL.trDone3", tno);
 	}
 }

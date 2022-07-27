@@ -116,17 +116,17 @@
 	         			<div class="w3-container w3-left-align" style="margin-top: 20px">
 	         				<dl>
 	         					<dt class="w3-block">쇼핑정보</dt>
-	         					<dd><a href="">주문내역</a></dd>
-	         					<dd><a href="">장바구니</a></dd>
+	         					<dd><a href="/www/myPage/myOrderList.dog">주문내역</a></dd>
+	         					<dd><a href="/www/order/cart.dog">장바구니</a></dd>
 	         					<dt class="w3-block">회원활동</dt>
 	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
-	         					<dd><a href="">리뷰관리</a></dd>
-	         					<dd><a href="">출    석</a></dd>
+	         					<dd><a href="/www/review/reviewList.dog">리뷰관리</a></dd>
+	         					<dd><a href="/www/myPage/myattend.dog">출    석</a></dd>
 	         					<dt class="w3-block">회원정보</dt>
 	         					<dd><a href="">프로필 정보</a></dd>
-	         					<dd><a href="">회원정보 수정</a></dd>
-	         					<dd><a href="">주소록 관리</a></dd>
-	         					<dd><a href="">포인트</a></dd> 
+	         					<dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
+	         	 				<dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
+	         					<dd><a href="/www/myPage/myPoint.dog">포인트</a></dd> 
 	         				</dl>
 	         			</div>
 	        		</div>

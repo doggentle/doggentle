@@ -129,6 +129,7 @@
 		</div>
 </c:forEach>
 	</div>
+	
 	<form method="POST" id="frm" name="frm" action="/www/manager/addgoods.dog">
 		<input type="hidden" id="gno" name="gno" value="">
 	</form>

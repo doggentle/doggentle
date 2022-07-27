@@ -266,9 +266,18 @@
 	  </div>
 	  </div>
 <!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>GenTleDog</h5>
+<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </footer>
-
 </body>
 </html>

@@ -5,14 +5,21 @@
 <mapper namespace="gSQL">
    <!-- 물품상세정보 조회 질의명령 -->
    <select id="gDetInfo" resultType="gVO" parameterType="int" >
-      SELECT
-         gno, gname, stock, gdetail, price, dir, savename, score
+    SELECT
+         g.gno, gname, stock, gdetail, price, dir, savename, score
       FROM
-          goods g, img i, review r
+          goods g, img i, 
+          (
+            SELECT round(avg(score),2) score, g.gno
+            FROM review r, transaction t, goods g
+            WHERE r.tno = t.tno
+            AND t.gno = g.gno
+            group by g.gno
+          ) gg
       WHERE
-         g.ino = i.ino AND
-         g.ino = r.ino AND
-          gno = #{gno}
+         g.ino = i.ino
+         AND gg.gno = g.gno
+         AND g.gno = #{gno}
    </select>
       <!-- 대 카테고리 리스트 조회 질의명령 -->
    <select id="startCate" resultType="gVO">

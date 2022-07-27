@@ -33,12 +33,18 @@ import com.gentle.www.vo.ReviewVO;
 		
 		@RequestMapping("/gDetail.dog")
 		public ModelAndView GoodsDetail(ModelAndView mv, GDetailVO gVO, int gno) {
+			System.out.println("gno : " + gno);
+			
 			gVO = gDao.gDetInfo(gVO.getGno());
+			System.out.println(gVO);
+			
 			List<ReviewVO> rlist = gDao.goodsReview(gno);
 			List<GDetailVO> list = gDao.getIntProductList(gno);
 			mv.addObject("RLIST", rlist);
 			mv.addObject("LIST", list);
 			mv.addObject("DATA", gVO);
+			
+		
 			mv.setViewName("gDetail/gDetail");
 			
 			return mv;

@@ -18,15 +18,14 @@
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 	<link rel='stylesheet' href="/www/css/gDetail.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>
-	<script type="text/javascript" src="/www/js/gDetail/gDetail.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-	
+	<script type="text/javascript" src="/www/js/gDetail/gDetail.js"></script>	
 	
 	
 	<!-- Fonts -->
@@ -40,7 +39,35 @@
 			
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/www/img/favicon.ico">
+<style type="text/css">   
+
+      	  .star {
+  position: relative;
+  font-size: 2rem;
+  color: #ddd;
+}
+
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.star span {
+  width: 0;
+  position: absolute; 
+  left: 0;
+  color: red;
+  overflow: hidden;
+  pointer-events: none;
+}
+      </style>
+	
 </head>
+ 
 <body>
 <!-- Begin Hero Bg -->
 <!-- End Hero Bg
@@ -113,16 +140,14 @@
 					<div class="gdetails col-md-6">
 					
 						<h3 class="product-title" id="gname">상품명 : ${DATA.gname}</h3>
-					<span class="w3-right mgb10 ft10">   
-						<p class="star-rating">
-					<c:forEach begin="1" end="${DATA.score}">
-					      					<a class="fas fa-star"></a>
-					</c:forEach>
-					<c:forEach begin="${DATA.score + 1}" end="5">
-										      <a class="far fa-star"></a>
-					</c:forEach>
-					   </p>
+					<span class="w3-right mgb10 ft10">
    					</span>
+				<div class="wrap-star">
+					<h2>평점 : ${DATA.score}</h2>
+					<div class='star-rating'>
+						<span style="width: ${DATA.score*20}%"></span>
+					</div>
+				</div>
 						<h4 class="price">제품코드 : ${DATA.gno}</h4>						
 						<p class="product-description">${DATA.gdetail}</p>
 						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}원</span></h4>
@@ -179,14 +204,14 @@
 				<h1>관련 상품</h1>
 			<hr>
 		</div>
-<c:forEach var="DATA" items="${LIST}">
+<c:forEach var="test" items="${LIST}">
         	<div class="w3-center w3-quarter product w3-padding">
         	<div class="w3-margin-bottom w3-col w3-border">
-        	<img class="gbtn" src="/www${DATA.dir}${DATA.savename}" alt="Product" style="width:30%; height: 100px; cursor: pointer;">
+        	<img class="gbtn" src="/www${test.dir}${test.savename}" alt="Product" style="width:30%; height: 100px; cursor: pointer;">
         	<div class="w3-col" style="height: 92px;">
-	        	<div>상품명 : ${DATA.gname}</div>
-	        	<div>가  격 : ${DATA.price}원</div>
-	        	<div>${DATA.caname}</div>
+	        	<div>상품명 : ${test.gname}</div>
+	        	<div>가  격 : ${test.price}원</div>
+	        	<div>${test.caname}</div>
         	</div>
         	</div>
         	</div>
@@ -216,22 +241,19 @@
 			</div>
 			<div class="w3-rest w3-padding">
 				<div class="w3-col w3-border-bottom">
-					<span class="mgb10 ft10">작성일 : ${data.rdate}</span>
+					<span class="mgb10 ft10">작성일 : ${rdata.rdate}</span>
 							<span class="w3-button w3-border ft10 w3-red w3-right" id="rdelbtn"><small>삭제</small></span>
 							<span class="w3-button w3-border ft10 w3-gray w3-right" id="reditbtn"><small>수정</small></span>
 				</div>
 				<div class="w3-col">
-					<span class="mgb10 ft10"><b class="w3-margin-top">상품명 : ${data.gname}</b></span>
-					<span class="w3-right mgb10 ft10">   
-						<p class="star-rating">
-<c:forEach begin="1" end="${rdata.score}">
-      					<a class="fas fa-star"></a>
-</c:forEach>
-<c:forEach begin="${rdata.score + 1}" end="5">
-					      <a class="far fa-star"></a>
-</c:forEach>
-					   </p>
-   					</span>
+					<span class="mgb10 ft10"><b class="w3-margin-top">상품명 : ${rdata.gname}</b></span>
+					<div class="w3-right mgb10 ft10">   
+						<div class="wrap-star">
+							<div class='star-rating1'>
+								<span style="width: ${rdata.score*20}%;"></span>
+							</div>
+						</div>
+  					</div>
 				<div class="w3-col w3-margin-top">
 					<span class="w3-col ft12 w3-border-bottom">제목 : ${rdata.title}</span>
 				</div>
@@ -280,6 +302,19 @@
 		</div>
 			</div>
 	</div>
+	<footer style="margin-top: 100px;">
+		<div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</footer>
 <!-- Intro
 	================================================== -->
 

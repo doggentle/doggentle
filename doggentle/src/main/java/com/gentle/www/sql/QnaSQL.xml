@@ -56,19 +56,21 @@
 	</select>
 	
  	<insert id="qnaWrite" parameterType="qVO">
-		<selectKey keyProperty="qno, mno, gno" resultType="int" order="BEFORE">
-			SELECT
-				NVL(MAX(qno) + 1, 100001) qno, gno, mno
-			FROM
-				qna q, goods g, member m
-			WHERE
-				m.mno = q.mno AND
-				q.gno = g.gno AND
-				m.id = #{id} AND
-				g.gname = #{name}
+		<selectKey keyProperty="qno,gno,mno" resultType="qVO" order="BEFORE">
+	       SELECT
+	            qno, g.gno gno, m.mno mno
+	         FROM
+	            goods g, member m,
+	            (
+	                SELECT(NVL(MAX(qno) + 1, 100001)) qno
+	                FROM qna
+	            )
+	         WHERE
+	            m.id = #{id} AND
+	            g.gno = #{gno}
 		</selectKey>
 			INSERT INTO
-			    qna(qno, title, body, gno, mno 				
+			    qna(qno, title, body, gno, mno)			
 			VALUES
 			    (#{qno}, #{title}, #{body}, #{gno}, #{mno})			
 

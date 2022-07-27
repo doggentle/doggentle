@@ -80,7 +80,7 @@
 				</li>
 		</c:if>
 				<li>
-				<a href="/www/myPage/qnaWrite.dog">문의하기</a>
+				<a href="/www/qna/qnaWrite.dog">문의하기</a>
 				</li>
 			</ul>
 			</nav>

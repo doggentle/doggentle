@@ -42,7 +42,7 @@ public class MyPage {
          }
          session.setAttribute("MyInfo", mVO);
       } else {
-         mv.setViewName("main");
+         mv.setViewName("member/login");
       }
    }
    
@@ -51,6 +51,9 @@ public class MyPage {
    public ModelAndView myPageMain(ModelAndView mv, HttpSession session, MemberVO mVO) {
          String sid = (String)session.getAttribute("SID");
          getMember(mv, session);
+         if(sid == null) {
+        	 return mv;
+         }
          List<GDetailVO> olist = myDao.getTransacList(sid);
          List<GDetailVO> alist = myDao.getCartList(sid);
          session.setAttribute("OLIST", olist);
@@ -64,15 +67,18 @@ public class MyPage {
    @RequestMapping("/myPoint.dog")
    public ModelAndView myPointList(ModelAndView mv, HttpSession session, MyPageVO myVO, PageUtil page) {
       mv.addObject("DATE", myVO);
-     getMember(mv, session);
-      myVO.setId((String) session.getAttribute("SID"));
-      System.out.println(myVO);
+      getMember(mv, session);
+      String sid = (String) session.getAttribute("SID");
+      myVO.setId(sid);
+      if(sid == null) {
+     	 return mv;
+      }
       page.setPageRow(5);
       page.setPage(myDao.getPointListCount(myVO));
       HashMap<String, Object> map = new HashMap<>();
+      System.out.println(myDao.getPointListCount(myVO));
       map.put("myVO", myVO);
       map.put("page", page);
-      
       List<MyPageVO> list = myDao.getPointList(map);
       
       mv.addObject("PAGE", page);
@@ -85,8 +91,11 @@ public class MyPage {
    @RequestMapping("/myattend.dog")
    public ModelAndView calendar(ModelAndView mv, HttpSession session, MyPageVO myVO, CalendarVO calVO, MyCalendar mcal) {
       getMember(mv, session);
-      calVO.setId((String)session.getAttribute("SID"));
-      
+      String sid = (String) session.getAttribute("SID");
+      calVO.setId(sid);
+      if(sid == null) {
+     	 return mv;
+      }
       if(calVO.getYear() != 0 || calVO.getMonth() != 0) {
          new MyCalendar(calVO.getYear(), calVO.getMonth());
       }
@@ -111,16 +120,13 @@ public class MyPage {
       String id = (String)session.getAttribute("SID");
       myVO.setId(id);
       int acnt = myDao.addattend(myVO);
-      System.out.println(acnt);
       int ocnt = 0;
       if(acnt != 0) {
          ocnt = myDao.occurpoint(myVO);
       }
-      System.out.println(ocnt);
       if(acnt == 1 && ocnt == 1) {
          result = "OK";
       }
-      System.out.println(result);
       return result;
    }
     
@@ -162,12 +168,12 @@ public class MyPage {
             mv.setViewName("/myPage/memberinfo");
             return mv;
          }else {
-            mv.setViewName("main");
+            mv.setViewName("member/login");
             return mv;
          }
       } else {
          // 세션에 로그인이 안남을 경우
-         mv.setViewName("main");
+         mv.setViewName("member/login");
       }
       return mv;
    }
@@ -190,19 +196,17 @@ public class MyPage {
                result = "NO";
             } 
          }
-         System.out.println("비밀번호 처리 " + result);
          return result;
       } else if(mVO.getMail() != null) {
-         System.out.println("이메일 처리");
-      }
+      	}
       return result;
    }
    
  //문의리스트 보기 요청
    @RequestMapping("/QnaList.dog")
    public ModelAndView QnaList(ModelAndView mv, HttpSession session, QnAVO qVO) {
+	  getMember(mv, session);
       String id = (String) session.getAttribute("SID");
-      System.out.println(id);
       List<QnAVO> qnalist = myDao.getQnaList(id);
       mv.addObject("QNALIST", qnalist);
       mv.setViewName("myPage/qnalist");
@@ -225,7 +229,6 @@ public class MyPage {
      qVO.setName(name);
      
      int cnt = qDao.qnaWrite(qVO);
-     System.out.println(cnt);
      
      if(cnt != 0) {
         
@@ -239,17 +242,23 @@ public class MyPage {
    
    
    //주소록 목록보기요청
-   @RequestMapping("/addressList.dog")
+   @RequestMapping("/addressList.dog") 
    public ModelAndView addrList(ModelAndView mv, HttpSession session) {
-      List<AddressVO> adlist = myDao.getMyAddrList((String)session.getAttribute("SID"));
-      mv.setViewName("/address/myAddrList");
+	  getMember(mv, session);
+	  String sid = (String)session.getAttribute("SID");
+	  if(sid == null) {
+		  return mv;
+	  }
+      List<AddressVO> adlist = myDao.getMyAddrList(sid);
       mv.addObject("ADLIST", adlist);
+      mv.setViewName("myPage/myAddrList");
       return mv;
    }
    // 나의 주문내역 리스트
    @RequestMapping("/myOrderList.dog")
    public ModelAndView myOrderList(ModelAndView mv, HttpSession session, ManagerVO mVO) {
-      String id = (String) session.getAttribute("SID");
+      getMember(mv, session);
+	   String id = (String) session.getAttribute("SID");
       if(id == null) {
          mv.setViewName("member/login");
          return mv;

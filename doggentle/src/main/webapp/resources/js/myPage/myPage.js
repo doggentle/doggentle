@@ -72,9 +72,7 @@ $(document).ready(function(){
 		}
 		if($('#change').val() != null){
 			var pw = $('#exist').val();
-			alert("pw : "+pw)
 			var spw = $('#change').val();
-			alert("spw : "+spw)
 		$.ajax({
 			url: '/www/myPage/memberinfoProc.dog',
 			type: 'post',

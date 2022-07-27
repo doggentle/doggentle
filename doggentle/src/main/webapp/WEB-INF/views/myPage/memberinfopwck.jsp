@@ -18,6 +18,7 @@
 	<link rel='stylesheet' href="/www/css/style.css"/>
 	<link rel='stylesheet' href="/www/css/tmddus.css"/>
 	<link rel='stylesheet' href="/www/css/w3.css"/>
+	<link rel='stylesheet' href="/www/css/test.css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<!-- JavaScript -->
@@ -157,8 +158,18 @@
 	  
 	  
 <!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>GenTleDog</h5>
+<footer style="margin-top: 100px;">
+      <div class="bottom section-padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 text-center">
+                  <div class="copyright">
+                     <p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 </footer>
 
 	  <div id="msgWin" class="w3-modal">

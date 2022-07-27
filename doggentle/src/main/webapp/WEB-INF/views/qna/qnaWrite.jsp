@@ -58,7 +58,7 @@
 			</div>
 			<!-- Start Navigation -->
 			<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-			<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav">
 		<c:if test="${empty SID}">
 				<li>
 				<a href="/www/member/login.dog">로그인</a>
@@ -72,17 +72,17 @@
 				<a href="/www/member/logout.dog">로그아웃</a>
 				</li>
 				<li>
-				<a href="/www/">마이페이지</a>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 				</li>
 				<li>
-				<a href="/www/">출석</a>
+				<a href="/www/myPage/myattend.dog">출석</a>
 				</li>
 				<li>
-				<a href="/www/">장바구니</a>
+				<a href="/www/order/cart.dog">장바구니</a>
 				</li>
 		</c:if>
 				<li>
-				<a href="/www/">문의하기</a>
+				<a href="/www/qna/qnaWrite.dog">문의하기</a>
 				</li>
 			</ul>
 			</nav>
@@ -272,7 +272,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="copyright">
-							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+							<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
 						</div>
 					</div>
 				</div>

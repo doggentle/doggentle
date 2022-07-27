@@ -60,7 +60,7 @@
 			</div>
 			<!-- Start Navigation -->
 			<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-			<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav">
 		<c:if test="${empty SID}">
 				<li>
 				<a href="/www/member/login.dog">로그인</a>
@@ -74,17 +74,17 @@
 				<a href="/www/member/logout.dog">로그아웃</a>
 				</li>
 				<li>
-				<a href="/www/">마이페이지</a>
+				<a href="/www/myPage/mypagemain.dog">마이페이지</a>
 				</li>
 				<li>
-				<a href="/www/">출석</a>
+				<a href="/www/myPage/myattend.dog">출석</a>
 				</li>
 				<li>
-				<a href="/www/">장바구니</a>
+				<a href="/www/order/cart.dog">장바구니</a>
 				</li>
 		</c:if>
 				<li>
-				<a href="/www/">문의하기</a>
+				<a href="/www/qna/qnaWrite.dog">문의하기</a>
 				</li>
 			</ul>
 			</nav>
@@ -104,37 +104,62 @@
 	</div>
 	</section>
 	
-	
 <!-- Page Container -->
-	<div class="w3-container w3-content" style="max-width:1500px;margin-top:40px">    
-		<!-- The Grid -->
-	  	<div class="w3-row">
-	   	 	<!-- Left Column -->
-	    	<div class="w3-col m3">
-	      		<!-- Profile -->
-	      		<div class="w3-card w3-round w3-white">
-	        		<div class="w3-container">
-	         			<h1 class="w3-center w3-margin-top" style="font-weight: bold">마이페이지</h1>
-	         			<div class="w3-container w3-left-align" style="margin-top: 20px">
-	         				<dl>
-	         					<dt class="w3-block">쇼핑정보</dt>
-	         					<dd><a href="">주문내역</a></dd>
-	         					<dd><a href="">장바구니</a></dd>
-	         					<dt class="w3-block">회원활동</dt>
-	         					<dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
-	         					<dd><a href="">리뷰관리</a></dd>
-	         					<dd><a href="">출    석</a></dd>
-	         					<dt class="w3-block">회원정보</dt>
-	         					<dd><a href="">프로필 정보</a></dd>
-	         					<dd><a href="">회원정보 수정</a></dd>
-	         					<dd><a href="">주소록 관리</a></dd>
-	         					<dd><a href="">포인트</a></dd> 
-	         				</dl>
-	         			</div>
-	        		</div>
-	      		</div>
-	   		 </div>
+   <div class="w3-container w3-content" style="max-width:1500px;margin-top:40px">    
+      <!-- The Grid -->
+        <div class="w3-row">
+             <!-- Left Column -->
+          <div class="w3-col m3">
+               <!-- Profile -->
+               <div class="w3-card w3-round w3-white">
+                 <div class="w3-container">
+                     <h1 class="w3-center w3-margin-top" style="font-weight: bold">마이페이지</h1>
+                     <div class="w3-container w3-left-align" style="margin-top: 20px">
+                        <dl>
+                           <dt class="w3-block">쇼핑정보</dt>
+                           <dd><a href="/www/myPage/myOrderList.dog">주문내역</a></dd>
+                           <dd><a href="/www/order/cart.dog">장바구니</a></dd>
+                           <dt class="w3-block">회원활동</dt>
+                           <dd><a href="/www/myPage/QnaList.dog">문의 내역</a></dd>
+                           <dd><a href="/www/review/reviewList.dog">리뷰관리</a></dd>
+                           <dd><a href="/www/myPage/myattend.dog">출    석</a></dd>
+                           <dt class="w3-block">회원정보</dt>
+                           <dd><a href="">프로필 정보</a></dd>
+                           <dd><a href="/www/myPage/memberinfopwck.dog">회원정보 수정</a></dd>
+                            <dd><a href="/www/myPage/addressList.dog">주소록 관리</a></dd>
+                           <dd><a href="/www/myPage/myPoint.dog">포인트</a></dd> 
+                        </dl>
+                     </div>
+                 </div>
+               </div>
+             </div>
 <!-- Middle Column -->
+     <div class="w3-col m9">
+        <div class="w3-row-padding">
+             <div class="w3-col m12">
+                <div class="w3-container w3-card w3-round w3-white">
+                  <div class="w3-col m9 w3-padding">
+                     <img src="/www/img/mailContent.png" class="w3-left w3-margin-right w3-padding" style="width:150px">
+                     <div>
+                        <h3>아이디 : ${SID}</h3>
+                        <h3>${MyInfo.mail}</h3>
+                     <button class="btn w3-padding-large w3-large">회원정보 수정</button>                     
+                  </div>
+                  </div>
+                  <div class="w3-col m3 w3-right w3-center" style="margin-top:40px;">
+                     <div class="w3-col m6">
+                        <h3>${MyInfo.isshow}</h3>
+                        <h5>회원등급</h5>
+                     </div>
+                     <div class="w3-col m6 w3-border-left">
+                        <h3>${MyInfo.money}P</h3>
+                        <h5>포인트</h5>
+                     </div>
+                  </div>
+               </div>
+             </div>
+        </div>
+
 <form name="frm" id="frm" method="POST" action="/www/review/reviewWriteProc.dog" enctype="multipart/form-data">
 
 	  <div class="w3-col m9">
@@ -203,7 +228,7 @@
     </div>
   </div>
   <input type="hidden" id="score" name="score" value="3">
-  <input type="hidden" id="tno" name="tno" value="${TNO}">
+  <input type="hidden" id="tno" name="tno" TNOue="${TNO}">
   
    <!-- submit -->
 
@@ -224,7 +249,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="copyright">
-							<p>© <span>2018</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
+							<p>© <span>2022</span> <a href="/www/main.dog" class="transition">doggentle</a> All rights reserved.</p>
 						</div>
 					</div>
 				</div>

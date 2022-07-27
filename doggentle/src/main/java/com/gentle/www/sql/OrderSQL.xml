@@ -43,6 +43,8 @@
 			AND
 			g.ino = i.ino
 			AND
+			g.issell = 'Y'
+			AND
 			c.isshow = 'Y'
             AND
             i.purpose = 'gds'
@@ -51,6 +53,15 @@
 		<foreach collection="list" item="cno" open="(" close=")"  separator=",">
 			#{cno}
 		</foreach>
+	</select>
+	<select id="estCartOne" resultType="oVO" parameterType="int">
+		SELECT
+			gno, gname, price
+		FROM
+			goods
+		WHERE
+			issell = 'Y'
+			AND gno = #{gno}
 	</select>
 	
 	<update id="delCartCase" parameterType="int">
@@ -151,9 +162,65 @@
 			tno = #{tno}
 			OR upno = #{tno}
 	</select>
-	
-	
-
+	<select id="isGoodsCart" parameterType="oVO" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			cart
+		WHERE
+			mno = (
+				SELECT
+					mno
+				FROM
+					member
+				WHERE
+					id=#{id}
+			)
+			AND gno = #{gno}
+	</select>
+	<insert id="addCart" parameterType="oVO">
+		<selectKey keyProperty ="cno,mno" resultType="oVO" order="BEFORE">
+		SELECT cno, mno FROM (SELECT NVL(MAX(cno)+1, 100001) cno FROM cart), member WHERE id = #{id}
+		</selectKey>
+		INSERT INTO
+			cart(cno, mno, gno, quantity)
+		VALUES
+		(
+			#{cno}, #{mno}, #{gno}, #{quantity}
+		)
+	</insert>
+	<select id="getMno" parameterType="string" resultType="int">
+		SELECT
+			mno
+		FROM
+			member
+		WHERE
+			id = #{id}
+	</select>
+	<update id="cartQtyPlus" parameterType="int">
+		UPDATE
+			cart
+		SET
+			quantity = quantity+1
+		WHERE
+			cno = #{cno}
+	</update>
+	<update id="cartQtyMinus" parameterType="int">
+		UPDATE
+			cart
+		SET
+			quantity = quantity-1
+		WHERE
+			cno = #{cno}
+	</update>
+	<update id="cartQtyIn" parameterType="oVO">
+		UPDATE
+			cart
+		SET
+			quantity = #{pnm}
+		WHERE
+			cno = #{cno}
+	</update>
 
 
 

@@ -96,8 +96,8 @@
 		                        <div class="media">
 		                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
 		                            <div class="media-body">
-<c:if test="${not empty ONE}">
-		                                <h4 class="media-heading"><a href="#">${ONE.gname} 외 ${ONE.gdsCount - 1}개 품목</a></h4>
+<c:if test="${not empty ONLY}">
+		                                <h4 class="media-heading"><a href="#">${ONLY.gname}</a></h4>
 </c:if>
 		                                <h5 class="media-heading"> by <a href="#">(주)독신사 리테일</a></h5>
 		                            </div>
@@ -108,8 +108,8 @@
 	                        	<h5>${INFO.mail}</h5>
 	                        </td>
 	                        <td class="col-sm-1 col-md-1 text-center" style="padding:10px; padding-top:30px;">
-<c:if test="${not empty ONE}">
-	                        	<strong>${ONE.ttlPrice} ￦</strong>
+<c:if test="${not empty ONLY}">
+	                        	<strong>${ONLY.ttlPrice} ￦</strong>
 </c:if>
 	                        </td>
 	                        <td class="col-sm-1 col-md-1">
@@ -161,8 +161,8 @@
 	                        <td>   </td>
 	                        <td>   </td>
 	                        <td><h4>결제예정금액</h4></td>
-<c:if test="${not empty ONE}">
-	                        <td class="text-right"><h4><strong>${ONE.ttlPrice} ￦</strong></h4></td>
+<c:if test="${not empty ONLY}">
+	                        <td class="text-right"><h4><strong>${ONLY.ttlPrice} ￦</strong></h4></td>
 </c:if>
 	                    </tr>
 	                    <tr>
@@ -183,16 +183,12 @@
 						<form id="frm" method="post" name="frm" action="">
 							<input id="partner_user_id" name="partner_user_id" type="hidden" value="${INFO.id}">
 							<input id="adno" name="adno" type="hidden" value="">
-<c:if test="${not empty ONE}">
-							<input id="item_name" name="item_name" type="hidden" value="${ONE.gname}">
-							<input id="quantity" name="quantity" type="hidden" value="${ONE.gdsCount}">
-							<input id="total_amount" name="total_amount" type="hidden" value="${ONE.ttlPrice}">
+<c:if test="${not empty ONLY}">
+							<input id="item_name" name="item_name" type="hidden" value="${ONLY.gname}">
+							<input id="total_amount" name="total_amount" type="hidden" value="${ONLY.ttlPrice}">
+							<input id="gno" name="gno" type="hidden" value="${ONLY.gno}">
+							<input id="quantity" name="quantity" type="hidden" value="${ONLY.quantity}">
 </c:if>
-<c:if test="${not empty LIST}">
-<c:forEach var="data" items="${LIST}">
-							<input id="${data.cno}" name="cnoArr" type="hidden" value="${data.cno}">
-</c:forEach>
-</c:if>			
 						</form>
 	        </div>
 	    </div>

@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var item_name = $('#item_name').val();
 		var quantity = $('#quantity').val();
 		var total_amount = $('#total_amount').val();
-		
+		var gno = $('#gno').val();
 		$.ajax({
 			url:'/www/order/trReady.dog',
 			dataType:'json',
@@ -13,27 +13,30 @@ $(document).ready(function(){
 			success:function(trdata){
 				if(trdata.result=='OK'){
 					var tno = trdata.tno;
+					console.log(tno);
 					partner_user_id = partner_user_id+tno;
-$.ajax({
-	url:'/www/order/kakaopay.dog',
-	dataType:'json',
-	data:{
-		partner_user_id : partner_user_id,
-		item_name : item_name,
-		quantity : quantity,
-		total_amount : total_amount
-	},
-	success:function(data){
+					$.ajax({
+						url:'/www/order/kakaopay.dog',
+						dataType:'json',
+						data:{
+							partner_user_id : partner_user_id,
+							item_name : item_name,
+							quantity : quantity,
+							total_amount : total_amount
+						},
+						success:function(data){
 //		console.log(data);
-		console.log(data.tid);
-		var url = data.next_redirect_pc_url;
-		var tid = data.tid;
-		window.open(url, "_parent");
-	},
-	error:function(error){
-		alert(error);
-	}
-});
+							console.log(data.tid);
+							var url = data.next_redirect_pc_url;
+							var tid = data.tid;
+							window.open(url, "_parent");
+						},
+						error:function(error){
+							alert(error);
+						}
+					});
+				}else if(trdata.result=='NO'){
+					console.log('NO');
 				}
 			},
 			errorfunction(error){
@@ -59,8 +62,6 @@ $.ajax({
 		    }
 		  addressView()
 		  $('#adno').val($(this).val());
-		  
-		  
 	});
 	
 	

@@ -24,10 +24,13 @@ public class OrderDao {
 	}
 	
 	//cart에서 선택된 cno거래정보 조회 receipt?
-	public List<OrderVO> estimate(List list) {
+	public List<OrderVO> estimateList(List list) {
 		return sqlSession.selectList("oSQL.estCartList", list);
 	}
-	
+	//cart거치지 않고 한개의 물품에 대한 내용 payment 전달
+	public OrderVO estimateOnly(int gno) {
+		return sqlSession.selectOne("oSQL.estCartOne", gno);
+	}
 	//주문자의 주소 리스트 조회
 	public List<AddressVO> getMyAddrList(String id){
 		return sqlSession.selectList("oSQL.myAddrList", id);
@@ -60,5 +63,37 @@ public class OrderDao {
 	//transaction row 확인
 	public int trDoneTest(int tno) {
 		return sqlSession.selectOne("oSQL.trDoneTest", tno);
+	}
+	//카트에 추가하려는 물품이 있는지 검사 
+	public int isGoodsCart(OrderVO oVO) {
+		return sqlSession.selectOne("oSQL.isGoodsCart", oVO);
+	}
+	//물건페이지에서 카트추가
+	public int addCart(OrderVO oVO) {
+		return sqlSession.insert("oSQL.addCart", oVO);
+	}
+	//mno 가져오기
+	public int getMno(String id) {
+		return sqlSession.selectOne("oSQL.getMno", id);
+	}
+	//cart 수량증가
+	public int cartQtyPlus(int cno) {
+		return sqlSession.update("oSQL.cartQtyPlus", cno);
+	}
+	//cart 수량감소
+	public int cartQtyMinus(int cno) {
+		return sqlSession.update("oSQL.cartQtyMinus", cno);
+	}
+	//cart 임의의수량
+	public int cartQtyIn(OrderVO oVO) {
+		return sqlSession.update("oSQL.cartQtyIn", oVO);
+	}
+	//goods 재고수량 변경을 위한 배열질의문
+	public List<OrderVO> trDone3(int tno) {
+		return sqlSession.selectList("oSQL.trDone3", tno);
+	}
+	//각각의 자료로 goods 테이블의 재고수량 변경
+	public int trDone4(OrderVO oVO) {
+		return sqlSession.update("oSQL.reDone4", oVO);
 	}
 }

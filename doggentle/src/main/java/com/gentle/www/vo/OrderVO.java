@@ -5,9 +5,21 @@ import java.util.Arrays;
 public class OrderVO {
 	private int cno, gno, quant, price, ino, gdsCount, ttlPrice, adno, quantity, total_amount, mno, tno, upno, stock;
 	private Integer[] cnoArr;
-	private String gname, gdetail, savename, dir, partner_user_id, item_name;
+	private String id, gname, gdetail, savename, dir, partner_user_id, item_name, pnm;
 	
 	
+	public String getPnm() {
+		return pnm;
+	}
+	public void setPnm(String pnm) {
+		this.pnm = pnm;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getStock() {
 		return stock;
 	}
@@ -138,10 +150,12 @@ public class OrderVO {
 	public String toString() {
 		return "OrderVO [cno=" + cno + ", gno=" + gno + ", quant=" + quant + ", price=" + price + ", ino=" + ino
 				+ ", gdsCount=" + gdsCount + ", ttlPrice=" + ttlPrice + ", adno=" + adno + ", quantity=" + quantity
-				+ ", total_amount=" + total_amount + ", mno=" + mno + ", tno=" + tno + ", cnoArr="
-				+ Arrays.toString(cnoArr) + ", gname=" + gname + ", gdetail=" + gdetail + ", savename=" + savename
-				+ ", dir=" + dir + ", partner_user_id=" + partner_user_id + ", item_name=" + item_name + "]";
+				+ ", total_amount=" + total_amount + ", mno=" + mno + ", tno=" + tno + ", upno=" + upno + ", stock="
+				+ stock + ", cnoArr=" + Arrays.toString(cnoArr) + ", id=" + id + ", gname=" + gname + ", gdetail="
+				+ gdetail + ", savename=" + savename + ", dir=" + dir + ", partner_user_id=" + partner_user_id
+				+ ", item_name=" + item_name + "]";
 	}
+	
 	
 	
 }

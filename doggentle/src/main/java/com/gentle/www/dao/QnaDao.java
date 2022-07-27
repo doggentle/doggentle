@@ -28,6 +28,10 @@ public class QnaDao {
 	public int qnaWrite(QnAVO qVO) { 
 		return sqlSession.insert("qSQL.qnaWrite", qVO); 
 	}
+	// 문의글 등록 
+	public int qnaWritee(QnAVO qVO) { 
+		return sqlSession.insert("qSQL.qnaWritee", qVO); 
+	}
 	 
 
 }

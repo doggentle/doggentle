@@ -36,6 +36,8 @@ $(document).ready(function(){
 	});
 	
 	$('#btn_save').click(function() {
+		var gno = $("#name option:selected").val();
+		$('#inputgno').val(gno);
 		$('#frm').attr('action', '/www/myPage/QnaWriteProc.dog');
 		$('#frm').submit();
 	});

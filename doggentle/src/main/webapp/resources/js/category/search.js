@@ -23,16 +23,31 @@ $(document).ready(function(){
 			
 				if(arr.length > 0){
 					for(var i = 0 ; i < arr.length ; i++ ){
-						var stag = 
+						if(arr[i].dir) {
+						var stag1 = 
+							
+							'<div class="w3-center w3-quarter product w3-padding" id="' + arr[i].gno + '">' +
+							'<div class="w3-margin-bottom w3-col w3-border">' +
+							'<img class="gbtn" src="' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:30%; height: 100px; cursor: pointer;">' +
+							'<div class="w3-col" style="height: 92px;"><p>Code:' + arr[i].gno + ' </p><p>상품명 : ' + arr[i].gname + '</p><p>가 격 : ' + arr[i].price + '</p></div>' + 
+							'</div>' +
+							'</div>' ;
+						
+						$('#sPanel').append(stag1);
+						} else {							
+						
+						var stag2 = 
 
 									'<div class="w3-center w3-quarter product w3-padding" id="' + arr[i].gno + '">' +
 									'<div class="w3-margin-bottom w3-col w3-border">' +
-									'<img class="gbtn" src="' + (arr[i].dir + arr[i].savename ) + '" alt="Product" style="width:30%; height: 100px; cursor: pointer;">' +
+									'<img class="gbtn" src="' + (arr[i].savename ) + '" alt="Product" style="width:30%; height: 100px; cursor: pointer;">' +
 									'<div class="w3-col" style="height: 92px;"><p>Code:' + arr[i].gno + ' </p><p>상품명 : ' + arr[i].gname + '</p><p>가 격 : ' + arr[i].price + '</p></div>' + 
 									'</div>' +
 									'</div>' ;
 						
-						$('#sPanel').append(stag);
+						$('#sPanel').append(stag2);
+						
+						}
 					}
 					$('#sPanel').css('display', 'block');
 				}

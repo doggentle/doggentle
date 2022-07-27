@@ -149,7 +149,7 @@
 					</div>
 				</div>
 						<h4 class="price">제품코드 : ${DATA.gno}</h4>						
-						<p class="product-description">${DATA.gdetail}</p>
+						<p class="product-description">공백</p>
 						<h4 class="price">가격 : <span id="price" name="price">${DATA.price}원</span></h4>
 						<h5 class="gsizes">남은 수량 : <span id="stock" name="stock" >${DATA.stock}</span></h5>
                     <div class="qsection" style="padding-bottom:20px;">
@@ -183,7 +183,8 @@
 		<div class="view_detail" id=contents>
 			<table width=100%>
 				<tr>
-					<td> <p><img src="https://img.junglebook.co.kr/scm/desc/pQulJuxrxZElcEvp26FJcT21dM2XRBN8yWPqxt4H.jpeg" style="width: 860px;" class="fr-fic fr-dib"></p>
+					<td>
+					<div class="w3-center">${DATA.gdetail}</div>
 					</td>
 				</tr>
 			</table>

@@ -228,7 +228,7 @@
     </div>
   </div>
   <input type="hidden" id="score" name="score" value="3">
-  <input type="hidden" id="tno" name="tno" TNOue="${TNO}">
+  <input type="hidden" id="tno" name="tno" value="${TNO}">
   
    <!-- submit -->
 

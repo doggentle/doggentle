@@ -55,9 +55,7 @@ public class Review {
 	            mv.setViewName("member/login");
 	         }
 	      mv.setViewName("/review/reviewWrite");
-	      
-	      System.out.println(tno);
-	      
+	     	      
 	      String gname = rDao.getReviewGname(tno);
 	      mv.addObject("GNAME", gname);
 	      mv.addObject("TNO", tno);
@@ -67,11 +65,13 @@ public class Review {
 
 	
 	@RequestMapping("reviewWriteProc.dog")
-	public ModelAndView ReViewWriteProc(ModelAndView mv, HttpSession session, ReviewVO rVO) {
+	public ModelAndView ReViewWriteProc(ModelAndView mv, HttpSession session, String tno, ReviewVO rVO) {
 		String sid = (String) session.getAttribute("SID");
-		
+
+	    int stno = Integer.valueOf(tno);
+	    rVO.setTno(stno);
+	    
 		mv.setViewName("review/redirect");
-		System.out.println(rVO);
 		
 		if(sid == null) {
 			mv.addObject("VIEW", "/www/member/login.dob");

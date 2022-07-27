@@ -144,7 +144,7 @@
   <div class="conboxbg">
     <div class="conbox">
 <form method="POST" action="" name="frm" id="frm">
-
+	<input type="hidden" id="inputgno" name="gno" value="">
       <table width=500 cellpadding=4 cellspacing=0 border=0 class="pop_write" >
         <col width=50>
 		<tr>

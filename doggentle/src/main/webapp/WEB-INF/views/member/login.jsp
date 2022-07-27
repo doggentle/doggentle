@@ -49,7 +49,7 @@
 		</div>
 	</div>
 <c:if test="${not empty MSG}">
-<div id="msgWin" class="w3-modal" style="display: block">
+<div id="msgWin" class="w3-modal" style="display: block;">
 	    <div class="w3-modal-content w3-animate-top w3-card-4">
 			<header class="w3-container w3-blue"> 
 		        <span class="w3-button w3-display-topright" id="msgClose">&times;</span>

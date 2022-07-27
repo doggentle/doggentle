@@ -47,6 +47,42 @@ $(document).ready(function(){
 	$('#goShopping').click(function(){
 		$(location).attr('href', '/www/');
 	});
+	
+	$('.qtyplus').click(function(){
+		var clickedCno = $(this).prev().prev().attr('id');
+		$('.qty').prop('disabled', true);
+		$('.qtyV').prop('readonly', true)
+		qtyCon(clickedCno, '+1');
+		
+		totalPxqRefresh2();
+	});
+	$('.qtyminus').click(function(){
+		if($(this).prev().val()<=1){
+			$(this).prev().val(1);
+			return;
+		}
+		
+		var clickedCno = $(this).prev().attr('id');
+		$('.qty').prop('disabled', true);
+		$('.qtyV').prop('readonly', true)
+		qtyCon(clickedCno, '-1');
+		
+		totalPxqRefresh2();
+	});
+	$('.qtyV').change(function(){
+		if($(this).val()<=1){
+			$(this).val(1);
+			return;
+		}
+		
+		var changedCno = $(this).attr('id');
+		var changedVal = $(this).val();
+		$('.qty').prop('disabled', true);
+		$('.qtyV').prop('readonly', true)
+		qtyCon(changedCno, changedVal)
+		
+		totalPxqRefresh2();
+	});
 });
 
 function totalPxqRefresh(){
@@ -72,5 +108,53 @@ function totalPxqRefresh(){
 		$('.deliveryPrice').html('0 ￦');
 		$('.totalPrice').html('0 ￦');
 	}
+}
+
+function totalPxqRefresh2(){
+	var newTotalPxq = 0;
+	$('.qtyV').each(function(){
+		var eachPxq = $(this).parent().next().next().children().first().html();
+		eachPxq = eachPxq.substr(0,eachPxq.length-2);
+		newTotalPxq = newTotalPxq + Number(eachPxq);
+	})
+	$('.totalPrice').html(newTotalPxq+' ￦');
+	$('.totalPxQ').html(newTotalPxq+' ￦');
+	
+	$('.qty').prop('disabled', false);
+	$('.qtyV').prop('readonly', false)
+}
+
+function qtyCon(cno, pnm){
+	$.ajax({
+		url:'/www/order/cartQtyControl.dog',
+		dataType:'json',
+		data:{
+			cno: cno,
+			pnm: pnm
+		},
+		success:function(data){
+			if(data.result=='OK'){
+				console.log('OK');
+				if(pnm=='+1'){
+					var value = Number($('#'+cno).val())+1;
+					$('#'+cno).val(value);
+				}else if(pnm=='-1'){
+					var value = Number($('#'+cno).val())-1;
+					$('#'+cno).val(value);
+				}else{
+					$('#'+cno).val(pnm);
+				}
+				var newP = Number($('#'+cno).parent().next().children().first().html().substring(0,$('#'+cno).parent().next().children().first().html().length-2));
+				var newQ = Number($('#'+cno).val());
+				var newPxq =  newP * newQ;
+				$('#'+cno).parent().next().next().children().first().html(newPxq+' ￦');
+			}else{
+				alert('다시 시도해 주세요');
+			}
+		},
+		error:function(error){
+			alert(error);
+		}
+	});
 }
 

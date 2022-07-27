@@ -55,4 +55,11 @@ $(document).ready(function(){
 			$(location).attr('href', '/www/error.dog');
 		}
 	});
+	
+	$('#goMainPage').click(function(){
+		$(location).attr('href', '/www/');
+	});
+	$('#goMyPage').click(function(){
+		$(location).attr('href', '/www/myPage/mypagemain.dog');
+	});
 });

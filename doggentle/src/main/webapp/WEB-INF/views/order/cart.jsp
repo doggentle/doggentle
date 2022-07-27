@@ -107,9 +107,9 @@
 		                        </div>
 	                        </td>
 	                        <td class="col-sm-1 col-md-1" style="text-align: center">
-	                        	<input type="email" class="form-control"  id="${data.cno}" value="${data.quant}" readonly><!--id="이 장바구니의 cno" value="이 장바구니의 quantity"-->
-		                        <input type="button" value="+" style="margin-top:10px; border:0px;"><!-- 갯수 더하기 버튼 -->
-		                        <input type="button" value="-" style="margin-top:10px; border:0px;"><!-- 갯수   빼기 버튼 -->
+	                        	<input type="email" class="qtyV form-control"  id="${data.cno}" value="${data.quant}"><!--id="이 장바구니의 cno" value="이 장바구니의 quantity"-->
+		                        <input type="button" class="qty qtyminus" value="-" style="margin-top:10px; border:0px;"><!-- 갯수 더하기 버튼 -->
+		                        <input type="button" class="qty qtyplus" value="+" style="margin-top:10px; border:0px;"><!-- 갯수   빼기 버튼 -->
 	                        </td>
 	                        <td class="col-sm-1 col-md-1 text-center"><strong>${data.price} ￦</strong></td><!-- 이장바구니에서 알아낸 이 물건의 price -->
 	                        <td class="col-sm-1 col-md-1 text-center"><strong class="${data.cno}">${data.price * data.quant} ￦</strong></td><!-- 이장바구니에서 알아낸 이 물건의 quantity * price -->

@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	var sidLen = $('#partner_user_id').val().length
-	console.log(sidLen);
 	
 	$('#goHome').click(function(){
 		$(location).attr('href', '/www/');
@@ -18,40 +17,47 @@ $(document).ready(function(){
 			pg_token : pgtkn
 		},
 		success:function(data){
-			console.log(data);
-			console.log(data.partner_user_id);
 			var tno = data.partner_user_id
-			tno = tno.substr(sidLen);
+			tno2 = tno.substr(sidLen);
 			
 			$.ajax({
 				url:'/www/order/payTrDone.dog',
 				dataType:'json',
 				contentType : "application/json; charset:UTF-8",
 				data:{
-					tno: tno
+					tno: tno2
 					},
 				success:function(data2){
 					if(data2.result=='OK'){
 						$('#tid').html(data.tid);
 						$('#aid').html(data.aid);
 						$('#partner_order_id').html(data.partner_order_id);
-						$('#tno').html(tno);
+						$('#tno').html(tno2);
 						$('#who').html(data2.who);
 						$('#contact').html(data2.contact);
 						$('#pno').html(data2.pno);
 						$('#adrs').html(data2.adrs);
+
+						if(data2.dir != 'null') {
+							var dir = data2.dir;
+							var img = dir + data2.savename;
+							$('.media-object').attr('src', img);							
+						} else {
+							$('.media-object').attr('src', data2.savename);							
+						}
 					}else{
+						//alert('오류1');
 						$(location).attr('href', '/www/error.dog');
 					}
 				},
 				error:function(error){
-					alert(error);
+					//alert('오류2');
 					$(location).attr('href', '/www/error.dog');
 				}
 			});
 		},
 		error:function(error){
-			alert(error.result);
+			//alert('오류3');
 			$(location).attr('href', '/www/error.dog');
 		}
 	});

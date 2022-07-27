@@ -58,13 +58,23 @@ $(document).ready(function(){
 				'<div class="w3-col m1">갯수</div>'); 
 
 				for(var i=0; i<arr.length; i++) {
-					$('.o'+txt).append(
-					'<div class="w3-col w3-center w3-border" style="display:flex; align-items:center;">' +
-					'<div class="w3-col m2">' + arr[i].tdate + '</div>' +
-					'<div class="w3-col m3"><img src="' + arr[i].dir+arr[i].savename + '" width="auto" height="100px"></div>' +
-					'<div class="w3-col m4">' + arr[i].gname + '</div>' +
-					'<div class="w3-col m2">' + arr[i].price + '</div>' +
-					'<div class="w3-col m1">' + arr[i].quantity + '</div>'); 
+					if(arr[i].dir) {						
+						$('.o'+txt).append(
+						'<div class="w3-col w3-center w3-border" style="display:flex; align-items:center;">' +
+						'<div class="w3-col m2">' + arr[i].tdate + '</div>' +
+						'<div class="w3-col m3"><img src="' + arr[i].dir+arr[i].savename + '" width="auto" height="100px"></div>' +
+						'<div class="w3-col m4">' + arr[i].gname + '</div>' +
+						'<div class="w3-col m2">' + arr[i].price + '</div>' +
+						'<div class="w3-col m1">' + arr[i].quantity + '</div>'); 
+					} else {
+						$('.o'+txt).append(
+								'<div class="w3-col w3-center w3-border" style="display:flex; align-items:center;">' +
+								'<div class="w3-col m2">' + arr[i].tdate + '</div>' +
+								'<div class="w3-col m3"><img src="' + arr[i].savename + '" width="auto" height="100px"></div>' +
+								'<div class="w3-col m4">' + arr[i].gname + '</div>' +
+								'<div class="w3-col m2">' + arr[i].price + '</div>' +
+								'<div class="w3-col m1">' + arr[i].quantity + '</div>'); 		
+					}
 				}				
 				$('#o'+txt).css('display', 'block');
 				$('.o'+txt).css('display', 'block');

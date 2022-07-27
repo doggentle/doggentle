@@ -134,7 +134,6 @@ function qtyCon(cno, pnm){
 		},
 		success:function(data){
 			if(data.result=='OK'){
-				console.log('OK');
 				if(pnm=='+1'){
 					var value = Number($('#'+cno).val())+1;
 					$('#'+cno).val(value);

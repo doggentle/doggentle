@@ -35,9 +35,7 @@ public class GoodsService {
 		path = path.substring(0, path.indexOf("/WEB-INF")) + "/resources" + dir;
 		
 		iVO.setDir("/www" + dir + "/");
-		
-		System.out.println(path);
-		
+				
 		long len = file.getSize();
 		iVO.setVolume(len);
 		
@@ -85,7 +83,6 @@ public class GoodsService {
 			if(cnt == 1) { // 이미지 등록에 성공하면?
 				int ino = rDao.existReviewImage();
 				rVO.setIno(ino);
-				System.out.println(rVO);
 				rDao.addReviewWrite(rVO);
 			}
 		} else { // 사진 없이 리뷰만 올리는 경우

@@ -13,7 +13,6 @@ $(document).ready(function(){
 			success:function(trdata){
 				if(trdata.result=='OK'){
 					var tno = trdata.tno;
-					console.log(tno);
 					partner_user_id = partner_user_id+tno;
 					$.ajax({
 						url:'/www/order/kakaopay.dog',
@@ -26,7 +25,6 @@ $(document).ready(function(){
 						},
 						success:function(data){
 //		console.log(data);
-							console.log(data.tid);
 							var url = data.next_redirect_pc_url;
 							var tid = data.tid;
 							window.open(url, "_parent");
@@ -36,7 +34,7 @@ $(document).ready(function(){
 						}
 					});
 				}else if(trdata.result=='NO'){
-					console.log('NO');
+					//console.log('NO');
 				}
 			},
 			errorfunction(error){

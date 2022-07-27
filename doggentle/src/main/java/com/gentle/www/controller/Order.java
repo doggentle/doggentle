@@ -291,11 +291,11 @@ public class Order {
 	}
 	@RequestMapping(value="/payTrDone.dog", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public String payTransactionDone(String tno, AddressVO adVO, HttpServletResponse response) {
+	public String payTransactionDone(String tno, AddressVO adVO, HttpServletResponse response, OrderVO oVO) {
 		int tno2 = Integer.parseInt(tno);
 		int trCnt = oDao.trDone(tno2);
 		adVO = oDao.trDone2(tno2);
-		
+		oVO = oDao.trDone3(tno2);
 		
 		if(trCnt==0) {
 			return "{\"result\":\"NO\"}";
@@ -308,11 +308,18 @@ public class Order {
 				 
 				 
 				return "{"+
-					"\"result\":\"OK\""+","+
-					"\"who\":\""+adVO.getWho()+"\""+","+
-					"\"contact\":\""+adVO.getContact()+"\""+","+
-					"\"adrs\":\""+adVO.getAdrs()+"\""+","+
-					"\"pno\":\""+adVO.getPno()+"\""+
+					"\"result\":\"OK\","+
+					"\"who\":\""+adVO.getWho()+"\","+
+					"\"contact\":\""+adVO.getContact()+"\","+
+					"\"adrs\":\""+adVO.getAdrs()+"\","+
+					"\"pno\":\""+adVO.getPno()+"\","+
+					"\"tno\":\""+oVO.getTno()+"\","+
+					"\"gno\":\""+oVO.getGno()+"\","+
+					"\"quantity\":\""+oVO.getQuantity()+"\","+
+					"\"price\":\""+oVO.getPrice()+"\","+
+					"\"ino\":\""+oVO.getIno()+"\","+
+					"\"savename\":\""+oVO.getSavename()+"\","+
+					"\"dir\":\""+oVO.getDir()+"\""+
 						"}";
 			}else {
 				return "{\"result\":\"NO\"}";

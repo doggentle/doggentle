@@ -198,7 +198,6 @@ public class Manager {
    
    @RequestMapping("/addGoodsProc.dog")
    public ModelAndView mngAddGoodsProc(ModelAndView mv, MultipartRequest file, ManagerVO mgVO, ImageVO iVO) {
-      System.out.println(mgVO);
       mv.setViewName("manager/redirect");
       
       int gno = mgVO.getGno();

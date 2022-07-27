@@ -109,7 +109,8 @@
 	                    	</td>
 	                        <td class="col-sm-8 col-md-6">
 		                        <div class="media">
-		                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+		                            <a class="thumbnail pull-left" href="#">
+		                            	<img class="media-object" src="${data.dir}${data.savename}" onerror="this.onerror=null; this.src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png';" style="width: 72px; height: 72px;"> </a>
 		                            <div class="media-body">
 		                                <h4 class="media-heading"><a href="#">${data.gname}</a></h4><!-- 이 장바구니에서 알아낸 이 물건의 물건이름 -->
 		                                <h5 class="media-heading"> by <a href="#">(주)독신사 리테일</a></h5>

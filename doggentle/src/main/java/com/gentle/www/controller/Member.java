@@ -40,7 +40,6 @@ public class Member {
 		
 		
 		if(cnt == 1) {
-			System.out.println("ok");
 			if(ck.equals("mng")) { 
 				session.setAttribute("MID", mVO.getId());
 				

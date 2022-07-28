@@ -247,8 +247,6 @@ public class Manager {
    public ModelAndView addAnswerProc(ModelAndView mv, QnAVO qVO, String title, HttpSession session) {
       String mid = (String) session.getAttribute("MID");
       
-      System.out.println(qVO);
-
       mv.setViewName("manager/redirect");
       
       if(mid == null) {

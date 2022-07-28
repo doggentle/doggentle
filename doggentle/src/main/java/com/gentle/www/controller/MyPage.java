@@ -76,7 +76,6 @@ public class MyPage {
       page.setPageRow(5);
       page.setPage(myDao.getPointListCount(myVO));
       HashMap<String, Object> map = new HashMap<>();
-      System.out.println(myDao.getPointListCount(myVO));
       map.put("myVO", myVO);
       map.put("page", page);
       List<MyPageVO> list = myDao.getPointList(map);
@@ -217,7 +216,6 @@ public class MyPage {
   @RequestMapping("/QnaWriteProc.dog")
   public ModelAndView addQna(ModelAndView mv, QnAVO qVO, HttpSession session, String name) {
      
-     System.out.println("실행");
      String sid = (String) session.getAttribute("SID");
      
      mv.setViewName("manager/redirect");

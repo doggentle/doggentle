@@ -37,6 +37,7 @@
 	              AND m.mno = c.mno
 	              AND c.gno = g.gno
 	              AND g.ino = i.ino
+	              AND c.isshow = 'Y'
 	          ORDER BY cno desc
 	      	)
       )
@@ -150,7 +151,7 @@
 		    <if test="myVO.supno neq 0">
 		             AND upcno = #{myVO.supno}
 		    </if>
-		        ORDER BY odate desc
+		        ORDER BY pno desc
 		    )
 		)
 		WHERE

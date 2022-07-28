@@ -115,7 +115,7 @@
 			point(pno, mno, cno, pvalue, sumpoint)
 		VALUES(
 			(SELECT NVL(MAX(pno)+1, 100001) FROM point),
-			#{mno}, 101, 100, 100
+			#{mno}, 105, 100, 100
 		 )
 	</insert>
 	<select id="customerInfo" resultType="mVO" parameterType="string">
@@ -125,7 +125,20 @@
 			member
 		WHERE
 			id = #{id}
-	</select> 
+	</select>
+	
+	<insert id="defaultAddress" parameterType="mVO">
+		<selectKey keyProperty="rno" resultType="int" order="BEFORE">
+			SELECT 
+				NVL(MAX(ADNO) + 1, 1001) rno 
+			FROM 
+				address
+		</selectKey>
+			INSERT INTO 
+			    address(adno, who, mno, pno, adrs, contact)
+			VALUES
+			    ( #{rno}, '학원', #{mno}, '00000', '서울대입구역', '010-1111-1111')
+	</insert> 
 </mapper>
 
 

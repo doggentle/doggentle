@@ -103,10 +103,12 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [mno=" + mno + ", tcnt=" + tcnt + ", rcnt=" + rcnt + ", spoint=" + spoint + ", mail=" + mail
-				+ ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen=" + gen + ", jdate=" + jdate + ", isshow="
-				+ isshow + ", money=" + money + "]";
+		return "MemberVO [mno=" + mno + ", tcnt=" + tcnt + ", rcnt=" + rcnt + ", spoint=" + spoint + ", cnt=" + cnt
+				+ ", rno=" + rno + ", mail=" + mail + ", id=" + id + ", pw=" + pw + ", bdate=" + bdate + ", gen=" + gen
+				+ ", jdate=" + jdate + ", isshow=" + isshow + ", money=" + money + ", spw=" + spw + "]";
 	}
+	
+	
 	
 	
 

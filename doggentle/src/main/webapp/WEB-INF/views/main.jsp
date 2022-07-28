@@ -179,12 +179,14 @@
 			<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
 	            <div class="MultiCarousel-inner">
 	<c:forEach var="data" items="${NEW}">
-	                <div class="item" style="width:500px">
-	                    <div class="pad15">
+	                <div class="item" style="width:500px;">
+	                    <div class="pad15" style="height: 245px;">
 					<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
 	                        <img src="${data.dir}${data.savename}" width="auto" height="100px">
-	                        <p>${data.gname}</p>
-	                        <p>${data.label}원</p>
+	                        <div style="height: 80px;">
+		                        <h5>${data.gname}</h5>
+	                        </div>
+                      	    <h5>${data.label}원</h5>
 	                </a>
 	                    </div>
 	                </div>
@@ -201,21 +203,21 @@
 	</h1>
 </div>
 
-<div class="container">
-         <div class="portfolio-item row" style="margin-top: 20px;">
+			<div class="w3-col m12 w3-center w3-margin">
 <c:forEach var="data" items="${HIT}">
-			<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
-	            <div class="item col-lg-3 col-md-4 col-6 col-sm w3-center">
-	               <img class="img-fluid" src="${data.dir}${data.savename}" width="auto" height="200px" alt="">
-	               <p>${data.gname}</p>
-	               <p>판매량 : ${data.hit}개</p>
-	               <p>${data.label}원</p>
-	            </div>
-            </a>
+				<div class="w3-col m3 w3-margin-top">
+					<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
+			               <img class="img-fluid" src="${data.dir}${data.savename}" width="auto" height="200px" alt="">
+			               	<h5 class="w3-margin" style="height:45px;">${data.gname}</h5>
+	              			<h6>판매량 : ${data.hit}개</h6>
+		               		<h6>${data.label}원</h6>
+					</a> 
+				</div>
 </c:forEach>
-         </div>
+			</div>
       </div>
-</div>
+      
+      
 <footer style="margin-top: 100px;">
 		<div class="bottom section-padding">
 			<div class="container">

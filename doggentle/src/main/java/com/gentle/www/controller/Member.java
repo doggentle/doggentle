@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.gentle.www.dao.MemberDao;
+import com.gentle.www.dao.*;
 import com.gentle.www.service.*;
 import com.gentle.www.vo.*;
 
@@ -21,6 +21,8 @@ public class Member {
 	
 	@Autowired
 	MemberDao mDao;
+	@Autowired
+	MyPageDao myDao;
 	@Autowired
 	MailService mSrvc;
 	
@@ -84,7 +86,6 @@ public class Member {
 	@RequestMapping("/joinProc.dog")
 	public ModelAndView joinProc(MemberVO mVO, CertVO cVO, ModelAndView mv, RedirectView rv, HttpSession session) {
 		int cnt = mDao.addMember(mVO);
-		
 		CodeGenerate cge = new CodeGenerate();
 		int cd = cge.codeTwo();
 		cVO.setCcode(cd);
@@ -93,7 +94,10 @@ public class Member {
 		
 		if(cnt == 1 && cecnt ==1) {
 			// 회원가입 성공한 경우
+			mDao.addPoint(mVO.getMno());
 			session.setAttribute("SID", mVO.getId());
+			mDao.defaultAddress(mVO);
+			System.out.println(mVO);
 			rv.setUrl("/www/");
 			
 			mSrvc.gmailReady();
@@ -108,7 +112,7 @@ public class Member {
 	
 	@Transactional
 	@RequestMapping(path="/joinCert.dog", method=RequestMethod.GET, params={"cmail", "ccode"})
-	public ModelAndView joinCert(ModelAndView mv, CertVO cVO, HttpSession session, RedirectView rv) {
+	public ModelAndView joinCert(ModelAndView mv, CertVO cVO, HttpSession session, RedirectView rv, MyPageVO myVO) {
 		mv.setViewName("/member/login");// 테스트용 임시
 		
 		String mail = cVO.getCmail();
@@ -119,9 +123,12 @@ public class Member {
 				mDao.certMno(cVO.getMno());
 				mDao.certCno(cVO.getCno());
 				session.setAttribute("SID", cVO.getId());
+				String sid = (String) session.getAttribute("SID");
 				mv.setViewName("/main");
-				
-				mDao.addPoint(cVO.getMno());//신규가입 기녕 100포인트
+				myVO.setId(sid);
+				myVO.setPvalue(100);
+				myVO.setSupno(101);
+				myDao.occurpoint(myVO);
 			}catch(Exception e) {
 				e.printStackTrace();
 				rv.setUrl("/www/error.dog");
@@ -186,7 +193,7 @@ public class Member {
 	
 	@RequestMapping("/kakaoIdCheck.dog")
 	@ResponseBody
-	public String kakaoIdCheck(MemberVO mVO, HttpSession session, RedirectView rv) {
+	public String kakaoIdCheck(MemberVO mVO, HttpSession session, RedirectView rv, CertVO cVO) {
 		String tdate = mVO.getBdate();
 		mVO.setBdate("2000-"+tdate.substring(0,2)+"-"+tdate.substring(2,tdate.length()));
 		
@@ -199,9 +206,12 @@ public class Member {
 		
 		if(mDao.getLogin(mVO)==1) {
 			session.setAttribute("SID", mVO.getId());
+			mDao.defaultAddress(mVO);
 			return "{\"result\":\"OK\"}";
 		}else if(mDao.getLogin(mVO)==0) {
 			if(mDao.addKakao(mVO)==1) {
+				int ocrrus = mDao.addPoint(mVO.getMno());
+				mDao.defaultAddress(mVO);
 				session.setAttribute("SID", mVO.getId());
 				return "{\"result\":\"OK\"}";
 			}else {

@@ -34,4 +34,10 @@ public class CertVO {
 	public void setCmail(String cmail) {
 		this.cmail = cmail;
 	}
+	@Override
+	public String toString() {
+		return "CertVO [mno=" + mno + ", cno=" + cno + ", ccode=" + ccode + ", id=" + id + ", cmail=" + cmail + "]";
+	}
+	
+	
 }

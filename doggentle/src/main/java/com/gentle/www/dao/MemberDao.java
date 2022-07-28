@@ -71,7 +71,10 @@ public class MemberDao {
 		return sqlSession.selectOne("mSQL.customerInfo", id);
 	}
 
-	
+	// 디폴트 주소
+	public int defaultAddress(MemberVO mVO) {
+		return sqlSession.insert("mSQL.defaultAddress", mVO);
+	}
 	
 	
 	

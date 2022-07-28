@@ -25,6 +25,7 @@
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/www/js/tmddus.js"></script>	
+	<script src="/www/js/bootstrap.min.js"></script>
 	
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>

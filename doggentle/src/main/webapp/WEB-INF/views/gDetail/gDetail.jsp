@@ -19,6 +19,7 @@
 	<link rel='stylesheet' href="/www/css/w3.css"/>
 	<link rel='stylesheet' href="/www/css/gDetail.css"/>
 	<link rel='stylesheet' href="/www/css/test.css"/>
+	<script src="/www/js/bootstrap.min.js"></script>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

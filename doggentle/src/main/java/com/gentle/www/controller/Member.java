@@ -97,7 +97,6 @@ public class Member {
 			mDao.addPoint(mVO.getMno());
 			session.setAttribute("SID", mVO.getId());
 			mDao.defaultAddress(mVO);
-			System.out.println(mVO);
 			rv.setUrl("/www/");
 			
 			mSrvc.gmailReady();

@@ -38,7 +38,7 @@
     <input type="password" placeholder="비밀번호를 입력해주세요" id="pwck" required>
 
     <label for="mail"><b>MAIL</b></label>
-    <input type="text" placeholder="비밀번호를 입력해주세요" id="mail" name="mail" required>
+    <input type="text" placeholder="이메일을 입력해주세요" id="mail" name="mail" required>
 
     <label for="birth"><b>BIRTH</b></label>
     <input type="date" id="birth" required>

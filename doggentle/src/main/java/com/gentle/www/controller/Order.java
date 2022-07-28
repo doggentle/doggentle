@@ -301,8 +301,6 @@ public class Order {
 			return "{\"result\":\"NO\"}";
 		}else {
 			int trCnt2 = oDao.trDoneTest(tno2);
-			System.out.println("trCnt2 :"+trCnt2);
-			System.out.println("trCnt :"+trCnt);
 			if(trCnt==trCnt2) {//'Y'변환갯수와 tno를기준으로 한 부모-자식 transaction row 갯수를 서로 확인
 				 response.setCharacterEncoding("UTF-8");
 				 

@@ -15,7 +15,6 @@ public class LoginLogService {
 
 	@Pointcut("execution(* com.gentle.www.controller.Member.loginProc(..))")
 	public void recordLogin() {
-		System.out.println("##########  aop start #############");
 	}	
 	
 	@After("recordLogin()")

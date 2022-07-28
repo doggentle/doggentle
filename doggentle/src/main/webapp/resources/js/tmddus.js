@@ -106,8 +106,6 @@ $(document).ready(function () {
     $('.rvbtn').click(function() {
     	var txt = $(this).attr('id');
     	
-    	alert(txt);
-    	
     	$('#tno').val(txt);
     	$('#frm').submit();
     });

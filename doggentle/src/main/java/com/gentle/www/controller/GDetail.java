@@ -35,8 +35,6 @@ import com.gentle.www.vo.ReviewVO;
 		public ModelAndView GoodsDetail(ModelAndView mv, GDetailVO gVO, int gno) {
 			
 			gVO = gDao.gDetInfo(gVO.getGno());
-			System.out.println(gVO);
-			
 			List<ReviewVO> rlist = gDao.goodsReview(gno);
 			List<GDetailVO> list = gDao.getIntProductList(gno);
 			mv.addObject("RLIST", rlist);

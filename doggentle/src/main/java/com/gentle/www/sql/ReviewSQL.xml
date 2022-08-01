@@ -40,7 +40,7 @@
 	<select id="reviewList" parameterType="string" resultType="rVO">
 		SELECT rno, dir, savename, TO_CHAR(rdate, 'yyyy-MM-dd') rdate, gname, title, body, score
 		FROM goods g, img i, review r, transaction t, member m
-		WHERE g.ino = i.ino
+		WHERE r.ino = i.ino
 		AND t.tno = r.tno
 		AND t.gno = g.gno
 		AND m.mno = t.mno

@@ -24,7 +24,6 @@ $(document).ready(function(){
 							total_amount : total_amount
 						},
 						success:function(data){
-//		console.log(data);
 							var url = data.next_redirect_pc_url;
 							var tid = data.tid;
 							window.open(url, "_parent");

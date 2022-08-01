@@ -104,7 +104,6 @@ public class MyPage {
       calVO.setDay(mcal.getDay());
       List<Integer> myattend = myDao.getattend(calVO);
       
-      
       mv.addObject("MYATTEND", myattend);
       mv.addObject("ATTEND", calVO);
        mv.setViewName("myPage/myattend");

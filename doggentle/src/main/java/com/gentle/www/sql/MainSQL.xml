@@ -19,7 +19,6 @@
 		WHERE
 		g.ino = i.ino
 		AND issell = 'Y'
-		AND rownum &lt; 9
 		order by hits desc
 	</select>
 </mapper>

@@ -204,7 +204,7 @@
 </div>
 
 			<div class="w3-col m12 w3-center w3-margin">
-<c:forEach var="data" items="${HIT}">
+<c:forEach var="data" items="${HIT}" begin = "0" end="7">
 				<div class="w3-col m3 w3-margin-top">
 					<a href="/www/gDetail/gDetail.dog?gno=${data.gno}">
 			               <img class="img-fluid" src="${data.dir}${data.savename}" width="auto" height="200px" alt="">

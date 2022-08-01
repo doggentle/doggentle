@@ -10,7 +10,6 @@ import com.gentle.www.vo.*;
 public class MailService {
 	public Session session;
 	public void gmailReady() {
-		
 		// 메일 전송 선작업
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -25,8 +24,6 @@ public class MailService {
 				return new PasswordAuthentication("dog.gentletest@gmail.com", "rnuzanzewfpicuba");//dog.gentletest@gmail.com//wpsxmf0706!//rnuzanzewfpicuba
 			}
 		});
-		
-		
 	}
 	
 	public void certSend(MemberVO mVO, int cd) {

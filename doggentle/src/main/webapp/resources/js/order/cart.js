@@ -61,7 +61,6 @@ $(document).ready(function(){
 			$(this).prev().val(1);
 			return;
 		}
-		
 		var clickedCno = $(this).prev().attr('id');
 		$('.qty').prop('disabled', true);
 		$('.qtyV').prop('readonly', true)
@@ -74,7 +73,6 @@ $(document).ready(function(){
 			$(this).val(1);
 			return;
 		}
-		
 		var changedCno = $(this).attr('id');
 		var changedVal = $(this).val();
 		$('.qty').prop('disabled', true);
@@ -95,8 +93,7 @@ function totalPxqRefresh(){
 	});
 	for(i=0;i<arr.length;i++){
 		totalPxQ = Number(totalPxQ) + Number(arr[i]);
-	}
-	
+	}	
 	$('.totalPxQ').html(totalPxQ+' ￦');
 	if(arr.length > 0 && arr.length < 3){
 		$('.deliveryPrice').html('3000 ￦');

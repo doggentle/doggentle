@@ -65,35 +65,35 @@ public class Manager {
       String line = "";
       String result = "";
 
-      while((line = bufferedReader.readLine()) != null ){ // 파일 내 문자열을 1줄씩 읽기 while
-         if(line.contains(arr[0]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[0]++; // 찾을 문자열이 몇개 포함되었는지 체크
+      while((line = bufferedReader.readLine()) != null ){ 
+         if(line.contains(arr[0]) ){
+             result += line + "\n";
+              cnt[0]++;
               loginCnt.put(arr[0], cnt[0]);
               
-          } else if(line.contains(arr[1]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[1]++; // 찾을 문자열이 몇개 포함되었는지 체크
+          } else if(line.contains(arr[1]) ){
+             result += line + "\n";
+              cnt[1]++;
               loginCnt.put(arr[1], cnt[1]);
               
-          } else if(line.contains(arr[2]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[2]++; // 찾을 문자열이 몇개 포함되었는지 체크
+          } else if(line.contains(arr[2]) ){
+             result += line + "\n";
+              cnt[2]++;
               loginCnt.put(arr[2], cnt[2]);
               
-          } else if(line.contains(arr[3]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[3]++; // 찾을 문자열이 몇개 포함되었는지 체크
+          } else if(line.contains(arr[3]) ){
+             result += line + "\n";
+              cnt[3]++;
               loginCnt.put(arr[3], cnt[3]);
               
-          } else if(line.contains(arr[4]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[4]++; // 찾을 문자열이 몇개 포함되었는지 체크
+          } else if(line.contains(arr[4]) ){
+             result += line + "\n";
+              cnt[4]++;
               loginCnt.put(arr[4], cnt[4]);
               
-          } else if(line.contains(arr[5]) ){ // 찾고자하는 문자열이 있을 때 작성
-             result += line + "\n"; // 한줄씩 읽어 결과에 추가
-              cnt[5]++; // 찾을 문자열이 몇개 포함되었는지 체크
+          } else if(line.contains(arr[5]) ){
+             result += line + "\n";
+              cnt[5]++;
               loginCnt.put(arr[5], cnt[5]);
           }
       }
@@ -134,7 +134,6 @@ public class Manager {
    public ModelAndView managerMember(ModelAndView mv, PageUtil page) {
       
 	  int total = mgDao.getMemberTotal();
-	  
 	  page.setPage(total);
 	  
       List<MemberVO> list = mgDao.getMemberInfo(page);
@@ -150,7 +149,6 @@ public class Manager {
    @ResponseBody
    public List<ManagerVO> orderList(ManagerVO mgVO) {
       List<ManagerVO> list = mgDao.getOrderInfo(mgVO.getMno());
-      
       
       return list;
    }

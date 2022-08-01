@@ -195,12 +195,10 @@
 								<th class="w3-left " style="border: none; margin: 1em auto; padding-bottom: 10px;">
 									<input type="button" class="w3-large w3-blue" style="border-color: white" value="이전 달" id="prev">
 								</th>
-								 
 						<!-- 제목 만들기 -->
 								<th class="w3-center"id = "title" colspan = "5">
 									${ATTEND.year}년  ${ATTEND.month}월
 								</th>
-								 
 						<!-- 다음달 버튼 만들기 -->
 								<th class="w3-right " style="border: none; margin: 1em auto; padding-bottom: 10px;">
 									<input type="button" class="w3-large w3-blue" style="border-color: white" value="다음 달" id="next">
@@ -216,9 +214,7 @@
 								<td class = "etcday">금</td>
 								<td class = "saturday">토</td>
 							</tr>
-							
 						<!-- 날짜 집어 넣기 -->
-						
 							<tr id="setcalendar">
 						<c:forEach var="beforeDay" items="${ATTEND.sDate}" varStatus="status">
 							<c:choose>

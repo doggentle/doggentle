@@ -130,6 +130,7 @@
 		    g.cano = c.cano
 		    AND g.ino = i.ino
 		    AND purpose = 'gds'
+		order by salesdate desc
 	</select>
 	
 	<select id="mngGoodsInfo" parameterType="String" resultType="mgVO">

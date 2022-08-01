@@ -126,8 +126,6 @@ public class Order {
 	           PrintWriter pw = new PrintWriter(new OutputStreamWriter(scon.getOutputStream(), "UTF-8")		);
 	           pw.write(params.toString());
 	           pw.flush();
-
-			
 			int result = scon.getResponseCode();
 			
 			InputStream in;
@@ -257,7 +255,6 @@ public class Order {
 		           PrintWriter pw = new PrintWriter(new OutputStreamWriter(scon.getOutputStream(), "UTF-8")		);
 		           pw.write(params.toString());
 		           pw.flush();
-
 				
 				int result = scon.getResponseCode();
 				
@@ -269,7 +266,7 @@ public class Order {
 				}
 				InputStreamReader reader = new InputStreamReader(in);
 				BufferedReader bfreader = new BufferedReader(reader);
-													String tmp = bfreader.readLine();
+				String tmp = bfreader.readLine();
 				return tmp;
 			}/*catch(Exception e){
 				e.printStackTrace();
